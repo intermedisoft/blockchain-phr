@@ -4,6 +4,8 @@ import firebase from 'firebase';
 import { Redirect } from 'react-router-dom';
 import { Button } from './../components'
 
+import '../assets/style/themes/pages/login.scss'
+
 // Configure Firebase.
 const config = {
   apiKey: "AIzaSyCAxMoLvDZFjnQloua-aJf2hrJBHgHqvVs",
@@ -68,3 +70,4 @@ class Login extends Component {
 }
 
 export default Login
+

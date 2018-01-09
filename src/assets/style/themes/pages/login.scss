@@ -1,7 +1,18 @@
 @import '../../configs/variables';
-
-:local{
-  body{
+:local {
+  body {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center bottom;
     background-color: $main-theme-color;
+    background-image: url('../../../images/wave.svg');
+  }
+  .logo_sys {
+    text-align: center;
+    img {
+      width: 250px;
+      max-width: 70%;
+    }
   }
 }

@@ -1,0 +1,139 @@
+@import '../configs/variables';
+@import 'mixins';
+
+/* 
+    Radio & Checkbox
+----------------------------------------------
+    
+    <label data-type="checkbox" class="">
+    <input type="checkbox" value="">
+    <span class="text"></span>
+    </label>
+    
+*/
+
+[data-type="radio"], [data-type="checkbox"] {
+    cursor: pointer;
+    position: relative;
+    line-height: normal;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    >input {
+        &[type="radio"], &[type="checkbox"] {
+            width: 0px;
+            height: 0px;
+            @include appearance(none);
+            +.text {
+                position: relative;
+                display: inline-block;
+                &::before {
+                    content: '';
+                    top: 2px;
+                    cursor: pointer;
+                    margin-right: 3px;
+                    position: relative;
+                    position: relative;
+                    display: inline-block;
+                    background-color: #ffffff;
+                }
+            }
+            &[required]{
+                +.text {
+                    position: relative;
+                    display: inline-block;
+                    &::before {
+                        border-color: $main-input-required-border-color;
+                        background-color: $main-input-required-bg-color;
+                    }
+                }
+            }
+        }
+    }
+    &.--check-list {
+        margin: 0px;
+        >input {
+            &[type="radio"], &[type="checkbox"] {
+                +.text {
+                    &::before {
+                        top: 0px;
+                        margin-right: 0px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+[data-type="radio"] {
+    >input {
+        &[type="radio"] {
+            +.text {
+                &::before {
+                    width: $radio-size;
+                    height: $radio-size;
+                    border: 1px solid $radio-border-color;
+                    @include border-radius($radio-radius);
+                }
+            }
+            &:checked {
+                +.text {
+                    &::after {
+                        content: '';
+                        top: 7px;
+                        left: 5px;
+                        width: 10px;
+                        height: 10px;
+                        position: absolute;
+                        background-color: $radio-check-color;
+                        @include border-radius(100%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+[data-type="checkbox"] {
+    >input {
+        &[type="checkbox"] {
+            +.text {
+                &::before {
+                    width: $checkbox-size;
+                    height: $checkbox-size;
+                    border: 1px solid $checkbox-border-color;
+                    @include border-radius($checkbox-radius);
+                }
+            }
+            &:checked {
+                +.text {
+                    &::after {
+                        content: '';
+                        top: 3px;
+                        left: 7px;
+                        width: 7px;
+                        height: 15px;
+                        position: absolute;
+                        border-right: 3px solid;
+                        border-bottom: 3px solid;
+                        border-color: $checkbox-check-color;
+                        @include rotate(45);
+                    }
+                }
+            }
+        }
+    }
+    &.--check-list {
+        >input {
+            &[type="radio"], &[type="checkbox"] {
+                &:checked {
+                    +.text {
+                        &::after {
+                            top: 1px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

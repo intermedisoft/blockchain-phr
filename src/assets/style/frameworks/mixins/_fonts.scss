@@ -1,0 +1,60 @@
+/* 
+    Mixins Fonts
+----------------------------------------------
+*/
+
+@mixin font-smoot() {
+    speak: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin icon-style() {
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    color: $main-font-icon-color;
+    @include font-smoot();
+}
+
+@mixin font-icon() {
+    font-family: $main-font-icon-name;
+    @include icon-style();
+}
+
+// Main font
+// -------------------------------
+@mixin main-font-style {
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    color: $main-font-color;
+    font-size: $main-font-size;
+    font-family: $main-font-name;
+    @include font-smoot();
+}
+
+// Set a rem font size with pixel fallback
+// -------------------------------
+@function calculate-px($size) {
+    $remSize: $size / $main-font-size;
+    @return $remSize * 1rem;
+}
+
+@mixin font-size-px($size) {
+    font-size: #{$size}px;
+    font-size: calculate-px($size);
+}
+
+// Set a pixel font size with rem fallback
+// -------------------------------
+@function calculate-rem($size) {
+    $remSize: $main-font-size * $size;
+    @return $remSize;
+}
+
+@mixin font-size-rem($size) {
+    font-size: calculate-rem($size);
+    font-size: #{$size}rem;
+}

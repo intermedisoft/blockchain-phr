@@ -1,0 +1,18 @@
+/* 
+    Text style
+----------------------------------------------
+*/
+
+@mixin text-dot($text-dot-width:100%) {
+    overflow: hidden;
+    white-space: nowrap;
+    width: $text-dot-width;
+    @include text-overflow(ellipsis);
+}
+
+@mixin text-dot-clear() {
+    width: initial;
+    overflow: initial;
+    white-space: initial;
+    @include text-overflow(initial);
+}

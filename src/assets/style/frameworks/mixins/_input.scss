@@ -1,0 +1,78 @@
+/* 
+    Mixins input style
+----------------------------------------------
+*/
+
+@mixin input-clear() {
+    border: 1px solid;
+    line-height: normal;
+    padding: $input-padd;
+    height: $main-input-height;
+    margin-right: $main-margin-right;
+    background-color: $main-input-bg-color;
+    @include appearance(input);
+    @include border-radius($input-radius);
+    @include placeholder {
+        color: lighten($main-font-placeholder-color , 20%);
+    }
+    &:focus {
+        @include placeholder {
+            color: $main-font-placeholder-color;
+        }
+    }
+    &:hover {}
+    &:required {
+        background-color: red;
+        &:valid {
+            background-color: #000;
+        }
+    }
+}
+
+@mixin input-style($main-input-border-color:$main-input-border-color) {
+    border-color: $main-input-border-color;
+    &:hover {}
+    &:disabled, .-disabled {}
+}
+
+@mixin input-tag($tag-position, $tag-bg-color:#f1f1f1, $tag-font-color:#6e6e6e, $input-margin-right:$main-margin-right, $tag-border-color:$main-input-border-color) {
+    position: relative;
+    &::#{$tag-position} {
+        content: attr(data-label);
+        top: 0;
+        height: 100%;
+        padding-top: 8px;
+        position: absolute;
+        text-align: center;
+        color: $tag-font-color;
+        background-color: $tag-bg-color;
+        border: 1px solid $tag-border-color;
+        @if ($tag-position=='before') {
+            left: 0;
+            @include border-radius($input-radius 0px 0px $input-radius);
+        }
+        @else {
+            right: 0;
+            @include border-radius(0px $input-radius $input-radius 0px);
+        }
+    }
+    input {
+        margin-right: $input-margin-right;
+    }
+}
+
+@mixin input-tag-set-size($tag-position, $input-width, $tag-width, $text-align:right){
+    width: $input-width;
+    &::before, &::after{
+        width: $tag-width;
+    }
+    input {
+        text-align: $text-align!important;
+        @if ($tag-position=='before') {
+            padding-left: #{$tag-width + 5} !important;
+        }
+        @else {
+            padding-right: #{$tag-width + 5} !important;
+        }
+    }
+}

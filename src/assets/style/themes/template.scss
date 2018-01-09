@@ -1,0 +1,36 @@
+:global {
+  body {
+      background-color: burlywood;
+  }
+  body>div,
+  body>div>div,
+  body>div>div>div.login {
+      height: 100%;
+  }
+  .ui.vertical.menu {
+      width: 100% !important;
+      height: 88vh;
+  }
+  .ui.segment {
+      margin: 0.5rem 0 !important;
+      padding: 0.5em 1em !important;
+  }
+  .loading {
+      background-color: red;
+      margin: 100px;
+  }
+  .lang {
+      padding: 10px;
+      background: #24b500;
+      color: wheat;
+      position: absolute;
+      width: 100%;
+  }
+  .lang span {
+      padding-right: 10px;
+  }
+  .lang span,
+  .lang button {
+      margin-top: 10px;
+  }
+}

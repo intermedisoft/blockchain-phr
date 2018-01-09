@@ -1,0 +1,19 @@
+/* 
+    Mixins Placeholder style
+----------------------------------------------
+*/
+
+@mixin placeholder {
+    @include prefix-at-root(':-moz-placeholder') {
+        @content;
+    }
+    @include prefix-at-root('::-moz-placeholder') {
+        @content;
+    }
+    @include prefix-at-root(':-ms-input-placeholder') {
+        @content;
+    }
+    @include prefix-at-root('::-webkit-input-placeholder') {
+        @content;
+    }
+}

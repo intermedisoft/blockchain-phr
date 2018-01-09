@@ -1,0 +1,149 @@
+@import '../configs/variables';
+@import 'mixins';
+
+/* 
+    Style table
+----------------------------------------------
+*/
+
+table {
+    &.--width-max {
+        width: 100%;
+    }
+}
+
+[class*="table-"] {
+    td {
+        &.--text-max {
+            width: 5px;
+            white-space: nowrap;
+        }
+    }
+}
+
+.table {
+    th, td {
+        line-height: normal;
+    }
+    &-input {
+        >tbody {
+            >tr {
+                >td {
+                    padding: 3px;
+                    line-height: normal;
+                    &:nth-of-type(2n-1) {
+                        padding-top: 9px;
+                    }
+                    &.--input{
+                        padding: 3px;
+                    }
+                    [data-type="radio"], [data-type="checkbox"] {
+                        margin-top: 2px;
+                    }
+                    >.ui.button {
+                        top: -1px;
+                        margin-right: 5px;
+                        position: relative;
+                    }
+                    .text-group {
+                        &__title {
+                            top: -1px;
+                            position: relative;
+                            font-weight: normal;
+                            &::after {
+                                top: -1px;
+                                position: relative;
+                            }
+                        }
+                        &__value {}
+                    }
+                    .table {
+                        &-input {
+                            top: -3px;
+                            position: relative;
+                        }
+                    }
+                }
+            }
+        }
+        &.--colon {
+            >tbody {
+                >tr {
+                    >td {
+                        &:nth-of-type(2n + 1) {
+                            padding-right: 7px;
+                            &::after {
+                                content: ':';
+                                right: 0;
+                                top: 10px;
+                                position: absolute;
+                            }
+                            &.--input{
+                                &::after {
+                                    content: '';
+                                }
+                            }
+                        }
+                        &.--no-colon {
+                            &::after {
+                                content: '';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.--first-column-text-max {
+            >tbody {
+                >tr {
+                    >td {
+                        &:first-of-type {
+                            width: 5px;
+                            white-space: nowrap;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-input-list {
+        >thead {
+            >tr {
+                >td, >th {
+                    text-align: center;
+                    line-height: normal;
+                }
+            }
+        }
+        >tbody {
+            >tr {
+                >td {
+                    line-height: normal;
+                    &.--input, &.--btn-action {
+                        padding: 4px;
+                    }
+                    &.--btn-action {
+                        width: 5px;
+                        white-space: nowrap;
+                        .ui.button {
+                            width: 30px;
+                            height: 30px;
+                            i {
+                                &::before {
+                                    @include font-size-rem(0.8);
+                                }
+                            }
+                        }
+                    }
+                }
+                &.--input-row {
+                    .--btn-action {
+                        .ui.button {
+                            margin-top: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

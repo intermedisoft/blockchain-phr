@@ -1,0 +1,18 @@
+@import '../configs/variables';
+@import 'mixins';
+
+/* 
+    Layout style
+----------------------------------------------
+*/
+.content-float{
+    @include clear-float-block();
+    > div{
+        float: left;
+    }
+    &.--right{
+        > div{
+            float: right;
+        }
+    }
+}

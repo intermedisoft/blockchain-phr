@@ -1,0 +1,43 @@
+/* 
+    Mixins button style
+----------------------------------------------
+*/
+
+
+@mixin btn-clear($box-shadow-height:13px) {
+    @include clear_position();
+    cursor: pointer;
+    background: none;
+    padding: $btn-padd;
+    min-height: initial;
+    line-height: normal;
+    height: $main-input-height;
+    @include appearance();
+    @include main-font-style;
+    @include font-size-rem(0.95);
+    @include border-radius($btn-radius);
+    @include box-shadow(inset 0px -#{$box-shadow-height} 4px rgba(0, 0, 0, 0.1));
+    @include transition-multi(background-color, border);
+    &:hover, &:active {
+        @include box-shadow(inset 0px -#{$box-shadow-height} 4px rgba(0, 0, 0, 0.1));
+        @include transition-multi(background-color, border);
+    }
+}
+
+@mixin btn-style($btn-bg-color:$btn-bg-color, $btn-border-color:$btn-border-color, $btn-font-color:$btn-font-color) {
+    border: 1px solid;
+    color: $btn-font-color;
+    border-color: $btn-border-color;
+    background-color: $btn-bg-color;
+    &:hover, &:active, &:focus {
+        border-color: darken($btn-border-color, 3%);
+        background-color: darken($btn-bg-color, 3%);
+    }
+    &:disabled, .-disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        &:hover {
+            background-color: $btn-bg-color;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+@import '../configs/variables';
+@import 'mixins';
+
+/* 
+    Style table
+----------------------------------------------
+*/
+
+select {
+    @include input-clear();
+    @include input-style();
+    padding-right: 18px;
+    background-size: 7px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 5px);
+    background-image: url('assets/images/dropdown_icon.svg');
+    @include appearance();
+    @include font-size-rem(1);
+}

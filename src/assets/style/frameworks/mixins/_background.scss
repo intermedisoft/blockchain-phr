@@ -1,0 +1,19 @@
+/* 
+    Mixins Background
+----------------------------------------------
+*/
+
+// SVG background images with PNG and retina fallback
+@mixin background-image($name, $size:false) {
+    $retina-suffix: '@2x';
+    $image-path: '../images' !default;
+    $fallback-extension: 'png' !default;
+    background-image: url(#{$image-path}/#{$name}.#{$fallback-extension});
+    background-image: url(#{$image-path}/#{$name}.svg);
+    @if($size) {
+        @include background-size($property: $size);
+    }
+    @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+        background-image: url(#{$image-path}/#{$name}#{$retina-suffix}.#{$fallback-extension});
+    }
+}

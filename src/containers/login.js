@@ -4,7 +4,8 @@ import firebase from 'firebase';
 import { Redirect } from 'react-router-dom';
 import { Button } from './../components'
 
-import '../assets/style/themes/pages/login.scss'
+import logo from '../assets/images/logo.svg'
+import styles from '../assets/style/themes/pages/login.scss'
 
 // Configure Firebase.
 const config = {
@@ -59,8 +60,10 @@ class Login extends Component {
     if (!this.state.signedIn) {
       return (
         <div>
-          <h1>PHR Blox</h1>
-          <p>Please sign-in:</p>
+          <div className={styles.logo_sys}>
+          <img src={logo} alt="Logo"/>
+          </div>
+          {/* <p>Please sign-in:</p> */}
           <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
         </div>
       )

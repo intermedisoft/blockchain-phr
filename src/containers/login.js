@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Button } from './../components'
+
+import '../assets/style/themes/pages/login.scss'
+
 class Login extends Component {
   render () {
     return (
@@ -12,3 +15,4 @@ class Login extends Component {
 }
 
 export default Login
+

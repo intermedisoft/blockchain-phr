@@ -1,0 +1,9 @@
+{
+  "emmet.includeLanguages": {
+      "javascript": "javascriptreact",
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "editor.tabSize": 2,
+  "eslint.autoFixOnSave": true,
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true
+}

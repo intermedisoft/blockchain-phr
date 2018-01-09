@@ -1,0 +1,761 @@
+/* 
+    Mixins Prefix File
+---------------------------------------------- 
+*/
+
+// ### align-content ###
+// -------------------------------
+// Browser support : IE10 | Firefox28 | Chrome21 | Safari9 | Opera12.1
+// align-content : stretch | center | flex-start | flex-end | space-between | space-around
+@mixin align-content($property:stretch) {
+    align-content: $property;
+    -o-align-content: $property;
+    -ms-align-content: $property;
+    -moz-align-content: $property;
+    -webkit-align-content: $property;
+}
+
+// ### align-items ###
+// -------------------------------
+// Browser support : IE10 | Firefox20 | Chrome21 | Safari9 | Opera12.1
+// align-items : stretch | center | flex-start | flex-end | baseline
+@mixin align-items($property:stretch) {
+    align-items: $property;
+    -o-align-items: $property;
+    -ms-align-items: $property;
+    -moz-align-items: $property;
+    -webkit-align-items: $property;
+}
+
+// ### align-self ###
+// -------------------------------
+// Browser support : IE10 | Firefox20 | Chrome21 | Safari9 | Opera12.1
+// align-self : stretch | center | flex-start | flex-end | baseline
+@mixin align-self($property:stretch) {
+    align-self: $property;
+    -o-align-self: $property;
+    -ms-align-self: $property;
+    -moz-align-self: $property;
+    -webkit-align-self: $property;
+}
+
+// ### animation ###
+// -------------------------------
+// Browser support : IE10 | Firefox16 | Chrome43 | Safari9 | Opera30
+// animation
+@mixin animation($animation...) {
+    animation: $animation;
+    -o-animation: $animation;
+    -ms-animation: $animation;
+    -moz-animation: $animation;
+    -webkit-animation: $animation;
+}
+
+// animation-delay : time.
+@mixin animation-delay($property:1s) {
+    animation-delay: $property;
+    -o-animation-delay: $property;
+    -ms-animation-delay: $property;
+    -moz-animation-delay: $property;
+    -webkit-animation-delay: $property;
+}
+
+// animation-direction : normal | reverse | alternate | alternate-reverse
+@mixin animation-direction($property:normal) {
+    animation-direction: $property;
+    -o-animation-direction: $property;
+    -ms-animation-direction: $property;
+    -moz-animation-direction: $property;
+    -webkit-animation-direction: $property;
+}
+
+// animation-duration : time.
+@mixin animation-duration($property:1s) {
+    animation-duration: $property;
+    -o-animation-duration: $property;
+    -ms-animation-duration: $property;
+    -moz-animation-duration: $property;
+    -webkit-animation-duration: $property;
+}
+
+// Browser support : IE10 | Firefox16 | Chrome43 | Safari4 | Opera15
+// animation-fill-mode : none | forwards | backwards | both
+@mixin animation-fill-mode($property:forwards) {
+    animation-fill-mode: $property;
+    -o-animation-fill-mode: $property;
+    -ms-animation-fill-mode: $property;
+    -moz-animation-fill-mode: $property;
+    -webkit-animation-fill-mode: $property;
+}
+
+// animation-iteration-count : number | infinite
+@mixin animation-iteration-count($property:1) {
+    animation-iteration-count: $property;
+    -o-animation-iteration-count: $property;
+    -ms-animation-iteration-count: $property;
+    -moz-animation-iteration-count: $property;
+    -webkit-animation-iteration-count: $property;
+}
+
+// animation-name : keyframename
+@mixin animation-name($property) {
+    animation-name: $property;
+    -o-animation-name: $property;
+    -ms-animation-name: $property;
+    -moz-animation-name: $property;
+    -webkit-animation-name: $property;
+}
+
+// animation-play-state : paused | running
+@mixin animation-play-state($property) {
+    animation-play-state: $property;
+    -o-animation-play-state: $property;
+    -ms-animation-play-state: $property;
+    -moz-animation-play-state: $property;
+    -webkit-animation-play-state: $property;
+}
+
+// animation-timing-function : linear | ease | ease-in | ease-out | ease-in-out | step-start | step-end | steps(int,start|end) | cubic-bezier(n,n,n,n)
+@mixin animation-timing-function($property) {
+    animation-timing-function: $property;
+    -o-animation-timing-function: $property;
+    -ms-animation-timing-function: $property;
+    -moz-animation-timing-function: $property;
+    -webkit-animation-timing-function: $property;
+}
+
+// ### appearance ###
+// -------------------------------
+// Browser support : IE! | Firefox... | Chrome... | Safari... | Opera!
+// appearance : normal | icon | window | button | menu | field | more+++
+@mixin appearance($property:none) {
+    appearance: $property;
+    -o-appearance: $property;
+    -ms-appearance: $property;
+    -moz-appearance: $property;
+    -webkit-appearance: $property;
+}
+
+// ### backface-visibility ###
+// -------------------------------
+// Browser support : IE10 | Firefox16 | Chrome36 | Safari9 | Opera23
+// backface-visibility : visible | hidden
+@mixin backface-visibility($property:visible) {
+    backface-visibility: $property;
+    -o-backface-visibility: $property;
+    -ms-backface-visibility: $property;
+    -moz-backface-visibility: $property;
+    -webkit-backface-visibility: $property;
+}
+
+// ### background-size ###
+// -------------------------------
+// Browser support : IE9 | Firefox16 | Chrome4.0 | Safari4.1 | Opera10.5
+// background-size : auto | length | cover | contain
+@mixin background-size($property:auto) {
+    background-size: $property;
+    -o-background-size: $property;
+    -ms-background-size: $property;
+    -moz-background-size: $property;
+    -webkit-background-size: $property;
+}
+
+// ### border ###
+// -------------------------------
+// Browser support : IE9 | Firefox4.0 | Chrome5.0 | Safari4.1 | Opera10.5
+// border-radius : length
+@mixin border-radius($property:1px) {
+    border-radius: $property;
+    -o-border-radius: $property;
+    -ms-border-radius: $property;
+    -moz-border-radius: $property;
+    -webkit-border-radius: $property;
+}
+
+// border-top-left-radius : length
+@mixin border-top-left-radius($property:1px) {
+    border-top-left-radius: $property;
+    -o-border-top-left-radius: $property;
+    -ms-border-top-left-radius: $property;
+    -moz-border-top-left-radius: $property;
+    -webkit-border-top-left-radius: $property;
+}
+
+// border-top-right-radius : length
+@mixin border-top-right-radius($property:1px) {
+    border-top-right-radius: $property;
+    -o-border-top-right-radius: $property;
+    -ms-border-top-right-radius: $property;
+    -moz-border-top-right-radius: $property;
+    -webkit-border-top-right-radius: $property;
+}
+
+// border-bottom-left-radius : length
+@mixin border-bottom-left-radius($property:1px) {
+    border-bottom-left-radius: $property;
+    -o-border-bottom-left-radius: $property;
+    -ms-border-bottom-left-radius: $property;
+    -moz-border-bottom-left-radius: $property;
+    -webkit-border-bottom-left-radius: $property;
+}
+
+// border-bottom-right-radius : length
+@mixin border-bottom-right-radius($property:1px) {
+    border-bottom-right-radius: $property;
+    -o-border-bottom-right-radius: $property;
+    -ms-border-bottom-right-radius: $property;
+    -moz-border-bottom-right-radius: $property;
+    -webkit-border-bottom-right-radius: $property;
+}
+
+// Browser support : IE11 | Firefox15 | Chrome16 | Safari6 | Opera15
+// border-image : source slice width outset repeat
+@mixin border-image($property) {
+    border-image: $property;
+    -o-border-image: $property;
+    -ms-border-image: $property;
+    -moz-border-image: $property;
+    -webkit-border-image: $property;
+}
+
+// ### box-shadow  ###
+// -------------------------------
+// Browser support : IE9 | Firefox4 | Chrome10 | Safari5.1 | Opera10.5
+// box-shadow : none | h-shadow v-shadow blur spread color
+@mixin box-shadow($property) {
+    box-shadow: $property;
+    -o-box-shadow: $property;
+    -ms-box-shadow: $property;
+    -moz-box-shadow: $property;
+    -webkit-box-shadow: $property;
+}
+
+// ### box-sizing  ###
+// -------------------------------
+// Browser support : IE8 | Firefox29 | Chrome10 | Safari5.1 | Opera9.5
+// box-sizing : content-box | border-box
+@mixin box-sizing($property:content-box) {
+    box-sizing: $property;
+    -o-box-sizing: $property;
+    -ms-box-sizing: $property;
+    -moz-box-sizing: $property;
+    -webkit-box-sizing: $property;
+}
+
+// ### calc ###
+// -------------------------------
+// Browser support : IE9 | Firefox16 | Chrome26 | Safari7 | Opera15
+// align-content : property , calc(expression)
+@mixin calc($property, $expression) {
+  #{$property}: calc(#{$expression});
+  #{$property}: -o-calc(#{$expression});
+  #{$property}: -ms-calc(#{$expression});
+  #{$property}: -moz-calc(#{$expression});
+  #{$property}: -webkit-calc(#{$expression});
+}
+
+// ### column  ###
+// -------------------------------
+// Browser support : IE10 | Firefox2 | Chrome50 | Safari9 | Opera37
+// column-count : number | auto
+@mixin column-count($property:1) {
+    column-count: $property;
+    -o-column-count: $property;
+    -ms-column-count: $property;
+    -moz-column-count: $property;
+    -webkit-column-count: $property;
+}
+
+// Browser support : IE! | Firefox13 | Chrome! | Safari! | Opera!
+// column-fill : balance | auto
+@mixin column-fill($property:balance) {
+    column-fill: $property;
+    -o-column-fill: $property;
+    -ms-column-fill: $property;
+    -moz-column-fill: $property;
+    -webkit-column-fill: $property;
+}
+
+// column-gap : length | normal
+@mixin column-gap($property:normal) {
+    column-gap: $property;
+    -o-column-gap: $property;
+    -ms-column-gap: $property;
+    -moz-column-gap: $property;
+    -webkit-column-gap: $property;
+}
+
+// column-rule : column-rule-width column-rule-style column-rule-color
+@mixin column-rule($property) {
+    column-rule: $property;
+    -o-column-rule: $property;
+    -ms-column-rule: $property;
+    -moz-column-rule: $property;
+    -webkit-column-rule: $property;
+}
+
+// column-rule-color : color
+@mixin column-rule-color($property) {
+    column-rule-color: $property;
+    -o-column-rule-color: $property;
+    -ms-column-rule-color: $property;
+    -moz-column-rule-color: $property;
+    -webkit-column-rule-color: $property;
+}
+
+// column-rule-style : none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset
+@mixin column-rule-style($property:solid) {
+    column-rule-style: $property;
+    -o-column-rule-style: $property;
+    -ms-column-rule-style: $property;
+    -moz-column-rule-style: $property;
+    -webkit-column-rule-style: $property;
+}
+
+// column-rule-width : medium | thin | thick | length
+@mixin column-rule-width($property:1px) {
+    column-rule-width: $property;
+    -o-column-rule-width: $property;
+    -ms-column-rule-width: $property;
+    -moz-column-rule-width: $property;
+    -webkit-column-rule-width: $property;
+}
+
+// Browser support : IE10 | Firefox! | Chrome50 | Safari9 | Opera37
+// column-span : 1 | all
+@mixin column-span($property:all) {
+    column-span: $property;
+    -o-column-span: $property;
+    -ms-column-span: $property;
+    -moz-column-span: $property;
+    -webkit-column-span: $property;
+}
+
+// column-width : auto | length
+@mixin column-width($property:auto) {
+    column-width: $property;
+    -o-column-width: $property;
+    -ms-column-width: $property;
+    -moz-column-width: $property;
+    -webkit-column-width: $property;
+}
+
+// columns : auto|column-width column-count
+@mixin columns($property:auto) {
+    columns: $property;
+    -o-columns: $property;
+    -ms-columns: $property;
+    -moz-columns: $property;
+    -webkit-columns: $property;
+}
+
+// ### filter  ###
+// -------------------------------
+// Browser support : IE13 | Firefox35 | Chrome53 | Safari9.1 | Opera40
+// filter : none | blur() | brightness() | contrast() | drop-shadow() | grayscale() | hue-rotate() | invert() | opacity() | saturate() | sepia() | url()
+@mixin filter($property) {
+    filter: $property;
+    -o-filter: $property;
+    -ms-filter: $property;
+    -moz-filter: $property;
+    -webkit-filter: $property;
+}
+
+// ### flex  ###
+// -------------------------------
+// Browser support : IE11 | Firefox28 | Chrome29 | Safari9 | Opera17
+// flex : 1 1 auto.
+@mixin flex($property:1) {
+    flex: $property;
+    -o-flex: $property;
+    -ms-flex: $property;
+    -moz-flex: $property;
+    -webkit-flex: $property;
+}
+
+@mixin flex-box() {
+    display: flex;
+    display: -o-flex;
+    display: -ms-flex;
+    display: -moz-flex;
+    display: -webkit-flex;
+}
+
+// flex-basis : number
+@mixin flex-basis($property:auto) {
+    flex-basis: $property;
+    -o-flex-basis: $property;
+    -ms-flex-basis: $property;
+    -moz-flex-basis: $property;
+    -webkit-flex-basis: $property;
+}
+
+// flex-direction : row | row-reverse | column | column-reverse
+@mixin flex-direction($property:row) {
+    @include flex-box();
+    flex-direction: $property;
+    -o-flex-direction: $property;
+    -ms-flex-direction: $property;
+    -moz-flex-direction: $property;
+    -webkit-flex-direction: $property;
+}
+
+// flex-wrap : nowrap | wrap | wrap-reverse
+@mixin flex-wrap($property:nowrap) {
+    @include flex-box();
+    flex-wrap: $property;
+    -o-flex-wrap: $property;
+    -ms-flex-wrap: $property;
+    -moz-flex-wrap: $property;
+    -webkit-flex-wrap: $property;
+}
+
+// flex-flow : flex-direction flex-wrap
+@mixin flex-flow($direction:row, $flex:nowrap) {
+    @include flex-box();
+    flex-flow: $direction $flex;
+    -o-flex-flow: $direction $flex;
+    -ms-flex-flow: $direction $flex;
+    -moz-flex-flow: $direction $flex;
+    -webkit-flex-flow: $direction $flex;
+}
+
+// flex-grow : number
+@mixin flex-grow($property:2) {
+    flex-grow: $property;
+    -o-flex-grow: $property;
+    -ms-flex-grow: $property;
+    -moz-flex-grow: $property;
+    -webkit-flex-grow: $property;
+}
+
+// flex-shrink : number
+@mixin flex-shrink($property:2) {
+    flex-shrink: $property;
+    -o-flex-shrink: $property;
+    -ms-flex-shrink: $property;
+    -moz-flex-shrink: $property;
+    -webkit-flex-shrink: $property;
+}
+
+// ### justify-content  ###
+// -------------------------------
+// Browser support : IE11 | Firefox28 | Chrome29 | Safari9 | Opera17
+// justify-content : flex-start | flex-end | center | space-between | space-around
+@mixin justify-content($property:flex-start) {
+    justify-content: $property;
+    -o-justify-content: $property;
+    -ms-justify-content: $property;
+    -moz-justify-content: $property;
+    -webkit-justify-content: $property;
+}
+
+// ### @keyframes  ###
+// -------------------------------
+// Browser support : IE10 | Firefox16 | Chrome43 | Safari9 | Opera30
+// key-frames : 
+@mixin key-frames($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
+// ### order  ###
+// -------------------------------
+// Browser support : IE11 | Firefox28 | Chrome29 | Safari9 | Opera17
+// order : number
+@mixin order($property) {
+    order: $property;
+    -o-order: $property;
+    -ms-order: $property;
+    -moz-order: $property;
+    -webkit-order: $property;
+}
+
+// ### perspective  ###
+// -------------------------------
+// Browser support : IE10 | Firefox16 | Chrome36 | Safari9 | Opera23
+// perspective : length
+@mixin perspective($property) {
+    perspective: $property;
+    -o-perspective: $property;
+    -ms-perspective: $property;
+    -moz-perspective: $property;
+    -webkit-perspective: $property;
+}
+
+// perspective-origin : x-axis y-axis
+@mixin perspective-origin($x, $y) {
+    perspective-origin: $x, $y;
+    -o-perspective-origin: $x, $y;
+    -ms-perspective-origin: $x, $y;
+    -moz-perspective-origin: $x, $y;
+    -webkit-perspective-origin: $x, $y;
+}
+
+// ### tab-size ###
+// -------------------------------
+// Browser support : IE! | Firefox4 | Chrome21 | Safari6.1 | Opera15
+// tab-size : number|length
+@mixin tab-size($property:1) {
+    tab-size: $property;
+    -o-tab-size: $property;
+    -ms-tab-size: $property;
+    -moz-tab-size: $property;
+    -webkit-tab-size: $property;
+}
+
+// ### text-align-last ###
+// -------------------------------
+// Browser support : IE5.5 | Firefox12 | Chrome47 | Safari! | Opera34
+// text-align-last : auto | left | right | center | justify | start | end
+@mixin text-align-last ($property:auto) {
+    text-align-last: $property;
+    -o-text-align-last: $property;
+    -ms-text-align-last: $property;
+    -moz-text-align-last: $property;
+    -webkit-text-align-last: $property;
+}
+
+// ### text-align-last ###
+// -------------------------------
+// Browser support : IE! | Firefox! | Chrome54 | Safari! | Opera!
+// text-size-adjust : none | auto
+@mixin text-size-adjust ($property:none) {
+    text-size-adjust: $property;
+    -o-text-size-adjust: $property;
+    -ms-text-size-adjust: $property;
+    -moz-text-size-adjust: $property;
+    -webkit-text-size-adjust: $property;
+}
+
+// ### text-overflow ###
+// -------------------------------
+// Browser support : IE6 | Firefox7 | Chrome4 | Safari3.1 | Opera9
+// text-size-adjust : none | auto
+@mixin text-overflow ($property:none) {
+    text-overflow: $property;
+    -o-text-overflow: $property;
+}
+
+// ### transform ###
+// -------------------------------
+// Browser support transform 2D: IE10 | Firefox16 | Chrome36 | Safari9 | Opera23
+// Browser support transform 3D: IE12 | Firefox10 | Chrome36 | Safari9 | Opera23
+// transform : none|transform-functions
+@mixin transform($property) {
+    transform: $property;
+    -o-transform: $property;
+    -ms-transform: $property;
+    -moz-transform: $property;
+    -webkit-transform: $property;
+}
+
+// matrix : (n,n,n,n,n,n)
+@mixin matrix ($n...) {
+    @include transform(matrix(#{$n}));
+}
+
+// matrix-3d : (n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n)
+@mixin matrix-3d ($n...) {
+    @include transform(matrix3d(#{$n}));
+}
+
+// translate : (x,y)
+@mixin translate ($x, $y) {
+    @include transform(translate($x, $y));
+}
+
+// translate-3d : (x,y,z)
+@mixin translate-3d ($x, $y, $z) {
+    @include transform(translate3d($x, $y, $z));
+}
+
+// translate-x : (x)
+@mixin translate-x ($x) {
+    @include transform(translateX($x));
+}
+
+// translate-y : (y)
+@mixin translate-y ($y) {
+    @include transform(translateY($y));
+}
+
+// translate-z : (z)
+@mixin translate-z ($z) {
+    @include transform(translateZ($z));
+}
+
+// scale : (x,y)
+@mixin scale($x, $y) {
+    @include transform(scale($x, $y));
+}
+
+// scale-3d : (x,y,z)
+@mixin scale-3d($x, $y, $z) {
+    @include transform(scale3d($x, $y, $z));
+}
+
+// scale-x : (x)
+@mixin scale-x($x) {
+    @include transform(scaleX($x));
+}
+
+// scale-y : (y)
+@mixin scale-y($y) {
+    @include transform(scaleY($y));
+}
+
+// scale-z : (z)
+@mixin scale-z($z) {
+    @include transform(scaleZ($z));
+}
+
+// rotate : (angle)
+@mixin rotate ($deg) {
+    @include transform(rotate(#{$deg}deg));
+}
+
+// rotate-3d : (x,y,z,angle)
+@mixin rotate-3d ($x, $y, $z, $deg) {
+    @include transform(rotate3d($x, $y, $z, #{$deg}deg));
+}
+
+// rotate-x : (angle)
+@mixin rotate-x ($deg) {
+    @include transform(rotateX(#{$deg}deg));
+}
+
+// rotate-y : (angle)
+@mixin rotate-y ($deg) {
+    @include transform(rotateY(#{$deg}deg));
+}
+
+// rotate-z : (angle)
+@mixin rotate-z ($deg) {
+    @include transform(rotateZ(#{$deg}deg));
+}
+
+// skew : (x,y)
+@mixin skew ($x, $y) {
+    @include transform(skew(#{$x}deg, #{$y}deg));
+}
+
+// skew-x : (x)
+@mixin skew-x ($x) {
+    @include transform(skew(#{$x}deg));
+}
+
+// skew-y : (y)
+@mixin skew-y ($y) {
+    @include transform(skew(#{$y}deg));
+}
+
+// Browser support transform 2D: IE10 | Firefox16 | Chrome36 | Safari9 | Opera23
+// Browser support transform 3D: IE10 | Firefox10 | Chrome36 | Safari9 | Opera23
+// transform-origin :  x-axis y-axis z-axis
+@mixin transform-origin($x, $y, $z) {
+    transform-origin: $x, $y, $z;
+    -o-transform-origin: $x, $y, $z;
+    -ms-transform-origin: $x, $y, $z;
+    -moz-transform-origin: $x, $y, $z;
+    -webkit-transform-origin: $x, $y, $z;
+}
+
+// Browser support : IE11 | Firefox16 | Chrome36 | Safari9 | Opera23
+// transform-style :  flat|preserve-3d
+@mixin transform-style($property:flat) {
+    transform-style: $property;
+    -o-transform-style: $property;
+    -ms-transform-style: $property;
+    -moz-transform-style: $property;
+    -webkit-transform-style: $property;
+}
+
+// ### transition ###
+// -------------------------------
+// Browser support : IE10 | Firefox16 | Chrome26 | Safari6.1 | Opera12.1
+// transition-multi : property duration timing-function delay , n++
+@mixin transition-multi($property...) {
+    $all: ();
+    @for $i from 1 through length($property) {
+        $all: append($all, append(nth($property, $i), linear 0.3s), comma);
+    }
+    transition: $all;
+    -o-transition: $all;
+    -moz-transition: $all;
+    -webkit-transition: $all;
+}
+
+// transition : property duration timing-function delay
+@mixin transition($transition...) {
+    transition: $transition;
+    -o-transition: $transition;
+    -moz-transition: $transition;
+    -webkit-transition: $transition;
+}
+
+// transition-property : none|all|property
+@mixin transition-property($property...) {
+    transition-property: $property;
+    -o-transition-property: $property;
+    -moz-transition-property: $property;
+    -webkit-transition-property: $property;
+}
+
+// transition-duration : time
+@mixin transition-duration($duration...) {
+    transition-property: $duration;
+    -o-transition-property: $duration;
+    -moz-transition-property: $duration;
+    -webkit-transition-property: $duration;
+}
+
+// transition-timing-function : linear | ease | ease-in | ease-out | ease-in-out | step-start | step-end | steps(int,start|end) | cubic-bezier(n,n,n,n)
+@mixin transition-timing-function($timing...) {
+    transition-timing-function: $timing;
+    -o-transition-timing-function: $timing;
+    -moz-transition-timing-function: $timing;
+    -webkit-transition-timing-function: $timing;
+}
+
+// transition-delay : time
+@mixin transition-delay($delay...) {
+    transition-delay: $delay;
+    -o-transition-delay: $delay;
+    -moz-transition-delay: $delay;
+    -webkit-transition-delay: $delay;
+}
+
+// ### user-select ###
+// -------------------------------
+// Browser support : IE10 | Firefox2 | Chrome54 | Safari3.1 | Opera41
+// user-select : auto | none | text | all
+@mixin user-select($property:auto) {
+    user-select: $property;
+    -o-user-select: $property;
+    -ms-user-select: $property;
+    -moz-user-select: $property;
+    -webkit-user-select: $property;
+}
+
+// ### xxxxxx ###
+// -------------------------------
+// Browser support : IE | Firefox | Chrome | Safari | Opera
+// xxxxxx : 
+// @mixin xxxxxx($property:1) {
+//     xxxxxx: $property;
+//     -o-xxxxxx: $property;
+//     -ms-xxxxxx: $property;
+//     -moz-xxxxxx: $property;
+//     -webkit-xxxxxx: $property;
+// }

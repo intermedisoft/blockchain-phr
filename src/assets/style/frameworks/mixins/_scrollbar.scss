@@ -1,0 +1,48 @@
+/* 
+    Mixins scrollbar style
+----------------------------------------------
+*/
+
+@mixin scrollbar($scrollbar-width:$scrollbar-width, $scrollbar-height:$scrollbar-height, $scrollbar-track-color:$scrollbar-track-color, $scrollbar-radius:$scrollbar-radius, $scrollbar-thumb-color:$scrollbar-thumb-color) {
+    @include prefix-at-root('::-webkit-scrollbar') {
+        width: $scrollbar-width;
+        height: $scrollbar-height;
+    }
+    @include prefix-at-root('::-webkit-scrollbar-track') {
+        background: $scrollbar-track-color;
+        @include border-radius($scrollbar-radius);
+    }
+    @include prefix-at-root('::-webkit-scrollbar-track:hover') {
+        background: $scrollbar-track-color;
+    }
+    @include prefix-at-root('::-webkit-scrollbar-thumb') {
+        background-color: $scrollbar-thumb-color;
+        @include border-radius($scrollbar-radius);
+    }
+    @include prefix-at-root('::-webkit-scrollbar-thumb:hover') {
+        background-color: darken($scrollbar-thumb-color, 10%);
+    }
+}
+
+// ::-webkit-scrollbar {
+//     width: $scrollbar-width;
+//     height: $scrollbar-height;
+// }
+
+//  ::-webkit-scrollbar-track {
+//     background: $scrollbar-track-color;
+//     @include border-radius($scrollbar-radius);
+// }
+
+//  ::-webkit-scrollbar-track:hover {
+//     background: $scrollbar-track-color;
+// }
+
+//  ::-webkit-scrollbar-thumb {
+//     background-color: $scrollbar-thumb-color;
+//     @include border-radius($scrollbar-radius);
+// }
+
+//  ::-webkit-scrollbar-thumb:hover {
+//     background-color: darken($scrollbar-thumb-color, 10%);
+// }

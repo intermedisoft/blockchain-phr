@@ -1,23 +1,27 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { compose } from 'redux'
+import { withFirebase, isLoaded, isEmpty } from 'react-redux-firebase'
+import PropTypes from 'prop-types'
 
 import logo from '../../assets/images/logo.svg'
 import '../../assets/style/components/menuIconList.scss'
 import styles from '../../assets/style/themes/pages/mainMenu.scss'
 
 class MainmenuPage extends Component {
-  render() {
+  render () {
     return (
       <section>
-        <header className="headMain">
-          <div className="contentHead">
-            <div className="itemLeft">
+        <header className='headMain'>
+          <div className='contentHead'>
+            <div className='itemLeft'>
               <button>xx</button>
             </div>
-            <div className="itemCenter">
+            <div className='itemCenter'>
               texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
             </div>
-            <div className="itemRight logo">
-              <img src={logo} alt="Logo" />
+            <div className='itemRight logo'>
+              <img src={logo} alt='Logo' />
             </div>
           </div>
         </header>
@@ -31,32 +35,32 @@ class MainmenuPage extends Component {
           </div>
           <div className="menuIconList">
             <ul>
-              <li className="--active">
-                <div className="ico-wellness"></div>
-                <div className="text">Wellness</div>
-                <div className="noti"></div>
+              <li className='--active'>
+                <div className='ico-wellness'></div>
+                <div className='text'>Wellness</div>
+                <div className='noti'></div>
               </li>
               <li>
-                <div className="ico-visit"></div>
-                <div className="text">Visit</div>
-                <div className="noti"></div>
+                <div className='ico-visit'></div>
+                <div className='text'>Visit</div>
+                <div className='noti'></div>
               </li>
               <li>
-                <div className="ico-checkup"></div>
-                <div className="text">Checkup</div>
-                <div className="noti"></div>
+                <div className='ico-checkup'></div>
+                <div className='text'>Checkup</div>
+                <div className='noti'></div>
               </li>
               <li>
-                <div className="ico-notification"></div>
-                <div className="text">Notification</div>
-                <div className="noti">
-                  <span className="notiBlock">2</span>
+                <div className='ico-notification'></div>
+                <div className='text'>Notification</div>
+                <div className='noti'>
+                  <span className='notiBlock'>2</span>
                 </div>
               </li>
               <li className={styles.logoutMenu}>
-                <div className="ico-logout"></div>
-                <div className="text">Log out</div>
-                <div className="noti"></div>
+                <div className='ico-logout'></div>
+                <div className='text'>Log out</div>
+                <div className='noti'></div>
               </li>
             </ul>
           </div>
@@ -65,5 +69,15 @@ class MainmenuPage extends Component {
     )
   }
 }
+MainmenuPage.propTypes = {
+  profile: PropTypes.object
+}
 
-export default MainmenuPage
+export default compose(
+  withFirebase,
+  connect(({ firebase: { auth, profile } }) => ({
+    auth,
+    profile,
+    avatarUrl: profile.avatarUrl
+  }))
+)(MainmenuPage)

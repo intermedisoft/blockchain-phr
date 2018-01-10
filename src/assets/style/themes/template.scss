@@ -1,36 +1,68 @@
+@import '../configs/variables';
+@import '../frameworks/mixins';
+
 :global {
+  * {
+    @include scrollbar();
+  }
+  html,
   body {
-      background-color: burlywood;
+    @include main-font-style;
+    color: $main-font-color;
+    background-color: $main-theme-color;
   }
-  body>div,
-  body>div>div,
-  body>div>div>div.login {
-      height: 100%;
-  }
-  .ui.vertical.menu {
-      width: 100% !important;
-      height: 88vh;
-  }
-  .ui.segment {
-      margin: 0.5rem 0 !important;
-      padding: 0.5em 1em !important;
-  }
-  .loading {
-      background-color: red;
-      margin: 100px;
-  }
-  .lang {
-      padding: 10px;
-      background: #24b500;
-      color: wheat;
-      position: absolute;
+  .headMain {
+    top: 0;
+    width: 100%;
+    height: $main-head-height;
+    position: fixed;
+    color: #ffffff;
+    @include gradient($start: left, $stop:right, $colorOne:$main-theme-head-grading-one, $colorTwo:$main-theme-head-grading-two);
+    .contentHead {
       width: 100%;
+      margin: auto;
+      display: flex;
+      max-width: $tablet;
+      line-height: normal;
+      align-items: stretch;
+      [class*="item"] {
+        height: $main-head-height;
+        padding: 5px;
+        text-align: center;
+        display: inline-block;
+        box-sizing: border-box;
+        flex-basis: $head-item-left-right-size;
+        &.logo {
+          box-sizing: border-box;
+          img {
+            height: 100%;
+          }
+        }
+      }
+      .itemCenter {
+        overflow: hidden;
+        line-height: 2.5em;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        flex-basis: calc(100% - #{$head-item-left-right-size * 2});
+      }
+    }
   }
-  .lang span {
-      padding-right: 10px;
+  .containerMain {
+    width: 100%;
+    margin: auto;
+    min-height: calc(100vh - #{$main-head-height});
+    padding: 10px;
+    margin-top: 50px;
+    max-width: $tablet;
+    box-sizing: border-box;
   }
-  .lang span,
-  .lang button {
-      margin-top: 10px;
+  .card{
+    padding: 5px;
+    border-radius: $main-radius;
+    background-color: #fff;
+    &.--list{
+      padding: none;
+    }
   }
 }

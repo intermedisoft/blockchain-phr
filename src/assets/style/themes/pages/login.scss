@@ -1,18 +1,51 @@
 @import '../../configs/variables';
+@import '../../frameworks/mixins';
+
+@mixin login-bg-position($login-bg-cal-size){
+  background-position: center calc(100vh - #{$login-bg-cal-size}vw);
+}
 :local {
-  body {
+  .container {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    color: #ffffff;
+    align-items: center;
     background-size: 100%;
+    flex-direction: column;
+    justify-content: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center bottom;
-    background-color: $main-theme-color;
     background-image: url('../../../images/wave.svg');
+    @include login-bg-position($login-bg-cal-size:20);
   }
-  .logo_sys {
+  .loginGroup {
+    margin-top: -150px;
+  }
+  .logoSystem {
     text-align: center;
+    margin-bottom: 30px;
     img {
-      width: 250px;
+      width: 300px;
       max-width: 70%;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  :local {
+    .container {
+      @include login-bg-position($login-bg-cal-size:25);
+    }
+  }
+}
+@media (max-width: $phone) {
+  :local {
+    .container {
+      background-image: url('../../../images/waveSmall.svg');
+      @include login-bg-position($login-bg-cal-size:35);
     }
   }
 }

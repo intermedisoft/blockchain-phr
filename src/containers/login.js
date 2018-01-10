@@ -19,15 +19,17 @@ const LoginPage = ({ firebase, auth }) => {
   }
 
   return (
-    isEmpty(auth) ? <div>
-      <div className={styles.logo_sys}>
-        <img src={logo} alt='Logo' />
-      </div>
-      <button onClick={() => handleLogin('google')}>Login With Google</button>
-      <button onClick={() => handleLogin('facebook')}>Login With Facebook</button>
-      <button onClick={() => handleLogin('twitter')}>Login With Twitter</button>
-
-    </div> : <Redirect to='/main' />
+    isEmpty(auth)
+      ? <section className={styles.container}>
+        <div className={styles.loginGroup}>
+          <div className={styles.logoSystem}>
+            <img src={logo} alt='Logo' />
+          </div>
+          <button onClick={() => handleLogin('google')}>Login With Google</button>
+          <button onClick={() => handleLogin('facebook')}>Login With Facebook</button>
+          <button onClick={() => handleLogin('twitter')}>Login With Twitter</button>
+        </div>
+      </section> : <Redirect to='/main' />
   )
 }
 

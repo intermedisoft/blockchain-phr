@@ -1,9 +1,9 @@
 @import '../../configs/variables';
 @import '../../frameworks/mixins';
-
-@mixin login-bg-position($login-bg-cal-size){
+@mixin login-bg-position($login-bg-cal-size) {
   background-position: center calc(100vh - #{$login-bg-cal-size}vw);
 }
+
 :local {
   .container {
     margin: 0;
@@ -19,7 +19,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-image: url('../../../images/wave.svg');
-    @include login-bg-position($login-bg-cal-size:20);
+    @include login-bg-position($login-bg-cal-size: 20);
   }
   .loginGroup {
     margin-top: -150px;
@@ -32,20 +32,84 @@
       max-width: 70%;
     }
   }
-}
-
-@media (max-width: $tablet) {
-  :local {
-    .container {
-      @include login-bg-position($login-bg-cal-size:25);
+  .loginButtonGroup {
+    margin: auto;
+    text-align: center;
+    .btnLogin {
+      margin: 0;
+      outline: 0;
+      width: 100%;
+      border: none;
+      height: auto;
+      margin: auto;
+      display: block;
+      direction: ltr;
+      font-size: 14px;
+      cursor: pointer;
+      color: #ffffff;
+      overflow: hidden;
+      max-width: 220px;
+      text-align: left;
+      min-height: 40px;
+      font-weight: bold;
+      padding: 8px 16px;
+      letter-spacing: 0;
+      position: relative;
+      border-radius: 2px;
+      line-height: normal;
+      margin-bottom: 15px;
+      text-decoration: none;
+      vertical-align: middle; // will-change: box-shadow;
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+      transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1), -webkit-box-shadow .2s cubic-bezier(.4, 0, 1, 1);
+      &.google {
+        color: #757575;
+        background-color: #ffffff;
+      }
+      &.facebook {
+        background-color: #3b5998;
+      }
+      &.twitter {
+        background-color: #55acee;
+      }
+      &:active{
+        box-shadow: 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12), 0 2px 4px -1px rgba(0,0,0,.2);
+      }
+      >span {
+        display: table-cell;
+        vertical-align: middle;
+        >img {
+          width: 18px;
+          height: 18px;
+          border: none;
+          display: inline-block;
+          vertical-align: middle;
+        }
+        &.text {
+          font-size: 14px;
+          padding-left: 16px;
+          text-transform: none;
+          vertical-align: middle;
+        }
+      }
     }
   }
 }
+
+@media (max-width: $tablet) {
+   :local {
+    .container {
+      @include login-bg-position($login-bg-cal-size: 25);
+    }
+  }
+}
+
 @media (max-width: $phone) {
-  :local {
+   :local {
     .container {
       background-image: url('../../../images/waveSmall.svg');
-      @include login-bg-position($login-bg-cal-size:35);
+      @include login-bg-position($login-bg-cal-size: 35);
     }
   }
 }

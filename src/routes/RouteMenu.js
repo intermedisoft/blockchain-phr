@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Redirect, Switch } from 'react-router-dom'
+import { Route, Redirect, Switch } from 'react-router-dom' 
 
 import Detail from './../containers/detail'
 import Mainmenu from './../containers/menu'
@@ -25,10 +25,10 @@ class RouteMenu extends Component {
   render () {
     return (
       <Switch>
-        <Route path='/main' component={Mainmenu} />
-        <Route path='/notification' component={Notification} />
-        <Route path='/profile' component={Profile} />
-        <Route path='/detail' component={Detail} />
+        <Route exact path='/main' component={Mainmenu} />
+        <Route exact path='/notification' component={Notification} />
+        <Route exact path='/profile' component={Profile} />
+        <Route exact path='/detail' component={Detail} />
         {/* <AdminRoute path='/friends/:id?' role={'admin'} component={RouteFriends} /> */}
         {/* <AdminRoute path='/users/:id?' role={'admin'} component={RouteUsers} /> */}
         <Redirect from='/' to='/main' />

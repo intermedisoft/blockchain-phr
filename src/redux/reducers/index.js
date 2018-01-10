@@ -2,6 +2,8 @@ import { combineReducers } from 'redux'
 // import { persistReducer } from 'redux-persist'
 // import storage from 'redux-persist/lib/storage'
 import { reducer as reduxFormReducer } from 'redux-form'
+import { firebaseReducer } from 'react-redux-firebase'
+
 // import users from './users'
 // import alert from './alert'
 // import authen from './authen'
@@ -16,7 +18,8 @@ import { reducer as reduxFormReducer } from 'redux-form'
 // }
 
 const rootReducer = combineReducers({
-  form: reduxFormReducer
+  form: reduxFormReducer,
+  firebase: firebaseReducer
   // users,
   // alert,
   // fetchError,

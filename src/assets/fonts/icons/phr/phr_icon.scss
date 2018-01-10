@@ -1,17 +1,18 @@
+$font-path:'assets/fonts/icons/phr/fonts';
 @font-face {
   font-family: 'phr_icon';
-  src:  url('fonts/PHR-Blox.eot?gc9tlt');
-  src:  url('fonts/PHR-Blox.eot?gc9tlt#iefix') format('embedded-opentype'),
-    url('fonts/PHR-Blox.ttf?gc9tlt') format('truetype'),
-    url('fonts/PHR-Blox.woff?gc9tlt') format('woff'),
-    url('fonts/PHR-Blox.svg?gc9tlt#PHR-Blox') format('svg');
+  src:  url('#{$font-path}/PHR-Blox.eot?gc9tlt');
+  src:  url('#{$font-path}/PHR-Blox.eot?gc9tlt#iefix') format('embedded-opentype'),
+    url('#{$font-path}/PHR-Blox.ttf?gc9tlt') format('truetype'),
+    url('#{$font-path}/PHR-Blox.woff?gc9tlt') format('woff'),
+    url('#{$font-path}/PHR-Blox.svg?gc9tlt#PHR-Blox') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 [class^="ico-"], [class*=" ico-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'PHR-Blox' !important;
+  font-family: 'phr_icon' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;

@@ -1,8 +1,8 @@
 import React from 'react'
 
 const ButtonComponent = (props) => (
-  <button>
+  <button className="x">
     THIS IS BUTTON
-</button>
+  </button>
 )
 export default ButtonComponent

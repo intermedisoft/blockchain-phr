@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/es/integration/react'
 import registerServiceWorker from './registerServiceWorker'
 
-import './assets/styles.scss'
+import './App.scss'
 import RouteRoot from './routes/RouteRoot'
 import configStore from './store'
 // import ErrorModalControlled from './components/Modal'

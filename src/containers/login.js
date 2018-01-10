@@ -59,12 +59,14 @@ class Login extends Component {
   render() {
     if (!this.state.signedIn) {
       return (
-        <div>
-          <div className={styles.logo_sys}>
+        <div className={styles.container}>
+          <div className={styles.loginGroup}>
+          <div className={styles.logoSystem}>
           <img src={logo} alt="Logo"/>
           </div>
           {/* <p>Please sign-in:</p> */}
           <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
+          </div>
         </div>
       )
     }

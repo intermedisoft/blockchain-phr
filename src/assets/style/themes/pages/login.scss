@@ -1,4 +1,5 @@
 @import '../../configs/variables';
+@import '../../frameworks/mixins';
 
 @mixin login-bg-position($login-bg-cal-size){
   background-position: center calc(100vh - #{$login-bg-cal-size}vw);
@@ -17,7 +18,6 @@
     justify-content: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: $main-theme-color;
     background-image: url('../../../images/wave.svg');
     @include login-bg-position($login-bg-cal-size:20);
   }

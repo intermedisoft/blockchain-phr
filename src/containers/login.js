@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { FirebaseAuth } from 'react-firebaseui'
-import firebase from 'firebase';
-import { Redirect } from 'react-router-dom';
+import firebase from 'firebase'
+import { Redirect } from 'react-router-dom'
 import { Button } from './../components'
 
 import logo from '../assets/images/logo.svg'
@@ -59,7 +59,7 @@ class Login extends Component {
   render() {
     if (!this.state.signedIn) {
       return (
-        <div className={styles.container}>
+        <section className={styles.container}>
           <div className={styles.loginGroup}>
           <div className={styles.logoSystem}>
           <img src={logo} alt="Logo"/>
@@ -67,7 +67,7 @@ class Login extends Component {
           {/* <p>Please sign-in:</p> */}
           <FirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()} />
           </div>
-        </div>
+        </section>
       )
     }
     return <Redirect to="/main" />

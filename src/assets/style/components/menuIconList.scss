@@ -1,0 +1,48 @@
+@import '../configs/variables';
+@import '../frameworks/mixins';
+$block-icon-noti-size:50px;
+:global {
+  .menuIconList {
+    padding-top: 10px;
+    color: $main-font-color;
+    background-color: #fff;
+    border-radius: $main-radius;
+    li {
+      display: flex;
+      cursor: pointer;
+      padding: 15px 0px;
+      align-items: stretch;
+      >div {
+        padding: 0 15px;
+        display: inline-block;
+        box-sizing: border-box;
+        flex-basis: $block-icon-noti-size;
+        &[class*="ico-"] {
+          font-size: 1.5em;
+          text-align: left;
+          padding-right: 0px;
+        }
+        &.text {
+          flex-basis: calc(100% - #{$block-icon-noti-size * 2});
+        }
+        &.noti{
+          text-align: right;
+          .notiBlock{
+            min-width: 20px;
+            font-size: .8em;
+            color: #ffffff;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 3px;
+            display: inline-block;
+            background-color: $notification-bg-color;
+          }
+        } 
+      }
+      &.--active{
+        font-weight: bold;
+        color: $main-font-active-color;
+      }
+    }
+  }
+}

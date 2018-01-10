@@ -22,7 +22,13 @@ class MainmenuPage extends Component {
           </div>
         </header>
         <div className="containerMain">
-          <div className={styles.profile}>Profile</div>
+          <div className={styles.profile}>
+            <div className={`${styles.item} ${styles.image}`}>
+            image
+            </div>
+            <div className={styles.item}>name</div>
+            <div className={styles.item}>info</div>
+          </div>
           <div className="menuIconList">
             <ul>
               <li className="--active">

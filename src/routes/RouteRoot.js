@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Template from './../template'
 import Login from './../containers/login'
+import PageShell from './../components/PageShell'
 // import PrivateRoute from './../routes/PrivateRoute'
 
 export default class RouteRoot extends Component {
@@ -10,8 +11,8 @@ export default class RouteRoot extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path='/login' name='Login Page' component={Login} />
-          <Route path='/' name='Home' component={Template} />
+          <Route exact path='/login' name='Login Page' component={PageShell(Login)} />
+          <Route path='/' name='Home' component={PageShell(Template)} />
         </Switch>
       </Router>
     )

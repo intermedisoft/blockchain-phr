@@ -7,6 +7,7 @@ import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import Loadable from 'react-loading-overlay'
 import logo from '../assets/images/logo.svg'
 import styles from '../assets/style/themes/pages/login.scss'
+// import Button from 'material-ui/Button'
 
 const LoginPage = ({ firebase, auth }) => {
   if (!isLoaded(auth)) {

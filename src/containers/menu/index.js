@@ -9,7 +9,28 @@ import '../../assets/style/components/menuIconList.scss'
 import styles from '../../assets/style/themes/pages/mainMenu.scss'
 
 class MainmenuPage extends Component {
-  render () {
+  RedirectToLogin = () => {
+    if (isEmpty(this.props.auth)) {
+      this.props.history.push('login')
+    }
+  }
+  componentDidMount() {
+    this.RedirectToLogin()
+  }
+
+  render() {
+    const { profile, firebase } = { ...this.props }
+    const handleAdd = () => {
+      return firebase.update(`/users/D2eQ26j2erRMWXxKtAQFMA9jcZM2`, { text: 12343, done: false })
+        .then((r) => {
+          console.log(r)
+        })
+    }
+    const logout = () => {
+      firebase.logout().then(() => {
+        this.RedirectToLogin()
+      })
+    }
     return (
       <section>
         <header className='headMain'>
@@ -57,12 +78,19 @@ class MainmenuPage extends Component {
                   <span className='notiBlock'>2</span>
                 </div>
               </li>
-              <li className={styles.logoutMenu}>
+              <li className={styles.logoutMenu} onClick={logout}>
                 <div className='ico-logout'></div>
                 <div className='text'>Log out</div>
                 <div className='noti'></div>
               </li>
             </ul>
+          </div>
+          <div>
+            {
+              isLoaded(profile)
+                ? JSON.stringify(profile, null, 2)
+                : 'Loading...'
+            }
           </div>
         </div>
       </section>

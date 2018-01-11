@@ -4,12 +4,13 @@ import { compose } from 'redux'
 import { withFirebase, isLoaded, isEmpty } from 'react-redux-firebase'
 import PropTypes from 'prop-types'
 
-import logo from '../../assets/images/logo.svg'
 import '../../assets/style/components/menuIconList.scss'
 import styles from '../../assets/style/themes/pages/mainMenu.scss'
+import logo from '../../assets/images/logo.svg'
+import userImage from '../../assets/images/user.jpg'
 
 class MainmenuPage extends Component {
-  render () {
+  render() {
     return (
       <section>
         <header className='headMain'>
@@ -28,10 +29,16 @@ class MainmenuPage extends Component {
         <div className="containerMain">
           <div className={styles.profile}>
             <div className={`${styles.item} ${styles.image}`}>
-            image
+              <div className={styles.userImage}>
+                <img src={userImage} alt='Logo' />
+              </div>
             </div>
-            <div className={styles.item}>name</div>
-            <div className={styles.item}>info</div>
+            <div className={`${styles.item} ${styles.profileName}`}>
+              <span className={styles.nameLabel}> Hi <label>PREECHAWUT NOOSAWAT</label></span>
+              <span className={styles.nameMore}></span>
+            </div>
+            <div className={`${styles.item} ${styles.profileInfo}`}>
+            </div>
           </div>
           <div className="menuIconList">
             <ul>

@@ -59,6 +59,20 @@ class MainmenuPage extends Component {
               <span className={styles.nameMore}></span>
             </div>
             <div className={`${styles.item} ${styles.profileInfo}`}>
+              <div className={styles.itemInfo}>
+                <div className={styles.valueInfo}>00/00/00</div>
+                <div className={styles.labelInfo}>Birthday</div>
+              </div>
+              <div className={styles.itemInfo}>
+                <div className={styles.valueInfo}>123</div>
+                <div className={styles.labelInfo}>Weight</div>
+              </div>
+              <div className={styles.itemInfo}>
+                <div className={styles.valueInfo}>123</div>
+                <div className={styles.labelInfo}>Height</div>
+              </div>
+              <div className={styles.itemInfo}>blood</div>
+              <div className={styles.itemInfo}>sex</div>
             </div>
           </div>
           <div className="menuIconList">

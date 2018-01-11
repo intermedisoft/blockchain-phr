@@ -75,7 +75,7 @@ class MainmenuPage extends Component {
               <div className={styles.itemInfo}>sex</div>
             </div>
           </div>
-          <div className="menuIconList">
+          <div className={`menuIconList ${styles.mainMenu}`}>
             <ul>
               <li className='--active'>
                 <div className='ico-wellness'></div>

@@ -6,9 +6,10 @@
 
 :local {
   .profile {
-    display: grid;
+    display: inline-grid;
     color: #ffffff;
     grid-template-columns: 80px auto;
+    margin-bottom: 10px;
     .item {}
     .image {
       grid-row-start: 1;
@@ -28,15 +29,29 @@
         }
       }
     }
+    .profileName {
+      font-weight: bold;
+    }
     .profileInfo {
+      font-size: 0.85em;
       display: inline-grid;
+      text-align: center;
       grid-template-columns: auto auto auto auto auto;
       >.itemInfo {
-        min-width: 100px;
+        padding-right: 5px;
+      }
+      .valueInfo {
+        color: $main-font-active-color;
+      }
+      .labelInfo {
+        font-size: 0.9em;
       }
     }
   }
-  .logoutMenu {
-    border-top: 1px solid $main-border-color;
+  .mainMenu {
+    height: calc(100vh - 150px);
+    .logoutMenu {
+      border-top: 1px solid $main-border-color;
+    }
   }
 }

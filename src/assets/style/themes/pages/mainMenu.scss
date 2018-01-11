@@ -1,17 +1,22 @@
 @import '../../configs/variables';
 @import '../../frameworks/mixins';
-
-@mixin login-bg-position($login-bg-cal-size){
+@mixin login-bg-position($login-bg-cal-size) {
   background-position: center calc(100vh - #{$login-bg-cal-size}vw);
 }
 
 :local {
-  .profile{
-    height: 100px;
-    background-color: #fff;
-    margin-bottom: 10px;
+  .profile {
+    display: grid;
+    grid-template-columns: 80px auto;
+    .item {
+      background-color: #000;
+    }
+    .image {
+      grid-row-start: 1;
+      grid-row-end: 3;
+    }
   }
-  .logoutMenu{
+  .logoutMenu {
     border-top: 1px solid $main-border-color;
   }
 }

@@ -11,6 +11,7 @@ import iconGoogle from '../assets/images/google.svg'
 import iconTwitter from '../assets/images/twitter.svg'
 import iconFacebook from '../assets/images/facebook.svg'
 import styles from '../assets/style/themes/pages/login.scss'
+// import Button from 'material-ui/Button'
 
 const LoginPage = ({ firebase, auth }) => {
   if (!isLoaded(auth)) {

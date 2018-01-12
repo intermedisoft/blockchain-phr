@@ -11,23 +11,22 @@ import configStore from './store'
 
 const { store, persistor } = configStore()
 
-// const onBeforeLift = () => {
-//   // return <ErrorModalControlled status={500} />
-// }
+const onBeforeLift = () => {
+  // return <ErrorModalControlled status={500} />
+}
 
-// const loading = (
-//   <div className='loading'> LOADING </div>
-// )
+const loading = (
+  <div className='loading'> LOADING </div>
+)
 
 ReactDOM.render(
   <Provider store={store}>
-    <RouteRoot />
-    {/* <PersistGate
+    <PersistGate
       loading={loading}
       onBeforeLift={onBeforeLift}
       persistor={persistor}>
       <RouteRoot />
-    </PersistGate> */}
+    </PersistGate>
   </Provider>,
   document.getElementById('root'))
 registerServiceWorker()

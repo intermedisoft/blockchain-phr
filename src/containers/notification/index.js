@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 
 class NotificationPage extends Component {
-  render () {
+  render() {
     return (
-      <div>THIS IS NotificationPage PAGE</div>
+      <div className='containerMain'>
+        <div>THIS IS NotificationPage PAGE</div>
+      </div>
     )
   }
 }

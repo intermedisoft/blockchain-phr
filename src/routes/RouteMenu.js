@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import { Route, Redirect, Switch } from 'react-router-dom' 
+import { Route, Redirect, Switch } from 'react-router-dom'
 
 import Detail from './../containers/detail'
-import Mainmenu from './../containers/menu'
+import Mainmenu from './../containers/main'
 import Notification from './../containers/notification'
-import Profile from './../containers/profile'
+import RouteProfile from './../containers/profile/Route'
+// import checkUser from './../containers/chkUser'
+// import User from './../containers/user'
 // import RouteFriends from './../containers/friends/Route'
 // import RouteUsers from './../containers/users/Route'
 
@@ -22,13 +24,15 @@ import Profile from './../containers/profile'
 // }
 
 class RouteMenu extends Component {
-  render () {
+  render() {
     return (
       <Switch>
-        <Route exact path='/main' component={Mainmenu} />
-        <Route exact path='/notification' component={Notification} />
-        <Route exact path='/profile' component={Profile} />
-        <Route exact path='/detail' component={Detail} />
+        <Route exact name='MAIN_NAME' path='/main' component={Mainmenu} />} />
+        <Route path='/notification' component={Notification} />
+        <Route path='/profile/:id?' component={RouteProfile} />
+        <Route path='/detail' component={Detail} />
+        {/* <Route exact path='/user' component={User} /> */}
+
         {/* <AdminRoute path='/friends/:id?' role={'admin'} component={RouteFriends} /> */}
         {/* <AdminRoute path='/users/:id?' role={'admin'} component={RouteUsers} /> */}
         <Redirect from='/' to='/main' />

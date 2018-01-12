@@ -45,7 +45,7 @@
   ],
   "start_url": "./index.html",
   "scope": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "display": "fullscreen",
+  "theme_color": "#123962",
+  "background_color": "#123962"
 }

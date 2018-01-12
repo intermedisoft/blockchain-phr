@@ -3,9 +3,6 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withFirebase } from 'react-redux-firebase'
 import moment from 'moment'
-import classNames from 'classnames'
-import Avatar from 'material-ui/Avatar'
-import Grid from 'material-ui/Grid'
 import { Link } from 'react-router-dom'
 
 import styles from '../../assets/style/themes/pages/mainMenu.scss'
@@ -46,15 +43,36 @@ class ProfileComponent extends Component {
     // console.log(this.props)
     return (
       <div className={styles.profile} style={avatarstyles.colorwhite}>
-        <div className={`${styles.item} ${styles.image}`}>
-          <Avatar
-            alt={''}
-            src={avatarUrl}
-            className={classNames(avatarstyles.avatar, avatarstyles.bigAvatar)}
-          />
-          {/* <img src={avatarUrl} alt='Profile' /> */}
+         
+        <div className={styles.profile}>
+          <div className={`${styles.item} ${styles.image}`}>
+            <div className={styles.userImage}>
+              <img src={avatarUrl} alt='Logo' />
+            </div>
+          </div>
+          <div className={`${styles.item} ${styles.profileName}`}>
+            <span className={styles.nameLabel}> <Link style={avatarstyles.bigsize} className={styles.item} to='/profile'>{`${prename}${name} ${surname}`} ></Link></span>
+            <span className={styles.nameMore}></span>
+          </div>
+          <div className={`${styles.item} ${styles.profileInfo}`}>
+            <div className={styles.itemInfo}>
+              <div className={styles.valueInfo}>{m}</div>
+              <div className={styles.labelInfo}>Birthday</div>
+            </div>
+            <div className={styles.itemInfo}>
+              <div className={styles.valueInfo}>{weight}</div>
+              <div className={styles.labelInfo}>Weight</div>
+            </div>
+            <div className={styles.itemInfo}>
+              <div className={styles.valueInfo}>{height}</div>
+              <div className={styles.labelInfo}>Height</div>
+            </div>
+            <div className={styles.itemInfo}>{bloodGroup}</div>
+            <div className={styles.itemInfo}>{sex}</div>
+          </div>
         </div>
-        <Link style={avatarstyles.bigsize} className={styles.item} to='/profile'>{`${prename}${name} ${surname}`} ></Link>
+
+        {/* <Link style={avatarstyles.bigsize} className={styles.item} to='/profile'>{`${prename}${name} ${surname}`} ></Link>
         <div className={styles.item}>
           <Grid container spacing={24}>
             <Grid item xs={6} sm={3}>
@@ -73,7 +91,7 @@ class ProfileComponent extends Component {
               {bloodGroup} {nation} {sex}
             </Grid>
           </Grid>
-        </div>
+        </div> */}
       </div>
     )
   }

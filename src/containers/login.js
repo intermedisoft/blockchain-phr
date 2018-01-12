@@ -1,58 +1,92 @@
-import React from 'react'
-import { Redirect } from 'react-router-dom'
-import { compose } from 'redux'
+import React, { Component } from 'react'
+// import { Redirect } from 'react-router-dom'
+// import { compose } from 'redux'
+import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import Loadable from 'react-loading-overlay'
+import { authenAction } from './../redux/actions/auth'
 
 import logo from '../assets/images/logo.svg'
 import iconGoogle from '../assets/images/google.svg'
 import iconTwitter from '../assets/images/twitter.svg'
 import iconFacebook from '../assets/images/facebook.svg'
 import styles from '../assets/style/themes/pages/login.scss'
-// import Button from 'material-ui/Button'
 
-const LoginPage = ({ firebase, auth }) => {
-  if (!isLoaded(auth)) {
-    return (
-      <Loadable active spinner text='Loading...' />
-    )
-  }
-  const handleLogin = (provider) => {
-    firebase.login({ provider: provider, type: 'redirect' }).catch(err => console.log(err))
-  }
+class LoginPage extends Component {
 
-  return (
-    isEmpty(auth)
-      ? <section className={styles.container}>
-        <div className={styles.loginGroup}>
-          <div className={styles.logoSystem}>
-            <img src={logo} alt='Logo' />
+  // componentDidUpdate() {
+  //   const { firebase, auth, history } = { ...this.props }
+  //   // console.log(auth.uid)
+  //   firebase.database().ref('users/' + auth.uid).once('value').then(function (users) {
+  //     const user = users.val()
+  //     user.patientId ? history.push('/main') : history.push('/profile/cid')
+  //   })
+  // }
+
+  // componentWillUnmount() {
+  //   const { auth } = { ...this.props }
+  //   this.props.authenAction(auth.uid)
+  // }
+  // componentWillMount () {
+  //   const { auth } = { ...this.props }
+  //   console.log()
+  // }
+  render() {
+    const { firebase, auth, history, authenAction } = { ...this.props }
+    // console.log(firebase)
+    if (!isLoaded(auth)) {
+      return (
+        <Loadable active spinner text='Loading...' />
+      )
+    }
+    const handleLogin = (provider) => {
+      firebase.login({ provider: provider, type: 'redirect' }).catch(err => console.log(err))
+    }
+
+    if (isEmpty(auth)) {
+      return (
+        <section className={styles.container}>
+          <div className={styles.loginGroup}>
+            <div className={styles.logoSystem}>
+              <img src={logo} alt='Logo' />
+            </div>
+            <div className={styles.loginButtonGroup}>
+              <button className={`${styles.btnLogin} ${styles.google}`} onClick={() => handleLogin('google')}>
+                <span className={styles.icon}>
+                  <img src={iconGoogle} alt='Sign in with Google' />
+                </span>
+                <span className={styles.text}>Sign in with Google</span>
+              </button>
+              <button className={`${styles.btnLogin} ${styles.facebook}`} onClick={() => handleLogin('facebook')}>
+                <span className={styles.icon}>
+                  <img src={iconFacebook} alt='Sign in with Facebook' />
+                </span>
+                <span className={styles.text}>Sign in with Facebook</span>
+              </button>
+              <button className={`${styles.btnLogin} ${styles.twitter}`} onClick={() => handleLogin('twitter')}>
+                <span className={styles.icon}>
+                  <img src={iconTwitter} alt='Sign in with Twitter' />
+                </span>
+                <span className={styles.text}>Sign in with Twitter</span>
+              </button>
+            </div>
           </div>
-          <div className={styles.loginButtonGroup}>
-            <button className={`${styles.btnLogin} ${styles.google}`} onClick={() => handleLogin('google')}>
-              <span className={styles.icon}>
-                <img src={iconGoogle} alt='Sign in with Google' />
-              </span>
-              <span className={styles.text}>Sign in with Google</span>
-            </button>
-            <button className={`${styles.btnLogin} ${styles.facebook}`} onClick={() => handleLogin('facebook')}>
-              <span className={styles.icon}>
-                <img src={iconFacebook} alt='Sign in with Facebook' />
-              </span>
-              <span className={styles.text}>Sign in with Facebook</span>
-            </button>
-            <button className={`${styles.btnLogin} ${styles.twitter}`} onClick={() => handleLogin('twitter')}>
-              <span className={styles.icon}>
-                <img src={iconTwitter} alt='Sign in with Twitter' />
-              </span>
-              <span className={styles.text}>Sign in with Twitter</span>
-            </button>
-          </div>
-        </div>
-      </section> : <Redirect to='/main' />
-  )
+        </section>
+      )
+    } else {
+      firebase.database().ref(`users/${auth.uid}`).once('value').then(function (users) {
+        authenAction(auth.uid)
+        const user = users.val()
+        console.log(user)
+        user.patientId ? history.push('/main') : history.push('/profile/cid')
+      })
+      return (
+        <Loadable active spinner text='Loading...' />
+      )
+    }
+  }
 }
 
 LoginPage.propTypes = {
@@ -60,6 +94,14 @@ LoginPage.propTypes = {
     login: PropTypes.func.isRequired
   }),
   auth: PropTypes.object
+}
+
+const mapDispatchToProps = (dispatch, state) => {
+  return {
+    authenAction: (uid) => {
+      dispatch(authenAction.saveUser(uid))
+    }
+  }
 }
 
 const mapStateToProps = state => (
@@ -70,5 +112,10 @@ const mapStateToProps = state => (
 
 export default compose(
   firebaseConnect(),
-  connect(mapStateToProps)
+  // lifecycle({
+  //   componentWillUnmount () {
+  //     this.props.firebase.watchEvent('value', 'configs')
+  //   }
+  // }),
+  connect(mapStateToProps, mapDispatchToProps)
 )(LoginPage)

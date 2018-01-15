@@ -1,6 +1,5 @@
 @import '../configs/variables';
 @import '../frameworks/mixins';
-
 :global {
   * {
     @include scrollbar();
@@ -29,13 +28,15 @@
         height: $main-head-height;
         padding: 5px;
         text-align: center;
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         box-sizing: border-box;
         flex-basis: $head-item-left-right-size;
         &.logo {
           box-sizing: border-box;
           img {
-            height: 100%;
+            width: 100%;
           }
         }
       }
@@ -57,14 +58,14 @@
     max-width: $tablet;
     box-sizing: border-box;
   }
-  .card{
+  .card {
     background-color: #fff;
     border-radius: $main-radius;
     padding: 10px;
-    &.--list{
+    &.--list {
       padding: none;
     }
-    &.--center{
+    &.--center {
       margin: auto;
       text-align: center;
     }

@@ -1,17 +1,24 @@
 @import '../../configs/variables';
 @import '../../frameworks/mixins';
-
-.inputBlock {
-  margin: 30px auto;
-  width: 100%;
-  max-width: 220px;
-}
-
 :local {
   .cidPage {
     text-align: center;
+     :global {
+      .card {
+        padding: 20px 10px;
+      }
+      .inputBlock {
+        margin: 30px auto;
+        width: 100%;
+        max-width: 220px;
+      }
+    }
     .name {
       padding: 5px;
     }
+  }
+  .btn {
+    width: 100%;
+    max-width: 220px;
   }
 }

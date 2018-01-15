@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import ProfileEditForm from './editForm'
 class ProfileEdit extends Component {
   state = {}
   render() {
     return (
       <div className='containerMain'>
-        <div className='menuIconList'>
-          THIS IS EDIT
+        <div className='card'>
+          <ProfileEditForm />
         </div>
       </div>
     )

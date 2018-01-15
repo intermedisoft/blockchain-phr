@@ -12,9 +12,6 @@ class ProfileCidPage extends Component {
   render() {
     const { firebase, uid, history } = { ...this.props }
     const updatePatientId = (data) => {
-      console.log('777777777777777777777777777777')
-      console.log(data)
-      console.log('777777777777777777777777777777')
       firebase.update(`/users/${uid}`, { patientId: data.cid })
         .then(() => {
           history.push('/main')

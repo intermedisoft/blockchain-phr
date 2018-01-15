@@ -16,9 +16,11 @@
     .name {
       padding: 5px;
     }
-  }
-  .btn {
-    width: 100%;
-    max-width: 220px;
+     :global {
+      .btn {
+        width: 100%;
+        max-width: 220px;
+      }
+    }
   }
 }

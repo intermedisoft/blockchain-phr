@@ -11,16 +11,16 @@
         transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, font-size 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
       }
       &[class*='MuiFormLabel-focused'] {
-        color: $main-theme-color;
+        color: $btn-bg-color;
       }
     }
     [class*='MuiInput-root'] {
       &::after {
-        background-color: $main-theme-color;
+        background-color: $btn-bg-color;
       }
       &[class*='MuiInput-focused'] {
         &::after {
-          background-color: $main-theme-color;
+          background-color: $btn-bg-color;
         }
       }
     }

@@ -1,0 +1,13 @@
+@import '../../configs/variables';
+@import '../../frameworks/mixins';
+:global {
+  .btn {
+    &[class*='MuiButtonBase'] {
+      border-radius: $btn-border-radius;
+      cursor: pointer;
+      &[class*='raisedPrimary'] {
+        background-color: $btn-bg-color;
+      }
+    }
+  }
+}

@@ -38,7 +38,7 @@ class LoginPage extends Component {
     // console.log(firebase)
     if (!isLoaded(auth)) {
       return (
-        <Loadable active spinner text='Loading...' />
+        <Loadable active spinner className="loading" text='Loading...' />
       )
     }
     const handleLogin = (provider) => {
@@ -82,7 +82,7 @@ class LoginPage extends Component {
         user && user.patientId ? history.push('/main') : history.push('/profile/cid')
       })
       return (
-        <Loadable active spinner text='Loading...' />
+        <Loadable active spinner text='Loading...' className="loading"/>
       )
     }
   }

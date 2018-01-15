@@ -1,0 +1,12 @@
+@import '../configs/variables';
+@import '../frameworks/mixins';
+:global {
+  .loading {
+    height: 100vh;
+    position: fixed!important;
+    width: 100vw;
+    >div {
+      background-color: $main-theme-color!important;
+    }
+  }
+}

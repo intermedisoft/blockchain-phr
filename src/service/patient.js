@@ -2,10 +2,11 @@
 import { setting } from './setting'
 
 export default {
-  getPatient: (configs, patientId) => {
-    console.log('***********&&&&&&*********')
-    console.log(patientId)
-    console.log('***********&&&&&&*********')
-    setting(configs).get('/Patient')
+  getPatient: async (configs, patientId) => {
+    if (patientId) {
+      await setting(configs).post(`/api/wallet/${patientId}/setDefault`)
+      const profile = await setting(configs).get(`/api/Patient/${patientId}`)
+      return profile
+    }
   }
 }

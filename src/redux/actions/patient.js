@@ -7,6 +7,13 @@ const receivegetPatient = (data) => ({
   payload: data
 })
 
+// const receivegetPatient1 = (data) => {
+//   // console.log(data)
+//   return ({
+//     type: types.PATIENT.GET,
+//     payload: data
+//   })
+// }
 export const getPatient = (configs, patientId) => async (dispatch) => {
   try {
     if (configs && patientId) {

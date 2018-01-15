@@ -40,11 +40,11 @@ class MainmenuPage extends Component {
                 <div className='text'>Checkup</div>
                 <div className='noti'></div>
               </li>
-              <li>
+              {/* <li>
                 <div className='ico-visit'></div>
                 <div className='text'>X-ray</div>
                 <div className='noti'></div>
-              </li>
+              </li> */}
               {/* <li>
                 <div className='ico-visit'></div>
                 <div className='text'>Visit</div>

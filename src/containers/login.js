@@ -79,8 +79,7 @@ class LoginPage extends Component {
       firebase.database().ref(`users/${auth.uid}`).once('value').then(function (users) {
         authenAction(auth.uid)
         const user = users.val()
-        console.log(user)
-        user.patientId ? history.push('/main') : history.push('/profile/cid')
+        user && user.patientId ? history.push('/main') : history.push('/profile/cid')
       })
       return (
         <Loadable active spinner text='Loading...' />

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { renderTextField } from './../../components'
+import { Input } from './../../components'
 
 // import TextField from 'material-ui/TextField'
 const CidForm = props => {
@@ -9,7 +9,7 @@ const CidForm = props => {
     <form noValidate autoComplete='off' onSubmit={handleSubmit}>
       <div>เลขที่บัตรประชาชน</div>
       <div>
-        <Field component={renderTextField} name={'cid'} placeholder={'กรอกเลขที่บัตรประชาชน'} />
+        <Field component={Input} name={'cid'} placeholder={'กรอกเลขที่บัตรประชาชน'} />
       </div>
       <div><button type='submit'>ลงทะเบียน</button></div>
     </form>

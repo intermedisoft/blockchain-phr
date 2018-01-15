@@ -32,22 +32,25 @@ const avatarstyles = {
 }
 
 class ProfileComponent extends Component {
-  componentWillMount() {
-    this.props.getPatient()
-  }
+  // componentWillMount() {
+  //   const { configs } = { ...this.props }
+  //   console.log('Component Will Mouint')
+  //   console.log(configs)
+  //   this.props.getPatient()
+  // }
 
   render() {
-    const { avatarUrl, patients } = { ...this.props }
+    const { patientId, avatarUrl, patients, configs } = { ...this.props }
     const { prename, name, surname, height, weight, dob, bloodGroup, sex, nation } = { ...patients[0] }
     var m = moment(dob).format('L')
-    // console.log(this.props)
+    this.props.getPatient(configs, patientId)
     return (
       <div className={styles.profile} style={avatarstyles.colorwhite}>
-         
+
         <div className={styles.profile}>
           <div className={`${styles.item} ${styles.image}`}>
             <div className={styles.userImage}>
-              <img src={avatarUrl} alt='Logo' />
+              <img src={avatarUrl && avatarUrl} alt='Logo' />
             </div>
           </div>
           <div className={`${styles.item} ${styles.profileName}`}>
@@ -98,16 +101,18 @@ class ProfileComponent extends Component {
 }
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getPatient: () => {
-      dispatch(patientAction.getPatient())
+    getPatient: (configs, patientId) => {
+      dispatch(patientAction.getPatient(configs, patientId))
     }
   }
 }
 
 const mapStateToProps = state => (
   {
+    patientId: state.firebase.profile.patientId,
     avatarUrl: state.firebase.profile.avatarUrl,
-    patients: state.patient.data
+    patients: state.patient.data,
+    configs: state.firebase.data.configs
   }
 )
 

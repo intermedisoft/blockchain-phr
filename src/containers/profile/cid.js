@@ -5,18 +5,11 @@ import { withFirebase } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import CidForm from './cidForm'
 
-const avatarstyles = {
-  bigAvatar: {
-    width: 120,
-    height: 120
-  },
-  center: {
-    textAlign: 'center'
-  }
-}
+import '../../assets/style/vendors/materialUI/index.scss'
+import styles from '../../assets/style/themes/pages/cid.scss'
 
 class ProfileCidPage extends Component {
-  render () {
+  render() {
     const { firebase, uid, history } = { ...this.props }
     const updatePatientId = (data) => {
       firebase.update(`/users/${uid}`, { patientId: data.cid })
@@ -26,16 +19,16 @@ class ProfileCidPage extends Component {
     }
     const { displayName, avatarUrl } = { ...this.props }
     return (
-      <div className='containerMain' >
+      <div className={`containerMain ${styles.cidPage}`}>
         <div className='menuIconList'>
           <div>
             <Avatar
               alt={displayName}
               src={avatarUrl}
-              style={avatarstyles.bigAvatar}
+              className='bigSize center'
             />
           </div>
-          <div>
+          <div className={`${styles.name}`}>
             {displayName}
           </div>
           <CidForm onSubmit={updatePatientId} />

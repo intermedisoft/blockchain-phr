@@ -3,7 +3,12 @@ import { connect } from 'react-redux'
 import { withFirebase } from 'react-redux-firebase'
 import { compose, lifecycle, pure } from 'recompose'
 
+import { conf } from './../config'
 const GetConfig = ({ configs }) => {
+  // conf.BASE_API_URL = configs ? configs.rest_ulr : ''
+  // console.log('************')
+  // console.log(conf)
+  // console.log('************')
   return null
 }
 
@@ -15,7 +20,7 @@ GetConfig.propTypes = {
 const enhance = compose(
   withFirebase, // add props.firebase
   lifecycle({
-    componentWillMount () {
+    componentWillMount() {
       this.props.firebase.watchEvent('value', 'configs')
     }
     // ,

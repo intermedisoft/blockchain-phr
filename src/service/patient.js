@@ -1,8 +1,11 @@
-import axios from 'axios'
-import { conf } from './../config'
-console.log('*******,,,,,,,,,,,,,,*******************')
-console.log(conf.XXX)
-console.log('*************,,,,,,,,,,,,,,,,*************')
+// import axios from 'axios'
+import { setting } from './setting'
+
 export default {
-  getPatient: () => axios.get(`${conf.BASE_API_URL}/Patient`)
+  getPatient: (configs, patientId) => {
+    console.log('***********&&&&&&*********')
+    console.log(patientId)
+    console.log('***********&&&&&&*********')
+    setting(configs).get('/Patient')
+  }
 }

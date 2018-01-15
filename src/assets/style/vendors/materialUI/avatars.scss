@@ -1,0 +1,13 @@
+@import '../../configs/variables';
+@import '../../frameworks/mixins';
+:global {
+  [class*="MuiAvatar-root"] {
+    &.center {
+      margin: auto;
+    }
+    &.bigSize {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}

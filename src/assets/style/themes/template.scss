@@ -58,11 +58,15 @@
     box-sizing: border-box;
   }
   .card{
-    padding: 5px;
-    border-radius: $main-radius;
     background-color: #fff;
+    border-radius: $main-radius;
+    padding: 10px;
     &.--list{
       padding: none;
+    }
+    &.--center{
+      margin: auto;
+      text-align: center;
     }
   }
 }

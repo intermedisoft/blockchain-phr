@@ -1,8 +1,9 @@
 import React from 'react'
+import Button from 'material-ui/TextField'
 
-const ButtonComponent = (props) => (
-  <button className="x">
-    THIS IS BUTTON
-  </button>
+const renderButton = props => (
+  <Button className={`btn ${props.className}`}>
+  </Button>
 )
-export default ButtonComponent
+
+export default renderButton

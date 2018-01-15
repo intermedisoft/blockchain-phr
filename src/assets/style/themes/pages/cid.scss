@@ -1,0 +1,17 @@
+@import '../../configs/variables';
+@import '../../frameworks/mixins';
+
+.inputBlock {
+  margin: 30px auto;
+  width: 100%;
+  max-width: 220px;
+}
+
+:local {
+  .cidPage {
+    text-align: center;
+    .name {
+      padding: 5px;
+    }
+  }
+}

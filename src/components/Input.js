@@ -7,6 +7,7 @@ const renderTextField = props => (
       {...props.input}
       fullWidth={props.fullWidth}
       label={props.label}
+      maxLength={props.maxLength}
       labelClassName={props.labelClassName}
       name={props.name}
       placeholder={props.placeholder}

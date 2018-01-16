@@ -1,7 +1,7 @@
-@import '../../configs/variables';
+@import '../../configs/variables/index';
 @import '../../frameworks/mixins';
 :local {
-  .cidPage {
+  .profilePage {
     text-align: center;
      :global {
       .card {
@@ -9,18 +9,18 @@
       }
       .inputBlock {
         margin: 30px auto;
-        width: 100%;
         max-width: 220px;
+        width: 100%;
       }
     }
     .name {
-      padding: 5px;
       font-size: 1.3em;
+      padding: 5px;
     }
      :global {
-      .btn {
-        width: 100%;
+      [class*="btn"] {
         max-width: 220px;
+        width: 100%;
       }
     }
   }

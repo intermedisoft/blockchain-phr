@@ -1,4 +1,4 @@
-@import '../configs/variables';
+@import '../configs/variables/index';
 @import '../frameworks/mixins';
 $block-icon-noti-size:50px;
 :global {
@@ -17,7 +17,7 @@ $block-icon-noti-size:50px;
         display: inline-block;
         box-sizing: border-box;
         flex-basis: $block-icon-noti-size;
-        &[class*="ico-"] {
+        &[class*="icon"] {
           font-size: 1.5em;
           text-align: left;
           padding-right: 0px;

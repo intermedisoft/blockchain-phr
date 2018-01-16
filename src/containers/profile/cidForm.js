@@ -11,7 +11,7 @@ const CidForm = props => {
         <Field pattern='[0-9]*' component={Input} id={'cid'} type={'number'} label={'เลขที่บัตรประชาชน'} name={'cid'} fullWidth className={'center widthMax'} />
       </div>
       <div>
-        <button type='submit' className={`btn`}>ลงทะเบียน</button>
+        <button type='submit' className={`btnPrimary`}>ลงทะเบียน</button>
       </div>
     </form>
   )

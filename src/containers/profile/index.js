@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 import { isEmpty } from 'react-redux-firebase'
 import { patientAction } from './../../redux/actions/patient'
+import { Link } from 'react-router-dom'
 
 class ProfilePage extends Component {
   // componentWillMount() {
@@ -22,7 +23,7 @@ class ProfilePage extends Component {
       renderHTML = (
         <div>
           <div>
-            <button>Edit</button>
+            <Link to='/profile/edit'> <button>Edit</button></Link>
           </div>
           <div>Prename: <span>{patients.prename}</span></div>
           <div>Name: <span>{patients.name}</span></div>

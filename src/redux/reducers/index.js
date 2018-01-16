@@ -6,7 +6,7 @@ import { firebaseReducer } from 'react-redux-firebase'
 
 import auth from './auth'
 import patient from './patient'
-// import fetchError from './fetchError'
+import fetchError from './fetchError'
 
 const barPersistConfig = {
   key: 'userLogin',
@@ -20,6 +20,7 @@ const rootReducer = combineReducers({
   form: reduxFormReducer,
   firebase: firebaseReducer,
   patient,
+  fetchError,
   auth: persistReducer(barPersistConfig, auth)
 })
 

@@ -12,7 +12,7 @@ const CidForm = props => {
     <form noValidate autoComplete='off' onSubmit={handleSubmit}>
       {/* <div>เลขที่บัตรประชาชน</div> */}
       <div>
-        <Field component={Input} inputComponent={'TextMaskCustom'} type={'number'} mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]} label={'เลขที่บัตรประชาชน'} name={'cid'} fullWidth={true} maxLength={'13'} className={'center widthMax'} />
+        <Field component={Input} type={'number'} label={'เลขที่บัตรประชาชน'} name={'cid'} className={'center widthMax'} />
       </div>
       <div>
         {/* <button>ลงทะเบียน</button> */}

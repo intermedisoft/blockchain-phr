@@ -20,13 +20,11 @@ class ProfileCidPage extends Component {
     return (
       <div className={`containerMain ${styles.cidPage}`}>
         <div className='card'>
-          <div>
             <Avatar
               alt={displayName}
               src={avatarUrl}
               className='bigSize center'
             />
-          </div>
           <div className={`${styles.name}`}>
             {displayName}
           </div>

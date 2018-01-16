@@ -1,46 +1,47 @@
 import React, { Component } from 'react'
-import Modal from 'material-ui/Modal'
-import Typography from 'material-ui/Typography'
-import Button from 'material-ui/Button'
+import Modal from 'react-responsive-modal'
 import { connect } from 'react-redux'
 
-class ErrorModalControlled extends Component {
-  state = {
-    open: false
-  };
+import { alertAction } from './../redux/actions/fetchError'
 
-  handleClose = () => {
-    this.setState({ open: false });
-  }
-  handleOpen = () => {
-    this.setState({ open: true });
+class ErrorModalControlled extends Component {
+  // state = {
+  //   open: true,
+  // };
+  // handleClose = () => {
+  //   this.setState({ open: false });
+  //   // this.props.closeModal()
+  // }
+  // onOpenModal = () => {
+  //   this.setState({ open: true });
+  // };
+
+  onCloseModal = () => {
+    this.props.closeModal()
   };
 
   render() {
     const err = this.props.Errors
+    // const { open } = this.state;
     return (
-      <Modal
-        aria-labelledby='simple-modal-title'
-        aria-describedby='simple-modal-description'
-        open={this.state.open}
-        onClose={this.handleClose}
-      >
-        <div>
-          <Typography type='title' id='modal-title'>
-            Text in a modal
-        </Typography>
-          <Typography type='subheading' id='simple-modal-description'>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-        </Typography>
-          <ErrorModalControlled />
-        </div>
-      </Modal>
-    )
+      <div>
+        <Modal open={err.modalOpen} onClose={this.onCloseModal} little>
+          <h2>{err.message}</h2>
+        </Modal>
+      </div>
+    );
   }
 }
 
+const mapDispatchToProps = (dispatch, state) => {
+  return {
+    closeModal: () => {
+      dispatch(alertAction.clearAlert())
+    }
+  }
+}
 const mapStateToProps = (state) => {
   return { Errors: state.fetchError }
 }
 
-export default connect(mapStateToProps)(ErrorModalControlled)
+export default connect(mapStateToProps, mapDispatchToProps)(ErrorModalControlled)

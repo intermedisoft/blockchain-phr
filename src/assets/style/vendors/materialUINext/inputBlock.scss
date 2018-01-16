@@ -1,0 +1,39 @@
+@import '../../configs/variables';
+@import '../../frameworks/mixins';
+:global {
+  .inputBlock {
+    display: inline-block;
+    [class*='MuiFormLabel'] {
+      transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, font-size 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+      &[class*='MuiFormLabel-focused'], &[class*='MuiInputLabel-shrink'] {
+        font-size: 0.75rem;
+        transform: translate(0, 1.5px) scale(1);
+        transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms, font-size 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+      }
+      &[class*='MuiFormLabel-focused'] {
+        color: $btn-bg-color;
+      }
+    }
+    [class*='MuiInput-root'] {
+      &::after {
+        background-color: $btn-bg-color;
+      }
+      &[class*='MuiInput-focused'] {
+        &::after {
+          background-color: $btn-bg-color;
+        }
+      }
+    }
+    [class*='MuiInput-input'] {}
+    &.center {
+      text-align: center;
+      [class*='MuiFormLabel'] {
+        width: 100%;
+        display: inline-block;
+      }
+      [class*='MuiInput-input'] {
+        text-align: center;
+      }
+    }
+  }
+}

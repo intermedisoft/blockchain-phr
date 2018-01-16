@@ -15,8 +15,8 @@
       grid-row-start: 1;
       grid-row-end: 3;
       .userImage {
-        width: 70px;
-        height: 70px;
+        width: $main-avatar-normal-size;
+        height: $main-avatar-normal-size;
         border-radius: 100%;
         border: 2px solid #ffffff;
         overflow: hidden;

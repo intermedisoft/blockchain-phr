@@ -34,9 +34,10 @@ import TextField from 'material-ui/TextField'
 //   )
 // }
 
-const renderTextField = ({ input, label, meta: { touched, error }, ...custom }) => (
+const renderTextField = ({ className, input, label, meta: { touched, error }, ...custom }) => (
   <TextField hintText={label}
     floatingLabelText={label}
+    className={`inputBlock ${className}`}
     errorText={touched && error}
     {...input}
     {...custom}

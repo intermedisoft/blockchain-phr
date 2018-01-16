@@ -1,13 +1,21 @@
 @import '../../configs/variables';
 @import '../../frameworks/mixins';
 :global {
-  [class*="MuiAvatar-root"] {
+  .avatarBlock {
+    border-radius: $main-avatar-radius;
+    background-color: $main-avatar-bg-color;
+    >img {
+      height: 100%!important;
+      margin: auto;
+      width: 100%!important;
+    }
     &.center {
       margin: auto;
-    }
-    &.bigSize {
-      width: 100px;
-      height: 100px;
+      text-align: center;
+      &.bigSize {
+        width: $main-avatar-big-size;
+        height: $main-avatar-big-size;
+      }
     }
   }
 }

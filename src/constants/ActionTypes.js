@@ -16,6 +16,12 @@ export const PATIENT = {
 }
 Object.freeze(PATIENT)
 
+export const CHECKUP = {
+  GETALL: 'GETALL',
+  GET: 'GET'
+}
+Object.freeze(CHECKUP)
+
 export const ERROR_MESSAGE = {
   CODE500: 500,
   CODE404: 404,

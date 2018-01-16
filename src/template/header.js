@@ -15,6 +15,9 @@ const SET_MENU = {
   },
   'profileedit': {
     text: 'Edit Profile'
+  },
+  'checkup': {
+    text: 'Checkup'
   }
 }
 class Header extends Component {

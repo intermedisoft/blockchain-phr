@@ -12,5 +12,14 @@ export default {
         return Promise.reject(new Error(error.response.status))
       }
     }
+  },
+  putPatient: async (configs, patientId, data) => {
+    if (patientId) {
+      try {
+        await setting(configs).put(`/api/Patient/${patientId}`, data)
+      } catch (error) {
+        return Promise.reject(new Error(error.response.status))
+      }
+    }
   }
 }

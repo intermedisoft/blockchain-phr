@@ -7,10 +7,11 @@ import { patientAction } from './../../redux/actions/patient'
 class ProfileEdit extends Component {
   state = {}
   render() {
-    const { patientId, patients, configs } = { ...this.props }
+    const { patientId, patients, configs, err  } = { ...this.props }
     console.log(patients)
-    if (isEmpty(patients)) {
+    if (isEmpty(patients) && !err) {
       this.props.getPatient(configs, patientId)
+      return false
     }
     return (
       <div className='containerMain'>
@@ -33,7 +34,8 @@ const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
     patients: state.patient.data,
-    configs: state.firebase.data.configs
+    configs: state.firebase.data.configs,
+    err: state.fetchError.modalOpen
   }
 )
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileEdit)

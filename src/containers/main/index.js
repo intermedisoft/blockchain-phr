@@ -35,7 +35,7 @@ class MainmenuPage extends Component {
                 <div className='text'>Wellness</div>
                 <div className='noti'></div>
               </li> */}
-              <li>
+              <li onClick={() => history.push('/checkup')}>
                 <div className='ico-checkup'></div>
                 <div className='text'>Checkup</div>
                 <div className='noti'></div>

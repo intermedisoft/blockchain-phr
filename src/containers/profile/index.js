@@ -11,9 +11,10 @@ class ProfilePage extends Component {
   // }
 
   render() {
-    const { patientId, patients, configs } = { ...this.props }
-    if (isEmpty(patients)) {
+    const { patientId, patients, configs, err } = { ...this.props }
+    if (isEmpty(patients) && !err) {
       this.props.getPatient(configs, patientId)
+      return true
     }
 
     let renderHTML = (
@@ -62,7 +63,8 @@ const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
     patients: state.patient.data,
-    configs: state.firebase.data.configs
+    configs: state.firebase.data.configs,
+    err: state.fetchError.modalOpen
   }
 )
 

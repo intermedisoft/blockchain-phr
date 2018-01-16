@@ -1,13 +1,14 @@
 import React from 'react'
-// import Select from 'material-ui/Select'
-// import Input from 'material-ui/Input'
+import SelectField from 'material-ui/SelectField'
 
-const renderSelectField = props => {
-  return (
-    <select name={props.name}>
-      <option>1</option>
-    </select>
-  )
-}
+const renderSelectField = ({ input, label, meta: { touched, error }, children, ...custom }) => (
+  <SelectField
+    floatingLabelText={label}
+    errorText={touched && error}
+    {...input}
+    onChange={(event, index, value) => input.onChange(value)}
+    children={children}
+    {...custom} />
+)
 
 export default renderSelectField

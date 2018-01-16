@@ -9,11 +9,11 @@ const CidForm = props => {
     <form noValidate autoComplete='off' onSubmit={handleSubmit}>
       {/* <div>เลขที่บัตรประชาชน</div> */}
       <div>
-        <Field component={Input} type={'number'} label={'เลขที่บัตรประชาชน'} name={'cid'} fullWidth={'true'} className={'center widthMax'} />
+        <Field component={Input} type={'number'} label={'เลขที่บัตรประชาชน'} name={'cid'} fullWidth className={'center widthMax'} />
       </div>
       <div>
         {/* <button>ลงทะเบียน</button> */}
-        <Button raised type='submit' className={'button'} fullWidth={'true'}>ลงทะเบียน</Button>
+        <Button raised type='submit' className={'button'} >ลงทะเบียน</Button>
       </div>
     </form>
   )

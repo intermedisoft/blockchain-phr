@@ -5,6 +5,7 @@ const renderTextField = props => (
   <span className={`inputBlock ${props.className}`}>
     <TextField
       {...props.input}
+      floatingLabelText={props.label}
       fullWidth={props.fullWidth}
       label={props.label}
       maxLength={props.maxLength}
@@ -12,6 +13,7 @@ const renderTextField = props => (
       name={props.name}
       placeholder={props.placeholder}
       type={props.type}
+      id={props.id}
     />
   </span>
 )

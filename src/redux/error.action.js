@@ -38,7 +38,8 @@ const HTTP_STATUS_CODES = {
   'CODE502': 'Bad Gateway',
   'CODE503': 'Service Unavailable',
   'CODE504': 'Gateway Timeout',
-  'CODE505': 'HTTP Version Not Supported'
+  'CODE505': 'HTTP Version Not Supported',
+  'CODE901': 'User not found in database'
 }
 
 export const ActionErrHandle = function (dispatch, error) {

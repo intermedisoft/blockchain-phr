@@ -1,6 +1,6 @@
 import * as types from './../../constants/ActionTypes'
 import { Service } from './../../service'
-// import { conf } from './../../config'
+import { ActionErrHandle } from './../error.action'
 
 const receivegetPatient = (data) => ({
   type: types.PATIENT.GET,
@@ -21,7 +21,7 @@ export const getPatient = (configs, patientId) => async (dispatch) => {
       dispatch(receivegetPatient(response.data))
     }
   } catch (error) {
-    // console.log(error)
+    ActionErrHandle(dispatch, error)
   }
 }
 

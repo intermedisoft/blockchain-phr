@@ -1,10 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-// import MaskedInput from 'react-text-mask';
-// import NumberFormat from 'react-number-format';
-import Button from 'material-ui/Button'
-
-import {Input, TextMask} from './../../components'
+import {Input} from './../../components'
 
 const CidForm = props => {
   const { handleSubmit } = props
@@ -12,11 +8,10 @@ const CidForm = props => {
     <form noValidate autoComplete='off' onSubmit={handleSubmit}>
       {/* <div>เลขที่บัตรประชาชน</div> */}
       <div>
-        <Field component={Input} type={'number'} label={'เลขที่บัตรประชาชน'} name={'cid'} className={'center widthMax'} />
+        <Field component={Input} id={'cid'} type={'number'} label={'เลขที่บัตรประชาชน'} name={'cid'} fullWidth inputProps={{min: 13}} className={'center widthMax'} />
       </div>
       <div>
-        {/* <button>ลงทะเบียน</button> */}
-        <Button raised color="primary" type='submit' className={`btn`}>ลงทะเบียน</Button>
+        <button type='submit' className={`btn`}>ลงทะเบียน</button>
       </div>
     </form>
   )

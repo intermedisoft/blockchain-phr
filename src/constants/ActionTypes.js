@@ -15,3 +15,12 @@ export const PATIENT = {
   GET: 'GET'
 }
 Object.freeze(PATIENT)
+
+export const ERROR_MESSAGE = {
+  CODE500: 500,
+  CODE404: 404,
+  CODE401: 401,
+  CLEAR: 'CLEAR',
+  NETWORKERROR: 'NETWORKERROR'
+}
+Object.freeze(ERROR_MESSAGE)

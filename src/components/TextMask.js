@@ -1,7 +1,20 @@
 import React from 'react'
-import MaskedInput from 'react-text-mask';
-import TextField from 'material-ui/TextField'
-import Input from 'material-ui/Input';
+import MaskedInput from 'react-text-mask'
+
+import { Input } from './index'
+
+// class TextMaskCustom extends React.Component {
+//   render() {
+//     return (
+//       <MaskedInput
+//         {...this.props}
+//         mask={this.props.mask}
+//         placeholderChar={'\u2000'}
+//         showMask
+//       />
+//     );
+//   }
+// }
 
 class TextMaskCustom extends React.Component {
   render() {

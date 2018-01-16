@@ -2,6 +2,7 @@
 @import '../fonts/icons/phr/phr_icon.scss';
 
 // Vendors
+@import 'vendors/materialUI/index.scss';
 
 // Variables
 @import 'configs/variables.scss';
@@ -10,3 +11,4 @@
 @import 'frameworks/css.reset.scss';
 
 // Components
+@import 'components/loading.scss';

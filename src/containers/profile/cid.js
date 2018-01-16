@@ -5,7 +5,6 @@ import { withFirebase } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import CidForm from './cidForm'
 
-import '../../assets/style/vendors/materialUI/index.scss'
 import styles from '../../assets/style/themes/pages/cid.scss'
 
 class ProfileCidPage extends Component {

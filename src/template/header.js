@@ -28,7 +28,7 @@ class Header extends Component {
       <header className='headMain'>
         <div className='contentHead'>
           <div className='itemLeft'>
-            <button onClick={() => window.history.back()}>xx</button>
+            <button onClick={() => window.history.back()}>BACK</button>
           </div>
           <div className='itemCenter'>
             {SET_MENU[pathname] ? SET_MENU[pathname].text : ''}

@@ -59,7 +59,7 @@
     width: 100%;
   }
   .card {
-    background-color: #fff;
+    background-color: $main-card-bg-color;
     border-radius: $main-radius;
     padding: 10px;
     &.--list {
@@ -68,6 +68,13 @@
     &.--center {
       margin: auto;
       text-align: center;
+    }
+    &.avatarInfo {
+      margin-top: 35px;
+      .avatarBlock {
+        margin-top: -55px;
+        border: 3px solid $main-card-bg-color;
+      }
     }
   }
 }

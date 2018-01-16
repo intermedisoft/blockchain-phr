@@ -19,12 +19,12 @@ class ProfileCidPage extends Component {
     const { displayName, avatarUrl } = { ...this.props }
     return (
       <div className={`containerMain ${styles.cidPage}`}>
-        <div className='card'>
-          <div>
+        <div className='card avatarInfo'>
+          <div className="avatarBlock bigSize center">
             <Avatar
               alt={displayName}
+              backgroundColor={'#ffffff'}
               src={avatarUrl}
-              className='bigSize center'
             />
           </div>
           <div className={`${styles.name}`}>

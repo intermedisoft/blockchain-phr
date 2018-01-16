@@ -6,27 +6,27 @@
 
 :local {
   .container {
+    @include login-bg-position($login-bg-cal-size: 20);
+    align-items: center;
+    background-attachment: fixed;
+    background-image: url('../../../images/wave.svg');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
-    display: flex;
-    color: #ffffff;
-    align-items: center;
-    background-size: 100%;
-    flex-direction: column;
-    justify-content: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-image: url('../../../images/wave.svg');
-    @include login-bg-position($login-bg-cal-size: 20);
   }
   .loginGroup {
     margin-top: -150px;
   }
   .logoSystem {
-    text-align: center;
     margin-bottom: 30px;
+    text-align: center;
     img {
       width: 300px;
       max-width: 70%;
@@ -36,36 +36,36 @@
     margin: auto;
     text-align: center;
     .btnLogin {
-      margin: 0;
-      outline: 0;
-      width: 100%;
       border: none;
-      height: auto;
-      margin: auto;
-      display: block;
-      direction: ltr;
-      font-size: 14px;
-      cursor: pointer;
-      color: #ffffff;
-      overflow: hidden;
-      max-width: 220px;
-      text-align: left;
-      min-height: 40px;
-      font-weight: bold;
-      padding: 8px 16px;
-      letter-spacing: 0;
-      position: relative;
-      border-radius: 2px;
-      line-height: normal;
-      margin-bottom: 15px;
-      text-decoration: none;
-      vertical-align: middle; // will-change: box-shadow;
-      font-family: Roboto, Helvetica, Arial, sans-serif;
+      border-radius: $btn-border-radius;
       box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+      color: #ffffff;
+      cursor: pointer;
+      direction: ltr;
+      display: block;
+      font-family: Roboto, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      height: auto;
+      letter-spacing: 0;
+      line-height: normal;
+      margin: 0;
+      margin: auto;
+      margin-bottom: 15px;
+      max-width: 220px;
+      min-height: 40px;
+      outline: 0;
+      overflow: hidden;
+      padding: 8px 16px;
+      position: relative;
+      text-align: left;
+      text-decoration: none;
       transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1), background-color .2s cubic-bezier(.4, 0, .2, 1), color .2s cubic-bezier(.4, 0, .2, 1), -webkit-box-shadow .2s cubic-bezier(.4, 0, 1, 1);
+      vertical-align: middle;
+      width: 100%;
       &.google {
-        color: #757575;
         background-color: #ffffff;
+        color: #757575;
       }
       &.facebook {
         background-color: #3b5998;
@@ -80,11 +80,11 @@
         display: table-cell;
         vertical-align: middle;
         >img {
-          width: 18px;
-          height: 18px;
           border: none;
           display: inline-block;
+          height: 18px;
           vertical-align: middle;
+          width: 18px;
         }
         &.text {
           font-size: 14px;

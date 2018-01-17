@@ -8,17 +8,15 @@ import { checkupAction } from './../../redux/actions/checkup'
 import { patientAction } from './../../redux/actions/patient'
 
 class CheckupPage extends Component {
-  // componentWillMount() {
-  //   this.props.getPatient()
-  // }
+  componentWillUnmount() { 
+    console.log(this.props)
+  }
 
   render() {
     const { patientId, patients, configs, err, checkup } = { ...this.props }
-    console.log(patients)
-    if (isEmpty(patients) && !err) {
+
+    if (isEmpty(patients) && isEmpty(checkup) && !err) {
       this.props.getPatient(configs, patientId)
-    }
-    if (isEmpty(checkup) && !err) {
       this.props.getAllCheckup(configs, patientId)
     }
 

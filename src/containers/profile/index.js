@@ -46,36 +46,38 @@ class ProfilePage extends Component {
               </div>
             </div>
             <table>
-              <tr>
-                <td>BLOOD</td>
-                <td>:</td>
-                <td>{patients.bloodGroup}</td>
-              </tr>
-              <tr>
-                <td>SEX</td>
-                <td>:</td>
-                <td>{patients.sex}</td>
-              </tr>
-              <tr>
-                <td>MARRIAGE</td>
-                <td>:</td>
-                <td>{patients.marriage}</td>
-              </tr>
-              <tr>
-                <td>NATION</td>
-                <td>:</td>
-                <td>{patients.nation}</td>
-              </tr>
-              <tr>
-                <td>RACE</td>
-                <td>:</td>
-                <td>{patients.race}</td>
-              </tr>
-              <tr>
-                <td>OCCUPATION</td>
-                <td>:</td>
-                <td>{patients.occupation}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>BLOOD</td>
+                  <td>:</td>
+                  <td>{patients.bloodGroup}</td>
+                </tr>
+                <tr>
+                  <td>SEX</td>
+                  <td>:</td>
+                  <td>{patients.sex}</td>
+                </tr>
+                <tr>
+                  <td>MARRIAGE</td>
+                  <td>:</td>
+                  <td>{patients.marriage}</td>
+                </tr>
+                <tr>
+                  <td>NATION</td>
+                  <td>:</td>
+                  <td>{patients.nation}</td>
+                </tr>
+                <tr>
+                  <td>RACE</td>
+                  <td>:</td>
+                  <td>{patients.race}</td>
+                </tr>
+                <tr>
+                  <td>OCCUPATION</td>
+                  <td>:</td>
+                  <td>{patients.occupation}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
           <div>
@@ -88,7 +90,7 @@ class ProfilePage extends Component {
     return (
       <div className={`containerMain ${styles.profilePage}`}>
         <div className='card avatarInfo'>
-          <div class="avatarBlock bigSize center">
+          <div className="avatarBlock bigSize center">
             <Avatar
               alt={displayName}
               backgroundColor={'#ffffff'}

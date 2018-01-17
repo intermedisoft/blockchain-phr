@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import logo from './../assets/images/logo.svg'
+
 const SET_MENU = {
   'main': {
     text: 'Main'
@@ -22,6 +24,8 @@ const SET_MENU = {
 }
 class Header extends Component {
   render() {
+    console.log('-----------------------------------!!!!!!')
+    console.log(this.props)
     const pathname = this.props.pathname.replace(/\//g, '')
     console.log(pathname)
     return (
@@ -31,16 +35,22 @@ class Header extends Component {
             <button onClick={() => window.history.back()} className="btnIcon iconBack" />
           </div>
           <div className='itemCenter'>
-            {SET_MENU[pathname] ? SET_MENU[pathname].text : ''}
+            {/* {this.props.header} */}
+            {SET_MENU[pathname] ? SET_MENU[pathname].text : this.props.header}
             {/* texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext */}
           </div>
           <div className='itemRight logo'>
             <img src={logo} alt='Logo' />
           </div>
         </div>
-      </header> 
+      </header>
     )
   }
 }
 
-export default Header
+const mapStateToProps = state => (
+  {
+    header: state.header.text
+  }
+)
+export default connect(mapStateToProps)(Header)

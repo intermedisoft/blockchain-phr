@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withFirebase } from 'react-redux-firebase'
 import { compose, lifecycle, pure } from 'recompose'
 
-import { conf } from './../config'
+// import { conf } from './../config'
 const GetConfig = ({ configs }) => {
   // conf.BASE_API_URL = configs ? configs.rest_ulr : ''
   // console.log('************')

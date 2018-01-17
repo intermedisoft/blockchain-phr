@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import Divider from 'material-ui/Divider'
-import Subheader from 'material-ui/Subheader'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { HeaderAction } from './../../redux/actions/header'
@@ -25,7 +24,7 @@ class CheckupViewerPage extends Component {
   }
 
   render() {
-    const id = this.props.match.params.id
+    // const id = this.props.match.params.id
     const data = this.state.data
     // console.log(data)
     return (

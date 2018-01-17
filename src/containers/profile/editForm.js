@@ -91,7 +91,7 @@ let ProfileEditForm = props => {
       <div>
         <Field component={Input} name={'weight'} id={'weight'} label={'น้ำหนัก'} />
       </div>
-      <div><button type='submit'>บันทึก</button></div>
+      <div><button type='submit' className={`btnPrimary`}>บันทึก</button></div>
     </form >
   )
 }

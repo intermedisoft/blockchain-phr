@@ -10,7 +10,7 @@ $font-path:'assets/fonts/icons/phr/fonts';
   font-style: normal;
 }
 
-[class^="ico-"], [class*=" ico-"] {
+[class^="icon"], [class*="icon"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'phr_icon' !important;
   speak: none;
@@ -25,45 +25,45 @@ $font-path:'assets/fonts/icons/phr/fonts';
   -moz-osx-font-smoothing: grayscale;
 }
 
-.ico-facebook:before {
+.iconFacebook:before {
   content: "\e90d";
 }
-.ico-back:before {
+.iconBack:before {
   content: "\e900";
 }
-.ico-blood:before {
+.iconBlood:before {
   content: "\e901";
 }
-.ico-checkup:before {
+.iconCheckup:before {
   content: "\e902";
 }
-.ico-edit:before {
+.iconEdit:before {
   content: "\e903";
 }
-.ico-logout:before {
+.iconLogout:before {
   content: "\e904";
 }
-.ico-notification:before {
+.iconNotification:before {
   content: "\e905";
 }
-.ico-password:before {
+.iconPassword:before {
   content: "\e906";
 }
-.ico-see:before {
+.iconSee:before {
   content: "\e907";
 }
-.ico-sex:before {
+.iconSex:before {
   content: "\e908";
 }
-.ico-tab:before {
+.iconTab:before {
   content: "\e909";
 }
-.ico-username:before {
+.iconUsername:before {
   content: "\e90a";
 }
-.ico-visit:before {
+.iconVisit:before {
   content: "\e90b";
 }
-.ico-wellness:before {
+.iconWellness:before {
   content: "\e90c";
 }

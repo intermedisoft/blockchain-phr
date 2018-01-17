@@ -1,0 +1,10 @@
+@import '../configs/variables/index';
+@import '../frameworks/mixins';
+$block-icon-noti-size:50px;
+:global {
+  .profileColumns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}

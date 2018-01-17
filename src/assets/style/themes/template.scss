@@ -1,4 +1,4 @@
-@import '../configs/variables';
+@import '../configs/variables/index';
 @import '../frameworks/mixins';
 :global {
   * {
@@ -38,6 +38,14 @@
           img {
             width: 100%;
           }
+        }
+      }
+      .itemLeft{
+        justify-content: left;
+        text-align: left;
+        .btnIcon{
+          color: #ffffff;
+          font-size: 1.3em;
         }
       }
       .itemCenter {

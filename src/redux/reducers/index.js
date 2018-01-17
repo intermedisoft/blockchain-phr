@@ -8,6 +8,7 @@ import auth from './auth'
 import patient from './patient'
 import fetchError from './fetchError'
 import checkup from './checkup'
+import header from './header'
 
 const barPersistConfig = {
   key: 'userLogin',
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   firebase: firebaseReducer,
   patient,
   checkup,
+  header,
   fetchError,
   auth: persistReducer(barPersistConfig, auth)
 })

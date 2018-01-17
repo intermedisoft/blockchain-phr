@@ -30,3 +30,8 @@ export const ERROR_MESSAGE = {
   NETWORKERROR: 'NETWORKERROR'
 }
 Object.freeze(ERROR_MESSAGE)
+
+export const HEADER = {
+  SET: 'SET'
+}
+Object.freeze(HEADER)

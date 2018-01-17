@@ -2,7 +2,6 @@
 @import '../../frameworks/mixins';
 :local {
   .profilePage {
-    text-align: center;
      :global {
       .card {
         padding: 20px 10px;
@@ -24,6 +23,7 @@
       }
     }
     .profileContent {
+      text-align: center;
        :global {
         .profileColumns {
           width: 500px;
@@ -46,6 +46,9 @@
           }
         }
       }
+    }
+    &.profileCidPage {
+      text-align: center;
     }
   }
 }

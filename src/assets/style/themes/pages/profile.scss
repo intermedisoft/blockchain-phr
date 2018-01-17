@@ -54,6 +54,10 @@
       max-width: 100%;
       >div {
         margin: 0 5px; // width: 256px!important;
+        &:not([name]){
+          display: none;
+          // background-color: #000;
+        }
       }
       .normal {
         width: 260px!important;
@@ -74,3 +78,53 @@
     }
   }
 }
+
+@media (max-width: 725px) {
+   :local {
+    .profilePage {
+      .profileEditForm {
+        .normal {
+          width: 120px!important;
+        } // .small {
+        //   width: 115px!important;
+        // }
+      }
+    }
+  }
+}
+
+@media (max-width: 715px) {
+   :local {
+    .profilePage {
+      .profileEditForm {
+        width: 540px;
+      }
+    }
+  }
+}
+@media (max-width: 715px) {
+   :local {
+    .profilePage {
+      .profileEditForm {
+        width: 450px;
+        .normal {
+          width: 260px!important;
+          flex-basis: calc(100% - 10px)!important;
+        }
+        .small {
+          width: 125px!important;
+          flex-basis: calc(50% - 20px)!important;
+        }
+      }
+    }
+  }
+}
+
+// @media (max-width: $phone) {
+//    :local {
+//     .container {
+//       background-image: url('../../../images/waveSmall.svg');
+//       @include login-bg-position($login-bg-cal-size: 35);
+//     }
+//   }
+// }

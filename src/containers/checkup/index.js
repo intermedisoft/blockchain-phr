@@ -8,7 +8,7 @@ import { checkupAction } from './../../redux/actions/checkup'
 import { patientAction } from './../../redux/actions/patient'
 
 class CheckupPage extends Component {
-  componentWillUnmount() { 
+  componentWillUnmount() {
     console.log(this.props)
   }
 
@@ -17,9 +17,10 @@ class CheckupPage extends Component {
 
     if (isEmpty(patients) && isEmpty(checkup) && !err) {
       this.props.getPatient(configs, patientId)
+    }
+    if (isEmpty(checkup) && !err) {
       this.props.getAllCheckup(configs, patientId)
     }
-
     let renderHTML = (
       <div> Loading... </div>
     )
@@ -32,7 +33,10 @@ class CheckupPage extends Component {
             checkup.map((v, i) => {
               return (
                 <div key={v.checkupHistoryId}>
-                  <Link to={`/checkup/${v.checkupHistoryId}`}> <CardComponent data={v} /> </Link>
+                  <Link to={{
+                    pathname: `/checkup/${v.checkupHistoryId}`,
+                    state: { data: v }
+                  }}> <CardComponent data={v} /> </Link>
                 </div>
               )
             })

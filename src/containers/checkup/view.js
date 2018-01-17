@@ -1,13 +1,27 @@
 import React, { Component } from 'react'
 class CheckupViewerPage extends Component {
-  state = {}
+  state = {
+    data: ''
+  }
+
+  componentWillMount() {
+    console.log(this.props.location.state)
+    if (this.props.location.state === undefined) {
+      this.props.history.push('/checkup')
+      return false
+    }
+    this.setState({
+      data: this.props.location.state.data
+    })
+  }
+
   render() {
     const id = this.props.match.params.id
-    console.log(this.props)
+    const data = this.state.data
     return (
       <div className='containerMain'>
         <div className='card'>
-         {id}
+          {id}
         </div>
       </div>
     )

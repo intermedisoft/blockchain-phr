@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/es/integration/react'
 import registerServiceWorker from './registerServiceWorker'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
 import './App.scss'
 import RouteRoot from './routes/RouteRoot'

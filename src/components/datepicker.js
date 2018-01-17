@@ -1,18 +1,17 @@
 import React from 'react'
-import DatePicker from 'react-mobile-datepicker'
-// import DatePicker from 'react-datepicker'
-// import moment from 'moment'
-
-// import 'react-datepicker/dist/react-datepicker.css'
-
+import DateTimePicker from 'material-ui-datetimepicker'
+import DatePickerDialog from 'material-ui/DatePicker/DatePickerDialog'
+import TimePickerDialog from 'material-ui/TimePicker/TimePickerDialog'
+// const setDate = (dateTime) => this.setState({ dateTime })
 const renderDatePicker = (props) => {
   console.log(props)
+
   return (
-    <div>
-      <DatePicker
-        value={new Date()}
-        isOpen={false} />
-    </div>
+    // <DateTimePicker
+    //   onChange={setDate}
+    //   DatePicker={DatePickerDialog}
+    // />
+    <div />
   )
 }
 

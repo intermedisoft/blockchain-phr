@@ -10,19 +10,16 @@ import styles from '../../assets/style/themes/pages/profile.scss'
 class ProfileEdit extends Component {
   state = {}
   render() {
-    const { patientId, patients, configs, err } = { ...this.props }
-    console.log(patients)
+    const { patientId, patients, avatarUrl, configs, err } = { ...this.props }
     if (isEmpty(patients) && !err) {
       this.props.getPatient(configs, patientId)
       return false
     }
-    const { displayName, avatarUrl } = { ...this.props }
     return (
       <div className={`containerMain ${styles.profilePage}`}>
         <div className='card avatarInfo'>
           <div className="avatarBlock bigSize center">
             <Avatar
-              alt={displayName}
               backgroundColor={'#ffffff'}
               src={avatarUrl}
             />
@@ -44,6 +41,7 @@ const mapDispatchToProps = (dispatch, state) => {
 const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
+    avatarUrl: state.firebase.profile.avatarUrl,
     patients: state.patient.data,
     configs: state.firebase.data.configs,
     err: state.fetchError.modalOpen

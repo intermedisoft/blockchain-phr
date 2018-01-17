@@ -14,7 +14,7 @@ class ProfilePage extends Component {
   // }
 
   render() {
-    const { patientId, patients, configs, err } = { ...this.props }
+    const { patientId, avatarUrl, patients, configs, err } = { ...this.props }
     if (isEmpty(patients) && !err) {
       this.props.getPatient(configs, patientId)
       return true
@@ -86,13 +86,11 @@ class ProfilePage extends Component {
         </div>
       )
     }
-    const { displayName, avatarUrl } = { ...this.props }
     return (
       <div className={`containerMain ${styles.profilePage}`}>
         <div className='card avatarInfo'>
-          <div className="avatarBlock bigSize center">
+          <div className='avatarBlock bigSize center'>
             <Avatar
-              alt={displayName}
               backgroundColor={'#ffffff'}
               src={avatarUrl}
             />
@@ -115,6 +113,7 @@ const mapDispatchToProps = (dispatch, state) => {
 const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
+    avatarUrl: state.firebase.profile.avatarUrl,
     patients: state.patient.data,
     configs: state.firebase.data.configs,
     err: state.fetchError.modalOpen

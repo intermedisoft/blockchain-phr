@@ -2,7 +2,6 @@
 import React from 'react'
 import moment from 'moment'
 import { Card, CardMedia, CardTitle } from 'material-ui/Card'
-import { Link } from 'react-router-dom'
 
 require('moment/locale/th')
 // moment.locale('th')

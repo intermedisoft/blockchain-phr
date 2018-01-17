@@ -5,10 +5,10 @@
 @import 'vendors/materialUI/index.scss';
 
 // Variables
-@import 'configs/variables.scss';
+@import 'configs/variables/index';
 
 // Frameworks
 @import 'frameworks/css.reset.scss';
 
 // Components
-@import 'components/loading.scss';
+@import 'components/index';

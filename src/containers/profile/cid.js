@@ -5,7 +5,7 @@ import { withFirebase } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import CidForm from './cidForm'
 
-import styles from '../../assets/style/themes/pages/cid.scss'
+import styles from '../../assets/style/themes/pages/profile.scss'
 
 class ProfileCidPage extends Component {
   render() {
@@ -18,7 +18,7 @@ class ProfileCidPage extends Component {
     }
     const { displayName, avatarUrl } = { ...this.props }
     return (
-      <div className={`containerMain ${styles.cidPage}`}>
+      <div className={`containerMain ${styles.profilePage} ${styles.profileCidPage}`}>
         <div className='card avatarInfo'>
           <div className="avatarBlock bigSize center">
             <Avatar

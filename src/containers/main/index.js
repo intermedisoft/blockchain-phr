@@ -36,7 +36,7 @@ class MainmenuPage extends Component {
                 <div className='noti'></div>
               </li> */}
               <li onClick={() => history.push('/checkup')}>
-                <div className='ico-checkup'></div>
+                <div className='iconCheckup'></div>
                 <div className='text'>Checkup</div>
                 <div className='noti'></div>
               </li>
@@ -52,14 +52,14 @@ class MainmenuPage extends Component {
               </li> */}
               
               <li onClick={() => history.push('/notification')}>
-                <div className='ico-notification'></div>
+                <div className='iconNotification'></div>
                 <div className='text'>Notification</div>
                 <div className='noti'>
                   <span className='notiBlock'>2</span>
                 </div>
               </li>
               <li className={styles.logoutMenu} onClick={logout}>
-                <div className='ico-logout'></div>
+                <div className='iconLogout'></div>
                 <div className='text'>Log out</div>
                 <div className='noti'></div>
               </li>

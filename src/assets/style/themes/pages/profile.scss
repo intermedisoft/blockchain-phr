@@ -1,0 +1,76 @@
+@import '../../configs/variables/index';
+@import '../../frameworks/mixins';
+:local {
+  .profilePage {
+     :global {
+      .card {
+        padding: 20px 10px;
+      }
+    }
+    .name {
+      font-size: 1.3em;
+      padding: 5px;
+    }
+     :global {
+      .btnPrimary {
+        margin: auto;
+        max-width: 220px;
+        width: 100%;
+        display: block;
+      }
+    }
+    .profileContent {
+      margin: auto;
+      max-width: 100%;
+      text-align: center;
+      width: 500px;
+       :global {
+        .profileColumns {
+          width: 100%;
+        }
+      }
+      table {
+        text-align: left;
+        text-align: left;
+        margin: 30px auto;
+        width: 100%;
+        td {
+          padding: 5px;
+          &:nth-of-type(1),
+          &:nth-of-type(2) {
+            width: 5px;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+    .profileEditForm {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -5px;
+      align-items: center;
+      margin: 30px auto;
+      width: 685px;
+      max-width: 100%;
+      >div {
+        margin: 0 5px; // width: 256px!important;
+      }
+      .normal {
+        width: 260px!important;
+      }
+      .small {
+        width: 125px!important;
+      }
+    }
+    &.profileCidPage {
+      text-align: center;
+       :global {
+        .inputBlock {
+          margin: 30px auto;
+          max-width: 220px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

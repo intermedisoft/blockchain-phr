@@ -38,7 +38,7 @@ class Header extends Component {
             <img src={logo} alt='Logo' />
           </div>
         </div>
-      </header>
+      </header> 
     )
   }
 }

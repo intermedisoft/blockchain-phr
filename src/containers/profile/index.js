@@ -6,7 +6,7 @@ import { isEmpty } from 'react-redux-firebase'
 import { patientAction } from './../../redux/actions/patient'
 import { Link } from 'react-router-dom'
 
-import styles from '../../assets/style/themes/pages/cid.scss'
+import styles from '../../assets/style/themes/pages/profile.scss'
 
 class ProfilePage extends Component {
   // componentWillMount() {
@@ -31,7 +31,7 @@ class ProfilePage extends Component {
             <div className={`${styles.name}`}>
               {patients.prename} {patients.name} {patients.surname}
             </div>
-            <div className={`profileColumns ${styles.profileInfo}`}>
+            <div className={`profileColumns ${styles.profileHighlight}`}>
               <div className={styles.itemInfo}>
                 <div className={styles.valueInfo}>{moment(patients.dob).format('L')}</div>
                 <div className={styles.labelInfo}>Birthday</div>
@@ -45,15 +45,41 @@ class ProfilePage extends Component {
                 <div className={styles.labelInfo}>Height</div>
               </div>
             </div>
-            <div>BLOOD: <span>{patients.bloodGroup}</span></div>
-            <div>SEX: <span>{patients.sex}</span></div>
-            <div>MARRIAGE: <span>{patients.marriage}</span></div>
-            <div>NATION: <span>{patients.nation}</span></div>
-            <div>RACE: <span>{patients.race}</span></div>
-            <div>OCCUPATION: <span>{patients.occupation}</span></div>
+            <table>
+              <tr>
+                <td>BLOOD</td>
+                <td>:</td>
+                <td>{patients.bloodGroup}</td>
+              </tr>
+              <tr>
+                <td>SEX</td>
+                <td>:</td>
+                <td>{patients.sex}</td>
+              </tr>
+              <tr>
+                <td>MARRIAGE</td>
+                <td>:</td>
+                <td>{patients.marriage}</td>
+              </tr>
+              <tr>
+                <td>NATION</td>
+                <td>:</td>
+                <td>{patients.nation}</td>
+              </tr>
+              <tr>
+                <td>RACE</td>
+                <td>:</td>
+                <td>{patients.race}</td>
+              </tr>
+              <tr>
+                <td>OCCUPATION</td>
+                <td>:</td>
+                <td>{patients.occupation}</td>
+              </tr>
+            </table>
           </div>
           <div>
-            <Link to='/profile/edit'> <button>Edit</button></Link>
+            <Link to='/profile/edit'><button className={`btnPrimary`}>Edit</button></Link>
           </div>
         </div>
       )

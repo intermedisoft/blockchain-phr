@@ -11,11 +11,11 @@
     }
     &.center {
       margin: auto;
-      text-align: center;
-      &.bigSize {
-        width: $main-avatar-big-size;
-        height: $main-avatar-big-size;
-      }
+      // text-align: center;
+    }
+    &.bigSize {
+      width: $main-avatar-big-size;
+      height: $main-avatar-big-size;
     }
   }
 }

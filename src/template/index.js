@@ -6,7 +6,7 @@ import RouteMenu from './../routes/RouteMenu'
 import Header from './header'
 class Template extends Component {
   render () {
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <div>
         <GetConfig />

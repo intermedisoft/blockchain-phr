@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { withFirebase, isEmpty, isLoaded } from 'react-redux-firebase'
+import { withFirebase, isEmpty } from 'react-redux-firebase'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
 import styles from '../../assets/style/themes/pages/mainMenu.scss'

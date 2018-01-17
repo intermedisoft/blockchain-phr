@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector } from 'redux-form'
-import { Input, Select, Datepicker, Radio } from './../../components'
+import { Input, Select, Datepicker } from './../../components'
 import MenuItem from 'material-ui/MenuItem'
 // import RadioButton from 'material-ui/RadioButton'
 
@@ -36,7 +36,7 @@ let ProfileEditForm = props => {
         <Field name='name' id='name' component={Input} label='ชื่อ' className={`${styles.normal}`} />
         {/* <Field component={Input} name={'name'} id={'name'} label={'ชื่อ'} v={'ทดสอบ'} /> */}
         <Field component={Input} name={'surname'} id={'surname'} label={'นามสกุล'} className={`${styles.normal}`} />
-        <Field component={Datepicker} name={'dob'} id={'dob'} label={'วันเดือนปีเกิด'} />
+        <Field component={Datepicker} defaultDate={props.data.dob ? new Date(props.data.dob) : new Date()} name={'dob'} id={'dob'} label={'วันเดือนปีเกิด'} />
         <Field name='bloodGroup' id='bloodGroup' component={Select} label='กรุ๊บเลือด' className={`${styles.small}`}>
           {
             bloodMock.map((v, i) => {
@@ -79,7 +79,7 @@ ProfileEditForm = reduxForm({
   form: 'ProfileEditForm'
 })(ProfileEditForm)
 
-const selector = formValueSelector('ProfileEditForm')
+formValueSelector('ProfileEditForm')
 ProfileEditForm = connect(
   state => ({
     initialValues: state.patient.data // pull initial values from account reducer

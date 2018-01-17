@@ -5,10 +5,3 @@ export const setting = (configs) => {
     headers: { 'x-access-token': configs.access_token }
   })
 }
-
-// export const setDefault = (configs, patientId) => {
-//   return axios.create({
-//     baseURL: configs.rest_ulr,
-//     headers: { 'X-Access-Token': configs.access_token }
-//   })
-// }

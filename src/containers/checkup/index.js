@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { isEmpty } from 'react-redux-firebase'
 import { Link } from 'react-router-dom'
 import CardComponent from './components/card'
+import { List } from 'material-ui/List'
 
 import { checkupAction } from './../../redux/actions/checkup'
 import { patientAction } from './../../redux/actions/patient'
@@ -29,19 +30,20 @@ class CheckupPage extends Component {
       renderHTML = (
         <div>
           <div>รายการประวัติ: <span>{patients.prename}{patients.name} {patients.surname}</span></div>
-          {
-            checkup.map((v, i) => {
-              return (
-                <div key={v.checkupHistoryId}>
-                  <Link to={{
-                    pathname: `/checkup/${v.checkupHistoryId}`,
-                    state: { data: v }
-                  }}> <CardComponent data={v} /> </Link>
-                </div>
-              )
-            })
-          }
-
+          <List>
+            {
+              checkup.map((v, i) => {
+                return (
+                  <div key={v.checkupHistoryId}>
+                    <Link to={{
+                      pathname: `/checkup/${v.checkupHistoryId}`,
+                      state: { data: v }
+                    }}> <CardComponent data={v} /> </Link>
+                  </div>
+                )
+              })
+            }
+          </List>
         </div>
       )
     }

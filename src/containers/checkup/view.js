@@ -30,99 +30,160 @@ class CheckupViewerPage extends Component {
     return (
       <div className='containerMain'>
         <div className='card'>
-          <div>
-            <div>
-              <span>ALK: </span> <span>{data.alk}</span>
-            </div>
-            <div>
-              <span>ALM: </span> <span>{data.alm}</span>
-            </div>
-            <div>
-              <span>Asset ID: </span> <span>{data.assetId}</span>
-            </div>
-            <div>
-              <span>BUN: </span> <span>{data.bun}</span>
-            </div>
-            <div>
-              <span>CALCIUM SCORE: </span> <span>{data.calcium_score_result}</span>
-            </div>
-            <div>
-              <span>CBC WBC: </span> <span>{data.cbc_wbc}</span>
-            </div>
-            <div>
-              <span>chlt: </span> <span>{data.chlt}</span>
-            </div>
-            <div>
-              <span>creatinine: </span> <span>{data.creatinine}</span>
-            </div>
-
-            <div>
-              <span>eos: </span> <span>{data.eos}</span>
-            </div>
-            <div>
-              <span>fbs: </span> <span>{data.fbs}</span>
-            </div>
-            <div>
-              <span>hb: </span> <span>{data.hb}</span>
-            </div>
-            <div>
-              <span>hba1c: </span> <span>{data.hba1c}</span>
-            </div>
-            <div>
-              <span>hct: </span> <span>{data.hct}</span>
-            </div>
-            <div>
-              <span>hdl: </span> <span>{data.hdl}</span>
-            </div>
-            <div>
-              <span>healthCareProvider: </span> <span>{data.healthCareProvider.healthCareProviderName}</span>
-            </div>
-            <div>
-              <span>ldl: </span> <span>{data.ldl}</span>
-            </div>
-            <div>
-              <span>lym: </span> <span>{data.lym}</span>
-            </div>
-            <div>
-              <span>mono: </span> <span>{data.mono}</span>
-            </div>
-            <div>
-              <span>ph: </span> <span>{data.ph}</span>
-            </div>
-            <div>
-              <span>pmn: </span> <span>{data.pmn}</span>
-            </div>
-            <div>
-              <span>pressure: </span> <span>{data.pressure}</span>
-            </div>
-            <div>
-              <span>pulse: </span> <span>{data.pulse}</span>
-            </div>
-            <div>
-              <span>rbc: </span> <span>{data.rbc}</span>
-            </div>
-            <div>
-              <span>sgot: </span> <span>{data.sgot}</span>
-            </div>
-            <div>
-              <span>sgpt: </span> <span>{data.sgpt}</span>
-            </div>
-            <div>
-              <span>spgr: </span> <span>{data.spgr}</span>
-            </div>
-            <div>
-              <span>sugar: </span> <span>{data.sugar}</span>
-            </div>
-            <div>
-              <span>trig: </span> <span>{data.trig}</span>
-            </div>
-            <div>
-              <span>ua_wbc: </span> <span>{data.ua_wbc}</span>
-            </div>
-            <div>
-              <span>uric: </span> <span>{data.uric}</span>
-            </div>
-          </div>
+          <table className="tableView">
+            <tbody>
+              <tr>
+                <td>ALK</td>
+                <td>:</td>
+                <td>{data.alk}</td>
+              </tr>
+              <tr>
+                <td>ALM</td>
+                <td>:</td>
+                <td>{data.alm}</td>
+              </tr>
+              <tr>
+                <td>Asset ID</td>
+                <td>:</td>
+                <td>{data.assetId}</td>
+              </tr>
+              <tr>
+                <td>BUN</td>
+                <td>:</td>
+                <td>{data.bun}</td>
+              </tr>
+              <tr>
+                <td>CALCIUM SCORE</td>
+                <td>:</td>
+                <td>{data.calcium_score_result}</td>
+              </tr>
+              <tr>
+                <td>CBC WBC</td>
+                <td>:</td>
+                <td>{data.cbc_wbc}</td>
+              </tr>
+              <tr>
+                <td>chlt</td>
+                <td>:</td>
+                <td>{data.chlt}</td>
+              </tr>
+              <tr>
+                <td>creatinine</td>
+                <td>:</td>
+                <td>{data.creatinine}</td>
+              </tr>
+              <tr>
+                <td>eos</td>
+                <td>:</td>
+                <td>{data.eos}</td>
+              </tr>
+              <tr>
+                <td>fbs</td>
+                <td>:</td>
+                <td>{data.fbs}</td>
+              </tr>
+              <tr>
+                <td>hb</td>
+                <td>:</td>
+                <td>{data.hb}</td>
+              </tr>
+              <tr>
+                <td>hba1c</td>
+                <td>:</td>
+                <td>{data.hba1c}</td>
+              </tr>
+              <tr>
+                <td>hct</td>
+                <td>:</td>
+                <td>{data.hct}</td>
+              </tr>
+              <tr>
+                <td>hdl</td>
+                <td>:</td>
+                <td>{data.hdl}</td>
+              </tr>
+              <tr>
+                <td>healthCareProvider</td>
+                <td>:</td>
+                <td>{data.healthCareProvider.healthCareProviderName}</td>
+              </tr>
+              <tr>
+                <td>ldl</td>
+                <td>:</td>
+                <td>{data.ldl}</td>
+              </tr>
+              <tr>
+                <td>lym</td>
+                <td>:</td>
+                <td>{data.lym}</td>
+              </tr>
+              <tr>
+                <td>mono</td>
+                <td>:</td>
+                <td>{data.mono}</td>
+              </tr>
+              <tr>
+                <td>ph</td>
+                <td>:</td>
+                <td>{data.ph}</td>
+              </tr>
+              <tr>
+                <td>pmn</td>
+                <td>:</td>
+                <td>{data.pmn}</td>
+              </tr>
+              <tr>
+                <td>pressure</td>
+                <td>:</td>
+                <td>{data.pressure}</td>
+              </tr>
+              <tr>
+                <td>pulse</td>
+                <td>:</td>
+                <td>{data.pulse}</td>
+              </tr>
+              <tr>
+                <td>rbc</td>
+                <td>:</td>
+                <td>{data.rbc}</td>
+              </tr>
+              <tr>
+                <td>sgot</td>
+                <td>:</td>
+                <td>{data.sgot}</td>
+              </tr>
+              <tr>
+                <td>sgpt</td>
+                <td>:</td>
+                <td>{data.sgpt}</td>
+              </tr>
+              <tr>
+                <td>spgr</td>
+                <td>:</td>
+                <td>{data.spgr}</td>
+              </tr>
+              <tr>
+                <td>sugar</td>
+                <td>:</td>
+                <td>{data.sugar}</td>
+              </tr>
+              <tr>
+                <td>trig</td>
+                <td>:</td>
+                <td>{data.trig}</td>
+              </tr>
+              <tr>
+                <td>ua_wbc</td>
+                <td>:</td>
+                <td>{data.ua_wbc}</td>
+              </tr>
+              <tr>
+                <td>uric</td>
+                <td>:</td>
+                <td>{data.uric}</td>
+              </tr>
+            </tbody>
+          </table>
           <Divider />
           <div>
             <h2>Conclusion</h2>

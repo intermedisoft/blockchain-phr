@@ -1,6 +1,7 @@
 {
   "name": "phrblox",
-  "version": "0.1.0",
+  "homepage" : "http://phrblox.com/",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "autoprefixer": "7.1.6",

@@ -43,10 +43,14 @@
       width: 685px;
       max-width: 100%;
       >div {
-        margin: 0 5px; // width: 256px!important;
-        &:not([name]){
-          display: none;
-          // background-color: #000;
+        margin: 0 5px;
+        // &:not([name]){
+        //   display: none;
+        // }
+      }
+      .datePicker{
+        >div{
+          width: 100%!important;
         }
       }
       .normal {
@@ -75,9 +79,7 @@
       .profileEditForm {
         .normal {
           width: 120px!important;
-        } // .small {
-        //   width: 115px!important;
-        // }
+        }
       }
     }
   }

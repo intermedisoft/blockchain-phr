@@ -44,9 +44,6 @@
       max-width: 100%;
       >div {
         margin: 0 5px;
-        // &:not([name]){
-        //   display: none;
-        // }
       }
       .datePicker{
         >div{
@@ -111,12 +108,3 @@
     }
   }
 }
-
-// @media (max-width: $phone) {
-//    :local {
-//     .container {
-//       background-image: url('../../../images/waveSmall.svg');
-//       @include login-bg-position($login-bg-cal-size: 35);
-//     }
-//   }
-// }

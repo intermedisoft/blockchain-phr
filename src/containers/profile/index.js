@@ -45,7 +45,7 @@ class ProfilePage extends Component {
                 <div className={styles.labelInfo}>Height</div>
               </div>
             </div>
-            <table>
+            <table className="tableView">
               <tbody>
                 <tr>
                   <td>BLOOD</td>

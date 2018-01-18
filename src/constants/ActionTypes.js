@@ -18,6 +18,7 @@ Object.freeze(PATIENT)
 
 export const CHECKUP = {
   GETALL: 'GETALL',
+  LOADING: 'LOADING',
   GET: 'GET'
 }
 Object.freeze(CHECKUP)

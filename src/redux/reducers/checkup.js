@@ -2,15 +2,15 @@ import { CHECKUP } from './../../constants/ActionTypes'
 
 const checkup = {
   data: {},
-  isLoading: false
+  isLoaded: false
 }
-export default function CheckupReducer (state = checkup, action) {
+export default function CheckupReducer(state = checkup, action) {
   switch (action.type) {
     case CHECKUP.GETALL:
       return {
         ...state,
         data: action.payload,
-        isLoading: true
+        isLoaded: true
       }
     default:
       return state

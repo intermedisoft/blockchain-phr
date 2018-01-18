@@ -1,16 +1,22 @@
-
 import React from 'react'
+import { ListItem } from 'material-ui/List'
+import Divider from 'material-ui/Divider'
 import moment from 'moment'
-import { Card, CardTitle } from 'material-ui/Card'
 
 require('moment/locale/th')
 const CardComponent = (props) => {
   const data = props.data
   const { dateTimeServe, healthCareProvider } = { ...data }
   return (
-    <Card>
-      <CardTitle title={moment(dateTimeServe).format('LL')} subtitle={healthCareProvider.healthCareProviderName} />
-    </Card>
+    <div>
+      <ListItem
+        primaryText={moment(dateTimeServe).format('LL')}
+        secondaryText={healthCareProvider.healthCareProviderName}
+        secondaryTextLines={2}
+      />
+      <Divider />
+    </div>
+
   )
 }
 

@@ -85,5 +85,11 @@
         border: 3px solid $main-card-bg-color;
       }
     }
+    &Head{
+      font-weight: bold;
+    }
+    &Content{
+      margin: 30px auto;
+    }
   }
 }

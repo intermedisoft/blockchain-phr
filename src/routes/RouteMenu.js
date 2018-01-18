@@ -3,10 +3,9 @@ import { Route, Redirect, Switch } from 'react-router-dom'
 
 import Detail from './../containers/detail'
 import Mainmenu from './../containers/main'
-import Notification from './../containers/notification'
 import RouteCheckup from './../containers/checkup/Route'
 import RouteProfile from './../containers/profile/Route'
-
+import RouteNotification from './../containers/notification/Route'
 // import checkUser from './../containers/chkUser'
 // import User from './../containers/user'
 // import RouteFriends from './../containers/friends/Route'
@@ -30,9 +29,9 @@ class RouteMenu extends Component {
     return (
       <Switch>
         <Route exact name='MAIN_NAME' path='/main' component={Mainmenu} />} />
-        <Route path='/notification' component={Notification} />
         <Route path='/checkup/:id?' component={RouteCheckup} />
         <Route path='/profile/:id?' component={RouteProfile} />
+        <Route path='/notification/:id?' component={RouteNotification} />
         <Route path='/detail' component={Detail} />
         {/* <Route exact path='/user' component={User} /> */}
 

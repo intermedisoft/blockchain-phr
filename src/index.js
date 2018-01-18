@@ -12,11 +12,11 @@ import configStore from './store'
 import ErrorModalControlled from './components/Modal'
 
 const AppbarStyles = () => getMuiTheme({
-  fontFamily: 'boon, Roboto',
+  fontFamily: 'Roboto, sukhumvit, Arial, Helvetica, sans-serif',
   palette: {
     primary1Color: '#1f64c8'
   }
-});
+})
 
 const { store, persistor } = configStore()
 

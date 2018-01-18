@@ -10,7 +10,7 @@ import { patientAction } from './../../redux/actions/patient'
 
 class CheckupPage extends Component {
   componentWillUnmount() {
-    console.log(this.props)
+    // console.log(this.props)
   }
 
   render() {
@@ -19,13 +19,18 @@ class CheckupPage extends Component {
     if (isEmpty(patients) && isEmpty(checkup) && !err) {
       this.props.getPatient(configs, patientId)
     }
+    console.log(checkup)
     if (isEmpty(checkup) && !err) {
       this.props.getAllCheckup(configs, patientId)
     }
     let renderHTML = (
       <div> Loading... </div>
     )
-    if (!isEmpty(checkup)) {
+    if (checkup.nodata) {
+      renderHTML = (
+        <div>ไม่มีข้อมูล</div>
+      )
+    } else if (!isEmpty(checkup)) {
       // const { patientIdParam, healthCareProvider, dateTimeServe } = { ...checkup }
       renderHTML = (
         <div>

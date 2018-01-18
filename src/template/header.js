@@ -24,15 +24,12 @@ const SET_MENU = {
 }
 class Header extends Component {
   render() {
-    console.log('-----------------------------------!!!!!!')
-    console.log(this.props)
     const pathname = this.props.pathname.replace(/\//g, '')
-    console.log(pathname)
     return (
       <header className='headMain'>
         <div className='contentHead'>
           <div className='itemLeft'>
-            <button onClick={() => window.history.back()} className="btnIcon iconBack" />
+            <button onClick={() => window.history.back()} className='btnIcon iconBack' />
           </div>
           <div className='itemCenter'>
             {/* {this.props.header} */}

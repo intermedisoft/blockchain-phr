@@ -11,6 +11,9 @@ const getAllCheckup = (configs, patientId) => async (dispatch) => {
   try {
     if (configs && patientId) {
       const response = await Service.Checkup.getAllCheckup(configs, patientId)
+      if (!response.data.length) {
+        response.data = { nodata: true }
+      }
       dispatch(receivegetAllCheckup(response.data))
     }
   } catch (error) {

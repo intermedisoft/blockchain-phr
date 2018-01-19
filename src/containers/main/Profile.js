@@ -32,32 +32,34 @@ class ProfileComponent extends Component {
           <span>Profile Loading...</span>
         </div>
         : <div className={styles.profile}>
-        <div className={`${styles.item} ${styles.image}`}>
-          <div className={styles.userImage}>
-            <img src={avatarUrl} alt='Logo' />
+          <div className={`${styles.item} ${styles.image}`}>
+            <div className={styles.userImage}>
+              <img src={avatarUrl} alt='Logo' />
+            </div>
+          </div>
+          <div className={`${styles.item} ${styles.profileName}`}>
+            <Link className={styles.item} to='/profile'>
+              <span className={styles.nameLabel}> {`${patients.prename}${patients.name} ${patients.surname}`}</span>
+              <span className={`iconBack ${styles.nameMore}`} />
+            </Link>
+          </div>
+          <div className={`profileColumns ${styles.profileInfo}`}>
+            <div className={styles.itemInfo}>
+              <div className={styles.valueInfo}>{moment(patients.dob).format('L')}</div>
+              <div className={styles.labelInfo}>Birthday</div>
+            </div>
+            <div className={styles.itemInfo}>
+              <div className={styles.valueInfo}>{patients.weight}</div>
+              <div className={styles.labelInfo}>Weight</div>
+            </div>
+            <div className={styles.itemInfo}>
+              <div className={styles.valueInfo}>{patients.height}</div>
+              <div className={styles.labelInfo}>Height</div>
+            </div>
+            <div className={`${styles.itemInfo} ${styles.blood} iconBlood`} ><span className={styles.bloodLabel}></span>{patients.bloodGroup}</div>
+            <div className={`${styles.itemInfo} ${styles.sex} ${patients.sex = 'M' ? 'iconMale': 'Female'}`}></div>
           </div>
         </div>
-        <div className={`${styles.item} ${styles.profileName}`}>
-          <span className={styles.nameLabel}> <Link className={styles.item} to='/profile'>{`${patients.prename}${patients.name} ${patients.surname}`} ></Link></span>
-          <span className={styles.nameMore}></span>
-        </div>
-        <div className={`${styles.item} ${styles.profileInfo}`}>
-          <div className={styles.itemInfo}>
-            <div className={styles.valueInfo}>{moment(patients.dob).format('L')}</div>
-            <div className={styles.labelInfo}>Birthday</div>
-          </div>
-          <div className={styles.itemInfo}>
-            <div className={styles.valueInfo}>{patients.weight}</div>
-            <div className={styles.labelInfo}>Weight</div>
-          </div>
-          <div className={styles.itemInfo}>
-            <div className={styles.valueInfo}>{patients.height}</div>
-            <div className={styles.labelInfo}>Height</div>
-          </div>
-          <div className={styles.itemInfo}>{patients.bloodGroup}</div>
-          <div className={styles.itemInfo}>{patients.sex}</div>
-        </div>
-      </div>
     )
   }
 }

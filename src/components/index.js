@@ -4,4 +4,5 @@ export { default as Select } from './Select'
 export { default as TextMask } from './TextMask'
 export { default as Datepicker } from './Datepicker'
 export { default as Radio } from './Radio'
-
+export { default as CircularProgress } from './CircularProgress'
+export { default as Snackbar } from './Snackbar'

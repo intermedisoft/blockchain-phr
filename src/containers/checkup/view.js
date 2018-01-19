@@ -33,12 +33,12 @@ class CheckupViewerPage extends Component {
           <table className="tableView">
             <tbody>
               <tr>
-                <td>ALK</td>
+                <td>alk</td>
                 <td>:</td>
                 <td>{data.alk}</td>
               </tr>
               <tr>
-                <td>ALM</td>
+                <td>alm</td>
                 <td>:</td>
                 <td>{data.alm}</td>
               </tr>
@@ -48,7 +48,7 @@ class CheckupViewerPage extends Component {
                 <td>{data.assetId}</td>
               </tr>
               <tr>
-                <td>BUN</td>
+                <td>bun</td>
                 <td>:</td>
                 <td>{data.bun}</td>
               </tr>
@@ -58,7 +58,7 @@ class CheckupViewerPage extends Component {
                 <td>{data.calcium_score_result}</td>
               </tr>
               <tr>
-                <td>CBC WBC</td>
+                <td>cbc wbc</td>
                 <td>:</td>
                 <td>{data.cbc_wbc}</td>
               </tr>
@@ -103,9 +103,9 @@ class CheckupViewerPage extends Component {
                 <td>{data.hdl}</td>
               </tr>
               <tr>
-                <td>healthCareProvider</td>
+                <td>Health Care Provider</td>
                 <td>:</td>
-                <td>{data.healthCareProvider.healthCareProviderName}</td>
+                <td>{data.healthCareProviderName}</td>
               </tr>
               <tr>
                 <td>ldl</td>

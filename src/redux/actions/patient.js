@@ -7,6 +7,19 @@ const receivegetPatient = (data) => ({
   payload: data
 })
 
+const receiveEditPatient = (data) => ({
+  type: types.PATIENT.GET,
+  payload: data
+})
+
+const receiveIsLoadingPatient = () => ({
+  type: types.PATIENT.ISLOADING
+})
+
+const receiveIsLoadedPatient = () => ({
+  type: types.PATIENT.ISLOADED
+})
+
 // const receivegetPatient1 = (data) => {
 //   // console.log(data)
 //   return ({
@@ -25,9 +38,21 @@ export const getPatient = (configs, patientId) => async (dispatch) => {
   }
 }
 
-// const getPatient = () => dispatch => {
-//   dispatch(receivegetPatient())
-// }
+export const editPatient = (configs, patientId, data) => async (dispatch) => {
+  try {
+    if (configs && patientId) {
+      dispatch(receiveIsLoadingPatient())
+      const response = await Service.Patient.editPatient(configs, patientId, data)
+      response.data.save = true
+      dispatch(receiveIsLoadedPatient())
+      dispatch(receiveEditPatient(response.data))
+    }
+  } catch (error) {
+    ActionErrHandle(dispatch, error)
+  }
+}
+
 export const patientAction = {
-  getPatient
+  getPatient,
+  editPatient
 }

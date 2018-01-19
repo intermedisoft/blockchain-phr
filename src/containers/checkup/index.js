@@ -19,7 +19,7 @@ class CheckupPage extends Component {
     if (isEmpty(patients) && isEmpty(checkup) && !err) {
       this.props.getPatient(configs, patientId)
     }
-    console.log(checkup)
+    // console.log(checkup)
     if (isEmpty(checkup) && !err) {
       this.props.getAllCheckup(configs, patientId)
     }

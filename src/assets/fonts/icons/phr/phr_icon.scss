@@ -25,6 +25,9 @@ $font-path:'assets/fonts/icons/phr/fonts';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.iconFemale:before {
+  content: "\e90e";
+}
 .iconFacebook:before {
   content: "\e90d";
 }
@@ -52,7 +55,7 @@ $font-path:'assets/fonts/icons/phr/fonts';
 .iconSee:before {
   content: "\e907";
 }
-.iconSex:before {
+.iconMale:before {
   content: "\e908";
 }
 .iconTab:before {

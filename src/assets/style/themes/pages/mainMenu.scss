@@ -6,10 +6,11 @@
 
 :local {
   .profile {
-    display: inline-grid;
     color: #ffffff;
-    grid-template-columns: 80px auto;
+    display: grid;
+    grid-template-columns: 80px calc(100% - 80px);
     margin-bottom: 10px;
+    max-width: 100%;
     .image {
       grid-row-start: 1;
       grid-row-end: 3;
@@ -29,16 +30,60 @@
       }
     }
     .profileName {
-      font-weight: bold;
-      font-size:1.35em;
+      cursor: pointer;
+      font-size: 1.35em;
+      font-weight: 500;
+      .nameLabel {
+        display: inline-block;
+        max-width: calc(100% - 30px);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: auto;
+      }
+      .nameMore {
+        display: inline-block;
+        width: 30px;
+        &::before {
+          display: inline-block;
+          font-size: 0.8em;
+          position: relative;
+          right: -10px;
+          top: -7px;
+          transform: rotate(180deg);
+        }
+      }
     }
     .profileInfo {
       font-size: 0.85em;
-      display: inline-grid;
+      max-width: 350px;
       text-align: center;
-      grid-template-columns: auto auto auto auto auto;
       >.itemInfo {
         padding-right: 5px;
+        &[class*='icon'] {
+          font-size: 1.5em;
+          padding-top: 5px;
+          position: relative;
+        }
+        &.blood {
+          &::before {
+            color: #da0623;
+          }
+          .bloodLabel{
+            color: #fff;
+            font-family: $main-font-name;
+            font-size: 0.7em;
+            left: 0;
+            position: absolute;
+            text-align: center;
+            top: 10px;
+            width: 20px;
+          }
+        }
+        &.sex {
+          // font-size: 2em;
+          // padding-top: 5px;
+        }
       }
       .valueInfo {
         color: $main-font-active-color;

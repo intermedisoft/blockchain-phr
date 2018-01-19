@@ -13,20 +13,21 @@
 		el.innerHTML = '<span style="font-family: \'PHR-Blox\'">' + entity + '</span>' + html;
 	}
 	var icons = {
-		'ico-facebook': '&#xe90d;',
-		'ico-back': '&#xe900;',
-		'ico-blood': '&#xe901;',
-		'ico-checkup': '&#xe902;',
-		'ico-edit': '&#xe903;',
-		'ico-logout': '&#xe904;',
-		'ico-notification': '&#xe905;',
-		'ico-password': '&#xe906;',
-		'ico-see': '&#xe907;',
-		'ico-sex': '&#xe908;',
-		'ico-tab': '&#xe909;',
-		'ico-username': '&#xe90a;',
-		'ico-visit': '&#xe90b;',
-		'ico-wellness': '&#xe90c;',
+		'iconFemale': '&#xe90e;',
+		'iconFacebook': '&#xe90d;',
+		'iconBack': '&#xe900;',
+		'iconBlood': '&#xe901;',
+		'iconCheckup': '&#xe902;',
+		'iconEdit': '&#xe903;',
+		'iconLogout': '&#xe904;',
+		'iconNotification': '&#xe905;',
+		'iconPassword': '&#xe906;',
+		'iconSee': '&#xe907;',
+		'iconMale': '&#xe908;',
+		'iconTab': '&#xe909;',
+		'iconUsername': '&#xe90a;',
+		'iconVisit': '&#xe90b;',
+		'iconWellness': '&#xe90c;',
 		'0': 0
 		},
 		els = document.getElementsByTagName('*'),
@@ -37,7 +38,7 @@
 			break;
 		}
 		c = el.className;
-		c = c.match(/ico-[^\s'"]+/);
+		c = c.match(/icon[^\s'"]+/);
 		if (c && icons[c[0]]) {
 			addIcon(el, icons[c[0]]);
 		}

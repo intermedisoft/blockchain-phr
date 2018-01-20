@@ -46,7 +46,7 @@ export const ActionErrHandle = function (dispatch, error) {
   if (!error.response) {
     dispatch({
       type: types.ERROR_MESSAGE.NETWORKERROR,
-      message: 'Network Error, Please contact Admin'
+      message: 'Server Error, Please contact Admin'
     })
     return false
   }
@@ -59,7 +59,7 @@ export const ActionErrHandle = function (dispatch, error) {
     message = HTTP_STATUS_CODES[rscode]
   }
   dispatch({
-    type: types.ERROR_MESSAGE[rscode],
+    type: types.ERROR_MESSAGE.ERR,
     message: message
   })
 }

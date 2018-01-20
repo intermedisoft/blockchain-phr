@@ -9,16 +9,16 @@ export default {
         const profile = await setting(configs).get(`/api/Patient/${patientId}`)
         return profile
       } catch (error) {
-        return Promise.reject(new Error(error.response.status))
+        return Promise.reject(new Error(error))
       }
     }
   },
-  putPatient: async (configs, patientId, data) => {
+  editPatient: async (configs, patientId, data) => {
     if (patientId) {
       try {
-        await setting(configs).put(`/api/Patient/${patientId}`, data)
+        return await setting(configs).put(`/api/Patient/${patientId}`, data)
       } catch (error) {
-        return Promise.reject(new Error(error.response.status))
+        return Promise.reject(new Error(error))
       }
     }
   }

@@ -12,7 +12,10 @@ export const AUTHEN = {
 Object.freeze(AUTHEN)
 
 export const PATIENT = {
-  GET: 'GET'
+  GET: 'GET',
+  EDIT: 'EDIT',
+  ISLOADING: 'ISLOADING',
+  ISLOADED: 'ISLOADED'
 }
 Object.freeze(PATIENT)
 
@@ -24,6 +27,7 @@ export const CHECKUP = {
 Object.freeze(CHECKUP)
 
 export const ERROR_MESSAGE = {
+  ERR: 'ERR',
   CODE500: 500,
   CODE404: 404,
   CODE401: 401,

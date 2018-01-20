@@ -4,7 +4,7 @@ import logo from './../assets/images/logo.svg'
 
 const SET_MENU = {
   'main': {
-    text: 'Main'
+    text: ''
   },
   'notification': {
     text: 'Notification'

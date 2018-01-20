@@ -36,6 +36,13 @@ export default function FetchErrorReducer(state = modal, action) {
         code: '',
         message: ''
       }
+    case types.ERROR_MESSAGE.ERR:
+      return {
+        modalOpen: true,
+        header: '',
+        code: action.type,
+        message: action.message
+      }
     default:
       return state
   }

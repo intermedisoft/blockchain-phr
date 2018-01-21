@@ -1,0 +1,36 @@
+@import '../configs/variables/index';
+@import '../frameworks/mixins';
+:global {
+  .mainCard {
+    background-color: $main-card-bg-color;
+    border-radius: $main-radius;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .card {
+    @extend .mainCard;
+    &.--center {
+      margin: auto;
+      text-align: center;
+    }
+    &.--avatarInfo {
+      margin-top: 35px;
+      .avatarBlock {
+        margin-top: -55px;
+        border: 3px solid $main-card-bg-color;
+      }
+    }
+    &Head {
+      font-weight: $main-font-bold-size;
+    }
+    &Content {
+      margin: 30px auto;
+    }
+    &List {
+      padding: none;
+    }
+    &Group {
+      margin-bottom: 20px;
+    }
+  }
+}

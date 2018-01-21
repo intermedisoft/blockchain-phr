@@ -34,20 +34,20 @@ class MainmenuPage extends Component {
     }
     return (
       <section>
-        <header className='headMain'>
-          <div className='contentHead'>
-            <div className='itemLeft'>
+        <header className={`headMain`}>
+          <div className={`contentHead`}>
+            <div className={`itemLeft`}>
               <button>xx</button>
             </div>
-            <div className='itemCenter'>
+            <div className={`itemCenter`}>
               texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
             </div>
-            <div className='itemRight logo'>
+            <div className={`itemRight logo`}>
               <img src={logo} alt='Logo' />
             </div>
           </div>
         </header>
-        <div className="containerMain">
+        <div className={`containerMain`}>
           <div className={styles.profile}>
             <div className={`${styles.item} ${styles.image}`}>
               <div className={styles.userImage}>
@@ -77,32 +77,32 @@ class MainmenuPage extends Component {
           </div>
           <div className={`menuIconList ${styles.mainMenu}`}>
             <ul>
-              <li className='--active'>
-                <div className='ico-wellness'></div>
-                <div className='text'>Wellness</div>
-                <div className='noti'></div>
+              <li className={`--active`}>
+                <div className={`ico-wellness`}></div>
+                <div className={`text`}>Wellness</div>
+                <div className={`noti`}></div>
               </li>
               <li>
-                <div className='ico-visit'></div>
-                <div className='text'>Visit</div>
-                <div className='noti'></div>
+                <div className={`ico-visit`}></div>
+                <div className={`text`}>Visit</div>
+                <div className={`noti`}></div>
               </li>
               <li>
-                <div className='ico-checkup'></div>
-                <div className='text'>Checkup</div>
-                <div className='noti'></div>
+                <div className={`ico-checkup`}></div>
+                <div className={`text`}>Checkup</div>
+                <div className={`noti`}></div>
               </li>
               <li>
-                <div className='ico-notification'></div>
-                <div className='text'>Notification</div>
-                <div className='noti'>
-                  <span className='notiBlock'>2</span>
+                <div className={`ico-notification`}></div>
+                <div className={`text`}>Notification</div>
+                <div className={`noti`}>
+                  <span className={`notiBlock`}>2</span>
                 </div>
               </li>
               <li className={styles.logoutMenu} onClick={logout}>
-                <div className='ico-logout'></div>
-                <div className='text'>Log out</div>
-                <div className='noti'></div>
+                <div className={`ico-logout`}></div>
+                <div className={`text`}>Log out</div>
+                <div className={`noti`}></div>
               </li>
             </ul>
           </div>

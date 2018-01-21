@@ -27,8 +27,8 @@ class ProfileEdit extends Component {
 
     return (
       <div className={`containerMain ${styles.profilePage}`}>
-        <div className='card avatarInfo'>
-          <div className="avatarBlock bigSize center">
+        <div className={`card --avatarInfo`}>
+          <div className={`avatarBlock --bigSize --center`}>
             <Avatar
               backgroundColor={'#ffffff'}
               src={avatarUrl}

@@ -4,6 +4,9 @@
   * {
     @include scrollbar();
   }
+  b{
+    font-weight: $main-font-bold-size;
+  }
   html,
   body {
     background-color: $main-theme-color;
@@ -66,30 +69,5 @@
     padding: 10px;
     padding-top: 60px;
     width: 100%;
-  }
-  .card {
-    background-color: $main-card-bg-color;
-    border-radius: $main-radius;
-    padding: 10px;
-    &.--list {
-      padding: none;
-    }
-    &.--center {
-      margin: auto;
-      text-align: center;
-    }
-    &.avatarInfo {
-      margin-top: 35px;
-      .avatarBlock {
-        margin-top: -55px;
-        border: 3px solid $main-card-bg-color;
-      }
-    }
-    &Head{
-      font-weight: bold;
-    }
-    &Content{
-      margin: 30px auto;
-    }
   }
 }

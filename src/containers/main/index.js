@@ -26,42 +26,42 @@ class MainmenuPage extends Component {
     }
     return (
       <section>
-        <div className='containerMain'>
+        <div className={`containerMain`}>
           <ProfileComponent />
-          <div className='menuIconList'>
+          <div className={`menuIconList`}>
             <ul>
-              {/* <li className='--active'>
-                <div className='ico-wellness'></div>
-                <div className='text'>Wellness</div>
-                <div className='noti'></div>
+              {/* <li className={`--active`}>
+                <div className={`ico-wellness`}></div>
+                <div className={`text`}>Wellness</div>
+                <div className={`noti`}></div>
               </li> */}
               <li onClick={() => history.push('/checkup')}>
-                <div className='iconCheckup'></div>
-                <div className='text'>Checkup</div>
-                <div className='noti'></div>
+                <div className={`iconCheckup`}></div>
+                <div className={`text`}>Checkup</div>
+                <div className={`noti`}></div>
               </li>
               {/* <li>
-                <div className='ico-visit'></div>
-                <div className='text'>X-ray</div>
-                <div className='noti'></div>
+                <div className={`ico-visit`}></div>
+                <div className={`text`}>X-ray</div>
+                <div className={`noti`}></div>
               </li> */}
               {/* <li>
-                <div className='ico-visit'></div>
-                <div className='text'>Visit</div>
-                <div className='noti'></div>
+                <div className={`ico-visit`}></div>
+                <div className={`text`}>Visit</div>
+                <div className={`noti`}></div>
               </li> */}
               
               <li onClick={() => history.push('/notification')}>
-                <div className='iconNotification'></div>
-                <div className='text'>Notification</div>
-                <div className='noti'>
-                  <span className='notiBlock'>2</span>
+                <div className={`iconNotification`}></div>
+                <div className={`text`}>Notification</div>
+                <div className={`noti`}>
+                  <span className={`notiBlock`}>2</span>
                 </div>
               </li>
               <li className={styles.logoutMenu} onClick={logout}>
-                <div className='iconLogout'></div>
-                <div className='text'>Log out</div>
-                <div className='noti'></div>
+                <div className={`iconLogout`}></div>
+                <div className={`text`}>Log out</div>
+                <div className={`noti`}></div>
               </li>
             </ul>
           </div>

@@ -10,10 +10,10 @@
       margin: auto;
       width: 100%!important;
     }
-    &.center {
+    &.--center {
       margin: auto;
     }
-    &.bigSize {
+    &.--bigSize {
       width: $main-avatar-big-size;
       height: $main-avatar-big-size;
     }

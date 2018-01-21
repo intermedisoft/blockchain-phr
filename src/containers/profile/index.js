@@ -45,7 +45,7 @@ class ProfilePage extends Component {
                 <div className={styles.labelInfo}>Height</div>
               </div>
             </div>
-            <table className="tableView">
+            <table className={`tableView`}>
               <tbody>
                 <tr>
                   <td>BLOOD</td>
@@ -88,8 +88,8 @@ class ProfilePage extends Component {
     }
     return (
       <div className={`containerMain ${styles.profilePage}`}>
-        <div className='card avatarInfo'>
-          <div className='avatarBlock bigSize center'>
+        <div className={`card --avatarInfo`}>
+          <div className={`avatarBlock --bigSize --center`}>
             <Avatar
               backgroundColor={'#ffffff'}
               src={avatarUrl}

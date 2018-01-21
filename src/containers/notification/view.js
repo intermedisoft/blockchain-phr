@@ -30,11 +30,11 @@ class NotificationViewerPage extends Component {
     // const data = this.state.data
     // console.log(data)
     return (
-      <div className='containerMain'>
-        <div className='card'>
-          <div className='cardHead'>Request permission</div>
-          <div className='cardContent'> Health Care Provider : <b>Pensook Clinic</b></div>
-          <div className="btnAction">
+      <div className={`containerMain`}>
+        <div className={`card`}>
+          <div className={`cardHead`}>Request permission</div>
+          <div className={`cardContent`}> Health Care Provider : <b>Pensook Clinic</b></div>
+          <div className={`btnAction`}>
             <button onClick={() => window.history.back()} className={`btnPrimary`}>Don't Allow</button>
             <button onClick={() => window.history.back()} className={`btnPrimary`}>Allow</button>
           </div>

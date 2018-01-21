@@ -1,0 +1,53 @@
+@import '../configs/variables/index';
+@import '../frameworks/mixins';
+
+:global {
+  .mainList {
+    padding-left: 20px;
+  }
+  ul {
+    &.normal {
+      list-style: disc;
+      padding-left: 20px;
+      @extend .mainList;
+      &Disc {
+        list-style: disc;
+        @extend .mainList;
+      }
+      &Circle {
+        list-style: circle;
+        @extend .mainList;
+      }
+      &Square {
+        list-style: square;
+        @extend .mainList;
+      }
+    }
+  }
+  ol {
+    &.normal {
+      list-style: decimal;
+      @extend .mainList;
+      &Decimal {
+        list-style: decimal;
+        @extend .mainList;
+      }
+      &LowerRoman {
+        list-style: lower-roman;
+        @extend .mainList;
+      }
+      &UpperRoman {
+        list-style: upper-roman;
+        @extend .mainList;
+      }
+      &LowerAlpha {
+        list-style: lower-alpha;
+        @extend .mainList;
+      }
+      &UpperAlpha {
+        list-style: upper-alpha;
+        @extend .mainList;
+      }
+    }
+  }
+}

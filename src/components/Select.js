@@ -8,7 +8,8 @@ const renderSelectField = ({ input, label, className, meta: { touched, error }, 
     {...input}
     onChange={(event, index, value) => input.onChange(value)}
     children={children}
-    className={className}
+    className={`dropdownMenu ${className}`}
+    menuItemStyle={{padding: '8px 0px'}}
     {...custom} />
 )
 

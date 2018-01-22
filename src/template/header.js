@@ -29,7 +29,7 @@ class Header extends Component {
       <header className='headMain'>
         <div className='contentHead'>
           <div className='itemLeft'>
-            <button onClick={() => window.history.back()} className='btnIcon iconBack' />
+            {(pathname !== 'main' && <button onClick={() => window.history.back()} className='btnIcon iconBack' />)}
           </div>
           <div className='itemCenter'>
             {/* {this.props.header} */}

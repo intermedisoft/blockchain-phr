@@ -7,15 +7,11 @@ import { List } from 'material-ui/List'
 
 import { checkupAction } from './../../redux/actions/checkup'
 import { patientAction } from './../../redux/actions/patient'
-
+import { LoadingProgress } from './../../components/'
 class CheckupPage extends Component {
-  componentWillMount() {
-    console.log(this.props)
-  }
-  
   render() {
     const { patientId, patients, configs, err, checkup } = { ...this.props }
-
+    // console.log(this.props)
     if (isEmpty(patients) && isEmpty(checkup) && !err) {
       this.props.getPatient(configs, patientId)
     }
@@ -23,7 +19,7 @@ class CheckupPage extends Component {
       this.props.getAllCheckup(configs, patientId)
     }
     let renderHTML = (
-      <div> Loading... </div>
+      <LoadingProgress />
     )
     if (checkup.nodata) {
       renderHTML = (

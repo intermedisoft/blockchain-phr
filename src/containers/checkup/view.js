@@ -28,9 +28,9 @@ class CheckupViewerPage extends Component {
     const data = this.state.data
     // console.log(data)
     return (
-      <div className='containerMain'>
-        <div className='card'>
-          <table className="tableView">
+      <div className={`containerMain`}>
+        <div className={`card`}>
+          <table className={`tableView`}>
             <tbody>
               <tr>
                 <td>alk</td>
@@ -185,13 +185,15 @@ class CheckupViewerPage extends Component {
             </tbody>
           </table>
           <Divider />
-          <div>
-            <h2>Conclusion</h2>
-            <ul>
+          <div className={`cardGroup`}>
+            <div className={`cardHead`}>Conclusion</div>
+            <ul className={`normal`}>
               <li>เสี่ยงต่อการเป็นโรคเบาหวาน , ไขมันในเลือดสูง , น้ำหนักเกิน </li>
             </ul>
-            <h2>Recommendation</h2>
-            <ul>
+          </div>
+          <div className={`cardGroup`}>
+            <div className={`cardHead`}>Recommendation</div>
+            <ul className={`normal`}>
               <li>ออกกำลังกายอย่างต่อเนื่อง อย่างน้อยวันละ 30 นาที เป็นเวลา 3-5 วันต่อสัปดาห์</li>
               <li>หลีกเลี่ยงอาหารที่มีน้ำตาลสูง เช่น น้ำอัดลม ขนมหวาน และผลไม้หวานจัด</li>
               <li>พยายามควบคุมน้ำหนักให้อยู่ใยเกณฑ์มาตรฐาน</li>

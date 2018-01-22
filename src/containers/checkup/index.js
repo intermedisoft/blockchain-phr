@@ -52,8 +52,8 @@ class CheckupPage extends Component {
       )
     }
     return (
-      <div className='containerMain'>
-        <div className='card'>
+      <div className={`containerMain`}>
+        <div className={`card`}>
           {renderHTML}
         </div>
       </div>

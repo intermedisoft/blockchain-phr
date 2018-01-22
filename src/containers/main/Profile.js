@@ -56,8 +56,8 @@ class ProfileComponent extends Component {
               <div className={styles.valueInfo}>{patients.height}</div>
               <div className={styles.labelInfo}>Height</div>
             </div>
-            <div className={`${styles.itemInfo} ${styles.blood} iconBlood`} ><span className={styles.bloodLabel}></span>{patients.bloodGroup}</div>
-            <div className={`${styles.itemInfo} ${styles.sex} ${patients.sex = 'M' ? 'iconMale': 'Female'}`}></div>
+            <div className={`${styles.itemInfo} ${styles.blood} iconBlood`} ><span className={styles.bloodLabel} />{patients.bloodGroup}</div>
+            <div className={`${styles.itemInfo} ${styles.sex} ${patients.sex === 'M' ? 'iconMale' : 'Female'}`} />
           </div>
         </div>
     )

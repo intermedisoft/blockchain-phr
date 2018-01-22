@@ -5,24 +5,24 @@ export const CONFIGS = {
 Object.freeze(CONFIGS)
 
 export const AUTHEN = {
-  GET: 'GET',
-  SAVE_DATA: 'SAVE_DATA',
-  LOGOUT: 'LOGOUT'
+  GET: 'AUTHEN_GET',
+  SAVE_DATA: 'AUTHEN_SAVE_DATA',
+  LOGOUT: 'AUTHEN_LOGOUT'
 }
 Object.freeze(AUTHEN)
 
 export const PATIENT = {
-  GET: 'GET',
-  EDIT: 'EDIT',
-  ISLOADING: 'ISLOADING',
-  ISLOADED: 'ISLOADED'
+  GET: 'PATIENT_GET',
+  EDIT: 'PATIENT_EDIT',
+  ISLOADING: 'PATIENT_ISLOADING',
+  ISLOADED: 'PATIENT_ISLOADED'
 }
 Object.freeze(PATIENT)
 
 export const CHECKUP = {
-  GETALL: 'GETALL',
-  LOADING: 'LOADING',
-  GET: 'GET'
+  GETALL: 'CHECKUP_GETALL',
+  LOADING: 'CHECKUP_LOADING',
+  GET: 'CHECKUP_GET'
 }
 Object.freeze(CHECKUP)
 
@@ -37,6 +37,6 @@ export const ERROR_MESSAGE = {
 Object.freeze(ERROR_MESSAGE)
 
 export const HEADER = {
-  SET: 'SET'
+  SET: 'HEADER_SET'
 }
 Object.freeze(HEADER)

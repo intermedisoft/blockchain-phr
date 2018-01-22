@@ -12,9 +12,17 @@ const getAllCheckup = (configs, patientId) => async (dispatch) => {
     if (configs && patientId) {
       const response = await Service.Checkup.getAllCheckup(configs, patientId)
       if (!response.data.length) {
-        response.data = { nodata: true }
+        dispatch(receivegetAllCheckup({ nodata: true }))
+      } else {
+        let newAllCheckup = response.data
+        newAllCheckup.forEach((key) => {
+          let healthCareProviderID = key.healthCareProvider.split('#').pop()
+          Service.HealthProvider.getHealthProvider(configs, healthCareProviderID).then((r) => {
+            key.healthCareProviderName = r.data.healthCareProviderName
+            dispatch(receivegetAllCheckup(newAllCheckup))
+          })
+        })
       }
-      dispatch(receivegetAllCheckup(response.data))
     }
   } catch (error) {
     ActionErrHandle(dispatch, error)

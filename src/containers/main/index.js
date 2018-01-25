@@ -6,6 +6,7 @@ import { withFirebase } from 'react-redux-firebase'
 
 import { authenAction } from './../../redux/actions/auth'
 import ProfileComponent from './Profile'
+import NotificationUnread from './components/NotificationUnread'
 import '../../assets/style/components/menuIconList.scss'
 import styles from '../../assets/style/themes/pages/mainMenu.scss'
 
@@ -14,7 +15,7 @@ class MainmenuPage extends Component {
     this.props.authenActionLogout()
   }
   // componentDidMount() {
-   
+
   // }
 
   render() {
@@ -30,32 +31,16 @@ class MainmenuPage extends Component {
           <ProfileComponent />
           <div className={`menuIconList`}>
             <ul>
-              {/* <li className={`--active`}>
-                <div className={`ico-wellness`}></div>
-                <div className={`text`}>Wellness</div>
-                <div className={`noti`}></div>
-              </li> */}
               <li onClick={() => history.push('/checkup')}>
                 <div className={`iconCheckup`}></div>
                 <div className={`text`}>Checkup</div>
                 <div className={`noti`}></div>
               </li>
-              {/* <li>
-                <div className={`ico-visit`}></div>
-                <div className={`text`}>X-ray</div>
-                <div className={`noti`}></div>
-              </li> */}
-              {/* <li>
-                <div className={`ico-visit`}></div>
-                <div className={`text`}>Visit</div>
-                <div className={`noti`}></div>
-              </li> */}
-
               <li onClick={() => history.push('/notification')}>
                 <div className={`iconNotification`}></div>
                 <div className={`text`}>Notification</div>
                 <div className={`noti`}>
-                  <span className={`notiBlock`}>2</span>
+                  <NotificationUnread />
                 </div>
               </li>
               <li className={styles.logoutMenu} onClick={logout}>

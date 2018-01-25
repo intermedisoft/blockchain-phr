@@ -2,6 +2,8 @@ import * as types from './../../constants/ActionTypes'
 import { Service } from './../../service'
 import { ActionErrHandle } from './../error.action'
 
+import { _function } from './../../function'
+
 const receivegetAllCheckup = (data) => ({
   type: types.CHECKUP.GETALL,
   payload: data
@@ -14,13 +16,13 @@ const getAllCheckup = (configs, patientId) => async (dispatch) => {
       if (!response.data.length) {
         dispatch(receivegetAllCheckup({ nodata: true }))
       } else {
-        let newAllCheckup = response.data
-        newAllCheckup.forEach((key) => {
-          let healthCareProviderID = key.healthCareProvider.split('#').pop()
-          Service.HealthProvider.getHealthProvider(configs, healthCareProviderID).then((r) => {
-            key.healthCareProviderName = r.data.healthCareProviderName
-            dispatch(receivegetAllCheckup(newAllCheckup))
-          })
+        let data = response.data
+        data.forEach((key, i) => {
+          // let healthCareProviderID = _function.popHash(key.healthCareProvider)
+          // Service.HealthProvider.getHealthProvider(configs, healthCareProviderID).then((r) => {
+          key.healthCareProviderId = _function.popHash(key.healthCareProvider)
+          i + 1 === data.length && dispatch(receivegetAllCheckup(data))
+          // })
         })
       }
     }

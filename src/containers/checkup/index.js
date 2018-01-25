@@ -10,7 +10,7 @@ import { patientAction } from './../../redux/actions/patient'
 import { LoadingProgress } from './../../components/'
 class CheckupPage extends Component {
   render() {
-    const { patientId, patients, configs, err, checkup } = { ...this.props }
+    const { patientId, patients, configs, err, checkup, healthCareProvider } = { ...this.props }
     // console.log(this.props)
     if (isEmpty(patients) && isEmpty(checkup) && !err) {
       this.props.getPatient(configs, patientId)
@@ -26,13 +26,15 @@ class CheckupPage extends Component {
         <div>ไม่มีข้อมูล</div>
       )
     } else if (!isEmpty(checkup)) {
-      // const { patientIdParam, healthCareProvider, dateTimeServe } = { ...checkup }
       renderHTML = (
         <div>
           <div>รายการประวัติ: <span>{patients.prename}{patients.name} {patients.surname}</span></div>
           <List>
             {
               checkup.map((v, i) => {
+                v.healthCareProviderData = healthCareProvider.filter((Provider) => {
+                  return Provider.healthCareProviderId === v.healthCareProviderId
+                })
                 return (
                   <div key={v.checkupHistoryId}>
                     <Link to={{
@@ -74,7 +76,8 @@ const mapStateToProps = state => (
     patients: state.patient.data,
     configs: state.firebase.data.configs,
     err: state.fetchError.modalOpen,
-    checkup: state.checkup.data
+    checkup: state.checkup.data,
+    healthCareProvider: state.healthCareProvider.data
   }
 )
 

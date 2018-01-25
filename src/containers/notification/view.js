@@ -1,45 +1,56 @@
 import React, { Component } from 'react'
-import Divider from 'material-ui/Divider'
+// import Divider from 'material-ui/Divider'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { HeaderAction } from './../../redux/actions/header'
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 require('moment/locale/th')
 
 class NotificationViewerPage extends Component {
-  state = {
-    data: ''
+  // state = {
+  //   data: ''
+  // }
+
+  cleanPermissionData = (data) => {
+    delete data.patientId
+    delete data.healthCareProviderId
+    delete data.healthCareProviderData
+    return data
+  }
+
+  handleAllowPermission = (provider) => {
+    provider = this.cleanPermissionData(provider)
+    provider.permissionType = 'GRANT'
+    console.log(provider)
+  }
+
+  handleDontAllowPermission = (provider) => {
+    provider = this.cleanPermissionData(provider)
+    provider.permissionType = 'DENY'
+    console.log(provider)
   }
 
   componentWillMount() {
-    console.log('ssss')
-    // if (this.props.location.state === undefined) {
-    //   this.props.history.push('/checkup')
-    //   return false
-    // }
-    // this.setState({
-    //   data: this.props.location.state.data
-    // })
-    // let visitDate = moment(this.props.location.state.data.dateTimeServe).format('LL')
     this.props.setHeader('Request permission')
   }
 
   render() {
-    // const id = this.props.match.params.id
-    // const data = this.state.data
-    // console.log(data)
+    const provider = this.props.location.state.data
+    // console.log(provider)
     return (
-      <div className={`containerMain`}>
-        <div className={`card`}>
-          <div className={`cardHead`}>Request permission</div>
-          <div className={`cardContent`}> Health Care Provider : <b>Pensook Clinic</b></div>
-          <div className={`btnAction`}>
-            <button onClick={() => window.history.back()} className={`btnPrimary`}>Don't Allow</button>
-            <button onClick={() => window.history.back()} className={`btnPrimary`}>Allow</button>
+      provider
+        ? <div className={`containerMain`}>
+          <div className={`card`}>
+            <div className={`cardHead`}>Request permission</div>
+            <div className={`cardContent`}> Health Care Provider : <b>{provider.healthCareProviderData[0].healthCareProviderName}</b></div>
+            <div className={`cardContent`}> Action Date Time : <b>{moment(provider.actionDateTime).format('LLL')}</b></div>
+            <div className={`btnAction`}>
+              <button onClick={() => this.handleDontAllowPermission(provider)} className={`btnPrimary`}>Don't Allow</button>
+              <button onClick={() => this.handleAllowPermission(provider)} className={`btnPrimary`}>Allow</button>
+            </div>
           </div>
-        </div>
-      </div>
+        </div> : null
     )
   }
 }

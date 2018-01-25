@@ -1,0 +1,16 @@
+@import '../../configs/variables/index';
+@import '../../frameworks/mixins/index';
+:global {
+  .mainProgress {
+    padding: 10px;
+    text-align: center;
+    &.--inline {
+      display: inline-block;
+    }
+  }
+  .progressBlock {
+    &Circular {
+      @extend .mainProgress;
+    }
+  }
+}

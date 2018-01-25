@@ -1,5 +1,5 @@
 @import '../../configs/variables';
-@import '../../frameworks/mixins';
+@import '../../frameworks/mixins/index';
 :global {
   .btn {
     &[class*='MuiButtonBase'] {

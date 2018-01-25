@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import { compose } from 'redux'
-import { withFirebase, isEmpty } from 'react-redux-firebase'
+// import { compose } from 'redux'
+import { isEmpty } from 'react-redux-firebase'
 import { connect } from 'react-redux'
 import 'react-notifications/lib/notifications.css'
 import { NotificationContainer, NotificationManager } from 'react-notifications'
 
 import { permissionAction } from './../../redux/actions/permission'
+import { healthCareProviderAction } from './../../redux/actions/healthCareProvider'
 // import { notificationAction } from './../../redux/actions/notification'
 
 class NotificationActionPage extends Component {
@@ -64,12 +65,10 @@ class NotificationActionPage extends Component {
   }
   render() {
     const { patientId, configs, err, permission } = { ...this.props }
-    console.log(patientId, configs, err, permission)
     if (patientId && !err && isEmpty(permission.data)) {
-      console.log('-------------------------')
       this.props.getNotification(configs, patientId)
+      this.props.getHealthCareProvider(configs)
     }
-
     return (
       <div>
         <NotificationContainer />
@@ -99,6 +98,9 @@ const mapDispatchToProps = (dispatch, state) => {
   return {
     getNotification: (configs, patientId) => {
       dispatch(permissionAction.getPermission(configs, patientId))
+    },
+    getHealthCareProvider: (configs) => {
+      dispatch(healthCareProviderAction.getHealthCareProvider(configs))
     }
   }
 }

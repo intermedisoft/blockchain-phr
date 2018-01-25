@@ -7,7 +7,7 @@ import { List } from 'material-ui/List'
 
 import { checkupAction } from './../../redux/actions/checkup'
 import { patientAction } from './../../redux/actions/patient'
-import { LoadingProgress } from './../../components/'
+import { CircularProgress } from './../../components/'
 class CheckupPage extends Component {
   render() {
     const { patientId, patients, configs, err, checkup } = { ...this.props }
@@ -19,7 +19,7 @@ class CheckupPage extends Component {
       this.props.getAllCheckup(configs, patientId)
     }
     let renderHTML = (
-      <LoadingProgress />
+      <CircularProgress className={`--loadCard`}/>
     )
     if (checkup.nodata) {
       renderHTML = (

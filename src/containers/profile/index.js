@@ -6,6 +6,7 @@ import { isEmpty } from 'react-redux-firebase'
 import { patientAction } from './../../redux/actions/patient'
 import { Link } from 'react-router-dom'
 
+import {CircularProgress } from './../../components'
 import styles from '../../assets/style/themes/pages/profile.scss'
 
 class ProfilePage extends Component {
@@ -21,7 +22,7 @@ class ProfilePage extends Component {
     }
 
     let renderHTML = (
-      <div> Loading... </div>
+      <CircularProgress className={`--loadCard`}/>
     )
 
     if (!isEmpty(patients)) {

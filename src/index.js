@@ -11,18 +11,20 @@ import RouteRoot from './routes/RouteRoot'
 import configStore from './store'
 import ErrorModalControlled from './components/Modal'
 
+import NotificationActionPage from './containers/notification/nofi'
+
 const AppbarStyles = () => getMuiTheme({
   fontFamily: 'Kanit, sans-serif',
   palette: {
     primary1Color: '#1f64c8',
-    textColor:'#444444'
+    textColor: '#444444'
   }
 })
 
 const { store, persistor } = configStore()
 
 const onBeforeLift = () => {
-  // return <ErrorModalControlled status={500} />
+  // notificationAction.getSocket()
 }
 
 const loading = (
@@ -36,6 +38,7 @@ ReactDOM.render(
       onBeforeLift={onBeforeLift}
       persistor={persistor}>
       <ErrorModalControlled />
+      <NotificationActionPage />
       <MuiThemeProvider muiTheme={AppbarStyles()}>
         <RouteRoot />
       </MuiThemeProvider>

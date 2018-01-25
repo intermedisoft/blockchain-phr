@@ -9,6 +9,8 @@ import patient from './patient'
 import fetchError from './fetchError'
 import checkup from './checkup'
 import header from './header'
+import notification from './notification'
+import permission from './permission'
 
 const barPersistConfig = {
   key: 'userLogin',
@@ -25,6 +27,8 @@ const rootReducer = combineReducers({
   checkup,
   header,
   fetchError,
+  notification,
+  permission,
   auth: persistReducer(barPersistConfig, auth)
 })
 

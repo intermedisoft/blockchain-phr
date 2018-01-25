@@ -10,7 +10,6 @@ import { prefixMock, bloodMock, sexMock, marriageMock } from './../../config/moc
 
 let ProfileEditForm = props => {
   const { handleSubmit } = props
-  console.log(props.isLoaded)
   return (
     <form noValidate autoComplete='off' onSubmit={handleSubmit}>
       <div className={`${styles.profileEditForm}`}>

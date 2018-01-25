@@ -40,3 +40,13 @@ export const HEADER = {
   SET: 'HEADER_SET'
 }
 Object.freeze(HEADER)
+
+export const NOTIFICATION = {
+  GETSOCKET: 'GETSOCKET'
+}
+Object.freeze(NOTIFICATION)
+
+export const PERMISSION = {
+  GET: 'GETPERMISSION'
+}
+Object.freeze(PERMISSION)

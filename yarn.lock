@@ -1454,7 +1454,7 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-classnames@^2.2.5:
+classnames@^2.1.1, classnames@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
@@ -5760,6 +5760,14 @@ react-minimalist-portal@^2.1.1:
 react-mobile-datepicker@^3.0.8:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/react-mobile-datepicker/-/react-mobile-datepicker-3.0.8.tgz#4627f4abc24639a2e3ff5d089ae496381697dc00"
+
+react-notifications@^1.4.3:
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/react-notifications/-/react-notifications-1.4.3.tgz#7060d339896f125a5b183ebcd04526980a433222"
+  dependencies:
+    classnames "^2.1.1"
+    prop-types "^15.5.10"
+    react-transition-group "^1.2.0"
 
 react-number-format@^3.1.3:
   version "3.1.3"

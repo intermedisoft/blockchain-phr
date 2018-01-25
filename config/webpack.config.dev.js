@@ -291,9 +291,9 @@ module.exports = {
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     
-    new WebpackAssetsManifest({
-      // Options go here 
-    });
+    // new WebpackAssetsManifest({
+    //   // Options go here 
+    // });
 
   ],
   // Some libraries import Node modules but don't use them in the browser.

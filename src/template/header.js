@@ -23,6 +23,10 @@ const SET_MENU = {
   }
 }
 class Header extends Component {
+
+  // componentDidMount() {
+    
+  // }
   render() {
     const pathname = this.props.pathname.replace(/\//g, '')
     return (

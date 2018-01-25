@@ -13,9 +13,9 @@ class MainmenuPage extends Component {
   RedirectToLogin = () => {
     this.props.authenActionLogout()
   }
-  componentWillMount() {
-    
-  }
+  // componentDidMount() {
+   
+  // }
 
   render() {
     const { firebase, history } = { ...this.props }
@@ -50,7 +50,7 @@ class MainmenuPage extends Component {
                 <div className={`text`}>Visit</div>
                 <div className={`noti`}></div>
               </li> */}
-              
+
               <li onClick={() => history.push('/notification')}>
                 <div className={`iconNotification`}></div>
                 <div className={`text`}>Notification</div>

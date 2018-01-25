@@ -20,7 +20,6 @@ class ProfileComponent extends Component {
   //   const { patientId, avatarUrl, patients, configs } = { ...this.props }
   //   console.log(patientId, avatarUrl, patients, configs)
   // }
-  // eiei
   render() {
     const { patientId, avatarUrl, patients, configs } = { ...this.props }
     if (isEmpty(patients)) {

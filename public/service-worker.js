@@ -48,14 +48,20 @@ self.addEventListener('install', function (event) {
   }
 })
 
+self.addEventListener('fetch', function (event) {
+  event.respondWith(
+    new Response('This page is taken by service-worker')
+  )
+})
+
 // When the webpage goes to fetch files, we intercept that request and serve up the matching files
 // if we have them
-self.addEventListener('fetch', function (event) {
-  if (doCache) {
-    event.respondWith(
-      caches.match(event.request).then(function (response) {
-        return response || fetch(event.request)
-      })
-    )
-  }
-})
+// self.addEventListener('fetch', function (event) {
+//   if (doCache) {
+//     event.respondWith(
+//       caches.match(event.request).then(function (response) {
+//         return response || fetch(event.request)
+//       })
+//     )
+//   }
+// })

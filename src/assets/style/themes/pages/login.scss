@@ -1,5 +1,5 @@
 @import '../../configs/variables/index';
-@import '../../frameworks/mixins';
+@import '../../frameworks/mixins/index';
 @mixin login-bg-position($login-bg-cal-size) {
   background-position: center calc(100vh - #{$login-bg-cal-size}vw);
 }

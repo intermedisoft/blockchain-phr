@@ -4,7 +4,6 @@ import { compose } from 'redux'
 import { withFirebase, isLoaded, isEmpty } from 'react-redux-firebase'
 import PropTypes from 'prop-types'
 
-import '../../assets/style/components/menuIconList.scss'
 import styles from '../../assets/style/themes/pages/mainMenu.scss'
 import logo from '../../assets/images/logo.svg'
 import userImage from '../../assets/images/user.jpg'

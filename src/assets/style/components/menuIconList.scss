@@ -1,5 +1,5 @@
 @import '../configs/variables/index';
-@import '../frameworks/mixins';
+@import '../frameworks/mixins/index';
 $block-icon-noti-size:50px;
 :global {
   .menuIconList {
@@ -7,6 +7,7 @@ $block-icon-noti-size:50px;
     color: $main-font-color;
     background-color: #fff;
     border-radius: $main-radius;
+    @include noSelect();
     li {
       display: flex;
       cursor: pointer;
@@ -28,14 +29,16 @@ $block-icon-noti-size:50px;
         &.noti{
           text-align: right;
           .notiBlock{
-            min-width: 20px;
-            font-size: .8em;
-            color: #ffffff;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 3px;
-            display: inline-block;
             background-color: $notification-bg-color;
+            border-radius: 3px;
+            color: #ffffff;
+            display: inline-block;
+            font-size: .85em;
+            font-weight: bold;
+            height: 22px;
+            min-width: 22px;
+            padding: 0px 5px 1px 5px;
+            text-align: center;
           }
         } 
       }

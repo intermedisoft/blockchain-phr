@@ -1,5 +1,5 @@
 @import '../../configs/variables/index';
-@import '../../frameworks/mixins';
+@import '../../frameworks/mixins/index';
 @mixin login-bg-position($login-bg-cal-size) {
   background-position: center calc(100vh - #{$login-bg-cal-size}vw);
 }
@@ -32,25 +32,29 @@
     .profileName {
       cursor: pointer;
       font-size: 1.35em;
-      font-weight: 500;
-      .nameLabel {
-        display: inline-block;
-        max-width: calc(100% - 30px);
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: auto;
-      }
-      .nameMore {
-        display: inline-block;
-        width: 30px;
-        &::before {
+      a {
+        align-items: center;
+        display: inline-flex;
+        justify-content: center;
+        .nameLabel {
           display: inline-block;
-          font-size: 0.8em;
-          position: relative;
-          right: -10px;
-          top: -7px;
-          transform: rotate(180deg);
+          max-width: calc(100% - 30px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: auto;
+          font-weight: $main-font-bold-size;
+        }
+        .nameMore {
+          display: inline-block;
+          width: 30px;
+          &::before {
+            display: inline-block;
+            font-size: 0.8em;
+            position: relative;
+            right: -10px;
+            transform: rotate(180deg);
+          }
         }
       }
     }
@@ -69,7 +73,7 @@
           &::before {
             color: #da0623;
           }
-          .bloodLabel{
+          .bloodLabel {
             color: #fff;
             font-family: $main-font-name;
             font-size: 0.7em;
@@ -81,8 +85,7 @@
           }
         }
         &.sex {
-          // font-size: 2em;
-          // padding-top: 5px;
+
         }
       }
       .valueInfo {
@@ -94,7 +97,7 @@
     }
   }
   .mainMenu {
-    height: calc(100vh - 150px);
+    // min-height: 300px;
     .logoutMenu {
       border-top: 1px solid $main-border-color;
     }

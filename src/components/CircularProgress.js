@@ -2,12 +2,9 @@ import React from 'react'
 import CircularProgress from 'material-ui/CircularProgress'
 
 const CircularProgressComponent = () => (
-  <CircularProgress />
-  // <div>
-  //   <CircularProgress />
-  //   {/* <CircularProgress size={60} thickness={7} />
-  //   <CircularProgress size={80} thickness={5} /> */}
-  // </div>
+  <div className={`progressBlockCircular`}>
+    <CircularProgress />
+  </div>
 )
 
 export default CircularProgressComponent

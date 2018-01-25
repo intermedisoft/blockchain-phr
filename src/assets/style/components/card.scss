@@ -1,11 +1,11 @@
 @import '../configs/variables/index';
-@import '../frameworks/mixins';
+@import '../frameworks/mixins/index';
 :global {
   .mainCard {
     background-color: $main-card-bg-color;
     border-radius: $main-radius;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 20px 10px;
   }
   .card {
     @extend .mainCard;

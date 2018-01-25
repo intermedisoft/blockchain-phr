@@ -6,7 +6,7 @@ export default {
     if (patientId) {
       try {
         let esc = encodeURIComponent
-        let filter = `{"where": {"patient": "resource:com.depa.blockchain.core.Patient#1909800171665"}}`
+        let filter = `{"where": {"patient": "resource:com.depa.blockchain.core.Patient#${patientId}"}}`
         return await setting(configs).get(`/api/PermissionLog?filter=${esc(filter)}`)
       } catch (error) {
         return Promise.reject(new Error(error))

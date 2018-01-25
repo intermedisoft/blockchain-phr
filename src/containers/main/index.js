@@ -7,7 +7,6 @@ import { withFirebase } from 'react-redux-firebase'
 import { authenAction } from './../../redux/actions/auth'
 import ProfileComponent from './Profile'
 import NotificationUnread from './components/NotificationUnread'
-import '../../assets/style/components/menuIconList.scss'
 import styles from '../../assets/style/themes/pages/mainMenu.scss'
 
 class MainmenuPage extends Component {
@@ -29,7 +28,7 @@ class MainmenuPage extends Component {
       <section>
         <div className={`containerMain`}>
           <ProfileComponent />
-          <div className={`menuIconList`}>
+          <div className={`menuIconList ${styles.mainMenu}`}>
             <ul>
               <li onClick={() => history.push('/checkup')}>
                 <div className={`iconCheckup`}></div>

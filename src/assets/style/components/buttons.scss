@@ -1,12 +1,13 @@
 @import '../configs/variables/index';
-@import '../frameworks/mixins';
+@import '../frameworks/mixins/index';
 :global {
   .mainButon {
     border-radius: $btn-border-radius;
     border: 1px solid rgba(0, 0, 0, 0.02);
     box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.15), 0px 2px 3px rgba(0, 0, 0, 0.1);
     padding: $btn-padding;
-    &[disabled]{
+    @include noSelect();
+    &[disabled] {
       opacity: .6;
     }
   }
@@ -23,11 +24,16 @@
       background: none;
       border: none;
       box-shadow: none;
+      @include noSelect();
+      &::before,
+      &::after {
+        @include noSelect();
+      }
     }
   }
-  .btnAction{
+  .btnAction {
     text-align: center;
-    [class*='btn']{
+    [class*='btn'] {
       margin: 0 5px;
       min-width: 110px;
     }

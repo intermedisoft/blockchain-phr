@@ -1,10 +1,11 @@
 @import '../configs/variables/index';
-@import '../frameworks/mixins';
+@import '../frameworks/mixins/index';
 :global {
   * {
     @include scrollbar();
   }
-  b{
+  .noselect {}
+  b {
     font-weight: $main-font-bold-size;
   }
   html,
@@ -44,12 +45,19 @@
           }
         }
       }
-      .itemLeft{
+      .itemLeft {
         justify-content: left;
+        position: relative;
         text-align: left;
-        .btnIcon{
+        .btnIcon {
           color: #ffffff;
           font-size: 1.3em;
+          height: 30px;
+          left: 10px;
+          padding: 0;
+          position: absolute;
+          text-align: center;
+          width: 30px;
         }
       }
       .itemCenter {

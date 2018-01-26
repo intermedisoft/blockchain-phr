@@ -47,6 +47,12 @@ export const NOTIFICATION = {
 Object.freeze(NOTIFICATION)
 
 export const PERMISSION = {
-  GET: 'GETPERMISSION'
+  GET: 'GETPERMISSION',
+  LOADING: 'LOADINGPERMISSION'
 }
 Object.freeze(PERMISSION)
+
+export const HEALTHCARE = {
+  GET: 'GETHEALTHCARE'
+}
+Object.freeze(HEALTHCARE)

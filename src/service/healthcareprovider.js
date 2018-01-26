@@ -9,6 +9,12 @@ export default {
       } catch (error) {
         return Promise.reject(new Error(error))
       }
+    } else {
+      try {
+        return await setting(configs).get(`/api/HealthCareProvider`)
+      } catch (error) {
+        return Promise.reject(new Error(error))
+      }
     }
   }
 }

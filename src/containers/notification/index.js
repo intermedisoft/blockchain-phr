@@ -2,12 +2,17 @@ import React, { Component } from 'react'
 import ListComponent from './components/list'
 import { connect } from 'react-redux'
 
-// import { permissionAction } from './../../redux/actions/permission'
+import { permissionAction } from './../../redux/actions/permission'
 import { LoadingProgress } from './../../components/'
 class NotificationPage extends Component {
+  componentDidMount() {
+    this.props.getNotification(this.props.configs, this.props.patientId)
+  }
   render() {
     const permission = this.props.permission.data
     const healthCareProvider = this.props.healthCareProvider.data
+    // console.log('000000000000000000000000000000000000000')
+    // console.log(permission)
     return (
       <div className={`containerMain`}>
         <div className={`card`}>
@@ -34,16 +39,18 @@ class NotificationPage extends Component {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    // getNotification: (configs, patientId) => {
-    // dispatch(permissionAction.getPermission(configs, patientId))
-    // }
+    getNotification: (configs, patientId) => {
+      dispatch(permissionAction.getPermission(configs, patientId))
+    }
   }
 }
 
 const mapStateToProps = state => (
   {
     permission: state.permission,
-    healthCareProvider: state.healthCareProvider
+    healthCareProvider: state.healthCareProvider,
+    patientId: state.firebase.profile.patientId,
+    configs: state.firebase.data.configs
   }
 )
 export default connect(mapStateToProps, mapDispatchToProps)(NotificationPage)

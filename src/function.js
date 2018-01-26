@@ -1,4 +1,4 @@
-const popHash = (str) => (str.split('#').pop())
+const popHash = (str, symbol) => (str.split(symbol || '#').pop())
 
 export const _function = {
   popHash

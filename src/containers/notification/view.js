@@ -2,7 +2,12 @@ import React, { Component } from 'react'
 // import Divider from 'material-ui/Divider'
 import moment from 'moment'
 import { connect } from 'react-redux'
+import { isEmpty } from 'react-redux-firebase'
+
 import { HeaderAction } from './../../redux/actions/header'
+import { permissionAction } from './../../redux/actions/permission'
+import { CircularProgress, LoadingProgress } from './../../components'
+
 // import { Link } from 'react-router-dom';
 
 require('moment/locale/th')
@@ -13,45 +18,84 @@ class NotificationViewerPage extends Component {
   // }
 
   cleanPermissionData = (data) => {
-    delete data.patientId
-    delete data.healthCareProviderId
-    delete data.healthCareProviderData
-    return data
+    const data2 = { ...data }
+    delete data2.patientId
+    delete data2.healthCareProviderId
+    delete data2.healthCareProviderData
+    delete data2.$class
+    return data2
+  }
+
+  updateReading = (data) => {
+    const permissionLogId = data.permissionLogId
+    data.patientAcknowledgeDateTime = moment().toISOString()
+    delete data.permissionLogId
+
+    this.props.updatePermissionReading(this.props.configs, data, permissionLogId)
+    this.props.receivesetDataOnReading(permissionLogId)
+    // console.log('---------------------------')
+    // console.log(permissionLogId)
+    // this.props.getNotification(this.props.configs, this.props.patientId)
   }
 
   handleAllowPermission = (provider) => {
     provider = this.cleanPermissionData(provider)
     provider.permissionType = 'GRANT'
-    console.log(provider)
+    this.props.updatePermission(this.props.configs, provider)
+    this.props.getNotification(this.props.configs, this.props.patientId)
   }
 
   handleDontAllowPermission = (provider) => {
     provider = this.cleanPermissionData(provider)
     provider.permissionType = 'DENY'
-    console.log(provider)
+    this.props.updatePermission(this.props.configs, provider)
+    this.props.getNotification(this.props.configs, this.props.patientId)
   }
 
   componentWillMount() {
     this.props.setHeader('Request permission')
   }
 
+  componentDidMount() {
+    const location = { ...this.props.location }
+    const provider = this.cleanPermissionData(location.state.data)
+    this.updateReading(provider)
+    this.props.clearUpdatePermissionData()
+
+  }
+
   render() {
     const provider = this.props.location.state.data
-    // console.log(provider)
-    return (
-      provider
-        ? <div className={`containerMain`}>
-          <div className={`card`}>
-            <div className={`cardHead`}>Request permission</div>
-            <div className={`cardContent`}> Health Care Provider : <b>{provider.healthCareProviderData[0].healthCareProviderName}</b></div>
-            <div className={`cardContent`}> Action Date Time : <b>{moment(provider.actionDateTime).format('LLL')}</b></div>
-            <div className={`btnAction`}>
-              <button onClick={() => this.handleDontAllowPermission(provider)} className={`btnPrimary`}>Don't Allow</button>
-              <button onClick={() => this.handleAllowPermission(provider)} className={`btnPrimary`}>Allow</button>
+    const permissionOnUpdate = this.props.permissionOnUpdate
+    const dataOnReading = this.props.dataOnReading
+    if (!dataOnReading.id) {
+      return (
+        <LoadingProgress />
+      )
+    } else {
+      return (
+        provider
+          ? <div className={`containerMain`}>
+            <div className={`card`}>
+              <div className={`cardHead`}>Request permission</div>
+              <div className={`cardContent`}> Health Care Provider : <b>{provider.healthCareProviderData[0].healthCareProviderName}</b></div>
+              <div className={`cardContent`}> Action Date Time : <b>{moment(provider.actionDateTime).format('LLL')}</b></div>
+              {
+                isEmpty(permissionOnUpdate.data) ?
+                  !provider.patientResponseResult || provider.patientResponseResult === 'NOOP' ?
+                    permissionOnUpdate.isLoading ? <CircularProgress /> :
+                      <div className={`btnAction`}>
+                        <button onClick={() => this.handleDontAllowPermission(provider)} className={`btnPrimary`}>Don't Allow</button>
+                        <button onClick={() => this.handleAllowPermission(provider)} className={`btnPrimary`}>Allow</button>
+                      </div> : null
+                  : null
+              }
+
             </div>
-          </div>
-        </div> : null
-    )
+          </div> : null
+      )
+    }
+
   }
 }
 
@@ -59,13 +103,27 @@ const mapDispatchToProps = (dispatch, state) => {
   return {
     setHeader: (text) => {
       dispatch(HeaderAction.setHeader(text))
+    }, updatePermission: (configs, data) => {
+      dispatch(permissionAction.updatePermission(configs, data))
+    }, updatePermissionReading: (configs, data, permissionLogId) => {
+      dispatch(permissionAction.updatePermissionReading(configs, data, permissionLogId))
+    }, getNotification: (configs, patientId) => {
+      dispatch(permissionAction.getPermission(configs, patientId))
+    }, clearUpdatePermissionData: () => {
+      dispatch(permissionAction.receiveupdatePermissionClearData())
+    }, receivesetDataOnReading: (id) => {
+      dispatch(permissionAction.receivesetDataOnReading(id))
     }
   }
 }
 
 const mapStateToProps = state => (
   {
-    header: state.header.text
+    patientId: state.firebase.profile.patientId,
+    header: state.header.text,
+    configs: state.firebase.data.configs,
+    permissionOnUpdate: state.permission.dataOnUpdate,
+    dataOnReading: state.permission.dataOnReading
   }
 )
 

@@ -7,6 +7,8 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 
 import { permissionAction } from './../../redux/actions/permission'
 import { healthCareProviderAction } from './../../redux/actions/healthCareProvider'
+import { _function } from './../../function'
+
 // import { notificationAction } from './../../redux/actions/notification'
 
 class NotificationActionPage extends Component {
@@ -19,10 +21,16 @@ class NotificationActionPage extends Component {
   componentDidMount() {
     this.ws = new WebSocket('ws://192.168.9.88:3000')
     this.ws.onmessage = evt => {
-      this.setState({ notification: JSON.parse(evt.data), isData: true })
-      NotificationManager.info('You have a new notication', '', 5000, () => {
-        window.location.href = '/notification'
-      })
+      let newNotification = JSON.parse(evt.data)
+      this.setState({ notification: newNotification, isData: true })
+      const patientId = _function.popHash(newNotification.patient)
+      const eventType = _function.popHash(newNotification.$class, '.')
+      if ((patientId === this.props.patientId) && (eventType === 'PermissionRequestEvent')) {
+        this.props.getNotification(this.props.configs, this.props.patientId)
+        NotificationManager.info('You have a new notication', '', 5000, () => {
+          window.location.href = '/notification'
+        })
+      }
     }
     this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
     this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })

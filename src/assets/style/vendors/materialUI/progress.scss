@@ -7,6 +7,9 @@
     &.--inline {
       display: inline-block;
     }
+    &.--loadCard{
+      margin: 30px auto;
+    }
   }
   .progressBlock {
     &Circular {

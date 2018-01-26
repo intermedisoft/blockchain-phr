@@ -25,6 +25,9 @@ $font-path:'assets/fonts/icons/phr/fonts';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.iconFile:before {
+  content: "\e90f";
+}
 .iconFemale:before {
   content: "\e90e";
 }

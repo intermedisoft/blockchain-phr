@@ -3,7 +3,7 @@ import ListComponent from './components/list'
 import { connect } from 'react-redux'
 
 import { permissionAction } from './../../redux/actions/permission'
-import { LoadingProgress } from './../../components/'
+import { CircularProgress, DataNotFound } from './../../components/'
 class NotificationPage extends Component {
   componentDidMount() {
     this.props.getNotification(this.props.configs, this.props.patientId)
@@ -28,8 +28,8 @@ class NotificationPage extends Component {
                       <ListComponent data={v} />
                     </div>
                   )
-                }) : <LoadingProgress />
-              : <div>ไม่มีข้อมูล</div>
+                }) : <CircularProgress />
+              : <DataNotFound />
           }
         </div>
       </div>

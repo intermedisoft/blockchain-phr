@@ -1,8 +1,8 @@
 import React from 'react'
 import CircularProgress from 'material-ui/CircularProgress'
 
-const CircularProgressComponent = () => (
-  <div className={`progressBlockCircular`}>
+const CircularProgressComponent = ({className}) => (
+  <div className={`progressBlockCircular ${className}`}>
     <CircularProgress />
   </div>
 )

@@ -7,7 +7,7 @@ import { List } from 'material-ui/List'
 
 import { checkupAction } from './../../redux/actions/checkup'
 import { patientAction } from './../../redux/actions/patient'
-import { CircularProgress } from './../../components/'
+import { CircularProgress, DataNotFound } from './../../components/'
 class CheckupPage extends Component {
   render() {
     const { patientId, patients, configs, err, checkup, healthCareProvider } = { ...this.props }
@@ -23,7 +23,7 @@ class CheckupPage extends Component {
     )
     if (checkup.nodata) {
       renderHTML = (
-        <div>ไม่มีข้อมูล</div>
+        <DataNotFound/>
       )
     } else if (!isEmpty(checkup)) {
       renderHTML = (

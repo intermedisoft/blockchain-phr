@@ -4,6 +4,35 @@
     {
       "icon": {
         "paths": [
+          "M895.876 259.408c-0.178-5.994-2.566-11.842-6.98-16.256l-236.13-236.13c-0.010-0.010-0.020-0.014-0.028-0.024-4.338-4.324-10.32-6.998-16.924-6.998h-457.258c-27.834 0-50.476 22.64-50.476 50.474v923.050c0 27.832 22.64 50.474 50.474 50.474h666.888c27.832 0 50.474-22.64 50.474-50.474v-713.42c0.004-0.236-0.024-0.464-0.040-0.696zM659.79 81.862l154.27 154.27h-144.152c-5.58 0-10.118-4.538-10.118-10.118v-144.152zM847.968 973.528c-0.002 1.388-1.134 2.52-2.524 2.52h-666.888c-1.39 0-2.522-1.132-2.522-2.522v-923.052c0-1.39 1.132-2.522 2.522-2.522h433.282v178.062c0 32.018 26.050 58.070 58.070 58.070h178.062v689.444z"
+        ],
+        "attrs": [
+          {}
+        ],
+        "tags": [
+          "File"
+        ],
+        "grid": 0,
+        "isMulticolor": false,
+        "isMulticolor2": false
+      },
+      "attrs": [
+        {}
+      ],
+      "properties": {
+        "order": 1000,
+        "id": 16,
+        "name": "File",
+        "prevSize": 32,
+        "code": 59663
+      },
+      "setIdx": 0,
+      "setId": 0,
+      "iconIdx": 0
+    },
+    {
+      "icon": {
+        "paths": [
           "M849.92 337.92c0-186.368-151.552-337.92-337.92-337.92s-337.92 151.552-337.92 337.92c0 174.080 133.12 317.44 303.104 333.824v106.496h-139.264c-20.48 0-34.816 16.384-34.816 34.816 0 20.48 16.384 34.816 34.816 34.816h139.264v139.264c0 20.48 16.384 34.816 34.816 34.816 20.48 0 34.816-16.384 34.816-34.816v-139.264h139.264c20.48 0 34.816-16.384 34.816-34.816s-16.384-34.816-34.816-34.816h-139.264v-106.496c169.984-16.384 303.104-159.744 303.104-333.824zM243.712 337.92c0-147.456 120.832-266.24 266.24-266.24 147.456 0 268.288 118.784 268.288 266.24s-118.784 268.288-268.288 268.288c-145.408 0-266.24-120.832-266.24-268.288z"
         ],
         "attrs": [
@@ -11,24 +40,24 @@
         ],
         "isMulticolor": false,
         "isMulticolor2": false,
-        "grid": 0,
         "tags": [
           "Female"
-        ]
+        ],
+        "grid": 0
       },
       "attrs": [
         {}
       ],
       "properties": {
-        "order": 992,
-        "id": 14,
+        "order": 997,
+        "id": 1,
         "name": "Female",
         "prevSize": 32,
         "code": 59662
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 0
+      "iconIdx": 1
     },
     {
       "icon": {
@@ -55,14 +84,14 @@
       ],
       "properties": {
         "order": 989,
-        "id": 0,
+        "id": 2,
         "name": "Facebook",
         "prevSize": 32,
         "code": 59661
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 1
+      "iconIdx": 2
     },
     {
       "icon": {
@@ -89,14 +118,14 @@
       ],
       "properties": {
         "order": 973,
-        "id": 1,
+        "id": 3,
         "name": "Back",
         "prevSize": 32,
         "code": 59648
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 2
+      "iconIdx": 3
     },
     {
       "icon": {
@@ -123,14 +152,14 @@
       ],
       "properties": {
         "order": 979,
-        "id": 2,
+        "id": 4,
         "name": "Blood",
         "prevSize": 32,
         "code": 59649
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 3
+      "iconIdx": 4
     },
     {
       "icon": {
@@ -181,14 +210,14 @@
       ],
       "properties": {
         "order": 980,
-        "id": 3,
+        "id": 5,
         "name": "Checkup",
         "prevSize": 32,
         "code": 59650
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 4
+      "iconIdx": 5
     },
     {
       "icon": {
@@ -223,14 +252,14 @@
       ],
       "properties": {
         "order": 981,
-        "id": 4,
+        "id": 6,
         "name": "Edit",
         "prevSize": 32,
         "code": 59651
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 5
+      "iconIdx": 6
     },
     {
       "icon": {
@@ -261,14 +290,14 @@
       ],
       "properties": {
         "order": 982,
-        "id": 5,
+        "id": 7,
         "name": "Logout",
         "prevSize": 32,
         "code": 59652
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 6
+      "iconIdx": 7
     },
     {
       "icon": {
@@ -303,14 +332,14 @@
       ],
       "properties": {
         "order": 983,
-        "id": 6,
+        "id": 8,
         "name": "Notification",
         "prevSize": 32,
         "code": 59653
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 7
+      "iconIdx": 8
     },
     {
       "icon": {
@@ -341,14 +370,14 @@
       ],
       "properties": {
         "order": 984,
-        "id": 7,
+        "id": 9,
         "name": "Password",
         "prevSize": 32,
         "code": 59654
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 8
+      "iconIdx": 9
     },
     {
       "icon": {
@@ -379,14 +408,14 @@
       ],
       "properties": {
         "order": 985,
-        "id": 8,
+        "id": 10,
         "name": "See",
         "prevSize": 32,
         "code": 59655
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 9
+      "iconIdx": 10
     },
     {
       "icon": {
@@ -396,26 +425,26 @@
         "attrs": [
           {}
         ],
+        "isMulticolor": false,
+        "isMulticolor2": false,
         "tags": [
           "sex"
         ],
-        "grid": 0,
-        "isMulticolor": false,
-        "isMulticolor2": false
+        "grid": 0
       },
       "attrs": [
         {}
       ],
       "properties": {
         "order": 978,
-        "id": 9,
+        "id": 11,
         "name": "Male",
         "prevSize": 32,
         "code": 59656
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 10
+      "iconIdx": 11
     },
     {
       "icon": {
@@ -450,14 +479,14 @@
       ],
       "properties": {
         "order": 977,
-        "id": 10,
+        "id": 12,
         "name": "Tab",
         "prevSize": 32,
         "code": 59657
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 11
+      "iconIdx": 12
     },
     {
       "icon": {
@@ -484,14 +513,14 @@
       ],
       "properties": {
         "order": 986,
-        "id": 11,
+        "id": 13,
         "name": "Username",
         "prevSize": 32,
         "code": 59658
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 12
+      "iconIdx": 13
     },
     {
       "icon": {
@@ -542,14 +571,14 @@
       ],
       "properties": {
         "order": 976,
-        "id": 12,
+        "id": 14,
         "name": "Visit",
         "prevSize": 32,
         "code": 59659
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 13
+      "iconIdx": 14
     },
     {
       "icon": {
@@ -576,14 +605,14 @@
       ],
       "properties": {
         "order": 974,
-        "id": 13,
+        "id": 15,
         "name": "Wellness",
         "prevSize": 32,
         "code": 59660
       },
       "setIdx": 0,
       "setId": 0,
-      "iconIdx": 14
+      "iconIdx": 15
     }
   ],
   "height": 1024,

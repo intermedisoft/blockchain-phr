@@ -1,0 +1,15 @@
+@import '../configs/variables/index';
+@import '../frameworks/mixins/index';
+:global {
+  .DataNotFound {
+    text-align: center;
+    @include noSelect();
+    >[class*='icon'] {
+      font-size: 3em;
+      margin-bottom: 5px;
+    }
+    >.label {
+
+    }
+  }
+}

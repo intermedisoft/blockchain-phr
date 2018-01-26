@@ -34,8 +34,9 @@
       font-size: 1.35em;
       a {
         align-items: center;
-        display: inline-flex;
-        justify-content: center;
+        display: flex;
+        // justify-content: center;
+        max-width: 100%;
         .nameLabel {
           display: inline-block;
           max-width: calc(100% - 30px);
@@ -84,9 +85,7 @@
             width: 20px;
           }
         }
-        &.sex {
-
-        }
+        &.sex {}
       }
       .valueInfo {
         color: $main-font-active-color;

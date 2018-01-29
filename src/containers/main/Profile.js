@@ -4,6 +4,7 @@ import { compose } from 'redux'
 import { withFirebase, isEmpty } from 'react-redux-firebase'
 import moment from 'moment'
 import { Link } from 'react-router-dom'
+import { CircularProgress } from './../../components/'
 import styles from '../../assets/style/themes/pages/mainMenu.scss'
 import { patientAction } from './../../redux/actions/patient'
 
@@ -28,7 +29,7 @@ class ProfileComponent extends Component {
     return (
       isEmpty(patients)
         ? <div className={styles.profile}>
-          <span>Profile Loading...</span>
+          <span><CircularProgress /></span>
         </div>
         : <div className={styles.profile}>
           <div className={`${styles.item} ${styles.image}`}>

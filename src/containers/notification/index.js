@@ -11,8 +11,8 @@ class NotificationPage extends Component {
   render() {
     const permission = this.props.permission.data
     const healthCareProvider = this.props.healthCareProvider.data
-    // console.log('000000000000000000000000000000000000000')
-    // console.log(permission)
+    console.log('000000000000000000000000000000000000000')
+    console.log(permission)
     return (
       <div className={`containerMain`}>
         <div className={`card`}>

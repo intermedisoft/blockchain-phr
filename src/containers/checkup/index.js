@@ -19,11 +19,11 @@ class CheckupPage extends Component {
       this.props.getAllCheckup(configs, patientId)
     }
     let renderHTML = (
-      <CircularProgress className={`--loadCard`}/>
+      <CircularProgress className={`--loadCard`} />
     )
     if (checkup.nodata) {
       renderHTML = (
-        <DataNotFound/>
+        <DataNotFound />
       )
     } else if (!isEmpty(checkup)) {
       renderHTML = (

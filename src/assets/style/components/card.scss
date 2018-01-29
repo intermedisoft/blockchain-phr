@@ -22,9 +22,15 @@
     }
     &Head {
       font-weight: $main-font-bold-size;
+      >span {
+        display: inline-block;
+      }
     }
     &Content {
       margin: 30px auto;
+      &.--noMargin{
+        margin: auto;
+      }
     }
     &List {
       padding: none;

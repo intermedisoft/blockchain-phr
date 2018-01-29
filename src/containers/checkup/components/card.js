@@ -12,7 +12,6 @@ const CardComponent = (props) => {
       <ListItem
         primaryText={moment(dateTimeServe).format('LL')}
         secondaryText={healthCareProviderData[0].healthCareProviderName}
-        secondaryTextLines={2}
       />
       <Divider />
     </div>

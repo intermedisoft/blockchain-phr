@@ -20,12 +20,15 @@ const SET_MENU = {
   },
   'checkup': {
     text: 'Checkup'
+  },
+  'xray': {
+    text: 'X-Ray'
   }
 }
 class Header extends Component {
 
   // componentDidMount() {
-    
+
   // }
   render() {
     const pathname = this.props.pathname.replace(/\//g, '')

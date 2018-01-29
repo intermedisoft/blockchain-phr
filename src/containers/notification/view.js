@@ -22,17 +22,23 @@ class NotificationViewerPage extends Component {
     delete data2.patientId
     delete data2.healthCareProviderId
     delete data2.healthCareProviderData
+    delete data2.patientResponseResult
     delete data2.$class
     return data2
   }
 
   updateReading = (data) => {
     const permissionLogId = data.permissionLogId
-    data.patientAcknowledgeDateTime = moment().toISOString()
-    delete data.permissionLogId
+    if (!data.patientAcknowledgeDateTime) {
+      data.patientAcknowledgeDateTime = moment().toISOString()
+      delete data.permissionLogId
 
-    this.props.updatePermissionReading(this.props.configs, data, permissionLogId)
-    this.props.receivesetDataOnReading(permissionLogId)
+      this.props.updatePermissionReading(this.props.configs, data, permissionLogId)
+      // this.props.getNotification(this.props.configs, this.props.patientId)
+    } else {
+      this.props.receivesetDataOnReading(permissionLogId)
+    }
+    // this.props.receivesetDataOnReading(permissionLogId)
     // console.log('---------------------------')
     // console.log(permissionLogId)
     // this.props.getNotification(this.props.configs, this.props.patientId)
@@ -42,14 +48,14 @@ class NotificationViewerPage extends Component {
     provider = this.cleanPermissionData(provider)
     provider.permissionType = 'GRANT'
     this.props.updatePermission(this.props.configs, provider)
-    this.props.getNotification(this.props.configs, this.props.patientId)
+    // this.props.getNotification(this.props.configs, this.props.patientId)
   }
 
   handleDontAllowPermission = (provider) => {
     provider = this.cleanPermissionData(provider)
     provider.permissionType = 'DENY'
     this.props.updatePermission(this.props.configs, provider)
-    this.props.getNotification(this.props.configs, this.props.patientId)
+    // this.props.getNotification(this.props.configs, this.props.patientId)
   }
 
   componentWillMount() {
@@ -61,41 +67,45 @@ class NotificationViewerPage extends Component {
     const provider = this.cleanPermissionData(location.state.data)
     this.updateReading(provider)
     this.props.clearUpdatePermissionData()
-
   }
 
   render() {
+    let htmlRender = ''
     const provider = this.props.location.state.data
     const permissionOnUpdate = this.props.permissionOnUpdate
     const dataOnReading = this.props.dataOnReading
+
+
     if (!dataOnReading.id) {
-      return (
-        <LoadingProgress />
-      )
+      htmlRender = <CircularProgress />
+
     } else {
-      return (
-        provider
-          ? <div className={`containerMain`}>
-            <div className={`card`}>
-              <div className={`cardHead`}>Request permission</div>
-              <div className={`cardContent`}> Health Care Provider : <b>{provider.healthCareProviderData[0].healthCareProviderName}</b></div>
-              <div className={`cardContent`}> Action Date Time : <b>{moment(provider.actionDateTime).format('LLL')}</b></div>
-              {
-                isEmpty(permissionOnUpdate.data) ?
-                  !provider.patientResponseResult || provider.patientResponseResult === 'NOOP' ?
-                    permissionOnUpdate.isLoading ? <CircularProgress /> :
-                      <div className={`btnAction`}>
-                        <button onClick={() => this.handleDontAllowPermission(provider)} className={`btnPrimary`}>Don't Allow</button>
-                        <button onClick={() => this.handleAllowPermission(provider)} className={`btnPrimary`}>Allow</button>
-                      </div> : null
-                  : null
-              }
-
-            </div>
-          </div> : null
-      )
+      // return (
+      htmlRender = provider
+        ? <div>
+          <div className={`cardHead`}>Request permission</div>
+          <div className={`cardContent`}> Health Care Provider : <b>{provider.healthCareProviderData[0].healthCareProviderName}</b></div>
+          <div className={`cardContent`}> Action Date Time : <b>{moment(provider.actionDateTime).format('LLL')}</b></div>
+          {
+            isEmpty(permissionOnUpdate.data) ?
+              !provider.patientResponseResult || provider.patientResponseResult === 'NOOP' ?
+                permissionOnUpdate.isLoading ? <CircularProgress /> :
+                  <div className={`btnAction`}>
+                    <button onClick={() => this.handleDontAllowPermission(provider)} className={`btnPrimary`}>Don't Allow</button>
+                    <button onClick={() => this.handleAllowPermission(provider)} className={`btnPrimary`}>Allow</button>
+                  </div> : null
+              : null
+          }
+        </div> : null
+      // )
     }
-
+    return (
+      <div className={`containerMain`}>
+        <div className={`card`}>
+          {htmlRender}
+        </div>
+      </div>
+    )
   }
 }
 

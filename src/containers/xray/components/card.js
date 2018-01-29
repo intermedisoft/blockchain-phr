@@ -6,11 +6,11 @@ import moment from 'moment'
 require('moment/locale/th')
 const CardComponent = (props) => {
   const data = props.data
-  const { dateTimeServe, healthCareProviderData } = { ...data }
+  const { dateTimeService, healthCareProviderData } = { ...data }
   return (
     <div>
       <ListItem
-        primaryText={moment(dateTimeServe).format('LL')}
+        primaryText={moment(dateTimeService).format('LL')}
         secondaryText={healthCareProviderData[0].healthCareProviderName}
         secondaryTextLines={2}
       />

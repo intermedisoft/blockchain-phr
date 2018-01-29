@@ -46,6 +46,13 @@ export const NOTIFICATION = {
 }
 Object.freeze(NOTIFICATION)
 
+
+export const XRAY = {
+  GET: 'GETXRAY',
+  LOADING: 'LOADINGXRAY'
+}
+Object.freeze(XRAY)
+
 export const PERMISSION = {
   GET: 'GETPERMISSION',
   GETSELECTED: 'GETSELECETEDPERMISSION',

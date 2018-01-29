@@ -14,6 +14,10 @@ const receiveupdatePermission = (data) => ({
   payload: data
 })
 
+// const receivegetPatientLoading = () => ({
+//   type: types.PERMISSION.LOADING
+// })
+
 const receiveupdatePermissionLoading = () => ({
   type: types.PERMISSION.GETUPDATEDLOADING
 })
@@ -48,6 +52,7 @@ const countUnread = (obj) => {
 const getPermission = (configs, patientId) => async (dispatch) => {
   try {
     if (configs && patientId) {
+      // dispatch(receivegetPatientLoading())
       const response = await Service.Permission.getPermission(configs, patientId)
       if (!response.data.length) {
         dispatch(receivegetPatient({ nodata: true }))
@@ -96,8 +101,11 @@ const updatePermission = (configs, data) => async (dispatch) => {
 const updatePermissionReading = (configs, data, permissionLogId) => async (dispatch) => {
   try {
     if (configs && data) {
+      console.log(0)
       dispatch(receivesetDataOnReadingLoading())
+      console.log('1')
       await Service.Permission.updatePermissionReading(configs, data, permissionLogId)
+      console.log(permissionLogId)
       dispatch(receivesetDataOnReading(permissionLogId))
     }
   } catch (error) {

@@ -5,40 +5,39 @@ import { Link } from 'react-router-dom'
 import CardComponent from './components/card'
 import { List } from 'material-ui/List'
 
-import { checkupAction } from './../../redux/actions/checkup'
+import { xrayAction } from './../../redux/actions/xray'
 import { patientAction } from './../../redux/actions/patient'
 import { CircularProgress, DataNotFound } from './../../components/'
+
 class XrayPage extends Component {
   render() {
-    const { patientId, patients, configs, err, checkup, healthCareProvider } = { ...this.props }
-    // console.log(this.props)
-    if (isEmpty(patients) && isEmpty(checkup) && !err) {
-      this.props.getPatient(configs, patientId)
-    }
-    if (isEmpty(checkup) && !err && configs && patientId) {
-      this.props.getAllCheckup(configs, patientId)
+    const { patientId, patients, configs, err, xray, healthCareProvider } = { ...this.props }
+    console.log(this.props)
+    if (isEmpty(xray) && !err) {
+      this.props.getAllXray(configs, patientId)
     }
     let renderHTML = (
-      <CircularProgress className={`--loadCard`}/>
+      <CircularProgress className={`--loadCard`} />
     )
-    if (checkup.nodata) {
+    if (xray.nodata) {
       renderHTML = (
-        <DataNotFound/>
+        <DataNotFound />
       )
-    } else if (!isEmpty(checkup)) {
+    } else if (!isEmpty(xray)) {
       renderHTML = (
         <div>
           <div>รายการประวัติ X-Ray: <span>{patients.prename}{patients.name} {patients.surname}</span></div>
+
           <List>
             {
-              checkup.map((v, i) => {
+              xray.map((v, i) => {
                 v.healthCareProviderData = healthCareProvider.filter((Provider) => {
                   return Provider.healthCareProviderId === v.healthCareProviderId
                 })
                 return (
-                  <div key={v.checkupHistoryId}>
+                  <div key={v.assetId}>
                     <Link to={{
-                      pathname: `/xray/${v.checkupHistoryId}`,
+                      pathname: `/xray/${v.assetId}`,
                       state: { data: v }
                     }}> <CardComponent data={v} /> </Link>
                   </div>
@@ -61,11 +60,8 @@ class XrayPage extends Component {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getAllCheckup: (configs, patientId) => {
-      dispatch(checkupAction.getAllCheckup(configs, patientId))
-    },
-    getPatient: (configs, patientId) => {
-      dispatch(patientAction.getPatient(configs, patientId))
+    getAllXray: (configs, patientId) => {
+      dispatch(xrayAction.getAllXray(configs, patientId))
     }
   }
 }
@@ -76,7 +72,7 @@ const mapStateToProps = state => (
     patients: state.patient.data,
     configs: state.firebase.data.configs,
     err: state.fetchError.modalOpen,
-    checkup: state.checkup.data,
+    xray: state.xray.data,
     healthCareProvider: state.healthCareProvider.data
   }
 )

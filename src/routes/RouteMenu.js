@@ -6,6 +6,7 @@ import Mainmenu from './../containers/main'
 import RouteCheckup from './../containers/checkup/Route'
 import RouteProfile from './../containers/profile/Route'
 import RouteNotification from './../containers/notification/Route'
+import RouteXray from './../containers/xray/Route'
 // import checkUser from './../containers/chkUser'
 // import User from './../containers/user'
 // import RouteFriends from './../containers/friends/Route'
@@ -31,6 +32,7 @@ class RouteMenu extends Component {
         <Route exact name='MAIN_NAME' path='/main' component={Mainmenu} />} />
         <Route path='/checkup/:id?' component={RouteCheckup} />
         <Route path='/profile/:id?' component={RouteProfile} />
+        <Route path='/xray/:id?' component={RouteXray} />
         <Route path='/notification/:id?' component={RouteNotification} />
         <Route path='/detail' component={Detail} />
         {/* <Route exact path='/user' component={User} /> */}

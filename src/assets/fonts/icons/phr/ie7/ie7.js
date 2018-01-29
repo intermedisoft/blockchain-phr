@@ -13,6 +13,8 @@
 		el.innerHTML = '<span style="font-family: \'PHR-Blox\'">' + entity + '</span>' + html;
 	}
 	var icons = {
+		'iconXray': '&#xe910;',
+		'iconFile': '&#xe90f;',
 		'iconFemale': '&#xe90e;',
 		'iconFacebook': '&#xe90d;',
 		'iconBack': '&#xe900;',

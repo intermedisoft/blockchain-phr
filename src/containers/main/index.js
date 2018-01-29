@@ -33,7 +33,12 @@ class MainmenuPage extends Component {
               <li onClick={() => history.push('/checkup')}>
                 <div className={`iconCheckup`}></div>
                 <div className={`text`}>Checkup</div>
-                <div className={`noti`}></div>
+                {/* <div className={`noti`}></div> */}
+              </li>
+              <li onClick={() => history.push('/xray')}>
+                <div className={`iconXray`}></div>
+                <div className={`text`}>X-Ray</div>
+                {/* <div className={`noti`}></div> */}
               </li>
               <li onClick={() => history.push('/notification')}>
                 <div className={`iconNotification`}></div>
@@ -45,7 +50,7 @@ class MainmenuPage extends Component {
               <li className={styles.logoutMenu} onClick={logout}>
                 <div className={`iconLogout`}></div>
                 <div className={`text`}>Log out</div>
-                <div className={`noti`}></div>
+                {/* <div className={`noti`}></div> */}
               </li>
             </ul>
           </div>

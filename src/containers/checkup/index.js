@@ -19,33 +19,38 @@ class CheckupPage extends Component {
       this.props.getAllCheckup(configs, patientId)
     }
     let renderHTML = (
-      <CircularProgress className={`--loadCard`}/>
+      <CircularProgress className={`--loadCard`} />
     )
     if (checkup.nodata) {
       renderHTML = (
-        <DataNotFound/>
+        <DataNotFound />
       )
     } else if (!isEmpty(checkup)) {
       renderHTML = (
         <div>
-          <div>รายการประวัติ: <span>{patients.prename}{patients.name} {patients.surname}</span></div>
-          <List>
-            {
-              checkup.map((v, i) => {
-                v.healthCareProviderData = healthCareProvider.filter((Provider) => {
-                  return Provider.healthCareProviderId === v.healthCareProviderId
+          <div className={`cardHead`}>
+            <span>รายการประวัติ : </span>
+            <span> {patients.prename}{patients.name} {patients.surname}</span>
+          </div>
+          <div className={`cardContent --noMargin`}>
+            <List>
+              {
+                checkup.map((v, i) => {
+                  v.healthCareProviderData = healthCareProvider.filter((Provider) => {
+                    return Provider.healthCareProviderId === v.healthCareProviderId
+                  })
+                  return (
+                    <div key={v.checkupHistoryId}>
+                      <Link to={{
+                        pathname: `/checkup/${v.checkupHistoryId}`,
+                        state: { data: v }
+                      }}> <CardComponent data={v} /> </Link>
+                    </div>
+                  )
                 })
-                return (
-                  <div key={v.checkupHistoryId}>
-                    <Link to={{
-                      pathname: `/checkup/${v.checkupHistoryId}`,
-                      state: { data: v }
-                    }}> <CardComponent data={v} /> </Link>
-                  </div>
-                )
-              })
-            }
-          </List>
+              }
+            </List>
+          </div>
         </div>
       )
     }

@@ -76,7 +76,8 @@ ProfileEditForm = reduxForm({
 formValueSelector('ProfileEditForm')
 ProfileEditForm = connect(
   state => ({
-    initialValues: state.patient.data // pull initial values from account reducer,
+    initialValues: state.patient.data
+    // pull initial values from account reducer,
     // isLoaded: state.patient.data.isLoaded
   })
   // state => {

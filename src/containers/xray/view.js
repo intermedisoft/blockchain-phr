@@ -22,11 +22,12 @@ class XrayViewerPage extends Component {
     let visitDate = moment(this.props.location.state.data.dateTimeService).format('LL')
     this.props.setHeader(visitDate)
   }
-
   render() {
     const data = this.state.data
-    const Img = data.xrayImage
+    // const Img = data.xrayImage
+    // console.log(Img && Img.replace(/_/g, '/'))
     return (
+      data &&
       <div className={`containerMain`}>
         <div className={`card`}>
           <table className={`tableView`}>
@@ -40,7 +41,7 @@ class XrayViewerPage extends Component {
                 <td>Images</td>
                 <td>:</td>
                 <td>
-                  <img src={`data:image/jpeg;base64,${Img}`} alt='Xray Image' />
+                  <img src={`data:image/jpeg;base64,${Img && Img.replace(/_/g, '/')}`} alt='Xray Image' />
                 </td>
               </tr> */}
               <tr>

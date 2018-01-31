@@ -27,10 +27,10 @@ const receiveIsLoadedPatient = () => ({
 //     payload: data
 //   })
 // }
-export const getPatient = (configs, patientId) => async (dispatch) => {
+export const getPatient = (patientId) => async (dispatch) => {
   try {
-    if (configs && patientId) {
-      const response = await Service.Patient.getPatient(configs, patientId)
+    if (patientId) {
+      const response = await Service.Patient.getPatient(patientId)
       dispatch(receivegetPatient(response.data))
     }
   } catch (error) {

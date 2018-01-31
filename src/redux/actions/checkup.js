@@ -9,10 +9,20 @@ const receivegetAllCheckup = (data) => ({
   payload: data
 })
 
-const getAllCheckup = (configs, patientId) => async (dispatch) => {
+const receivegetCheckup = (data) => ({
+  type: types.CHECKUP.GET,
+  payload: data
+})
+
+const receivegetCheckupResultProducedTransaction = (data) => ({
+  type: types.CHECKUP.GETCHECKUPHISTORY,
+  payload: data
+})
+
+const getAllCheckup = (patientId) => async (dispatch) => {
   try {
-    if (configs && patientId) {
-      const response = await Service.Checkup.getAllCheckup(configs, patientId)
+    if (patientId) {
+      const response = await Service.Checkup.getAllCheckup(patientId)
       if (!response.data.length) {
         dispatch(receivegetAllCheckup({ nodata: true }))
       } else {
@@ -31,6 +41,38 @@ const getAllCheckup = (configs, patientId) => async (dispatch) => {
   }
 }
 
+const getCheckup = (assetId) => async (dispatch) => {
+  try {
+    if (assetId) {
+      const response = await Service.Checkup.getCheckup(assetId)
+      const data = response.data
+      data.healthCareProviderId = _function.popHash(data.healthCareProvider)
+      dispatch(receivegetCheckup(data))
+    }
+  } catch (error) {
+    ActionErrHandle(dispatch, error)
+  }
+}
+
+const getCheckupResultProducedTransaction = (configs) => async (dispatch) => {
+  try {
+    if (configs) {
+      const response = await Service.Checkup.getCheckupResultProducedTransaction(configs)
+      let data = response.data
+      console.log('---111---')
+      console.log(data)
+
+      data.forEach((key, i) => {
+        key.checkupHistory.healthCareProviderId = _function.popHash(key.checkupHistory.healthCareProvider)
+        i + 1 === data.length && dispatch(receivegetCheckupResultProducedTransaction(data))
+      })
+    }
+  } catch (error) {
+    ActionErrHandle(dispatch, error)
+  }
+}
 export const checkupAction = {
-  getAllCheckup
+  getAllCheckup,
+  getCheckup,
+  getCheckupResultProducedTransaction
 }

@@ -3,7 +3,7 @@ import Divider from 'material-ui/Divider'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { HeaderAction } from './../../redux/actions/header'
-
+import { checkupAction } from './../../redux/actions/checkup'
 require('moment/locale/th')
 
 class CheckupViewerPage extends Component {
@@ -13,20 +13,30 @@ class CheckupViewerPage extends Component {
 
   componentWillMount() {
     if (this.props.location.state === undefined) {
-      this.props.history.push('/checkup')
-      return false
+      if (this.props.match.params.id) {
+        const id = this.props.match.params.id
+        this.props.getCheckup(id)
+      } else {
+        this.props.history.push('/checkup')
+        return false
+      }
+    } else {
+      this.setState({
+        data: this.props.location.state.data
+      })
+      let visitDate = moment(this.props.location.state.data.dateTimeServe).format('LL')
+      this.props.setHeader(visitDate)
     }
-    this.setState({
-      data: this.props.location.state.data
-    })
-    let visitDate = moment(this.props.location.state.data.dateTimeServe).format('LL')
-    this.props.setHeader(visitDate)
   }
 
   render() {
     // const id = this.props.match.params.id
-    const data = this.state.data
-    // console.log(data)
+    let data = this.state.data
+    if (!data) {
+      data = this.props.checkup
+    }
+    console.log('**************************************************!')
+    console.log(data)
     return (
       <div className={`containerMain`}>
         <div className={`card`}>
@@ -105,7 +115,9 @@ class CheckupViewerPage extends Component {
               <tr>
                 <td>Health Care Provider</td>
                 <td>:</td>
-                <td>{data.healthCareProviderName}</td>
+                <td>{
+                  data.healthCareProviderData &&
+                  data.healthCareProviderData[0].healthCareProviderName}</td>
               </tr>
               <tr>
                 <td>ldl</td>
@@ -187,18 +199,21 @@ class CheckupViewerPage extends Component {
           <Divider />
           <div className={`cardGroup`}>
             <div className={`cardHead`}>Conclusion</div>
-            <ul className={`normal`}>
-              <li>เสี่ยงต่อการเป็นโรคเบาหวาน , ไขมันในเลือดสูง , น้ำหนักเกิน </li>
-            </ul>
+            <div className={`normal`}>
+              {data.conclusion}
+            </div>
           </div>
           <div className={`cardGroup`}>
             <div className={`cardHead`}>Recommendation</div>
-            <ul className={`normal`}>
+            <div className={`normal`}>
+              {data.recommendation}
+            </div>
+            {/* <ul className={`normal`}>
               <li>ออกกำลังกายอย่างต่อเนื่อง อย่างน้อยวันละ 30 นาที เป็นเวลา 3-5 วันต่อสัปดาห์</li>
               <li>หลีกเลี่ยงอาหารที่มีน้ำตาลสูง เช่น น้ำอัดลม ขนมหวาน และผลไม้หวานจัด</li>
               <li>พยายามควบคุมน้ำหนักให้อยู่ใยเกณฑ์มาตรฐาน</li>
               <li>ควรตรวจ Caloum Score เพิ่มเติม</li>
-            </ul>
+            </ul> */}
           </div>
         </div>
       </div >
@@ -210,13 +225,16 @@ const mapDispatchToProps = (dispatch, state) => {
   return {
     setHeader: (text) => {
       dispatch(HeaderAction.setHeader(text))
+    }, getCheckup: (assetId) => {
+      dispatch(checkupAction.getCheckup(assetId))
     }
   }
 }
 
 const mapStateToProps = state => (
   {
-    header: state.header.text
+    header: state.header.text,
+    checkup: state.checkup.dataOnSelected.data
   }
 )
 

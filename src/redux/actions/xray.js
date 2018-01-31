@@ -8,10 +8,10 @@ const receivegetAllXray = (data) => ({
   payload: data
 })
 
-const getAllXray = (configs, patientId) => async (dispatch) => {
+const getAllXray = (patientId) => async (dispatch) => {
   try {
-    if (configs && patientId) {
-      const response = await Service.Xray.getXray(configs, patientId)
+    if (patientId) {
+      const response = await Service.Xray.getXray(patientId)
       if (!response.data.length) {
         dispatch(receivegetAllXray({ nodata: true }))
       } else {

@@ -7,8 +7,7 @@ export default {
       try {
         let esc = encodeURIComponent
         let filter = '{"where": {"patient": "resource:com.depa.blockchain.core.Patient#' + patientId + '","permissionType" : "REQUEST"}}'
-        // let filter = '{"where": {"patient": "resource:com.depa.blockchain.core.Patient#1909800171665","permissionType" : "REQUEST"}}'
-        return await setting(configs).get(`/api/PermissionLog?filter=${esc(filter)}`)
+        return await setting().then(async (call) => call.get(`/api/PermissionLog?filter=${esc(filter)}`))
       } catch (error) {
         return Promise.reject(new Error(error))
       }
@@ -17,7 +16,7 @@ export default {
   getPermissionById: async (configs, permissionLogId) => {
     if (permissionLogId) {
       try {
-        return await setting(configs).get(`/api/PermissionLog/${permissionLogId}`)
+        return await setting().then(async (call) => call.get(`/api/PermissionLog/${permissionLogId}`))
       } catch (error) {
         return Promise.reject(new Error(error))
       }
@@ -26,7 +25,7 @@ export default {
   updatePermission: async (configs, data) => {
     if (data) {
       try {
-        return await setting(configs).post(`/api/PermissionTransaction`, data)
+        return await setting().then(async (call) => call.post(`/api/PermissionTransaction`, data))
       } catch (error) {
         return Promise.reject(new Error(error))
       }
@@ -35,7 +34,7 @@ export default {
   updatePermissionReading: async (configs, data, permissionLogId) => {
     if (data) {
       try {
-        return await setting(configs).put(`/api/PermissionLog/${permissionLogId}`, data)
+        return await setting().then(async (call) => call.put(`/api/PermissionLog/${permissionLogId}`, data))
       } catch (error) {
         return Promise.reject(new Error(error))
       }

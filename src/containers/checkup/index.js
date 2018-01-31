@@ -8,16 +8,26 @@ import { List } from 'material-ui/List'
 import { checkupAction } from './../../redux/actions/checkup'
 import { patientAction } from './../../redux/actions/patient'
 import { CircularProgress, DataNotFound } from './../../components/'
+
 class CheckupPage extends Component {
+
+  componentWillMount() {
+    if (this.props.patientId) {
+      this.props.getPatient(this.props.patientId)
+      this.props.getAllCheckup(this.props.patientId)
+    }
+  }
+
+  componentWillUpdate() {
+    if (this.props.patientId && isEmpty(this.props.checkup) && isEmpty(this.props.patients) && isEmpty(this.props.healthCareProvider)) {
+      this.props.getPatient(this.props.patientId)
+      this.props.getAllCheckup(this.props.patientId)
+    }
+  }
+
   render() {
-    const { patientId, patients, configs, err, checkup, healthCareProvider } = { ...this.props }
-    // console.log(this.props)
-    if (isEmpty(patients) && isEmpty(checkup) && !err) {
-      this.props.getPatient(configs, patientId)
-    }
-    if (isEmpty(checkup) && !err && configs && patientId) {
-      this.props.getAllCheckup(configs, patientId)
-    }
+    const { patients, checkup, healthCareProvider } = { ...this.props }
+
     let renderHTML = (
       <CircularProgress className={`--loadCard`} />
     )
@@ -42,7 +52,7 @@ class CheckupPage extends Component {
                   return (
                     <div key={v.checkupHistoryId}>
                       <Link to={{
-                        pathname: `/checkup/${v.checkupHistoryId}`,
+                        pathname: `/checkup/${v.assetId}`,
                         state: { data: v }
                       }}> <CardComponent data={v} /> </Link>
                     </div>
@@ -66,11 +76,11 @@ class CheckupPage extends Component {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getAllCheckup: (configs, patientId) => {
-      dispatch(checkupAction.getAllCheckup(configs, patientId))
+    getAllCheckup: (patientId) => {
+      dispatch(checkupAction.getAllCheckup(patientId))
     },
-    getPatient: (configs, patientId) => {
-      dispatch(patientAction.getPatient(configs, patientId))
+    getPatient: (patientId) => {
+      dispatch(patientAction.getPatient(patientId))
     }
   }
 }
@@ -79,8 +89,6 @@ const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
     patients: state.patient.data,
-    configs: state.firebase.data.configs,
-    err: state.fetchError.modalOpen,
     checkup: state.checkup.data,
     healthCareProvider: state.healthCareProvider.data
   }

@@ -2,25 +2,27 @@
 import { setting } from './setting'
 // import { Service } from './'
 export default {
-  getAllCheckup: async (configs, patientId) => {
+  getAllCheckup: async (patientId) => {
     if (patientId) {
       try {
-        await setting(configs).post(`/api/wallet/${patientId}/setDefault`)
-        return await setting(configs)
-          // .get(`/api/queries/listAllCheckupHistoryOfPatient?patientIdParam=${patientId}`)
-          // .get(`/api/queries/listAllCheckupHistoryOfPatient?patientIdParam=resource:com.depa.blockchain.core.Patient#${patientId}`)
-          .get(`/api/CheckupHistory`)
-        // return allCheckup
+        await setting().then(async (call) => call.post(`/api/wallet/${patientId}/setDefault`))
+        return await setting().then(async (call) => call.get(`/api/CheckupHistory`))
       } catch (error) {
         return Promise.reject(new Error(error))
       }
     }
   },
-  getCheckup: async (configs, id) => {
+  getCheckup: async (assetId) => {
     try {
-      const data = await setting(configs)
-        .get(`/api/ServiceHistory/${id}`)
-      return data
+      // await setting().then(async (call) => call.post(`/api/wallet/${patientId}/setDefault`))
+      return await setting().then(async (call) => call.get(`/api/CheckupHistory/${assetId}`))
+    } catch (error) {
+      return Promise.reject(new Error(error))
+    }
+  },
+  getCheckupResultProducedTransaction: async (configs) => {
+    try {
+      return await setting().then(async (call) => call.get(`/api/CheckupResultProducedTransaction`))
     } catch (error) {
       return Promise.reject(new Error(error))
     }

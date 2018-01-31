@@ -27,6 +27,9 @@ $block-icon-noti-size:50px;
           flex-basis: calc(100% - #{$block-icon-noti-size * 2});
         }
         &.noti{
+          align-items: center;
+          display: flex;
+          justify-content: center;
           text-align: right;
           .notiBlock{
             background-color: $notification-bg-color;

@@ -3,6 +3,7 @@ import ListComponent from './components/list'
 import { connect } from 'react-redux'
 
 import { permissionAction } from './../../redux/actions/permission'
+import { checkupAction } from './../../redux/actions/checkup'
 import { CircularProgress, DataNotFound } from './../../components/'
 class NotificationPage extends Component {
   componentDidMount() {
@@ -41,6 +42,9 @@ const mapDispatchToProps = (dispatch, state) => {
   return {
     getNotification: (configs, patientId) => {
       dispatch(permissionAction.getPermission(configs, patientId))
+    },
+    getCheckupResultProducedTransaction: (configs) => {
+      dispatch(checkupAction.getCheckupResultProducedTransaction(configs))
     }
   }
 }

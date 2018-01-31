@@ -11,7 +11,7 @@ import RouteRoot from './routes/RouteRoot'
 import configStore from './store'
 import ErrorModalControlled from './components/Modal'
 
-import NotificationActionPage from './containers/notification/nofi'
+import LoadStarterPage from './Starter'
 
 const AppbarStyles = () => getMuiTheme({
   fontFamily: 'Kanit, sans-serif',
@@ -38,7 +38,7 @@ ReactDOM.render(
       onBeforeLift={onBeforeLift}
       persistor={persistor}>
       <ErrorModalControlled />
-      <NotificationActionPage />
+      <LoadStarterPage />
       <MuiThemeProvider muiTheme={AppbarStyles()}>
         <RouteRoot />
       </MuiThemeProvider>

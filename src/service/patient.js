@@ -2,12 +2,11 @@
 import { setting } from './setting'
 
 export default {
-  getPatient: async (configs, patientId) => {
+  getPatient: async (patientId) => {
     if (patientId) {
       try {
-        await setting(configs).post(`/api/wallet/${patientId}/setDefault`)
-        const profile = await setting(configs).get(`/api/Patient/${patientId}`)
-        return profile
+        await setting().then(async (call) => call.post(`/api/wallet/${patientId}/setDefault`))
+        return await setting().then(async (call) => call.get(`/api/Patient/${patientId}`))
       } catch (error) {
         return Promise.reject(new Error(error))
       }
@@ -16,7 +15,7 @@ export default {
   editPatient: async (configs, patientId, data) => {
     if (patientId) {
       try {
-        return await setting(configs).put(`/api/Patient/${patientId}`, data)
+        return await setting().then(async (call) => call.put(`/api/Patient/${patientId}`, data))
       } catch (error) {
         return Promise.reject(new Error(error))
       }

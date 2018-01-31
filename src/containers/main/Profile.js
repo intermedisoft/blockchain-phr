@@ -11,20 +11,10 @@ import { patientAction } from './../../redux/actions/patient'
 // moment.locale('th-TH')
 
 class ProfileComponent extends Component {
-  // componentWillMount() {
-  //   const { configs } = { ...this.props }
-  //   console.log('Component Will Mouint')
-  //   console.log(configs)
-  //   this.props.getPatient()
-  // }
-  // componentDidMount() {
-  //   const { patientId, avatarUrl, patients, configs } = { ...this.props }
-  //   console.log(patientId, avatarUrl, patients, configs)
-  // }
   render() {
-    const { patientId, avatarUrl, patients, configs } = { ...this.props }
+    const { patientId, avatarUrl, patients } = { ...this.props }
     if (isEmpty(patients)) {
-      this.props.getPatient(configs, patientId)
+      this.props.getPatient(patientId)
     }
     return (
       isEmpty(patients)
@@ -65,8 +55,8 @@ class ProfileComponent extends Component {
 }
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getPatient: (configs, patientId) => {
-      dispatch(patientAction.getPatient(configs, patientId))
+    getPatient: (patientId) => {
+      dispatch(patientAction.getPatient(patientId))
     }
   }
 }
@@ -75,8 +65,7 @@ const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
     avatarUrl: state.firebase.profile.avatarUrl,
-    patients: state.patient.data,
-    configs: state.firebase.data.configs
+    patients: state.patient.data
   }
 )
 

@@ -6,16 +6,23 @@ import CardComponent from './components/card'
 import { List } from 'material-ui/List'
 
 import { xrayAction } from './../../redux/actions/xray'
-import { patientAction } from './../../redux/actions/patient'
 import { CircularProgress, DataNotFound } from './../../components/'
 
 class XrayPage extends Component {
-  render() {
-    const { patientId, patients, configs, err, xray, healthCareProvider } = { ...this.props }
-    console.log(this.props)
-    if (isEmpty(xray) && !err) {
-      this.props.getAllXray(configs, patientId)
+
+  componentWillMount() {
+    if (this.props.patientId) {
+      this.props.getAllXray(this.props.patientId)
     }
+  }
+
+  componentWillUpdate() {
+    if (this.props.patientId && isEmpty(this.props.xray)) {
+      this.props.getAllXray(this.props.patientId)
+    }
+  }
+  render() {
+    const { patients, xray, healthCareProvider } = { ...this.props }
     let renderHTML = (
       <CircularProgress className={`--loadCard`} />
     )
@@ -26,8 +33,11 @@ class XrayPage extends Component {
     } else if (!isEmpty(xray)) {
       renderHTML = (
         <div>
-          <div>รายการประวัติ X-Ray: <span>{patients.prename}{patients.name} {patients.surname}</span></div>
-
+          {
+            !isEmpty(patients) && (
+              <div>รายการประวัติ X-Ray: <span>{patients.prename}{patients.name} {patients.surname}</span></div>
+            )
+          }
           <List>
             {
               xray.map((v, i) => {
@@ -60,8 +70,8 @@ class XrayPage extends Component {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getAllXray: (configs, patientId) => {
-      dispatch(xrayAction.getAllXray(configs, patientId))
+    getAllXray: (patientId) => {
+      dispatch(xrayAction.getAllXray(patientId))
     }
   }
 }
@@ -70,8 +80,6 @@ const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
     patients: state.patient.data,
-    configs: state.firebase.data.configs,
-    err: state.fetchError.modalOpen,
     xray: state.xray.data,
     healthCareProvider: state.healthCareProvider.data
   }

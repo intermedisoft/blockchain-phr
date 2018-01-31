@@ -8,8 +8,7 @@ class NotificationUnread extends Component {
     return (
       this.props.permission.unRead
         ? <span className={`notiBlock`}>{this.props.permission.unRead}</span>
-        // : <span><img src={'https://www.creditonebank.com/assets/images/dotdotdot.gif'} alt='Sign in with Google' /> </span>
-        : <LoadingDot sizeDot='5px'/>
+        : <LoadingDot sizeDot='5px' />
     )
   }
 }

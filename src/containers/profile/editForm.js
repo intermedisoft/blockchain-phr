@@ -8,6 +8,7 @@ import MenuItem from 'material-ui/MenuItem'
 import styles from '../../assets/style/themes/pages/profile.scss'
 import { prefixMock, bloodMock, sexMock, marriageMock } from './../../config/mockData'
 
+const required = value => (value ? undefined : 'Required')
 let ProfileEditForm = props => {
   const { handleSubmit } = props
   return (
@@ -22,10 +23,10 @@ let ProfileEditForm = props => {
             })
           }
         </Field>
-        <Field name='name' id='name' component={Input} label='ชื่อ' className={`${styles.normal}`} />
+        <Field name='name' id='name' validate={[required]} component={Input} label='ชื่อ' className={`${styles.normal}`} />
         {/* <Field component={Input} name={'name'} id={'name'} label={'ชื่อ'} v={'ทดสอบ'} /> */}
-        <Field component={Input} name={'surname'} id={'surname'} label={'นามสกุล'} className={`${styles.normal}`} />
-        <Field component={Datepicker} defaultDate={props.data.dob ? new Date(props.data.dob) : new Date()} name={'dob'} id={'dob'} label={'วันเดือนปีเกิด'} className={`${styles.small} ${styles.datePicker}`} />
+        <Field name={'surname'} id={'surname'} validate={[required]} component={Input} label={'นามสกุล'} className={`${styles.normal}`} />
+        <Field name={'dob'} id={'dob'} defaultDate={props.data.dob ? new Date(props.data.dob) : new Date()} component={Datepicker} label={'วันเดือนปีเกิด'} className={`${styles.small} ${styles.datePicker}`} />
         <Field name='bloodGroup' id='bloodGroup' component={Select} label='กรุ๊ปเลือด' className={`${styles.small}`}>
           {
             bloodMock.map((v, i) => {
@@ -53,11 +54,11 @@ let ProfileEditForm = props => {
             })
           }
         </Field>
-        <Field component={Input} name={'nation'} id={'nation'} label={'สัญชาติ'} className={`${styles.small}`} />
-        <Field component={Input} name={'race'} id={'race'} label={'เชื้อชาติ'} className={`${styles.small}`} />
-        <Field component={Input} name={'occupation'} id={'occupation'} label={'อาชีพ'} className={`${styles.normal}`} />
-        <Field component={Input} type='number' name={'height'} id={'height'} label={'ส่วนสูง'} className={`${styles.small}`} />
-        <Field component={Input} type='number' name={'weight'} id={'weight'} label={'น้ำหนัก'} className={`${styles.small}`} />
+        <Field component={Input} name={'nation'} id={'nation'} validate={[required]} label={'สัญชาติ'} className={`${styles.small}`} />
+        <Field component={Input} name={'race'} id={'race'} validate={[required]} label={'เชื้อชาติ'} className={`${styles.small}`} />
+        <Field component={Input} name={'occupation'} id={'occupation'} validate={[required]} label={'อาชีพ'} className={`${styles.normal}`} />
+        <Field component={Input} type='number' name={'height'} id={'height'} validate={[required]} label={'ส่วนสูง'} className={`${styles.small}`} />
+        <Field component={Input} type='number' name={'weight'} id={'weight'} validate={[required]} label={'น้ำหนัก'} className={`${styles.small}`} />
       </div>
       {
         props.isLoaded ? (

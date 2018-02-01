@@ -24,7 +24,7 @@ class LoadStarterPage extends Component {
       this.setState({ notification: newNotification, isData: true })
       const patientId = _function.popHash(newNotification.patient)
       const eventType = _function.popHash(newNotification.$class, '.')
- 
+
 
       if ((patientId === this.props.patientId) && (eventType === 'PermissionRequestEvent')) {
         this.props.getNotification(this.props.configs, this.props.patientId)
@@ -49,10 +49,11 @@ class LoadStarterPage extends Component {
 
   }
   render() {
-    const { patientId, configs, err, permission } = { ...this.props }
-    if (patientId && !err && isEmpty(permission.data)) {
+    const { patientId, configs, err, permission, checkupHistory } = { ...this.props }
+    if (patientId && !err && isEmpty(permission.data) && isEmpty(checkupHistory)) {
       this.props.getNotification(configs, patientId)
       this.props.getHealthCareProvider(configs)
+      this.props.getCheckupResultProducedTransaction(patientId)
     }
     return (
       <div>
@@ -69,8 +70,12 @@ const mapDispatchToProps = (dispatch, state) => {
     },
     getHealthCareProvider: (configs) => {
       dispatch(healthCareProviderAction.getHealthCareProvider(configs))
-    }, getAllCheckup: (configs, patientId) => {
+    },
+    getAllCheckup: (configs, patientId) => {
       dispatch(checkupAction.getAllCheckup(configs, patientId))
+    },
+    getCheckupResultProducedTransaction: (configs) => {
+      dispatch(checkupAction.getCheckupResultProducedTransaction(configs))
     }
   }
 }
@@ -80,7 +85,8 @@ const mapStateToProps = state => (
     patientId: state.firebase.profile.patientId,
     configs: state.firebase.data.configs,
     err: state.fetchError.modalOpen,
-    permission: state.permission
+    permission: state.permission,
+    checkupHistory: state.checkup.checkupHistory.data
   }
 )
 export default connect(mapStateToProps, mapDispatchToProps)(LoadStarterPage)

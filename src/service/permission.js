@@ -22,7 +22,7 @@ export default {
       }
     }
   },
-  updatePermission: async (configs, data) => {
+  updatePermission: async (data) => {
     if (data) {
       try {
         return await setting().then(async (call) => call.post(`/api/PermissionTransaction`, data))
@@ -31,7 +31,7 @@ export default {
       }
     }
   },
-  updatePermissionReading: async (configs, data, permissionLogId) => {
+  updatePermissionReading: async (data, permissionLogId) => {
     if (data) {
       try {
         return await setting().then(async (call) => call.put(`/api/PermissionLog/${permissionLogId}`, data))

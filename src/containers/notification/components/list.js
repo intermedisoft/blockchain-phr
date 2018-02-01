@@ -10,29 +10,33 @@ require('moment/locale/th')
 
 class ListComponent extends Component {
   render() {
-    const { data } = { ...this.props }
+    const { val } = { ...this.props }
+    const data = val.item
     if (data) {
       return (
         <List>
           <Link to={{
-            pathname: `/notification/${data.permissionLogId}`,
+            pathname: val.type === 'CheckupHistory'
+              ? `/checkup/read/${val.id}` : `/notification/${val.id}`,
             state: { data }
           }}>
             <ListItem
-              primaryText={data.healthCareProviderData[0].healthCareProviderName}
+              primaryText={val.typeText}
               secondaryText={
                 <p>
-                  <span>{moment(data.actionDateTime).format('LLL')}</span>
+                  <span>{data.healthCareProviderData[0].healthCareProviderName}</span>
+                  <br />
+                  <span>{moment(val.actionDateTime).format('LLL')}</span>
                 </p>
               }
               rightIcon={
                 data.patientAcknowledgeDateTime ? null : <ActionInfo />
               }
-              secondaryTextLines={1}
+              secondaryTextLines={2}
             />
           </Link>
           <Divider />
-        </List>
+        </List >
       )
     } else {
       return null

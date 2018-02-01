@@ -6,23 +6,25 @@ import { isEmpty } from 'react-redux-firebase'
 import { patientAction } from './../../redux/actions/patient'
 import { Link } from 'react-router-dom'
 
-import {CircularProgress } from './../../components'
+import { CircularProgress } from './../../components'
 import styles from '../../assets/style/themes/pages/profile.scss'
 
 class ProfilePage extends Component {
-  // componentWillMount() {
-  //   this.props.getPatient()
-  // }
-
-  render() {
-    const { patientId, avatarUrl, patients, configs, err } = { ...this.props }
-    if (isEmpty(patients) && !err) {
-      this.props.getPatient(configs, patientId)
-      return true
+  componentWillMount() {
+    if (this.props.patientId) {
+      this.props.getPatient(this.props.patientId)
     }
+  }
 
+  componentWillUpdate() {
+    if (this.props.patientId && isEmpty(this.props.patients)) {
+      this.props.getPatient(this.props.patientId)
+    }
+  }
+  render() {
+    const { avatarUrl, patients } = { ...this.props }
     let renderHTML = (
-      <CircularProgress className={`--loadCard`}/>
+      <CircularProgress className={`--loadCard`} />
     )
 
     if (!isEmpty(patients)) {
@@ -105,8 +107,8 @@ class ProfilePage extends Component {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getPatient: (configs, patientId) => {
-      dispatch(patientAction.getPatient(configs, patientId))
+    getPatient: (patientId) => {
+      dispatch(patientAction.getPatient(patientId))
     }
   }
 }
@@ -115,9 +117,7 @@ const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
     avatarUrl: state.firebase.profile.avatarUrl,
-    patients: state.patient.data,
-    configs: state.firebase.data.configs,
-    err: state.fetchError.modalOpen
+    patients: state.patient.data
   }
 )
 

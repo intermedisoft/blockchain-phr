@@ -17,7 +17,7 @@ class XrayPage extends Component {
   }
 
   componentWillUpdate() {
-    if (this.props.patientId && isEmpty(this.props.xray)) {
+    if (this.props.patientId && isEmpty(this.props.xray) && isEmpty(this.props.healthCareProvider)) {
       this.props.getAllXray(this.props.patientId)
     }
   }
@@ -41,9 +41,8 @@ class XrayPage extends Component {
           <List>
             {
               xray.map((v, i) => {
-                v.healthCareProviderData = healthCareProvider.filter((Provider) => {
-                  return Provider.healthCareProviderId === v.healthCareProviderId
-                })
+                v.healthCareProviderData = healthCareProvider.filter((Provider) =>
+                  Provider.healthCareProviderId === v.healthCareProviderId)
                 return (
                   <div key={v.assetId}>
                     <Link to={{

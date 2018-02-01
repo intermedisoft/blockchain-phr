@@ -33,7 +33,7 @@ class NotificationViewerPage extends Component {
       data.patientAcknowledgeDateTime = moment().toISOString()
       delete data.permissionLogId
 
-      this.props.updatePermissionReading(this.props.configs, data, permissionLogId)
+      this.props.updatePermissionReading(data, permissionLogId)
       // this.props.getNotification(this.props.configs, this.props.patientId)
     } else {
       this.props.receivesetDataOnReading(permissionLogId)
@@ -47,14 +47,14 @@ class NotificationViewerPage extends Component {
   handleAllowPermission = (provider) => {
     provider = this.cleanPermissionData(provider)
     provider.permissionType = 'GRANT'
-    this.props.updatePermission(this.props.configs, provider)
+    this.props.updatePermission(provider)
     // this.props.getNotification(this.props.configs, this.props.patientId)
   }
 
   handleDontAllowPermission = (provider) => {
     provider = this.cleanPermissionData(provider)
     provider.permissionType = 'DENY'
-    this.props.updatePermission(this.props.configs, provider)
+    this.props.updatePermission(provider)
     // this.props.getNotification(this.props.configs, this.props.patientId)
   }
 
@@ -113,10 +113,10 @@ const mapDispatchToProps = (dispatch, state) => {
   return {
     setHeader: (text) => {
       dispatch(HeaderAction.setHeader(text))
-    }, updatePermission: (configs, data) => {
-      dispatch(permissionAction.updatePermission(configs, data))
-    }, updatePermissionReading: (configs, data, permissionLogId) => {
-      dispatch(permissionAction.updatePermissionReading(configs, data, permissionLogId))
+    }, updatePermission: (data) => {
+      dispatch(permissionAction.updatePermission(data))
+    }, updatePermissionReading: (data, permissionLogId) => {
+      dispatch(permissionAction.updatePermissionReading(data, permissionLogId))
     }, getNotification: (configs, patientId) => {
       dispatch(permissionAction.getPermission(configs, patientId))
     }, clearUpdatePermissionData: () => {

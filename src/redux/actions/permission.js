@@ -40,15 +40,6 @@ const receivesetDataOnReading = (id) => ({
   payload: id
 })
 
-const countUnread = (obj) => {
-  const valible = 'patientAcknowledgeDateTime'
-  let count = 0
-  obj.forEach((key) => {
-    !key[valible] && count++
-  })
-  return count
-}
-
 const getPermission = (configs, patientId) => async (dispatch) => {
   try {
     if (configs && patientId) {
@@ -63,7 +54,7 @@ const getPermission = (configs, patientId) => async (dispatch) => {
           // Service.HealthProvider.getHealthProvider(configs, healthCareProviderID).then((r) => {
           key.healthCareProviderId = _function.popHash(key.healthCareProvider)
           key.patientId = _function.popHash(key.patient)
-          i + 1 === data.length && dispatch(receivegetPatient(data.reverse(), countUnread(data)))
+          i + 1 === data.length && dispatch(receivegetPatient(data.reverse(), _function.countUnread(data, 'patientAcknowledgeDateTime')))
           // })
         })
       }
@@ -86,11 +77,11 @@ const getPermissionById = (configs, permissionLogId) => async (dispatch) => {
   }
 }
 
-const updatePermission = (configs, data) => async (dispatch) => {
+const updatePermission = (data) => async (dispatch) => {
   try {
-    if (configs && data) {
+    if (data) {
       dispatch(receiveupdatePermissionLoading())
-      const response = await Service.Permission.updatePermission(configs, data)
+      const response = await Service.Permission.updatePermission(data)
       dispatch(receiveupdatePermission(response.data))
     }
   } catch (error) {
@@ -98,13 +89,11 @@ const updatePermission = (configs, data) => async (dispatch) => {
   }
 }
 
-const updatePermissionReading = (configs, data, permissionLogId) => async (dispatch) => {
+const updatePermissionReading = (data, permissionLogId) => async (dispatch) => {
   try {
-    if (configs && data) {
-      console.log(0)
+    if (data) {
       dispatch(receivesetDataOnReadingLoading())
-      console.log('1')
-      await Service.Permission.updatePermissionReading(configs, data, permissionLogId)
+      await Service.Permission.updatePermissionReading(data, permissionLogId)
       console.log(permissionLogId)
       dispatch(receivesetDataOnReading(permissionLogId))
     }

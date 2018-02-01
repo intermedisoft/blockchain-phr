@@ -5,13 +5,14 @@ import { LoadingDot } from './../../../components/'
 
 class NotificationUnread extends Component {
   render() {
+    const { permissionUnread, checkupHistoryUnread } = { ...this.props }
     return (
-      this.props.permission.unRead
-        ? <span className={`notiBlock`}>{this.props.permission.unRead}</span>
+      permissionUnread && checkupHistoryUnread
+        ? <span className={`notiBlock`}>{permissionUnread + checkupHistoryUnread}</span>
         : <LoadingDot sizeDot='5px' />
     )
   }
 }
 
-const mapStateToProps = state => ({ permission: state.permission })
+const mapStateToProps = state => ({ permissionUnread: state.permission.unRead, checkupHistoryUnread: state.checkup.checkupHistory.unRead })
 export default connect(mapStateToProps)(NotificationUnread)

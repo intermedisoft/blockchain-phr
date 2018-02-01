@@ -2,13 +2,21 @@ import React, { Component } from 'react'
 import Divider from 'material-ui/Divider'
 import moment from 'moment'
 import { connect } from 'react-redux'
+import { isEmpty } from 'react-redux-firebase'
+
 import { HeaderAction } from './../../redux/actions/header'
 import { checkupAction } from './../../redux/actions/checkup'
+
+import { _function } from './../../function'
+
 require('moment/locale/th')
 
 class CheckupViewerPage extends Component {
   state = {
     data: ''
+  }
+  setTitleBar(value) {
+    this.props.setHeader(moment(value).format('LL'))
   }
 
   componentWillMount() {
@@ -21,23 +29,36 @@ class CheckupViewerPage extends Component {
         return false
       }
     } else {
+      let data = this.props.location.state.data
+      const coreType = _function.popHash(data.$class, '.')
+      if (coreType === 'CheckupResultProducedTransaction') {
+        /* OPEN FROM NOTIFICATION PAGE */
+        let _temp = data.healthCareProviderData
+        data = data.checkupHistory
+        data.healthCareProviderData = _temp
+        //UPDATE READ
+      }
       this.setState({
-        data: this.props.location.state.data
+        data: data
       })
-      let visitDate = moment(this.props.location.state.data.dateTimeServe).format('LL')
-      this.props.setHeader(visitDate)
+      this.setTitleBar(data.dateTimeServe)
+    }
+  }
+
+  componentWillUpdate() {
+    if (!isEmpty(this.props.checkup) && !this.props.header) {
+      this.setTitleBar(this.props.checkup.dateTimeServe)
     }
   }
 
   render() {
-    // const id = this.props.match.params.id
     let data = this.state.data
     if (!data) {
       data = this.props.checkup
     }
-    console.log('**************************************************!')
-    console.log(data)
+    const { healthCareProvider } = { ...this.props }
     return (
+      (!isEmpty(data) && !isEmpty(healthCareProvider)) &&
       <div className={`containerMain`}>
         <div className={`card`}>
           <table className={`tableView`}>
@@ -116,8 +137,11 @@ class CheckupViewerPage extends Component {
                 <td>Health Care Provider</td>
                 <td>:</td>
                 <td>{
-                  data.healthCareProviderData &&
-                  data.healthCareProviderData[0].healthCareProviderName}</td>
+                  data.healthCareProviderData ?
+                    data.healthCareProviderData[0].healthCareProviderName : healthCareProvider.filter((Provider) => {
+                      return Provider.healthCareProviderId === data.healthCareProviderId
+                    })[0].healthCareProviderName
+                }</td>
               </tr>
               <tr>
                 <td>ldl</td>
@@ -234,7 +258,8 @@ const mapDispatchToProps = (dispatch, state) => {
 const mapStateToProps = state => (
   {
     header: state.header.text,
-    checkup: state.checkup.dataOnSelected.data
+    checkup: state.checkup.dataOnSelected.data,
+    healthCareProvider: state.healthCareProvider.data
   }
 )
 

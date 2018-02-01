@@ -3,7 +3,11 @@ import { CHECKUP } from './../../constants/ActionTypes'
 const checkup = {
   data: {},
   isLoaded: false,
-  checkupHistory: [],
+  checkupHistory: {
+    data: [],
+    unRead: 0,
+    isLoaded: false
+  },
   dataOnSelected: {
     data: {},
     isLoaded: false
@@ -27,9 +31,11 @@ export default function CheckupReducer(state = checkup, action) {
     case CHECKUP.GETCHECKUPHISTORY:
       return {
         ...state,
-        checkupHistory: action.payload
+        checkupHistory: {
+          data: action.payload,
+          unRead: action.unRead
+        }
       }
-
     default:
       return state
   }

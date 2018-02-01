@@ -12,7 +12,7 @@ export default {
       }
     }
   },
-  editPatient: async (configs, patientId, data) => {
+  editPatient: async (patientId, data) => {
     if (patientId) {
       try {
         return await setting().then(async (call) => call.put(`/api/Patient/${patientId}`, data))

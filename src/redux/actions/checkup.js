@@ -14,9 +14,10 @@ const receivegetCheckup = (data) => ({
   payload: data
 })
 
-const receivegetCheckupResultProducedTransaction = (data) => ({
+const receivegetCheckupResultProducedTransaction = (data, unRead) => ({
   type: types.CHECKUP.GETCHECKUPHISTORY,
-  payload: data
+  payload: data,
+  unRead
 })
 
 const getAllCheckup = (patientId) => async (dispatch) => {
@@ -59,12 +60,9 @@ const getCheckupResultProducedTransaction = (configs) => async (dispatch) => {
     if (configs) {
       const response = await Service.Checkup.getCheckupResultProducedTransaction(configs)
       let data = response.data
-      console.log('---111---')
-      console.log(data)
-
       data.forEach((key, i) => {
         key.checkupHistory.healthCareProviderId = _function.popHash(key.checkupHistory.healthCareProvider)
-        i + 1 === data.length && dispatch(receivegetCheckupResultProducedTransaction(data))
+        i + 1 === data.length && dispatch(receivegetCheckupResultProducedTransaction(data, _function.countUnread(data, 'patientAcknowledgeDateTime')))
       })
     }
   } catch (error) {

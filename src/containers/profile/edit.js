@@ -11,10 +11,10 @@ import styles from '../../assets/style/themes/pages/profile.scss'
 class ProfileEdit extends Component {
   state = {}
   render() {
-    const { patientId, patients, avatarUrl, configs, err, isLoaded } = { ...this.props }
+    const { patientId, patients, avatarUrl, isLoaded } = { ...this.props }
 
-    if (isEmpty(patients) && !err) {
-      this.props.getPatient(configs, patientId)
+    if (isEmpty(patients)) {
+      this.props.getPatient(patientId)
       return false
     }
 
@@ -22,7 +22,7 @@ class ProfileEdit extends Component {
       if (data.patientId) {
         delete data.patientId
       }
-      this.props.editPatient(configs, patientId, data)
+      this.props.editPatient(patientId, data)
     }
 
     return (
@@ -45,11 +45,11 @@ class ProfileEdit extends Component {
 }
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getPatient: (configs, patientId) => {
-      dispatch(patientAction.getPatient(configs, patientId))
+    getPatient: (patientId) => {
+      dispatch(patientAction.getPatient(patientId))
     },
-    editPatient: (configs, patientId, data) => {
-      dispatch(patientAction.editPatient(configs, patientId, data))
+    editPatient: (patientId, data) => {
+      dispatch(patientAction.editPatient(patientId, data))
     }
   }
 }
@@ -59,8 +59,6 @@ const mapStateToProps = state => (
     patientId: state.firebase.profile.patientId,
     avatarUrl: state.firebase.profile.avatarUrl,
     patients: state.patient.data,
-    configs: state.firebase.data.configs,
-    err: state.fetchError.modalOpen,
     isLoaded: state.patient.isLoaded
   }
 )

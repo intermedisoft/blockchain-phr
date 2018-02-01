@@ -38,11 +38,11 @@ export const getPatient = (patientId) => async (dispatch) => {
   }
 }
 
-export const editPatient = (configs, patientId, data) => async (dispatch) => {
+export const editPatient = (patientId, data) => async (dispatch) => {
   try {
-    if (configs && patientId) {
+    if (patientId) {
       dispatch(receiveIsLoadingPatient())
-      const response = await Service.Patient.editPatient(configs, patientId, data)
+      const response = await Service.Patient.editPatient(patientId, data)
       response.data.save = true
       dispatch(receiveIsLoadedPatient())
       dispatch(receiveEditPatient(response.data))

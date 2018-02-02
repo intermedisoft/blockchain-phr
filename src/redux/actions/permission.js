@@ -35,27 +35,27 @@ const receivegetPatientById = (data) => ({
   payload: data
 })
 
-const receivesetDataOnReading = (id) => ({
+const receivesetDataOnReading = (id, reload) => ({
   type: types.PERMISSION.SETDATAONREADING,
-  payload: id
+  payload: id,
+  reload
 })
 
-const getPermission = (configs, patientId) => async (dispatch) => {
+const getPermission = (patientId, reload) => async (dispatch) => {
   try {
-    if (configs && patientId) {
-      // dispatch(receivegetPatientLoading())
-      const response = await Service.Permission.getPermission(configs, patientId)
+    if (reload) {
+      dispatch(receivesetDataOnReading(null, false))
+    }
+    if (patientId) {
+      const response = await Service.Permission.getPermission(patientId)
       if (!response.data.length) {
         dispatch(receivegetPatient({ nodata: true }))
       } else {
         let data = response.data
         data.forEach((key, i) => {
-          // let healthCareProviderID = _function.popHash(key.healthCareProvider)
-          // Service.HealthProvider.getHealthProvider(configs, healthCareProviderID).then((r) => {
           key.healthCareProviderId = _function.popHash(key.healthCareProvider)
           key.patientId = _function.popHash(key.patient)
           i + 1 === data.length && dispatch(receivegetPatient(data.reverse(), _function.countUnread(data, 'patientAcknowledgeDateTime')))
-          // })
         })
       }
     }
@@ -94,8 +94,8 @@ const updatePermissionReading = (data, permissionLogId) => async (dispatch) => {
     if (data) {
       dispatch(receivesetDataOnReadingLoading())
       await Service.Permission.updatePermissionReading(data, permissionLogId)
-      console.log(permissionLogId)
-      dispatch(receivesetDataOnReading(permissionLogId))
+      let reload = true
+      dispatch(receivesetDataOnReading(permissionLogId, reload))
     }
   } catch (error) {
     ActionErrHandle(dispatch, error)

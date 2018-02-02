@@ -2,7 +2,7 @@
 import { setting } from './setting'
 
 export default {
-  getPermission: async (configs, patientId) => {
+  getPermission: async (patientId) => {
     if (patientId) {
       try {
         let esc = encodeURIComponent

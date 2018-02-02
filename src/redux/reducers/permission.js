@@ -9,7 +9,8 @@ const permission = {
   },
   dataOnReading: {
     id: '',
-    isLoading: false
+    isLoading: false,
+    reload: false
   },
   unRead: 0,
   isLoading: false
@@ -64,7 +65,8 @@ export default function PermissionReducer(state = permission, action) {
         ...state,
         dataOnReading: {
           id: action.payload,
-          isLoading: false
+          isLoading: false,
+          reload: action.reload
         }
       }
     case PERMISSION.LOADING:

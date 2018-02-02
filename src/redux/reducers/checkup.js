@@ -6,7 +6,8 @@ const checkup = {
   checkupHistory: {
     data: [],
     unRead: 0,
-    isLoaded: false
+    isLoaded: false,
+    updateReading: false
   },
   dataOnSelected: {
     data: {},
@@ -34,6 +35,15 @@ export default function CheckupReducer(state = checkup, action) {
         checkupHistory: {
           data: action.payload,
           unRead: action.unRead
+        }
+      }
+    case CHECKUP.UPDATEREADINGCHECKUPHISTORY:
+      const chkup = state.checkupHistory
+      return {
+        ...state,
+        checkupHistory: {
+          ...chkup,
+          updateReading: action.payload
         }
       }
     default:

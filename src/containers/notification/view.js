@@ -36,7 +36,7 @@ class NotificationViewerPage extends Component {
       this.props.updatePermissionReading(data, permissionLogId)
       // this.props.getNotification(this.props.configs, this.props.patientId)
     } else {
-      this.props.receivesetDataOnReading(permissionLogId)
+      this.props.receivesetDataOnReading(permissionLogId, false)
     }
     // this.props.receivesetDataOnReading(permissionLogId)
     // console.log('---------------------------')
@@ -117,12 +117,12 @@ const mapDispatchToProps = (dispatch, state) => {
       dispatch(permissionAction.updatePermission(data))
     }, updatePermissionReading: (data, permissionLogId) => {
       dispatch(permissionAction.updatePermissionReading(data, permissionLogId))
-    }, getNotification: (configs, patientId) => {
-      dispatch(permissionAction.getPermission(configs, patientId))
+    }, getNotification: (patientId) => {
+      dispatch(permissionAction.getPermission(patientId))
     }, clearUpdatePermissionData: () => {
       dispatch(permissionAction.receiveupdatePermissionClearData())
-    }, receivesetDataOnReading: (id) => {
-      dispatch(permissionAction.receivesetDataOnReading(id))
+    }, receivesetDataOnReading: (id, reload) => {
+      dispatch(permissionAction.receivesetDataOnReading(id, reload))
     }
   }
 }

@@ -30,7 +30,9 @@ class ListComponent extends Component {
                 </p>
               }
               rightIcon={
-                data.patientAcknowledgeDateTime ? null : <ActionInfo />
+                val.type === 'CheckupHistory'
+                  ? data.checkupHistory.patientAcknowledgeDateTime ? null : <ActionInfo />
+                  : data.patientAcknowledgeDateTime ? null : <ActionInfo />
               }
               secondaryTextLines={2}
             />

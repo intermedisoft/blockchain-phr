@@ -27,14 +27,14 @@ class LoadStarterPage extends Component {
 
 
       if ((patientId === this.props.patientId) && (eventType === 'PermissionRequestEvent')) {
-        this.props.getNotification(this.props.configs, this.props.patientId)
+        this.props.getNotification(this.props.patientId)
         NotificationManager.info('You have a new Permission Request', '', 5000, () => {
           window.location.href = '/notification'
         })
       }
       if ((patientId === this.props.patientId) && (eventType === 'CheckupResultProducedEvent')) {
-        this.props.getAllCheckup(this.props.configs, this.props.patientId)
-        this.props.getNotification(this.props.configs, this.props.patientId)
+        this.props.getAllCheckup(this.props.patientId)
+        this.props.getNotification(this.props.patientId)
         NotificationManager.info('You have a new Checkup Event', '', 5000, () => {
           window.location.href = `/checkup/#${newNotification.checkupHistoryRef.assetId}`
         })
@@ -51,7 +51,7 @@ class LoadStarterPage extends Component {
   render() {
     const { patientId, configs, err, permission, checkupHistory } = { ...this.props }
     if (patientId && !err && isEmpty(permission.data) && isEmpty(checkupHistory)) {
-      this.props.getNotification(configs, patientId)
+      this.props.getNotification(patientId)
       this.props.getHealthCareProvider(configs)
       this.props.getCheckupResultProducedTransaction(patientId)
     }
@@ -65,17 +65,17 @@ class LoadStarterPage extends Component {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getNotification: (configs, patientId) => {
-      dispatch(permissionAction.getPermission(configs, patientId))
+    getNotification: (patientId) => {
+      dispatch(permissionAction.getPermission(patientId))
     },
     getHealthCareProvider: (configs) => {
       dispatch(healthCareProviderAction.getHealthCareProvider(configs))
     },
     getAllCheckup: (configs, patientId) => {
-      dispatch(checkupAction.getAllCheckup(configs, patientId))
+      dispatch(checkupAction.getAllCheckup(patientId))
     },
-    getCheckupResultProducedTransaction: (configs) => {
-      dispatch(checkupAction.getCheckupResultProducedTransaction(configs))
+    getCheckupResultProducedTransaction: (patientId) => {
+      dispatch(checkupAction.getCheckupResultProducedTransaction(patientId))
     }
   }
 }

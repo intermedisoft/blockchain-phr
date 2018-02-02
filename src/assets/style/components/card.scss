@@ -42,7 +42,7 @@
       border-bottom: 1px dashed #e0e0e0;
       margin-bottom: 10px;
       padding-bottom: 10px;
-      &:last-child {
+      &:last-child, &:first-child:last-child {
         border: none;
         margin: 0px;
         padding: 0px;

@@ -8,7 +8,7 @@ import { CircularProgress, DataNotFound } from './../../components/'
 import { _function } from './../../function'
 
 class NotificationPage extends Component {
-  mergeData (permission, checkupHistory) {
+  mergeData(permission, checkupHistory) {
     const v1 = permission
     const v2 = checkupHistory
     let data = []
@@ -34,14 +34,18 @@ class NotificationPage extends Component {
     })
     return data.sort((a, b) => new Date(b.actionDateTime) - new Date(a.actionDateTime))
   }
-
-  componentDidMount() {
-    // this.props.getNotification(this.props.configs, this.props.patientId)
+  componentWillMount() {
+    if (this.props.reload) {
+      this.props.getNotification(this.props.patientId, true)
+      this.props.getCheckupResultProducedTransaction(this.props.patientId)
+    }
   }
   render() {
+
     const permission = this.props.permission.data
     const checkupHistory = this.props.checkupHistory.data
     const healthCareProvider = this.props.healthCareProvider.data
+
     return (
       <div className={`containerMain`}>
         <div className={`card`}>
@@ -68,11 +72,14 @@ class NotificationPage extends Component {
 
 const mapDispatchToProps = (dispatch, state) => {
   return {
-    getNotification: (configs, patientId) => {
-      dispatch(permissionAction.getPermission(configs, patientId))
+    getNotification: (patientId, loaded) => {
+      dispatch(permissionAction.getPermission(patientId, loaded))
     },
-    getCheckupResultProducedTransaction: (configs) => {
-      dispatch(checkupAction.getCheckupResultProducedTransaction(configs))
+    getCheckupResultProducedTransaction: (patientId) => {
+      dispatch(checkupAction.getCheckupResultProducedTransaction(patientId))
+    },
+    receivesetDataOnReading: (id, reload) => {
+      dispatch(permissionAction.receivesetDataOnReading(id, reload))
     }
   }
 }
@@ -82,7 +89,8 @@ const mapStateToProps = state => (
     permission: state.permission,
     healthCareProvider: state.healthCareProvider,
     checkupHistory: state.checkup.checkupHistory,
-    patientId: state.firebase.profile.patientId
+    patientId: state.firebase.profile.patientId,
+    reload: state.permission.dataOnReading.reload
   }
 )
 export default connect(mapStateToProps, mapDispatchToProps)(NotificationPage)

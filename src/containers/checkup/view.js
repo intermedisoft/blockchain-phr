@@ -6,6 +6,7 @@ import { isEmpty } from 'react-redux-firebase'
 
 import { HeaderAction } from './../../redux/actions/header'
 import { checkupAction } from './../../redux/actions/checkup'
+import { permissionAction } from './../../redux/actions/permission'
 
 import { _function } from './../../function'
 
@@ -19,6 +20,19 @@ class CheckupViewerPage extends Component {
     this.props.setHeader(moment(value).format('LL'))
   }
 
+  updateToread(data) {
+    const data2 = { ...data }
+    const assetId = data2.assetId
+    delete data2.assetId
+    delete data2.healthCareProviderId
+    delete data2.healthCareProviderData
+    delete data2.$class
+    this.props.updateReadCheckupHistory(assetId, Object.assign(data2, {
+      patientAcknowledgeDateTime: moment().toISOString()
+    }))
+
+    //Update 
+  }
   componentWillMount() {
     if (this.props.location.state === undefined) {
       if (this.props.match.params.id) {
@@ -36,7 +50,11 @@ class CheckupViewerPage extends Component {
         let _temp = data.healthCareProviderData
         data = data.checkupHistory
         data.healthCareProviderData = _temp
-        //UPDATE READ
+        //UPDATE READ 
+        if (!data.patientAcknowledgeDateTime) {
+          this.updateToread(data)
+          this.props.receivesetDataOnReading()
+        }
       }
       this.setState({
         data: data
@@ -231,8 +249,15 @@ const mapDispatchToProps = (dispatch, state) => {
   return {
     setHeader: (text) => {
       dispatch(HeaderAction.setHeader(text))
-    }, getCheckup: (assetId) => {
+    },
+    getCheckup: (assetId) => {
       dispatch(checkupAction.getCheckup(assetId))
+    },
+    updateReadCheckupHistory: (assetId, data) => {
+      dispatch(checkupAction.updateReadCheckupHistory(assetId, data))
+    },
+    receivesetDataOnReading: () => {
+      dispatch(permissionAction.receivesetDataOnReading(null, true))
     }
   }
 }

@@ -5,7 +5,7 @@ import { List, ListItem } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import ActionInfo from 'material-ui/svg-icons/action/info'
 import { Link } from 'react-router-dom'
-import {, blue500} from 'material-ui/styles/colors';
+import {blue500} from 'material-ui/styles/colors';
 
 require('moment/locale/th')
 

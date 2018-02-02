@@ -1,18 +1,46 @@
 @import '../configs/variables/index';
 @import '../frameworks/mixins/index';
-$block-icon-noti-size:50px;
 :global {
-  .tableView {
+  .mainTableView {
     text-align: left;
-    text-align: left;
-    margin: 30px auto;
     width: 100%;
     td {
       padding: 5px;
-      &:nth-of-type(1),
-      &:nth-of-type(2) {
-        width: 5px;
-        white-space: nowrap;
+    }
+  }
+  .tableView {
+    &Colon {
+      @extend .mainTableView;
+      >tbody {
+        >tr {
+          >td {
+            &:nth-of-type(1) {
+              padding-right: 10px;
+              position: relative;
+              text-transform: capitalize;
+              white-space: nowrap;
+              width: 5px;
+              &::after {
+                content: ':';
+                display: inline-block;
+                margin-top: -1px;
+                position: absolute;
+                right: 0;
+              }
+            }
+          }
+        }
+      }
+      &.--cl1TextUpper {
+        >tbody {
+          >tr {
+            >td {
+              &:nth-of-type(1) {
+                text-transform: uppercase;
+              }
+            }
+          }
+        }
       }
     }
   }

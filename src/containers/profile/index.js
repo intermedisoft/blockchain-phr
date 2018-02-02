@@ -48,36 +48,30 @@ class ProfilePage extends Component {
                 <div className={styles.labelInfo}>Height</div>
               </div>
             </div>
-            <table className={`tableView`}>
+            <table className={`tableViewColon`}>
               <tbody>
                 <tr>
                   <td>BLOOD</td>
-                  <td>:</td>
                   <td>{patients.bloodGroup}</td>
                 </tr>
                 <tr>
                   <td>SEX</td>
-                  <td>:</td>
                   <td>{patients.sex}</td>
                 </tr>
                 <tr>
                   <td>MARRIAGE</td>
-                  <td>:</td>
                   <td>{patients.marriage}</td>
                 </tr>
                 <tr>
                   <td>NATION</td>
-                  <td>:</td>
                   <td>{patients.nation}</td>
                 </tr>
                 <tr>
                   <td>RACE</td>
-                  <td>:</td>
                   <td>{patients.race}</td>
                 </tr>
                 <tr>
                   <td>OCCUPATION</td>
-                  <td>:</td>
                   <td>{patients.occupation}</td>
                 </tr>
               </tbody>

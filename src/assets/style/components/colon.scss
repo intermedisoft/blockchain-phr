@@ -1,0 +1,27 @@
+@import '../configs/variables/index';
+@import '../frameworks/mixins/index';
+
+:global {
+  ._colon {
+    &After {
+      padding-right: 12px!important;
+      position: relative;
+      &::after {
+        content: ':';
+        display: inline-block;
+        position: absolute;
+        right: 5px;
+      }
+    }
+    &Before {
+      padding-left: 12px!important;
+      position: relative;
+      &::before {
+        content: ':';
+        display: inline-block;
+        position: absolute;
+        left: 5px;
+      }
+    }
+  }
+}

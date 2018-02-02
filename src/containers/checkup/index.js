@@ -39,8 +39,8 @@ class CheckupPage extends Component {
       renderHTML = (
         <div>
           <div className={`cardHead`}>
-            <span>รายการประวัติ : </span>
-            <span> {patients.prename}{patients.name} {patients.surname}</span>
+            <div>รายการประวัติ</div>
+            <div> {patients.prename}{patients.name} {patients.surname}</div>
           </div>
           <div className={`cardContent --noMargin`}>
             <List>

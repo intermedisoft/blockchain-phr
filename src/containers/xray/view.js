@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Divider from 'material-ui/Divider'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { HeaderAction } from './../../redux/actions/header'
@@ -30,33 +29,33 @@ class XrayViewerPage extends Component {
       data &&
       <div className={`containerMain`}>
         <div className={`card`}>
-          <table className={`tableView`}>
-            <tbody>
-              <tr>
-                <td>Name</td>
-                <td>:</td>
-                <td>{data.xrayName}</td>
-              </tr>
-              {/* <tr>
+          <div className={`cardHead`}>
+            <div>Health Care Provider</div>
+            <div>
+              {data.healthCareProviderData && data.healthCareProviderData[0].healthCareProviderName}
+            </div>
+          </div>
+          <div className={`cardContent`}>
+            <table className={`tableViewColon`}>
+              <tbody>
+                <tr>
+                  <td>Name</td>
+                  <td>{data.xrayName}</td>
+                </tr>
+                {/* <tr>
                 <td>Images</td>
                 <td>:</td>
                 <td>
                   <img src={`data:image/jpeg;base64,${Img && Img.replace(/_/g, '/')}`} alt='Xray Image' />
                 </td>
               </tr> */}
-              <tr>
-                <td>Result</td>
-                <td>:</td>
-                <td>{data.xrayResult}</td>
-              </tr>
-              <tr>
-                <td>Health Care Provider</td>
-                <td>:</td>
-                <td>{data.healthCareProviderData && data.healthCareProviderData[0].healthCareProviderName}</td>
-              </tr>
-            </tbody>
-          </table>
-          <Divider />
+                <tr>
+                  <td>Result</td>
+                  <td>{data.xrayResult}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div >
     )

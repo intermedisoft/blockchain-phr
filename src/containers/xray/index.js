@@ -35,7 +35,10 @@ class XrayPage extends Component {
         <div>
           {
             !isEmpty(patients) && (
-              <div>รายการประวัติ X-Ray: <span>{patients.prename}{patients.name} {patients.surname}</span></div>
+              <div className={`cardHead`}>
+                <div>รายการประวัติ X-Ray</div>
+                <div>{patients.prename}{patients.name} {patients.surname}</div>
+              </div>
             )
           }
           <List>

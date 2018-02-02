@@ -21,14 +21,17 @@
       }
     }
     &Head {
+      font-size: 1.1em;
       font-weight: $main-font-bold-size;
+      text-align: center;
+      text-transform: capitalize;
       >span {
         display: inline-block;
       }
     }
     &Content {
       margin: 30px auto;
-      &.--noMargin{
+      &.--noMargin {
         margin: auto;
       }
     }
@@ -36,7 +39,21 @@
       padding: none;
     }
     &Group {
-      margin-bottom: 20px;
+      border-bottom: 1px dashed #e0e0e0;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      &:last-child, &:first-child:last-child {
+        border: none;
+        margin: 0px;
+        padding: 0px;
+      }
+      &Head {
+        font-weight: $main-font-bold-size;
+        text-transform: capitalize;
+        >span {
+          display: inline-block;
+        }
+      }
     }
   }
 }

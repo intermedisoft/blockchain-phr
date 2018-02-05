@@ -4,22 +4,14 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/es/integration/react'
 import registerServiceWorker from './registerServiceWorker'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import getMuiTheme from 'material-ui/styles/getMuiTheme'
 
+import {MuiCustomTheme} from './assets/style/vendors/materialUI/js/index'
 import './App.scss'
 import RouteRoot from './routes/RouteRoot'
 import configStore from './store'
 import ErrorModalControlled from './components/Modal'
 
 import LoadStarterPage from './Starter'
-
-const AppbarStyles = () => getMuiTheme({
-  fontFamily: 'Kanit, sans-serif',
-  palette: {
-    primary1Color: '#1f64c8',
-    textColor: '#444444'
-  }
-})
 
 const { store, persistor } = configStore()
 
@@ -39,7 +31,7 @@ ReactDOM.render(
       persistor={persistor}>
       <ErrorModalControlled />
       <LoadStarterPage />
-      <MuiThemeProvider muiTheme={AppbarStyles()}>
+      <MuiThemeProvider muiTheme={MuiCustomTheme()}>
         <RouteRoot />
       </MuiThemeProvider>
     </PersistGate>

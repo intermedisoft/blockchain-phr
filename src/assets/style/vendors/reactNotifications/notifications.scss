@@ -1,0 +1,19 @@
+@import '../../configs/variables/index';
+@import '../../frameworks/mixins/index';
+:global {
+  .notification-container {
+    .notification {
+      &-info {
+        border-radius: $main-radius;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        margin-bottom: 15px;
+        &::before {
+          content: "\e905";
+          @include font-icon();
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}

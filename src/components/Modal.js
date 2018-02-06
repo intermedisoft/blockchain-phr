@@ -22,14 +22,13 @@ class ErrorModalControlled extends Component {
 
   render() {
     const err = this.props.Errors
-    const className = this.props.className
-    const modalTitle = this.props.modalTitle
-    // const { open } = this.state;
+    // const className = this.props.className
+    const classErrorModal = 'errorModal'
     return (
-        <Modal open={err.modalOpen} onClose={this.onCloseModal} classNames={{ overlay: `customOverlay ${className}`, modal: 'customModal', closeIcon: 'customCloseIcon' }} little>
-          <div className='modalTitle'>{modalTitle}</div>
-          <div className={`modalContent ${modalTitle ? '' : 'noTitle'}`}>{err.message}</div>
-        </Modal>
+      <Modal open={err.modalOpen} onClose={this.onCloseModal} classNames={{ overlay: `customOverlay ${classErrorModal}`, modal: 'customModal', closeIcon: 'customCloseIcon' }} little>
+        <div className='modalTitle'>{err.header}</div>
+        <div className={`modalContent ${err.header ? '' : 'noTitle'}`}>{err.message}</div>
+      </Modal>
     );
   }
 }

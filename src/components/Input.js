@@ -1,20 +1,6 @@
 import React from 'react'
 import TextField from 'material-ui/TextField'
 
-// class TextMaskCustom extends React.Component {
-//   render() {
-//     console.log('TextMaskCustom')
-//     return (
-//       <MaskedInput
-//         {...this.props}
-//         mask={['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]}
-//         placeholderChar={'\u2000'}
-//         showMask
-//       />
-//     );
-//   }
-// }
-
 // const renderTextField = props => {
 //   console.log(props)
 //   return (
@@ -35,16 +21,14 @@ import TextField from 'material-ui/TextField'
 // }
 
 const renderTextField = ({ className, input, label, meta: { touched, error, warning }, ...custom }) => (
-  <div>
-    <TextField hintText={label}
-      floatingLabelText={label}
-      className={`inputBlock ${className}`}
-      errorText={touched && error}
-      {...input}
-      {...custom}
-    // onChange={(event, index, value) => input.onChange(value)}
-    />
-  </div>
+  <TextField hintText={label}
+    floatingLabelText={label}
+    className={`inputBlock ${className}`}
+    errorText={touched && error}
+    {...input}
+    {...custom}
+  // onChange={(event, index, value) => input.onChange(value)}
+  />
 )
 
 export default renderTextField

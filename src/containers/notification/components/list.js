@@ -14,7 +14,7 @@ class ListComponent extends Component {
   render() {
     const { val } = { ...this.props }
     const data = val.item
-    const iconList = (<ActionInfo color={Variable.colors.main}/>)
+    const iconList = (<ActionInfo color={Variable.colors.notifi}/>)
         
     if (data) {
       return (

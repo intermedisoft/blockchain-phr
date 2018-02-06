@@ -26,6 +26,11 @@ const receivegetCheckupResultProducedTransaction = (data, unRead) => ({
   unRead
 })
 
+const receivegetCheckupResultProducedTransactionUnRead = (data) => ({
+  type: types.CHECKUP.GETCHECKUPHISTORYUNREAD,
+  payload: data
+})
+
 const getAllCheckup = (patientId) => async (dispatch) => {
   try {
     if (patientId) {
@@ -73,6 +78,7 @@ const updateReadCheckupHistory = (assetId, data) => async (dispatch) => {
 const getCheckupResultProducedTransaction = (patientId) => async (dispatch) => {
   try {
     if (patientId) {
+      dispatch(receivegetCheckupResultProducedTransactionUnRead(true))
       // const response = await Service.Checkup.getCheckupResultProducedTransaction(patientId)
       const response = await Service.Checkup.getAllCheckup(patientId)
       let data = response.data

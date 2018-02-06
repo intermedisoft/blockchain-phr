@@ -13,6 +13,7 @@ const permission = {
     reload: false
   },
   unRead: 0,
+  unReadLoding: false,
   isLoading: false
 }
 export default function PermissionReducer(state = permission, action) {

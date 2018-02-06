@@ -6,6 +6,7 @@ const checkup = {
   checkupHistory: {
     data: [],
     unRead: 0,
+    unReadLoding: false,
     isLoaded: false,
     updateReading: false
   },
@@ -15,6 +16,7 @@ const checkup = {
   }
 }
 export default function CheckupReducer(state = checkup, action) {
+  const chkup = state.checkupHistory
   switch (action.type) {
     case CHECKUP.GETALL:
       return {
@@ -33,12 +35,21 @@ export default function CheckupReducer(state = checkup, action) {
       return {
         ...state,
         checkupHistory: {
+          ...chkup,
           data: action.payload,
-          unRead: action.unRead
+          unRead: action.unRead,
+          unReadLoding: false
+        }
+      }
+    case CHECKUP.GETCHECKUPHISTORYUNREAD:
+      return {
+        ...state,
+        checkupHistory: {
+          ...chkup,
+          unReadLoding: action.payload
         }
       }
     case CHECKUP.UPDATEREADINGCHECKUPHISTORY:
-      const chkup = state.checkupHistory
       return {
         ...state,
         checkupHistory: {

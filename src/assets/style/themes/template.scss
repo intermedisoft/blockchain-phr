@@ -64,6 +64,7 @@
         }
       }
       .itemCenter {
+        display: inline-block;
         flex-basis: calc(100% - #{$head-item-left-right-size * 2});
         line-height: 2.5em;
         overflow: hidden;

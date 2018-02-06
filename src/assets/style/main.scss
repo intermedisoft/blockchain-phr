@@ -2,8 +2,9 @@
 @import '../fonts/icons/phr/phr_icon.scss';
 
 // Vendors
-@import 'vendors/materialUI/index.scss';
-@import 'vendors/reactNotifications/index.scss';
+@import 'vendors/materialUI/index';
+@import 'vendors/reactNotifications/index';
+@import 'vendors/reactResponsiveModal/index';
 
 // Variables
 @import 'configs/variables/index';

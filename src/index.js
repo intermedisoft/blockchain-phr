@@ -29,7 +29,7 @@ ReactDOM.render(
       loading={loading}
       onBeforeLift={onBeforeLift}
       persistor={persistor}>
-      <ErrorModalControlled />
+      <ErrorModalControlled className='errorModal' modalTitle='Error'/>
       <LoadStarterPage />
       <MuiThemeProvider muiTheme={MuiCustomTheme()}>
         <RouteRoot />

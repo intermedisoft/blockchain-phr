@@ -43,6 +43,7 @@
     "react-dev-utils": "^4.2.1",
     "react-dom": "^16.2.0",
     "react-firebaseui": "^1.0.10",
+    "react-headroom": "^2.2.2",
     "react-loading-overlay": "^0.2.8",
     "react-mobile-datepicker": "^3.0.8",
     "react-notifications": "^1.4.3",

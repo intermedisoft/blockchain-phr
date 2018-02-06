@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Headroom from 'react-headroom'
+
 import logo from './../assets/images/logo.svg'
 
 const SET_MENU = {
@@ -33,7 +35,7 @@ class Header extends Component {
   render() {
     const pathname = this.props.pathname.replace(/\//g, '')
     return (
-      <header className='headMain'>
+      <Headroom className='headMain'>
         <div className='contentHead'>
           <div className='itemLeft'>
             {(pathname !== 'main' && <button onClick={() => window.history.back()} className='btnIcon iconBack' />)}
@@ -47,7 +49,7 @@ class Header extends Component {
             <img src={logo} alt='Logo' />
           </div>
         </div>
-      </header>
+      </Headroom>
     )
   }
 }

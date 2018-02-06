@@ -7,6 +7,7 @@ import { patientAction } from './../../redux/actions/patient'
 import { Link } from 'react-router-dom'
 
 import { CircularProgress } from './../../components'
+import { sexMock } from './../../config/mockData'
 import styles from '../../assets/style/themes/pages/profile.scss'
 
 class ProfilePage extends Component {
@@ -56,7 +57,9 @@ class ProfilePage extends Component {
                 </tr>
                 <tr>
                   <td>SEX</td>
-                  <td>{patients.sex}</td>
+                  <td>
+                    {sexMock.filter((v) => v.id === patients.sex)[0].label}
+                  </td>
                 </tr>
                 <tr>
                   <td>MARRIAGE</td>

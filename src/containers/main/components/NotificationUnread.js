@@ -9,8 +9,8 @@ class NotificationUnread extends Component {
     let Unread = permissionUnread + checkupHistoryUnread
     return (
       !loading
-        ? Unread ? <span className={`notiBlock`}>{Unread}</span> : null
-        : <LoadingDot sizeDot='5px' />
+        ? Unread ? <span className={`notiBlock`}>{Unread > 99 ? '99+' : Unread}</span> : null
+        : <LoadingDot sizeDot='5px' bgColor='#00aee5'/>
     )
   }
 }

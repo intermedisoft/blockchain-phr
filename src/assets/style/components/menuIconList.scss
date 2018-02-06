@@ -24,16 +24,16 @@ $block-icon-noti-size:50px;
           padding-right: 0px;
         }
         &.text {
-          flex-basis: calc(100% - #{$block-icon-noti-size * 2});
+          flex-basis: calc(100% - #{$block-icon-noti-size * 2 + 10});
         }
         &.noti{
           align-items: center;
           display: flex;
           justify-content: center;
-          text-align: right;
+          text-align: center;
           .notiBlock{
             background-color: $notification-bg-color;
-            border-radius: 3px;
+            border-radius: 100px;
             color: #ffffff;
             display: inline-block;
             font-size: .85em;

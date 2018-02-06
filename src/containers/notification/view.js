@@ -6,7 +6,7 @@ import { isEmpty } from 'react-redux-firebase'
 
 import { HeaderAction } from './../../redux/actions/header'
 import { permissionAction } from './../../redux/actions/permission'
-import { CircularProgress, LoadingProgress } from './../../components'
+import { CircularProgress } from './../../components'
 
 // import { Link } from 'react-router-dom';
 

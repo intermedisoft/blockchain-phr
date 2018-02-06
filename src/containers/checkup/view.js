@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Divider from 'material-ui/Divider'
 import moment from 'moment'
 import { connect } from 'react-redux'
 import { isEmpty } from 'react-redux-firebase'

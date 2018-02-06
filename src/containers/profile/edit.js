@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { isEmpty } from 'react-redux-firebase'
 
 import { patientAction } from './../../redux/actions/patient'
-import { Snackbar } from './../../components'
 import styles from '../../assets/style/themes/pages/profile.scss'
 
 class ProfileEdit extends Component {

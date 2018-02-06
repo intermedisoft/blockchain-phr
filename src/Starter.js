@@ -46,15 +46,22 @@ class LoadStarterPage extends Component {
 
   }
   componentWillUpdate(nextProps, nextState) {
-
-  }
-  render() {
-    const { patientId, configs, err, permission, checkupHistory } = { ...this.props }
+    const { patientId, configs, err, permission, checkupHistory } = { ...nextProps }
+    // console.log(patientId, permission, checkupHistory)
     if (patientId && !err && isEmpty(permission.data) && isEmpty(checkupHistory)) {
+      // console.log('000000000000000000000000000000')
       this.props.getNotification(patientId)
       this.props.getHealthCareProvider(configs)
       this.props.getCheckupResultProducedTransaction(patientId)
     }
+  }
+  render() {
+    // const { patientId, configs, err, permission, checkupHistory } = { ...this.props }
+    // if (patientId && !err && isEmpty(permission.data) && isEmpty(checkupHistory)) {
+    //   this.props.getNotification(patientId)
+    //   this.props.getHealthCareProvider(configs)
+    //   this.props.getCheckupResultProducedTransaction(patientId)
+    // }
     return (
       <div>
         <NotificationContainer />

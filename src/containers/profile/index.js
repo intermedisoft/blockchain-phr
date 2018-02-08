@@ -58,7 +58,7 @@ class ProfilePage extends Component {
                 <tr>
                   <td>SEX</td>
                   <td>
-                    {sexMock.filter((v) => v.id === patients.sex)[0].label}
+                    {patients.sex && sexMock.filter((v) => v.id === patients.sex)[0].label}
                   </td>
                 </tr>
                 <tr>

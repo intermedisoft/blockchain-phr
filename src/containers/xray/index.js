@@ -9,7 +9,6 @@ import { xrayAction } from './../../redux/actions/xray'
 import { CircularProgress, DataNotFound } from './../../components/'
 
 class XrayPage extends Component {
-
   componentWillMount() {
     if (this.props.patientId) {
       this.props.getAllXray(this.props.patientId)

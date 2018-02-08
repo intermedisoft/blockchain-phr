@@ -204,6 +204,10 @@ class CheckupViewerPage extends Component {
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>
               <div className={`cardGroupHead`}>Calcium Score</div>
               <table className={`tableViewColon`}>
@@ -219,12 +223,20 @@ class CheckupViewerPage extends Component {
                 </tbody>
               </table>
             </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>
               <div className={`cardGroupHead`}>Conclusion</div>
               <div>
                 {data.conclusion}
               </div>
             </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>
               <div className={`cardGroupHead`}>Recommendation</div>
               <div>

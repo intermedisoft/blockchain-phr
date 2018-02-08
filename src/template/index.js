@@ -5,8 +5,7 @@ import GetConfig from './../containers/getConfigs'
 import RouteMenu from './../routes/RouteMenu'
 import Header from './header'
 class Template extends Component {
-  render () {
-    // console.log(this.props)
+  render() {
     return (
       <div>
         <GetConfig />

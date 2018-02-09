@@ -73,9 +73,10 @@ class CheckupViewerPage extends Component {
     if (!data) {
       data = this.props.checkup
     }
-    const { healthCareProvider } = { ...this.props }
+    const { healthCareProvider, patients } = { ...this.props }
+    console.log(this.props)
     return (
-      (!isEmpty(data) && !isEmpty(healthCareProvider)) &&
+      (!isEmpty(data) && patients && !isEmpty(healthCareProvider)) &&
       <div className={`containerMain`}>
         <div className={`card`}>
           <div className={`cardHead`}>
@@ -89,120 +90,272 @@ class CheckupViewerPage extends Component {
               }
             </div>
           </div>
-          <div className={`cardContent`}>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>
-              <table className={`tableViewColon --cl1TextUpper`}>
-                <tbody>
-                  <tr>
-                    <td>pulse</td>
-                    <td>{data.pulse}</td>
-                  </tr>
-                  <tr>
-                    <td>pressure</td>
-                    <td>{data.pressure}</td>
-                  </tr>
-                  <tr>
-                    <td>cbc wbc</td>
-                    <td>{data.cbc_wbc}</td>
-                  </tr>
-                  <tr>
-                    <td>hct</td>
-                    <td>{data.hct}</td>
-                  </tr>
-                  <tr>
-                    <td>hb</td>
-                    <td>{data.hb}</td>
-                  </tr>
-                  <tr>
-                    <td>ph</td>
-                    <td>{data.ph}</td>
-                  </tr>
-                  <tr>
-                    <td>ua_wbc</td>
-                    <td>{data.ua_wbc}</td>
-                  </tr>
-                  <tr>
-                    <td>rbc</td>
-                    <td>{data.rbc}</td>
-                  </tr>
-                  <tr>
-                    <td>alm</td>
-                    <td>{data.alm}</td>
-                  </tr>
-                  <tr>
-                    <td>sugar</td>
-                    <td>{data.sugar}</td>
-                  </tr>
-                  <tr>
-                    <td>spgr</td>
-                    <td>{data.spgr}</td>
-                  </tr>
-                  <tr>
-                    <td>fbs</td>
-                    <td>{data.fbs}</td>
-                  </tr>
-                  <tr>
-                    <td>bun</td>
-                    <td>{data.bun}</td>
-                  </tr>
-                  <tr>
-                    <td>creatinine</td>
-                    <td>{data.creatinine}</td>
-                  </tr>
-                  <tr>
-                    <td>uric</td>
-                    <td>{data.uric}</td>
-                  </tr>
-                  <tr>
-                    <td>chlt</td>
-                    <td>{data.chlt}</td>
-                  </tr>
-                  <tr>
-                    <td>trig</td>
-                    <td>{data.trig}</td>
-                  </tr>
-                  <tr>
-                    <td>hdl</td>
-                    <td>{data.hdl}</td>
-                  </tr>
-                  <tr>
-                    <td>ldl</td>
-                    <td>{data.ldl}</td>
-                  </tr>
-                  <tr>
-                    <td>alk</td>
-                    <td>{data.alk}</td>
-                  </tr>
-                  <tr>
-                    <td>sgot</td>
-                    <td>{data.sgot}</td>
-                  </tr>
-                  <tr>
-                    <td>sgpt</td>
-                    <td>{data.sgpt}</td>
-                  </tr>
-                  <tr>
-                    <td>hba1c</td>
-                    <td>{data.hba1c}</td>
-                  </tr>
-                  <tr>
-                    <td>eos</td>
-                    <td>{data.eos}</td>
-                  </tr>
-                  <tr>
-                    <td>pmn</td>
-                    <td>{data.pmn}</td>
-                  </tr>
-                  <tr>
-                    <td>lym</td>
-                    <td>{data.lym}</td>
-                  </tr>
-                  <tr>
-                    <td>mono</td>
-                    <td>{data.mono}</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className={`cardGroupHead`}>ตรวจร่างกายทั่วไปโดยแพทย์ (PE)</div>
+              <div className={`resultsCard`}>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>ชีพจร</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.pulse}</span>
+                    <span className={`resultsUnit`}>bpm</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>ความดัน</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.pressure}</span>
+                    <span className={`resultsUnit`}>mmHg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
+            <div className={`cardGroup`}>
+              <div className={`cardGroupHead`}>ตรวจความสมบูรณ์ของเม็ดเลือด (CBC)</div>
+              <div className={`resultsCard`}>
+                <div className={`resultsGroup ${patients.sex || patients.sex === undefined
+                  ? '--fail' : patients.sex === 'M'
+                    ? data.rbc < 4.6 || data.rbc > 6.2
+                      ? '--abNormal' : 'normal' : data.rbc < 4.2 && data.rbc > 5.4
+                      ? '--abNormal' : 'normal'}`}>
+                  <div className={`resultsLabel`}>RBC</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.rbc}</span>
+                    <span className={`resultsUnit`}>Cell/mm^3</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup ${patients.sex === '' || patients.sex === undefined
+                  ? '--fail' : patients.sex === 'M'
+                    ? data.hb < 14 || data.hb > 18
+                      ? '--abNormal' : 'normal' : data.hb < 12 && data.hb > 16
+                      ? '--abNormal' : 'normal'}`}>
+                  <div className={`resultsLabel`}>HB</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.hb}</span>
+                    <span className={`resultsUnit`}>g/dL</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup ${patients.sex === '' || patients.sex === undefined
+                  ? '--fail' : patients.sex === 'M'
+                    ? data.hct < 40 || data.hct > 54
+                      ? '--abNormal' : 'normal' : data.hct < 37 && data.hct > 47
+                      ? '--abNormal' : 'normal'}`}>
+                  <div className={`resultsLabel`}>Hct</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.hct}</span>
+                    <span className={`resultsUnit`}>%</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup ${data.cbc_wbc === '' || data.cbc_wbc === undefined
+                  ? '--fail' : data.cbc_wbc < 5.0 || data.cbc_wbc > 10.0
+                    ? '--abNormal' : 'normal'}`}>
+                  <div className={`resultsLabel`}>WBC</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.cbc_wbc}</span>
+                    <span className={`resultsUnit`}>Cell/mm^3</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup ${data.pmn === '' || data.pmn === undefined
+                  ? '--fail' : data.pmn < 40 || data.pmn > 75
+                    ? '--abNormal' : 'normal'}`}>
+                  <div className={`resultsLabel`}>Neutrophil</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.pmn}</span>
+                    <span className={`resultsUnit`}>%</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Lymphocyte</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.lym}</span>
+                    <span className={`resultsUnit`}>%</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Monocyte</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.mono}</span>
+                    <span className={`resultsUnit`}>%</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Eosinophil</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.eos}</span>
+                    <span className={`resultsUnit`}>%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
+            <div className={`cardGroup`}>
+              <div className={`cardGroupHead`}>การวิเคราะห์ปัสสาวะ/Urine Analysis</div>
+              <div className={`resultsCard`}>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>ความเป็นกรดด่าง (pH)</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.ph}</span>
+                    <span className={`resultsUnit`}></span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>ความถ่วงจำเพาะ (Sp.gr.)</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.spgr}</span>
+                    <span className={`resultsUnit`}></span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Albumin</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.alm}</span>
+                    <span className={`resultsUnit`}></span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Sugar</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.sugar}</span>
+                    <span className={`resultsUnit`}></span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>เม็ดเลือดขาว (WBC)</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.ua_wbc}</span>
+                    <span className={`resultsUnit`}>cell/HPT</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
+            <div className={`cardGroup`}>
+              <div className={`cardGroupHead`}>ตรวจระดับน้ำตาลในเลือด</div>
+              <div className={`resultsCard`}>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>ระดับนาตาลในเลือด (FBS)</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.fbs}</span>
+                    <span className={`resultsUnit`}>mg/dL</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>GlycatedHb – HbA1c</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.hba1c}</span>
+                    <span className={`resultsUnit`}></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
+            <div className={`cardGroup`}>
+              <div className={`cardGroupHead`}>ตรวจระดับไขมันในเลือด</div>
+              <div className={`resultsCard`}>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Cholesterol</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.chlt}</span>
+                    <span className={`resultsUnit`}>mg/dL</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Triglyceride</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.trig}</span>
+                    <span className={`resultsUnit`}>mg/dL</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>HDL</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.hdl}</span>
+                    <span className={`resultsUnit`}>mg/dL</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>LDL</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.ldl}</span>
+                    <span className={`resultsUnit`}>mg/dL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
+            <div className={`cardGroup`}>
+              <div className={`cardGroupHead`}>ตรวจการทำงานของตับ</div>
+              <div className={`resultsCard`}>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>SGOT</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.sgot}</span>
+                    <span className={`resultsUnit`}>U/L</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>SGPT</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.sgpt}</span>
+                    <span className={`resultsUnit`}>U/L</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>เอนไซม์ในเซลล์เยื่อบุท่อน้ำดีของตับ</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.alk}</span>
+                    <span className={`resultsUnit`}></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin `}>
+            <div className={`cardGroup`}>
+              <div className={`cardGroupHead`}>ตรวจการทำงานของไต</div>
+              <div className={`resultsCard`}>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Creatinine</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.creatinine}</span>
+                    <span className={`resultsUnit`}>mg/dL</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>BUN</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.bun}</span>
+                    <span className={`resultsUnit`}>mg/dL</span>
+                  </div>
+                </div>
+                <div className={`resultsGroup`}>
+                  <div className={`resultsLabel`}>Uric</div>
+                  <div>
+                    <span className={`resultsValue`}>{data.uric}</span>
+                    <span className={`resultsUnit`}>mg/dL</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -277,7 +430,8 @@ const mapStateToProps = state => (
   {
     header: state.header.text,
     checkup: state.checkup.dataOnSelected.data,
-    healthCareProvider: state.healthCareProvider.data
+    healthCareProvider: state.healthCareProvider.data,
+    patients: state.patient.data
   }
 )
 

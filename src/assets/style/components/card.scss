@@ -39,16 +39,22 @@
       padding: none;
     }
     &Group {
-      border-bottom: 1px dashed #e0e0e0;
-      margin-bottom: 10px;
-      padding-bottom: 10px;
-      &:last-child, &:first-child:last-child {
-        border: none;
-        margin: 0px;
-        padding: 0px;
-      }
+      // border-bottom: 1px dashed #e0e0e0;
+      // margin-bottom: 10px;
+      // padding-bottom: 10px;
+      // &:last-child,
+      // &:first-child:last-child {
+      //   border: none;
+      //   margin: 0px;
+      //   padding: 0px;
+      // }
       &Head {
-        font-weight: $main-font-bold-size;
+        border-bottom: 1px solid #cacaca;
+        border-style: dashed;
+        font-size: 1.05em;
+        font-weight: 500;
+        margin-bottom: 5px;
+        padding-bottom: 10px;
         text-transform: capitalize;
         >span {
           display: inline-block;

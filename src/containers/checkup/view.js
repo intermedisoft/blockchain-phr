@@ -7,13 +7,14 @@ import { HeaderAction } from './../../redux/actions/header'
 import { checkupAction } from './../../redux/actions/checkup'
 import { permissionAction } from './../../redux/actions/permission'
 
-import { _function } from './../../function'
+// import { _function } from './../../function'
 
 require('moment/locale/th')
 
 class CheckupViewerPage extends Component {
   state = {
-    data: ''
+    data: '',
+    setRead: false
   }
   setTitleBar(value) {
     this.props.setHeader(moment(value).format('LL'))
@@ -30,7 +31,6 @@ class CheckupViewerPage extends Component {
       patientAcknowledgeDateTime: moment().toISOString()
     }))
 
-    //Update 
   }
   componentWillMount() {
     if (this.props.location.state === undefined) {
@@ -43,46 +43,55 @@ class CheckupViewerPage extends Component {
       }
     } else {
       let data = this.props.location.state.data
-      const coreType = _function.popHash(data.$class, '.')
-      if (coreType === 'CheckupResultProducedTransaction') {
-        /* OPEN FROM NOTIFICATION PAGE */
-        let _temp = data.healthCareProviderData
-        data = data.checkupHistory
-        data.healthCareProviderData = _temp
-        //UPDATE READ 
-        if (!data.patientAcknowledgeDateTime) {
-          this.updateToread(data)
-          this.props.receivesetDataOnReading()
-        }
-      }
-      this.setState({
-        data: data
-      })
+      /* CHECK patientAcknowledgeDateTime IS NOT HAVE TO UPDATE READ ITEM */
+      // const coreType = _function.popHash(data.$class, '.')
+      // if (coreType === 'CheckupResultProducedTransaction') {
+      //   /* OPEN FROM NOTIFICATION PAGE */
+      //   let _temp = data.healthCareProviderData
+      //   data = data.checkupHistory
+      //   data.healthCareProviderData = _temp
+      //   //UPDATE READ 
+      //   if (!data.patientAcknowledgeDateTime) {
+      //     this.updateToread(data)
+      //     this.props.receivesetDataOnReading()
+      //   }
+      // }
+      this.setState({ data })
       this.setTitleBar(data.dateTimeServe)
     }
   }
 
-  componentWillUpdate() {
+  componentWillUpdate(nextProps, nextState) {
     if (!isEmpty(this.props.checkup) && !this.props.header) {
       this.setTitleBar(this.props.checkup.dateTimeServe)
     }
+
+
+    if (!nextState.setRead && nextState.data && !nextState.data.patientAcknowledgeDateTime) {
+      this.setState({ setRead: true })
+      this.updateToread(nextState.data)
+      this.props.receivesetDataOnReading()
+    }
+
+    // console.log(nextProps.updateReading, nextState.setRead)
+    // if (nextProps.updateReading && nextState.data.patientAcknowledgeDateTime) {
+    //   this.setState({ setRead: false })
+    // }
   }
 
   render() {
+    let pressureUp = 0
+    let pressureDown = 0
     let data = this.state.data
     if (!data) {
       data = this.props.checkup
     }
     const { healthCareProvider, patients } = { ...this.props }
-    console.log(this.props)
-    console.log(`pressure : ${data.pressure}`)
-    const a = data.pressure
-    const t = a.split("/")
-    const pressureUp = t[0]
-    const pressureDown = t[1]
-    console.log(`pressureUp : ${pressureUp}`)
-    console.log(`pressureDown : ${pressureDown}`)
-
+    if (data && data.pressure) {
+      const pressure = data.pressure.split('/')
+      pressureUp = pressure[0]
+      pressureDown = pressure[1]
+    }
     return (
       (!isEmpty(data) && patients && !isEmpty(healthCareProvider)) &&
       <div className={`containerMain`}>

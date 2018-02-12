@@ -8,8 +8,8 @@ export default class RouteNotification extends Component {
   render () {
     return (
       <Switch>
-        <Route exact path='/notification' component={NotificationPage} />
-        <Route path='/notification/:id' component={NotificationViewerPage} />
+        <Route exact path='/requestpermission' component={NotificationPage} />
+        <Route path='/requestpermission/:id' component={NotificationViewerPage} />
       </Switch>
     )
   }

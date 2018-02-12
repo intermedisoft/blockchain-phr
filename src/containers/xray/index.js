@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { isEmpty } from 'react-redux-firebase'
 import { Link } from 'react-router-dom'
-import CardComponent from './components/card'
+import ListComponent from './components/list'
 import { List } from 'material-ui/List'
 
 import { xrayAction } from './../../redux/actions/xray'
@@ -50,7 +50,7 @@ class XrayPage extends Component {
                     <Link to={{
                       pathname: `/xray/${v.assetId}`,
                       state: { data: v }
-                    }}> <CardComponent data={v} /> </Link>
+                    }}> <ListComponent data={v} /> </Link>
                   </div>
                 )
               })

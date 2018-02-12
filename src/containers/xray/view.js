@@ -42,13 +42,6 @@ class XrayViewerPage extends Component {
                   <td>Name</td>
                   <td>{data.xrayName}</td>
                 </tr>
-                {/* <tr>
-                <td>Images</td>
-                <td>:</td>
-                <td>
-                  <img src={`data:image/jpeg;base64,${Img && Img.replace(/_/g, '/')}`} alt='Xray Image' />
-                </td>
-              </tr> */}
                 <tr>
                   <td>Result</td>
                   <td>{data.xrayResult}</td>

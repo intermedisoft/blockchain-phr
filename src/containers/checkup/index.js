@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { isEmpty } from 'react-redux-firebase'
 import { Link } from 'react-router-dom'
-import CardComponent from './components/card'
+import ListComponent from './components/list'
 import { List } from 'material-ui/List'
 
 import { checkupAction } from './../../redux/actions/checkup'
@@ -20,7 +20,6 @@ class CheckupPage extends Component {
 
   componentWillUpdate() {
     if (this.props.patientId && isEmpty(this.props.checkup) && isEmpty(this.props.patients) && isEmpty(this.props.healthCareProvider)) {
-      this.props.getPatient(this.props.patientId)
       this.props.getAllCheckup(this.props.patientId)
     }
   }
@@ -54,7 +53,7 @@ class CheckupPage extends Component {
                       <Link to={{
                         pathname: `/checkup/${v.assetId}`,
                         state: { data: v }
-                      }}> <CardComponent data={v} /> </Link>
+                      }}> <ListComponent data={v} /> </Link>
                     </div>
                   )
                 })

@@ -57,6 +57,14 @@ export default function CheckupReducer(state = checkup, action) {
           updateReading: action.payload
         }
       }
+    case CHECKUP.GETCHECKUPHISTORYUNSETREADONLY:
+      return {
+        ...state,
+        checkupHistory: {
+          ...chkup,
+          unRead: action.payload
+        }
+      }
     default:
       return state
   }

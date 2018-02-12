@@ -1,27 +1,15 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
-import { LoadingDot } from './../../../components/'
+import { LoadingDot } from './../../../components'
 
 class NotificationUnread extends Component {
   render() {
-    const { permissionUnread, checkupHistoryUnread, loading } = { ...this.props }
-    let Unread = permissionUnread + checkupHistoryUnread
+    const { unRead, loading } = { ...this.props }
     return (
       !loading
-        ? Unread ? <span className={`notiBlock`}>{Unread > 99 ? '99+' : Unread}</span> : null
+        ? unRead ? <span className={`notiBlock`}>{unRead > 99 ? '99+' : unRead}</span> : null
         : <LoadingDot sizeDot='5px' bgColor='#00aee5' />
     )
   }
 }
 
-// const mapStateToProps = state => ({
-//   permissionUnread: state.permission.unRead,
-//   checkupHistoryUnread: state.checkup.checkupHistory.unRead,
-//   loading: state.checkup.checkupHistory.unReadLoding
-// })
-export default connect((state) => ({
-  permissionUnread: state.permission.unRead,
-  checkupHistoryUnread: state.checkup.checkupHistory.unRead,
-  loading: state.checkup.checkupHistory.unReadLoding
-}))(NotificationUnread)
+export default NotificationUnread

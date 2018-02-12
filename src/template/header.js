@@ -8,8 +8,8 @@ const SET_MENU = {
   'main': {
     text: ''
   },
-  'notification': {
-    text: 'Notification'
+  'requestpermission': {
+    text: 'Request Permission'
   },
   'profile': {
     text: 'Profile'

@@ -2,9 +2,11 @@ import React from 'react'
 import { ListItem } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import moment from 'moment'
-
+import ActionInfo from 'material-ui/svg-icons/action/info'
+import { Variable } from '../../../assets/style/vendors/materialUI/js/index'
 require('moment/locale/th')
-const CardComponent = (props) => {
+
+const ListComponent = (props) => {
   const data = props.data
   const { dateTimeServe, healthCareProviderData } = { ...data }
   return (
@@ -12,6 +14,11 @@ const CardComponent = (props) => {
       <ListItem
         primaryText={moment(dateTimeServe).format('LL')}
         secondaryText={healthCareProviderData[0].healthCareProviderName}
+        rightIcon={
+          data.patientAcknowledgeDateTime
+            ? null : <ActionInfo color={Variable.colors.notifi} />
+        }
+
       />
       <Divider />
     </div>
@@ -19,4 +26,4 @@ const CardComponent = (props) => {
   )
 }
 
-export default CardComponent
+export default ListComponent

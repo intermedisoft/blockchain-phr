@@ -3,7 +3,7 @@ import ListComponent from './components/list'
 import { connect } from 'react-redux'
 
 import { permissionAction } from './../../redux/actions/permission'
-import { checkupAction } from './../../redux/actions/checkup'
+// import { checkupAction } from './../../redux/actions/checkup'
 import { CircularProgress, DataNotFound } from './../../components/'
 import { _function } from './../../function'
 
@@ -22,7 +22,7 @@ class NotificationPage extends Component {
         id: e.permissionLogId
       })
     })
-    v2.forEach(e => {
+    checkupHistory.length && v2.forEach(e => {
       data.push({
         item: e,
         healthCareProviderId: e.checkupHistory.healthCareProviderId,
@@ -37,13 +37,12 @@ class NotificationPage extends Component {
   componentWillMount() {
     if (this.props.reload) {
       this.props.getNotification(this.props.patientId, true)
-      this.props.getCheckupResultProducedTransaction(this.props.patientId)
+      // this.props.getCheckupResultProducedTransaction(this.props.patientId)
     }
   }
   render() {
 
     const permission = this.props.permission.data
-    const checkupHistory = this.props.checkupHistory.data
     const healthCareProvider = this.props.healthCareProvider.data
 
     return (
@@ -51,8 +50,10 @@ class NotificationPage extends Component {
         <div className={`card`}>
           {
             !permission.nodata || !healthCareProvider.nodata
-              ? (permission.length && checkupHistory.length && healthCareProvider.length)
-                ? this.mergeData(permission, checkupHistory).map((v, i) => {
+              ? (permission.length && healthCareProvider.length)
+                // ? (permission.length && checkupHistory.length && healthCareProvider.length)
+                ? this.mergeData(permission, []).map((v, i) => {
+                  // ? this.mergeData(permission, checkupHistory).map((v, i) => {
                   v.item.healthCareProviderData = healthCareProvider.filter((Provider) => {
                     return Provider.healthCareProviderId === v.healthCareProviderId
                   })
@@ -75,9 +76,9 @@ const mapDispatchToProps = (dispatch, state) => {
     getNotification: (patientId, loaded) => {
       dispatch(permissionAction.getPermission(patientId, loaded))
     },
-    getCheckupResultProducedTransaction: (patientId) => {
-      dispatch(checkupAction.getCheckupResultProducedTransaction(patientId))
-    },
+    // getCheckupResultProducedTransaction: (patientId) => {
+    //   dispatch(checkupAction.getCheckupResultProducedTransaction(patientId))
+    // },
     receivesetDataOnReading: (id, reload) => {
       dispatch(permissionAction.receivesetDataOnReading(id, reload))
     }
@@ -88,7 +89,6 @@ const mapStateToProps = state => (
   {
     permission: state.permission,
     healthCareProvider: state.healthCareProvider,
-    checkupHistory: state.checkup.checkupHistory,
     patientId: state.firebase.profile.patientId,
     reload: state.permission.dataOnReading.reload
   }

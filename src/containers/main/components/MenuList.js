@@ -39,7 +39,7 @@ class MenuList extends Component {
             </div>
           </li>
           <li onClick={() => history.push('/requestpermission')}>
-            <div className={`iconNotification`} />
+            <div className={`iconPermission`} />
             <div className={`text`}>Request Permission</div>
             <div className={`noti`}>
               <NotificationUnread

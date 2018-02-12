@@ -103,6 +103,8 @@ svg:not(:root) {
 
 pre {
     overflow: auto;
+    white-space: normal;
+    word-break: break-word;
     a {
         text-decoration: underline;
     }

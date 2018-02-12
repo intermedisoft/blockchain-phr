@@ -6,6 +6,7 @@ import { isEmpty } from 'react-redux-firebase'
 import { HeaderAction } from './../../redux/actions/header'
 import { checkupAction } from './../../redux/actions/checkup'
 import { permissionAction } from './../../redux/actions/permission'
+import styles from '../../assets/style/themes/pages/checkup.scss'
 
 // import { _function } from './../../function'
 
@@ -94,11 +95,11 @@ class CheckupViewerPage extends Component {
     }
     return (
       (!isEmpty(data) && patients && !isEmpty(healthCareProvider)) &&
-      <div className={`containerMain`}>
+      <div className={`containerMain ${styles.checkupView}`}>
         <div className={`card`}>
-          <div className={`cardHead`}>
-            <div>Health Care Provider</div>
-            <div>
+          <div className={`cardHeadView`}>
+            <div className={`cardHeadViewLabel`}>Health Care Provider</div>
+            <div className={`cardHeadViewValue`}>
               {
                 data.healthCareProviderData ?
                   data.healthCareProviderData[0].healthCareProviderName : healthCareProvider.filter((Provider) => {
@@ -109,7 +110,7 @@ class CheckupViewerPage extends Component {
           </div>
         </div>
         <div className={`card`}>
-          <div className={`cardContent --noMargin `}>
+          <div className={`cardContent --noMargin`}>
             <div className={`cardGroup`}>
               <div className={`cardGroupHead`}>ตรวจร่างกายทั่วไปโดยแพทย์ (PE)</div>
               <div className={`resultsCard`}>
@@ -369,7 +370,7 @@ class CheckupViewerPage extends Component {
                     <span className={`resultsUnit`}>U/L</span>
                   </div>
                 </div>
-                <div className={`resultsGroup`}>
+                <div className={`resultsGroup --flex2`}>
                   <div className={`resultsLabel`}>เอนไซม์ในเซลล์เยื่อบุท่อน้ำดีของตับ</div>
                   <div>
                     <span className={`resultsValue`}>{data.alk}</span>

@@ -29,25 +29,19 @@ class XrayViewerPage extends Component {
       data &&
       <div className={`containerMain`}>
         <div className={`card`}>
-          <div className={`cardHead`}>
-            <div>Health Care Provider</div>
-            <div>
+          <div className={`cardHeadView`}>
+            <div className={`cardHeadViewLabel`}>Health Care Provider</div>
+            <div className={`cardHeadViewValue`}>
               {data.healthCareProviderData && data.healthCareProviderData[0].healthCareProviderName}
             </div>
           </div>
-          <div className={`cardContent`}>
-            <table className={`tableViewColon`}>
-              <tbody>
-                <tr>
-                  <td>Name</td>
-                  <td>{data.xrayName}</td>
-                </tr>
-                <tr>
-                  <td>Result</td>
-                  <td>{data.xrayResult}</td>
-                </tr>
-              </tbody>
-            </table>
+        </div>
+        <div className={`card`}>
+          <div className={`cardContent --noMargin`}>
+            <div className={`cardGroup`}>
+              <div className={`cardGroupHead`}>{data.xrayName}</div>
+              <pre>{data.xrayResult}</pre>
+            </div>
           </div>
         </div>
       </div >

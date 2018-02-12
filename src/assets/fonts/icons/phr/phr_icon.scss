@@ -25,11 +25,14 @@ $font-path:'assets/fonts/icons/phr/fonts';
   -moz-osx-font-smoothing: grayscale;
 }
 
-.iconMedicalCare:before {
+.iconPermission:before {
   content: "\e910";
 }
+.iconMedicalCare:before {
+  content: "\e911";
+}
 .iconXray:before {
-  content: "\e910";
+  content: "\e912";
 }
 .iconFile:before {
   content: "\e90f";

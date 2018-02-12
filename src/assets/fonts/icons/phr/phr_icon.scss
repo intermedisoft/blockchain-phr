@@ -25,6 +25,9 @@ $font-path:'assets/fonts/icons/phr/fonts';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.iconMedicalCare:before {
+  content: "\e910";
+}
 .iconXray:before {
   content: "\e910";
 }

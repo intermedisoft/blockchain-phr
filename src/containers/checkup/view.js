@@ -13,7 +13,8 @@ require('moment/locale/th')
 
 class CheckupViewerPage extends Component {
   state = {
-    data: ''
+    data: '',
+    setRead: false
   }
   setTitleBar(value) {
     this.props.setHeader(moment(value).format('LL'))
@@ -30,7 +31,6 @@ class CheckupViewerPage extends Component {
       patientAcknowledgeDateTime: moment().toISOString()
     }))
 
-    //Update 
   }
   componentWillMount() {
     if (this.props.location.state === undefined) {
@@ -43,29 +43,40 @@ class CheckupViewerPage extends Component {
       }
     } else {
       let data = this.props.location.state.data
-      const coreType = _function.popHash(data.$class, '.')
-      if (coreType === 'CheckupResultProducedTransaction') {
-        /* OPEN FROM NOTIFICATION PAGE */
-        let _temp = data.healthCareProviderData
-        data = data.checkupHistory
-        data.healthCareProviderData = _temp
-        //UPDATE READ 
-        if (!data.patientAcknowledgeDateTime) {
-          this.updateToread(data)
-          this.props.receivesetDataOnReading()
-        }
-      }
-      this.setState({
-        data: data
-      })
+      /* CHECK patientAcknowledgeDateTime IS NOT HAVE TO UPDATE READ ITEM */
+      // const coreType = _function.popHash(data.$class, '.')
+      // if (coreType === 'CheckupResultProducedTransaction') {
+      //   /* OPEN FROM NOTIFICATION PAGE */
+      //   let _temp = data.healthCareProviderData
+      //   data = data.checkupHistory
+      //   data.healthCareProviderData = _temp
+      //   //UPDATE READ 
+      //   if (!data.patientAcknowledgeDateTime) {
+      //     this.updateToread(data)
+      //     this.props.receivesetDataOnReading()
+      //   }
+      // }
+      this.setState({ data })
       this.setTitleBar(data.dateTimeServe)
     }
   }
 
-  componentWillUpdate() {
+  componentWillUpdate(nextProps, nextState) {
     if (!isEmpty(this.props.checkup) && !this.props.header) {
       this.setTitleBar(this.props.checkup.dateTimeServe)
     }
+
+
+    if (!nextState.setRead && nextState.data && !nextState.data.patientAcknowledgeDateTime) {
+      this.setState({ setRead: true })
+      this.updateToread(nextState.data)
+      this.props.receivesetDataOnReading()
+    }
+
+    // console.log(nextProps.updateReading, nextState.setRead)
+    // if (nextProps.updateReading && nextState.data.patientAcknowledgeDateTime) {
+    //   this.setState({ setRead: false })
+    // }
   }
 
   render() {
@@ -73,8 +84,9 @@ class CheckupViewerPage extends Component {
     if (!data) {
       data = this.props.checkup
     }
-    const { healthCareProvider } = { ...this.props }
+    const { healthCareProvider} = { ...this.props }
     return (
+      
       (!isEmpty(data) && !isEmpty(healthCareProvider)) &&
       <div className={`containerMain`}>
         <div className={`card`}>
@@ -265,7 +277,8 @@ const mapStateToProps = state => (
   {
     header: state.header.text,
     checkup: state.checkup.dataOnSelected.data,
-    healthCareProvider: state.healthCareProvider.data
+    healthCareProvider: state.healthCareProvider.data,
+    updateReading: state.checkup.checkupHistory.updateReading
   }
 )
 

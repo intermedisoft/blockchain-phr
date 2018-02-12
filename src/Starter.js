@@ -7,6 +7,8 @@ import { NotificationContainer, NotificationManager } from 'react-notifications'
 import { permissionAction } from './redux/actions/permission'
 import { checkupAction } from './redux/actions/checkup'
 import { healthCareProviderAction } from './redux/actions/healthCareProvider'
+import { xrayAction } from './redux/actions/xray'
+
 import { _function } from './function'
 import { conf } from './config'
 
@@ -14,7 +16,8 @@ class LoadStarterPage extends Component {
   state = {
     notification: {},
     error: null,
-    isData: false
+    isData: false,
+    isFetchDone: true
   }
 
   componentDidMount() {
@@ -34,34 +37,35 @@ class LoadStarterPage extends Component {
       }
       if ((patientId === this.props.patientId) && (eventType === 'CheckupResultProducedEvent')) {
         this.props.getAllCheckup(this.props.patientId)
-        this.props.getNotification(this.props.patientId)
         NotificationManager.info('You have a new Checkup Event', '', 5000, () => {
           window.location.href = `/checkup/#${newNotification.checkupHistoryRef.assetId}`
         })
       }
-
+      if ((patientId === this.props.patientId) && (eventType === 'XrayResultProducedEvent')) {
+        // this.props.getAllCheckup(this.props.patientId)
+        // this.props.getNotification(this.props.patientId)
+        NotificationManager.info('You have a new Xray Event', '', 5000, () => {
+          window.location.href = `/xray/#${newNotification.xrayRef.assetId}`
+        })
+      }
     }
     this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
     this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })
 
   }
   componentWillUpdate(nextProps, nextState) {
-    const { patientId, configs, err, permission, checkupHistory } = { ...nextProps }
-    // console.log(patientId, permission, checkupHistory)
-    if (patientId && !err && isEmpty(permission.data) && isEmpty(checkupHistory)) {
-      // console.log('000000000000000000000000000000')
+    const { patientId, configs, err, permission, checkupHistory, xrayHistory } = { ...nextProps }
+    if (nextState.isFetchDone && patientId && !err && isEmpty(permission.data) && isEmpty(checkupHistory) && isEmpty(xrayHistory)) {
+      this.setState({
+        isFetchDone: false
+      })
       this.props.getNotification(patientId)
       this.props.getHealthCareProvider(configs)
       this.props.getCheckupResultProducedTransaction(patientId)
+      this.props.getXrayResultProducedTransaction(patientId)
     }
   }
   render() {
-    // const { patientId, configs, err, permission, checkupHistory } = { ...this.props }
-    // if (patientId && !err && isEmpty(permission.data) && isEmpty(checkupHistory)) {
-    //   this.props.getNotification(patientId)
-    //   this.props.getHealthCareProvider(configs)
-    //   this.props.getCheckupResultProducedTransaction(patientId)
-    // }
     return (
       <div>
         <NotificationContainer />
@@ -83,6 +87,9 @@ const mapDispatchToProps = (dispatch, state) => {
     },
     getCheckupResultProducedTransaction: (patientId) => {
       dispatch(checkupAction.getCheckupResultProducedTransaction(patientId))
+    },
+    getXrayResultProducedTransaction: (patientId) => {
+      dispatch(xrayAction.getXrayResultProducedTransaction(patientId))
     }
   }
 }
@@ -93,7 +100,8 @@ const mapStateToProps = state => (
     configs: state.firebase.data.configs,
     err: state.fetchError.modalOpen,
     permission: state.permission,
-    checkupHistory: state.checkup.checkupHistory.data
+    checkupHistory: state.checkup.checkupHistory.data,
+    getAllXray: state.xray.xrayHistory.data
   }
 )
 export default connect(mapStateToProps, mapDispatchToProps)(LoadStarterPage)

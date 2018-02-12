@@ -22,7 +22,7 @@ class NotificationPage extends Component {
         id: e.permissionLogId
       })
     })
-    v2.forEach(e => {
+    checkupHistory.length && v2.forEach(e => {
       data.push({
         item: e,
         healthCareProviderId: e.checkupHistory.healthCareProviderId,
@@ -43,7 +43,6 @@ class NotificationPage extends Component {
   render() {
 
     const permission = this.props.permission.data
-    const checkupHistory = this.props.checkupHistory.data
     const healthCareProvider = this.props.healthCareProvider.data
 
     return (
@@ -51,8 +50,10 @@ class NotificationPage extends Component {
         <div className={`card`}>
           {
             !permission.nodata || !healthCareProvider.nodata
-              ? (permission.length && checkupHistory.length && healthCareProvider.length)
-                ? this.mergeData(permission, checkupHistory).map((v, i) => {
+              ? (permission.length && healthCareProvider.length)
+                // ? (permission.length && checkupHistory.length && healthCareProvider.length)
+                ? this.mergeData(permission, []).map((v, i) => {
+                  // ? this.mergeData(permission, checkupHistory).map((v, i) => {
                   v.item.healthCareProviderData = healthCareProvider.filter((Provider) => {
                     return Provider.healthCareProviderId === v.healthCareProviderId
                   })
@@ -88,7 +89,6 @@ const mapStateToProps = state => (
   {
     permission: state.permission,
     healthCareProvider: state.healthCareProvider,
-    checkupHistory: state.checkup.checkupHistory,
     patientId: state.firebase.profile.patientId,
     reload: state.permission.dataOnReading.reload
   }

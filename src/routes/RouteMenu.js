@@ -33,7 +33,7 @@ class RouteMenu extends Component {
         <Route path='/checkup/:id?' component={RouteCheckup} />
         <Route path='/profile/:id?' component={RouteProfile} />
         <Route path='/xray/:id?' component={RouteXray} />
-        <Route path='/notification/:id?' component={RouteNotification} />
+        <Route path='/requestpermission/:id?' component={RouteNotification} />
         <Route path='/detail' component={Detail} />
         {/* <Route exact path='/user' component={User} /> */}
 

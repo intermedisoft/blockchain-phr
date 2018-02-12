@@ -23,7 +23,8 @@ export default function PermissionReducer(state = permission, action) {
         ...state,
         data: action.payload,
         unRead: action.unRead,
-        isLoading: false
+        isLoading: false,
+        unReadLoding: false
       }
     case PERMISSION.GETUPDATEDCLEAR:
       return {
@@ -69,6 +70,11 @@ export default function PermissionReducer(state = permission, action) {
           isLoading: false,
           reload: action.reload
         }
+      }
+    case PERMISSION.GETPERMISSIONTRANSACTIONUNREAD:
+      return {
+        ...state,
+        unReadLoding: action.payload
       }
     case PERMISSION.LOADING:
       return {

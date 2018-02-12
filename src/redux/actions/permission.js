@@ -14,10 +14,6 @@ const receiveupdatePermission = (data) => ({
   payload: data
 })
 
-// const receivegetPatientLoading = () => ({
-//   type: types.PERMISSION.LOADING
-// })
-
 const receiveupdatePermissionLoading = () => ({
   type: types.PERMISSION.GETUPDATEDLOADING
 })
@@ -40,12 +36,16 @@ const receivesetDataOnReading = (id, reload) => ({
   payload: id,
   reload
 })
-
+const receivegetPermissionResultProducedTransactionUnRead = (data) => ({
+  type: types.PERMISSION.GETPERMISSIONTRANSACTIONUNREAD,
+  payload: data
+})
 const getPermission = (patientId, reload) => async (dispatch) => {
   try {
     if (reload) {
       dispatch(receivesetDataOnReading(null, false))
     }
+    dispatch(receivegetPermissionResultProducedTransactionUnRead(true))
     if (patientId) {
       const response = await Service.Permission.getPermission(patientId)
       if (!response.data.length) {

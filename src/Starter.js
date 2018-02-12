@@ -36,7 +36,7 @@ class LoadStarterPage extends Component {
         })
       }
       if ((patientId === this.props.patientId) && (eventType === 'CheckupResultProducedEvent')) {
-        this.props.getAllCheckup(this.props.patientId)
+        this.props.getCheckupResultProducedTransaction(this.props.patientId)
         NotificationManager.info('You have a new Checkup Event', '', 5000, () => {
           window.location.href = `/checkup/#${newNotification.checkupHistoryRef.assetId}`
         })

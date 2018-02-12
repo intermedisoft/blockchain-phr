@@ -2,7 +2,7 @@ import * as types from './../../constants/ActionTypes'
 import { Service } from './../../service'
 import { ActionErrHandle } from './../error.action'
 import { _function } from './../../function'
-import moment from 'moment'
+// import moment from 'moment'
 
 const receivegetAllXray = (data) => ({
   type: types.XRAY.GET,
@@ -18,6 +18,12 @@ const receivegetXrayResultProducedTransaction = (data, unRead) => ({
   payload: data,
   unRead
 })
+
+const receivegetXrayResultProducedTransactionUnReadOnly = (unread) => ({
+  type: types.XRAY.GETXRAYTRANSACTIONUNREADONLY,
+  payload: unread
+})
+
 const getAllXray = (patientId) => async (dispatch) => {
   try {
     if (patientId) {
@@ -26,9 +32,14 @@ const getAllXray = (patientId) => async (dispatch) => {
         dispatch(receivegetAllXray({ nodata: true }))
       } else {
         let data = response.data
+        let countUnread = data.length
         data.forEach((key, i) => {
           key.healthCareProviderId = _function.popHash(key.healthCareProvider)
-          i + 1 === data.length && dispatch(receivegetAllXray(data))
+          key.patientAcknowledgeDateTime && countUnread--
+          if (i + 1 === data.length) {
+            dispatch(receivegetAllXray(data))
+            dispatch(receivegetXrayResultProducedTransactionUnReadOnly(countUnread))
+          }
         })
       }
     }
@@ -49,7 +60,7 @@ const getXrayResultProducedTransaction = (patientId) => async (dispatch) => {
         key.patientAcknowledgeDateTime && countUnread--
         delete key.xrayImage
       })
-      dispatch(receivegetXrayResultProducedTransaction(data, countUnread))
+      dispatch(receivegetXrayResultProducedTransaction({}, countUnread))
     }
   } catch (error) {
     ActionErrHandle(dispatch, error)

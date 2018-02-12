@@ -1,0 +1,36 @@
+@import '../configs/variables/index';
+@import '../frameworks/mixins/index';
+:global {
+  .results {
+    &Card {
+      display: inline-flex;
+      flex-wrap: wrap;
+    }
+    &Group {
+      margin: 2px;
+      padding: 0 5px;
+      border-left: 3px solid rgb(126, 126, 126);
+      line-height: 1.3em;
+      flex-basis: 100%;
+      &.--normal {
+        border-left: 3px solid #4CAF50;
+      }
+      &.--abNormal {
+        border-left: 3px solid rgb(216, 56, 56);
+      }
+      &.--fail {
+        border-left: 3px solid rgb(126, 126, 126);
+      }
+    }
+    &Label {
+      // font-size: 0.95em;
+    }
+    &Value {
+      font-size: 1.5em;
+      margin-right: 3px;
+    }
+    &Unit {
+      font-size: 0.8em;
+    }
+  }
+}

@@ -31,6 +31,11 @@ const receivegetCheckupResultProducedTransactionUnRead = (data) => ({
   payload: data
 })
 
+const receivegetCheckupResultProducedTransactionSetUnReadOnly = (unread) => ({
+  type: types.CHECKUP.GETCHECKUPHISTORYUNSETREADONLY,
+  payload: unread
+})
+
 const getAllCheckup = (patientId) => async (dispatch) => {
   try {
     if (patientId) {
@@ -39,9 +44,14 @@ const getAllCheckup = (patientId) => async (dispatch) => {
         dispatch(receivegetAllCheckup({ nodata: true }))
       } else {
         let data = response.data
+        let countUnread = data.length
         data.forEach((key, i) => {
           key.healthCareProviderId = _function.popHash(key.healthCareProvider)
-          i + 1 === data.length && dispatch(receivegetAllCheckup(data))
+          key.patientAcknowledgeDateTime && countUnread--
+          if (i + 1 === data.length) {
+            dispatch(receivegetAllCheckup(data))
+            dispatch(receivegetCheckupResultProducedTransactionSetUnReadOnly(countUnread))
+          }
         })
       }
     }
@@ -95,7 +105,7 @@ const getCheckupResultProducedTransaction = (patientId) => async (dispatch) => {
           timestamp: moment().toISOString()
         })
       })
-      dispatch(receivegetCheckupResultProducedTransaction(newData, countUnread))
+      dispatch(receivegetCheckupResultProducedTransaction({}, countUnread))
     }
   } catch (error) {
     ActionErrHandle(dispatch, error)

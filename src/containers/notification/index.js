@@ -3,7 +3,7 @@ import ListComponent from './components/list'
 import { connect } from 'react-redux'
 
 import { permissionAction } from './../../redux/actions/permission'
-import { checkupAction } from './../../redux/actions/checkup'
+// import { checkupAction } from './../../redux/actions/checkup'
 import { CircularProgress, DataNotFound } from './../../components/'
 import { _function } from './../../function'
 
@@ -37,7 +37,7 @@ class NotificationPage extends Component {
   componentWillMount() {
     if (this.props.reload) {
       this.props.getNotification(this.props.patientId, true)
-      this.props.getCheckupResultProducedTransaction(this.props.patientId)
+      // this.props.getCheckupResultProducedTransaction(this.props.patientId)
     }
   }
   render() {
@@ -76,9 +76,9 @@ const mapDispatchToProps = (dispatch, state) => {
     getNotification: (patientId, loaded) => {
       dispatch(permissionAction.getPermission(patientId, loaded))
     },
-    getCheckupResultProducedTransaction: (patientId) => {
-      dispatch(checkupAction.getCheckupResultProducedTransaction(patientId))
-    },
+    // getCheckupResultProducedTransaction: (patientId) => {
+    //   dispatch(checkupAction.getCheckupResultProducedTransaction(patientId))
+    // },
     receivesetDataOnReading: (id, reload) => {
       dispatch(permissionAction.receivesetDataOnReading(id, reload))
     }

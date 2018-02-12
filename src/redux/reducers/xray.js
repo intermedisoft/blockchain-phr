@@ -38,6 +38,14 @@ export default function XrayReducer(state = xray, action) {
           unReadLoding: action.payload
         }
       }
+    case XRAY.GETXRAYTRANSACTIONUNREADONLY:
+      return {
+        ...state,
+        xrayHistory: {
+          ...xrhis,
+          unRead: action.payload
+        }
+      }
     default:
       return state
   }

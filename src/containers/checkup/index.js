@@ -10,7 +10,6 @@ import { patientAction } from './../../redux/actions/patient'
 import { CircularProgress, DataNotFound } from './../../components/'
 
 class CheckupPage extends Component {
-
   componentWillMount() {
     if (this.props.patientId) {
       this.props.getPatient(this.props.patientId)
@@ -25,7 +24,7 @@ class CheckupPage extends Component {
   }
 
   render() {
-    const { patients, checkup, healthCareProvider } = { ...this.props }
+    const { checkup, healthCareProvider } = { ...this.props }
 
     let renderHTML = (
       <CircularProgress className={`--loadCard`} />
@@ -34,7 +33,7 @@ class CheckupPage extends Component {
       renderHTML = (
         <DataNotFound />
       )
-    } else if (!isEmpty(checkup)) {
+    } else if (!isEmpty(checkup) && !isEmpty(healthCareProvider)) {
       renderHTML = (
         <div>
           <div className={`cardHead`}>

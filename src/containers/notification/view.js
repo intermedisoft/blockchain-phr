@@ -69,7 +69,6 @@ class NotificationViewerPage extends Component {
     const permissionOnUpdate = this.props.permissionOnUpdate
     const dataOnReading = this.props.dataOnReading
 
-
     if (!dataOnReading.id) {
       htmlRender = <CircularProgress />
 

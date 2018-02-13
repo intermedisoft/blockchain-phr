@@ -2,7 +2,7 @@
 import { setting } from './setting'
 
 export default {
-  getHealthProvider: async (configs, id) => {
+  getHealthProvider: async (id) => {
     if (id) {
       try {
         return await setting().then(async (call) => call.get(`/api/HealthCareProvider/${id}`))

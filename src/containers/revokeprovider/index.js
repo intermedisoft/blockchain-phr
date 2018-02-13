@@ -28,48 +28,47 @@ class RevokeProviderPage extends Component {
     let renderHTML = (
       <CircularProgress className={`--loadCard`} />
     )
-    if (!isEmpty(patientPermissionRequestList) && !isEmpty(healthCareProvider)) {
-      let patientPermissionRequestListClean = patientPermissionRequestList.filter(function (item, pos) {
-        return patientPermissionRequestList.indexOf(item) === pos
-      })
-
-      patientPermissionRequestListClean.map((v, i) => {
-        providerList.push({
-          key: i,
-          healthCareProviderName: healthCareProvider.filter((Provider) =>
-            Provider.healthCareProviderId === _function.popHash(v)
-          )[0].healthCareProviderName,
-          healthCareProvider: v,
-          patientId
-        })
-      })
-
+    if (patientPermissionRequestList && !patientPermissionRequestList.length) {
       renderHTML = (
-        <div>
-          <List>
-            {
-              providerList.map((v, i) => {
-                // providerList.push({
-                //   key: i,
-                //   patient: `resource:com.depa.blockchain.core.Patient#${patientId}`,
-                //   healthCareProvider: v,
-                //   healthCareProviderData: healthCareProvider.filter((Provider) =>
-                //     Provider.healthCareProviderId === _function.popHash(v))[0].healthCareProviderName,
-                //   permissionType: 'REVOKE'
-                // })
-                return (
-                  <div key={v.key}>
-                    <Link to={{
-                      pathname: `/revokeprovider/${v.key}`,
-                      state: { data: v }
-                    }}> <ListComponent data={v} /> </Link>
-                  </div>
-                )
-              })
-            }
-          </List>
-        </div>
+        <DataNotFound />
       )
+    } else {
+      if (!isEmpty(patientPermissionRequestList) && !isEmpty(healthCareProvider)) {
+        let patientPermissionRequestListClean = patientPermissionRequestList.filter(function (item, pos) {
+          return patientPermissionRequestList.indexOf(item) === pos
+        })
+
+        // patientPermissionRequestListClean.map((v, i) => {
+        patientPermissionRequestListClean.forEach((v, i) => {
+          providerList.push({
+            key: i,
+            healthCareProviderName: healthCareProvider.filter((Provider) =>
+              Provider.healthCareProviderId === _function.popHash(v)
+            )[0].healthCareProviderName,
+            healthCareProvider: v,
+            patientId
+          })
+        })
+
+        renderHTML = (
+          <div>
+            <List>
+              {
+                providerList.map((v, i) => {
+                  return (
+                    <div key={v.key}>
+                      <Link to={{
+                        pathname: `/revokeprovider/${v.key}`,
+                        state: { data: v }
+                      }}> <ListComponent data={v} /> </Link>
+                    </div>
+                  )
+                })
+              }
+            </List>
+          </div>
+        )
+      }
     }
     return (
       <div className={`containerMain`}>

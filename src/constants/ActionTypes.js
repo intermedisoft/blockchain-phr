@@ -77,3 +77,8 @@ export const HEALTHCARE = {
   GET: 'GETHEALTHCARE'
 }
 Object.freeze(HEALTHCARE)
+
+export const REVOKEPROVIDER = {
+  UPDATE: 'UPDATE_REVOKE_PROVIDER'
+}
+Object.freeze(REVOKEPROVIDER)

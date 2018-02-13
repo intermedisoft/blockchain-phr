@@ -3,7 +3,12 @@ import { Service } from './../../service'
 import { ActionErrHandle } from '../error.action'
 import { _function } from '../../function'
 
-const receivegetPatient = (data, unRead) => ({
+const receivegetPatient = (data) => ({
+  type: types.PATIENT.GET,
+  payload: data
+})
+
+const receivegetPermission = (data, unRead) => ({
   type: types.PERMISSION.GET,
   payload: data,
   unRead
@@ -60,13 +65,13 @@ const getPermission = (patientId, reload) => async (dispatch) => {
         }
       }
       if (!response.data.length) {
-        dispatch(receivegetPatient({ nodata: true }))
+        dispatch(receivegetPermission({ nodata: true }))
       } else {
         let data = response.data
         data.forEach((key, i) => {
           key.healthCareProviderId = _function.popHash(key.healthCareProvider)
           key.patientId = _function.popHash(key.patient)
-          i + 1 === data.length && dispatch(receivegetPatient(data.reverse(), _function.countUnread(data, 'patientAcknowledgeDateTime')))
+          i + 1 === data.length && dispatch(receivegetPermission(data.reverse(), _function.countUnread(data, 'patientAcknowledgeDateTime')))
         })
       }
     }
@@ -94,6 +99,9 @@ const updatePermission = (data) => async (dispatch) => {
       dispatch(receiveupdatePermissionLoading())
       const response = await Service.Permission.updatePermission(data)
       dispatch(receiveupdatePermission(response.data))
+      // update Patient
+      const patient = await Service.Patient.getPatient(_function.popHash(data.patient, '#'))
+      dispatch(receivegetPatient(patient.data))
     }
   } catch (error) {
     ActionErrHandle(dispatch, error)

@@ -5,16 +5,6 @@ import { connect } from 'react-redux'
 import { alertAction } from './../redux/actions/fetchError'
 
 class ErrorModalControlled extends Component {
-  // state = {
-  //   open: true,
-  // };
-  // handleClose = () => {
-  //   this.setState({ open: false });
-  //   // this.props.closeModal()
-  // }
-  // onOpenModal = () => {
-  //   this.setState({ open: true });
-  // };
 
   onCloseModal = () => {
     this.props.closeModal()
@@ -28,8 +18,9 @@ class ErrorModalControlled extends Component {
       <Modal open={err.modalOpen} onClose={this.onCloseModal} classNames={{ overlay: `customOverlay ${classErrorModal}`, modal: 'customModal', closeIcon: 'customCloseIcon' }} little>
         <div className='modalTitle'>{err.header}</div>
         <div className={`modalContent ${err.header ? '' : 'noTitle'}`}>{err.message}</div>
+        <button onClick={() => window.location.reload()}>Try again</button>
       </Modal>
-    );
+    )
   }
 }
 

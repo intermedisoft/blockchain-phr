@@ -32,16 +32,10 @@ class NotificationViewerPage extends Component {
     if (!data.patientAcknowledgeDateTime) {
       data.patientAcknowledgeDateTime = moment().toISOString()
       delete data.permissionLogId
-
       this.props.updatePermissionReading(data, permissionLogId)
-      // this.props.getNotification(this.props.configs, this.props.patientId)
     } else {
       this.props.receivesetDataOnReading(permissionLogId, false)
     }
-    // this.props.receivesetDataOnReading(permissionLogId)
-    // console.log('---------------------------')
-    // console.log(permissionLogId)
-    // this.props.getNotification(this.props.configs, this.props.patientId)
   }
 
   handleAllowPermission = (provider) => {

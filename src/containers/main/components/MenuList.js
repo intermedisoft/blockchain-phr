@@ -13,8 +13,10 @@ class MenuList extends Component {
       permissionUnreadloading,
       checkupHistoryUnreadloading,
       xrayHistoryUnreadloading,
+      patientPermissionRequestList,
       handleClickLogout
     } = this.props
+
     return (
       <div className={`menuIconList ${styles.mainMenu}`}>
         <ul>
@@ -48,6 +50,14 @@ class MenuList extends Component {
               />
             </div>
           </li>
+          {
+            patientPermissionRequestList && patientPermissionRequestList.length
+              ? <li onClick={() => history.push('/revokeprovider')}>
+                <div className={`iconNotification`} />
+                <div className={`text`}>Revoke Provider</div>
+              </li> : null
+          }
+
           <li className={styles.logoutMenu} onClick={handleClickLogout}>
             <div className={`iconLogout`} />
             <div className={`text`}>Log out</div>
@@ -64,5 +74,6 @@ export default connect((state) => ({
   checkupHistoryUnread: state.checkup.checkupHistory.unRead,
   checkupHistoryUnreadloading: state.checkup.checkupHistory.unReadLoding,
   xrayHistoryUnread: state.xray.xrayHistory.unRead,
-  xrayHistoryUnreadloading: state.xray.xrayHistory.unReadLoding
+  xrayHistoryUnreadloading: state.xray.xrayHistory.unReadLoding,
+  patientPermissionRequestList: state.patient.data.authorizedHcpPermissionRequest
 }))(MenuList)

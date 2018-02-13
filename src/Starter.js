@@ -31,8 +31,8 @@ class LoadStarterPage extends Component {
 
       if ((patientId === this.props.patientId) && (eventType === 'PermissionRequestEvent')) {
         this.props.getNotification(this.props.patientId)
-        NotificationManager.info('You have a new Permission Request', '', 5000, () => {
-          window.location.href = '/notification'
+        NotificationManager.info('You have a new Request Permission', '', 5000, () => {
+          window.location.href = '/requestpermission'
         })
       }
       if ((patientId === this.props.patientId) && (eventType === 'CheckupResultProducedEvent')) {

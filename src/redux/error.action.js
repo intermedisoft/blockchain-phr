@@ -46,7 +46,7 @@ export const ActionErrHandle = function (dispatch, error) {
   if (!error.response) {
     dispatch({
       type: types.ERROR_MESSAGE.NETWORKERROR,
-      message: 'Server Error, Please try again.'
+      message: 'Server Unavailable, Please Click try again.'
     })
     return false
   }

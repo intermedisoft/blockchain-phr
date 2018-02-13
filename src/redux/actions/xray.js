@@ -24,6 +24,11 @@ const receivegetXrayResultProducedTransactionUnReadOnly = (unread) => ({
   payload: unread
 })
 
+const receiveupdateReadXrayHistory = (action) => ({
+  type: types.XRAY.UPDATEREADINGXRAYHISTORY,
+  payload: action
+})
+
 const getAllXray = (patientId) => async (dispatch) => {
   try {
     if (patientId) {
@@ -52,7 +57,17 @@ const getXrayResultProducedTransaction = (patientId) => async (dispatch) => {
   try {
     if (patientId) {
       dispatch(receivegetXrayResultProducedTransactionUnRead(true))
-      const response = await Service.Xray.getXray(patientId)
+      let response
+      let count = 0
+      while (response === undefined) {
+        try {
+          response = await Service.Xray.getXray(patientId)
+        } catch (err) {
+          if (++count === 3) {
+            throw err
+          }
+        }
+      }
       let data = response.data
       let countUnread = data.length
       data.forEach((key, i) => {
@@ -67,7 +82,20 @@ const getXrayResultProducedTransaction = (patientId) => async (dispatch) => {
   }
 }
 
+const updateReadXrayHistory = (assetId, data) => async (dispatch) => {
+  try {
+    if (assetId) {
+      dispatch(receiveupdateReadXrayHistory(true))
+      await Service.Xray.updateReadXrayHistory(assetId, data)
+      dispatch(receiveupdateReadXrayHistory(false))
+    }
+  } catch (error) {
+    ActionErrHandle(dispatch, error)
+  }
+}
+
 export const xrayAction = {
   getAllXray,
-  getXrayResultProducedTransaction
+  getXrayResultProducedTransaction,
+  updateReadXrayHistory
 }

@@ -20,7 +20,7 @@ class ListComponent extends Component {
       return (
         <List>
           <Link to={{
-            pathname: `/notification/${val.id}`,
+            pathname: `/requestpermission/${val.id}`,
             state: { data }
           }}>
             <ListItem

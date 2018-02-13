@@ -47,7 +47,18 @@ const getPermission = (patientId, reload) => async (dispatch) => {
     }
     dispatch(receivegetPermissionResultProducedTransactionUnRead(true))
     if (patientId) {
-      const response = await Service.Permission.getPermission(patientId)
+      let response
+      let count = 0
+      while (response === undefined) {
+        try {
+          response = await Service.Permission.getPermission(patientId)
+        } catch (err) {
+          response = undefined
+          if (++count === 3) {
+            throw err
+          }
+        }
+      }
       if (!response.data.length) {
         dispatch(receivegetPatient({ nodata: true }))
       } else {

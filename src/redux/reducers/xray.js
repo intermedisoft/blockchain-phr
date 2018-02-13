@@ -46,6 +46,14 @@ export default function XrayReducer(state = xray, action) {
           unRead: action.payload
         }
       }
+    case XRAY.UPDATEREADINGXRAYHISTORY:
+      return {
+        ...state,
+        xrayHistory: {
+          ...xrhis,
+          updateReading: action.payload
+        }
+      }
     default:
       return state
   }

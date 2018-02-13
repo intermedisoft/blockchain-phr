@@ -12,5 +12,12 @@ export default {
         return Promise.reject(new Error(error))
       }
     }
+  },
+  updateReadXrayHistory: async (assetId, data) => {
+    try {
+      return await setting().then(async (call) => call.put(`/api/Xray/${assetId}`, data))
+    } catch (error) {
+      return Promise.reject(new Error(error))
+    }
   }
 }

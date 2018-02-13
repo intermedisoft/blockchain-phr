@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Headroom from 'react-headroom'
+import { Link } from 'react-router-dom'
 
 import logo from './../assets/images/logo.svg'
 
@@ -25,6 +26,9 @@ const SET_MENU = {
   },
   'xray': {
     text: 'X-Ray'
+  },
+  'revokeprovider': {
+    text: 'Revoke Provider'
   }
 }
 class Header extends Component {
@@ -46,7 +50,7 @@ class Header extends Component {
             {/* texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext */}
           </div>
           <div className='itemRight logo'>
-            <img src={logo} alt='Logo' />
+            <Link to='/main'><img src={logo} alt='Logo' /></Link>
           </div>
         </div>
       </Headroom>
@@ -55,8 +59,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => (
-  {
-    header: state.header.text
-  }
+  { header: state.header.text }
 )
 export default connect(mapStateToProps)(Header)

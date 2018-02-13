@@ -30,8 +30,8 @@ class CheckupViewerPage extends Component {
     this.props.updateReadCheckupHistory(assetId, Object.assign(data2, {
       patientAcknowledgeDateTime: moment().toISOString()
     }))
-
   }
+  
   componentWillMount() {
     if (this.props.location.state === undefined) {
       if (this.props.match.params.id) {

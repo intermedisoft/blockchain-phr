@@ -24,18 +24,14 @@ class ListComponent extends Component {
             state: { data }
           }}>
             <ListItem
-              primaryText={val.typeText}
+              primaryText={data.healthCareProviderData[0].healthCareProviderName}
               secondaryText={
-                <p>
-                  <span>{data.healthCareProviderData[0].healthCareProviderName}</span>
-                  <br />
                   <span>{moment(val.actionDateTime).format('LLL')}</span>
-                </p>
               }
               rightIcon={
                 data.patientAcknowledgeDateTime ? null : iconList
               }
-              secondaryTextLines={2}
+              secondaryTextLines={1}
             />
           </Link>
           <Divider />

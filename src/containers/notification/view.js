@@ -76,9 +76,14 @@ class NotificationViewerPage extends Component {
       // return (
       htmlRender = provider
         ? <div>
-          <div className={`cardHead`}>Request permission</div>
-          <div className={`cardContent`}> Health Care Provider : <b>{provider.healthCareProviderData[0].healthCareProviderName}</b></div>
-          <div className={`cardContent`}> Action Date Time : <b>{moment(provider.actionDateTime).format('LLL')}</b></div>
+          <div className={`cardHead`}>
+            <div>Health Care Provider</div>
+            <div>{provider.healthCareProviderData[0].healthCareProviderName}</div>
+          </div>
+          <div className={`cardContent`}>
+            <div><b>Action Date Time</b></div>
+            <div>{moment(provider.actionDateTime).format('LLL')}</div>
+          </div>
           {
             isEmpty(permissionOnUpdate.data) ?
               !provider.patientResponseResult || provider.patientResponseResult === 'NOOP' ?

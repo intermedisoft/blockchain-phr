@@ -1,0 +1,77 @@
+@import '../../configs/variables/index';
+@import '../../frameworks/mixins/index';
+:local {
+  .checkupView {
+     :global {
+      .results {
+        &Card {
+          width: 100%;
+        }
+        &Group {
+          flex-basis: calc((100% / 3) - 10px);
+          &.--flex2 {
+            flex-basis: calc(((100% / 3) - 10px) * 2);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+   :local {
+    .checkupView {
+       :global {
+        .results {
+          &Card {
+            width: 100%;
+          }
+          &Group {
+            flex-basis: calc((100% / 3) - 10px);
+            &.--flex2 {
+              flex-basis: calc(((100% / 3) - 10px) * 2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 650px) {
+   :local {
+    .checkupView {
+       :global {
+        .results {
+          &Card {
+            width: 100%;
+          }
+          &Group {
+            flex-basis: calc((100% / 2) - 10px);
+            &.--flex2 {
+              flex-basis: calc(((100% / 2) - 10px) * 2);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: $phone) {
+   :local {
+    .checkupView {
+       :global {
+        .results {
+          &Card {
+            width: 100%;
+          }
+          &Group {
+            flex-basis: 100%;
+            &.--flex2 {
+              flex-basis: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

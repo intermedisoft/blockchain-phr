@@ -1,16 +1,17 @@
 $font-path:'assets/fonts/icons/phr/fonts';
 @font-face {
   font-family: 'phr_icon';
-  src:  url('#{$font-path}/PHR-Blox.eot?gc9tlt');
-  src:  url('#{$font-path}/PHR-Blox.eot?gc9tlt#iefix') format('embedded-opentype'),
-    url('#{$font-path}/PHR-Blox.ttf?gc9tlt') format('truetype'),
-    url('#{$font-path}/PHR-Blox.woff?gc9tlt') format('woff'),
-    url('#{$font-path}/PHR-Blox.svg?gc9tlt#PHR-Blox') format('svg');
+  src: url('#{$font-path}/PHR-Blox.eot?gc9tlt');
+  src: url('#{$font-path}/PHR-Blox.eot?gc9tlt#iefix') format('embedded-opentype'),
+  url('#{$font-path}/PHR-Blox.ttf?gc9tlt') format('truetype'),
+  url('#{$font-path}/PHR-Blox.woff?gc9tlt') format('woff'),
+  url('#{$font-path}/PHR-Blox.svg?gc9tlt#PHR-Blox') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="icon"], [class*="icon"] {
+[class^="icon"],
+[class*="icon"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'phr_icon' !important;
   speak: none;
@@ -19,63 +20,83 @@ $font-path:'assets/fonts/icons/phr/fonts';
   font-variant: normal;
   text-transform: none;
   line-height: 1;
-
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.iconMedicalCare:before {
+.iconPermission::before {
   content: "\e910";
 }
-.iconXray:before {
-  content: "\e910";
+
+.iconMedicalCare::before {
+  content: "\e911";
 }
-.iconFile:before {
+
+.iconXray::before {
+  content: "\e912";
+}
+
+.iconFile::before {
   content: "\e90f";
 }
-.iconFemale:before {
+
+.iconFemale::before {
   content: "\e90e";
 }
-.iconFacebook:before {
+
+.iconFacebook::before {
   content: "\e90d";
 }
-.iconBack:before {
+
+.iconBack::before {
   content: "\e900";
 }
-.iconBlood:before {
+
+.iconBlood::before {
   content: "\e901";
 }
-.iconCheckup:before {
+
+.iconCheckup::before {
   content: "\e902";
 }
-.iconEdit:before {
+
+.iconEdit::before {
   content: "\e903";
 }
-.iconLogout:before {
+
+.iconLogout::before {
   content: "\e904";
 }
-.iconNotification:before {
+
+.iconNotification::before {
   content: "\e905";
 }
-.iconPassword:before {
+
+.iconPassword::before {
   content: "\e906";
 }
-.iconSee:before {
+
+.iconSee::before {
   content: "\e907";
 }
-.iconMale:before {
+
+.iconMale::before {
   content: "\e908";
 }
-.iconTab:before {
+
+.iconTab::before {
   content: "\e909";
 }
-.iconUsername:before {
+
+.iconUsername::before {
   content: "\e90a";
 }
-.iconVisit:before {
+
+.iconVisit::before {
   content: "\e90b";
 }
-.iconWellness:before {
+
+.iconWellness::before {
   content: "\e90c";
 }

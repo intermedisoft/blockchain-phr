@@ -6,7 +6,6 @@
     border-radius: $main-radius;
     margin-bottom: 10px;
     padding: 15px 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
   }
   .card {
     @extend .mainCard;
@@ -22,23 +21,12 @@
       }
     }
     &Head {
-      font-size: 1.1em;
+      font-size: 1.2em;
       font-weight: $main-font-bold-size;
       text-align: center;
       text-transform: capitalize;
       >span {
         display: inline-block;
-      }
-      &View {
-        font-size: 1rem;
-        line-height: 1.3rem;
-        position: relative;
-        text-align: center;
-        &Label {
-        }
-        &Value {
-          font-size: 1.5em;
-        }
       }
     }
     &Content {
@@ -51,6 +39,7 @@
       padding: none;
     }
     &Group {
+      margin-bottom: 30px;
       // border-bottom: 1px dashed #e0e0e0;
       // margin-bottom: 10px;
       // padding-bottom: 10px;
@@ -60,6 +49,9 @@
       //   margin: 0px;
       //   padding: 0px;
       // }
+      &:last-of-type{
+        margin-bottom: 0px;
+      }
       &Head {
         border-bottom: 1px solid #cacaca;
         border-style: dashed;
@@ -70,6 +62,24 @@
         text-transform: capitalize;
         >span {
           display: inline-block;
+        }
+      }
+    }
+    &.--view {
+      padding: 10px 0;
+      .head {
+        border: 1px dashed #cacaca;
+        border-left: 0;
+        border-right: 0px;
+        font-size: 1rem;
+        line-height: 1.3rem;
+        padding: 5px 0px 7px 0px;
+        position: relative;
+        text-align: center;
+        .label {}
+        .value {
+          font-size: 1.3em;
+          font-weight: 600;
         }
       }
     }

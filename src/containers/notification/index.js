@@ -48,6 +48,9 @@ class NotificationPage extends Component {
     return (
       <div className={`containerMain`}>
         <div className={`card`}>
+          <div className={`cardHead`}>
+            <div>Request List</div>
+          </div>
           {
             !permission.nodata || !healthCareProvider.nodata
               ? (permission.length && healthCareProvider.length)

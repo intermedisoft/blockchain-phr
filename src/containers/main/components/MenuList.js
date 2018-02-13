@@ -53,7 +53,7 @@ class MenuList extends Component {
           {
             patientPermissionRequestList && patientPermissionRequestList.length
               ? <li onClick={() => history.push('/revokeprovider')}>
-                <div className={`iconNotification`} />
+                <div className={`iconRevoke`} />
                 <div className={`text`}>Revoke Provider</div>
               </li> : null
           }

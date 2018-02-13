@@ -1,6 +1,7 @@
 @import '../configs/variables/index';
 @import '../frameworks/mixins/index';
-$block-icon-noti-size:50px;
+$block-icon-size:40px;
+$block-noti-size:60px;
 :global {
   .menuIconList {
     padding-top: 10px;
@@ -17,21 +18,23 @@ $block-icon-noti-size:50px;
         padding: 0 15px;
         display: inline-block;
         box-sizing: border-box;
-        flex-basis: $block-icon-noti-size;
         &[class*="icon"] {
           font-size: 1.5em;
           text-align: left;
           padding-right: 0px;
+          flex-basis: $block-icon-size;
         }
         &.text {
-          flex-basis: calc(100% - #{$block-icon-noti-size * 2 + 10});
+          flex-basis: calc(100% - #{$block-icon-size + $block-noti-size + 10});
         }
-        &.noti{
+        &.noti {
           align-items: center;
           display: flex;
+          flex-basis: $block-noti-size;
           justify-content: center;
+          padding-right: 0px;
           text-align: center;
-          .notiBlock{
+          .notiBlock {
             background-color: $notification-bg-color;
             border-radius: 100px;
             color: #ffffff;
@@ -43,9 +46,9 @@ $block-icon-noti-size:50px;
             padding: 0px 5px 1px 5px;
             text-align: center;
           }
-        } 
+        }
       }
-      &.--active{
+      &.--active {
         font-weight: bold;
         color: $main-font-active-color;
         background-color: #f2f2f2;

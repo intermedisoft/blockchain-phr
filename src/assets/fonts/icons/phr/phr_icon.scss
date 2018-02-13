@@ -25,6 +25,10 @@ $font-path:'assets/fonts/icons/phr/fonts';
   -moz-osx-font-smoothing: grayscale;
 }
 
+.iconRevoke::before {
+  content: "\e913";
+}
+
 .iconPermission::before {
   content: "\e910";
 }

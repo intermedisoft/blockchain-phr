@@ -48,10 +48,10 @@ class XrayViewerPage extends Component {
     return (
       data &&
       <div className={`containerMain`}>
-        <div className={`card`}>
-          <div className={`cardHeadView`}>
-            <div className={`cardHeadViewLabel`}>Health Care Provider</div>
-            <div className={`cardHeadViewValue`}>
+        <div className={`card --view`}>
+          <div className={`head`}>
+            <div className={`label`}>Health Care Provider</div>
+            <div className={`value`}>
               {data.healthCareProviderData && data.healthCareProviderData[0].healthCareProviderName}
             </div>
           </div>

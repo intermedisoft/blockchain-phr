@@ -4,6 +4,7 @@ import Divider from 'material-ui/Divider'
 
 const ListComponent = (props) => {
   const data = props.data
+  const handleClick = props.handleClick
   const { healthCareProviderName } = { ...data }
 
   return (
@@ -11,6 +12,7 @@ const ListComponent = (props) => {
       <ListItem
         primaryText={healthCareProviderName}
         secondaryTextLines={1}
+        onClick={handleClick}
       />
       <Divider />
     </div>

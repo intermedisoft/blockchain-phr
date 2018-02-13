@@ -1,36 +1,55 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { isEmpty } from 'react-redux-firebase'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import ListComponent from './components/list'
 import { List } from 'material-ui/List'
 
-import { CircularProgress, DataNotFound } from './../../components/'
+import { CircularProgress, DataNotFound, DialogConfirmDelete } from './../../components/'
 import { patientAction } from './../../redux/actions/patient'
-import { _function } from '../../function';
+import { DialogAction } from './../../redux/actions/dialog'
+import { _function } from '../../function'
+import { revokeProviderAction } from '../../redux/actions/revokeprovider'
 
 class RevokeProviderPage extends Component {
-  componentWillMount() {
-    // if (this.props.patientId) {
-    //   this.props.getPatient(this.props.patientId)
-    // }
+  state = {
+    isDone: false
+  }
+  handleOpenDialog = (title, textBody, fn) => {
+    this.props.openDialog(title, textBody, fn)
+  }
+  handleRevokeProvider = (data) => {
+    let data2 = { ...data }
+    let patientId = data2.patientId
+    data2.patient = `resource:com.depa.blockchain.core.Patient#${patientId}`
+    data2.permissionType = 'REVOKE'
+    delete data2.key
+    delete data2.patientId
+    delete data2.healthCareProviderName
+
+    this.handleOpenDialog('Confirm', 'Are you sure to revoke this Provider ?', () => {
+      this.props.update(data2, patientId)
+      this.setState({
+        isDone: true
+      })
+    })
   }
 
-  componentWillUpdate() {
-    // if (this.props.patientId && isEmpty(this.props.checkup) && isEmpty(this.props.patients) && isEmpty(this.props.healthCareProvider)) {
-    //   this.props.getAllCheckup(this.props.patientId)
-    // }
-  }
   render() {
-    const { patientId, patientPermissionRequestList, healthCareProvider } = { ...this.props }
+    const { patientId, patientPermissionRequestList, healthCareProvider, isLoading } = { ...this.props }
     let providerList = []
-    // console.log(patientId, patientPermissionRequestList)
+
     let renderHTML = (
       <CircularProgress className={`--loadCard`} />
     )
+
     if (patientPermissionRequestList && !patientPermissionRequestList.length) {
       renderHTML = (
         <DataNotFound />
+      )
+    } else if (isLoading) {
+      renderHTML = (
+        <CircularProgress className={`--loadCard`} />
       )
     } else {
       if (!isEmpty(patientPermissionRequestList) && !isEmpty(healthCareProvider)) {
@@ -57,11 +76,14 @@ class RevokeProviderPage extends Component {
                 providerList.map((v, i) => {
                   return (
                     <div key={v.key}>
-                      <Link to={{
-                        pathname: `/revokeprovider/${v.key}`,
-                        state: { data: v }
-                      }}> <ListComponent data={v} /> </Link>
+                      <ListComponent handleClick={() => this.handleRevokeProvider(v)} data={v} />
                     </div>
+                    // <div key={v.key}>
+                    //   <Link to={{
+                    //     pathname: `/revokeprovider/${v.key}`,
+                    //     state: { data: v }
+                    //   }}> <ListComponent data={v} /> </Link>
+                    // </div>
                   )
                 })
               }
@@ -77,6 +99,8 @@ class RevokeProviderPage extends Component {
             <div>Provider List</div>
           </div>
           {renderHTML}
+          <DialogConfirmDelete />
+          {/* <button onClick={() => this.handleOpenDialog('Confirm Revoke This Provider', '', this.xx)}>CLICK SHOW DIALOG</button> */}
         </div>
       </div>
     )
@@ -87,6 +111,11 @@ const mapDispatchToProps = (dispatch, state) => {
   return {
     getPatient: (patientId) => {
       dispatch(patientAction.getPatient(patientId))
+    },
+    openDialog: (title, textBody, fn) => {
+      dispatch(DialogAction.displayDialog(title, textBody, fn))
+    }, update: (data, patientId) => {
+      dispatch(revokeProviderAction.updateRevokeProvider(data, patientId))
     }
   }
 }
@@ -95,7 +124,8 @@ const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
     patientPermissionRequestList: state.patient.data.authorizedHcpPermissionRequest,
-    healthCareProvider: state.healthCareProvider.data
+    healthCareProvider: state.healthCareProvider.data,
+    isLoading: state.revokeprovider.isLoading
   }
 )
 

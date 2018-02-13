@@ -32,7 +32,10 @@ class RevokeViewerPage extends Component {
       <div className={`containerMain`}>
         <div className={`card`}>
           <div className={`cardHead`}>
-            <div>{data.healthCareProviderName}</div>
+            <div>Revoke Provider</div>
+          </div>
+          <div className={`cardContent`}>
+            {data.healthCareProviderName}
           </div>
           {
             isLoading ? <CircularProgress /> :

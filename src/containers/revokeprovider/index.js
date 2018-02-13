@@ -73,6 +73,9 @@ class RevokeProviderPage extends Component {
     return (
       <div className={`containerMain`}>
         <div className={`card`}>
+          <div className={`cardHead`}>
+            <div>Provider List</div>
+          </div>
           {renderHTML}
         </div>
       </div>

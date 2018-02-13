@@ -83,7 +83,7 @@ class NotificationViewerPage extends Component {
             isEmpty(permissionOnUpdate.data) ?
               !provider.patientResponseResult || provider.patientResponseResult === 'NOOP' ?
                 permissionOnUpdate.isLoading ? <CircularProgress /> :
-                  <div className={`btnAction`}>
+                  <div className={`btnAction --btn2`}>
                     <button onClick={() => this.handleDontAllowPermission(provider)} className={`btnPrimary`}>Don't Allow</button>
                     <button onClick={() => this.handleAllowPermission(provider)} className={`btnPrimary`}>Allow</button>
                   </div> : null

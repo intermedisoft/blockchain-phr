@@ -21,7 +21,7 @@
       }
     }
     &Head {
-      font-size: 1.1em;
+      font-size: 1.2em;
       font-weight: $main-font-bold-size;
       text-align: center;
       text-transform: capitalize;
@@ -49,6 +49,9 @@
       //   margin: 0px;
       //   padding: 0px;
       // }
+      &:last-of-type{
+        margin-bottom: 0px;
+      }
       &Head {
         border-bottom: 1px solid #cacaca;
         border-style: dashed;

@@ -18,7 +18,9 @@ class ErrorModalControlled extends Component {
       <Modal open={err.modalOpen} onClose={this.onCloseModal} classNames={{ overlay: `customOverlay ${classErrorModal}`, modal: 'customModal', closeIcon: 'customCloseIcon' }} little>
         <div className='modalTitle'>{err.header}</div>
         <div className={`modalContent ${err.header ? '' : 'noTitle'}`}>{err.message}</div>
-        <button onClick={() => window.location.reload()}>Try again</button>
+        <div className={`btnAction`}>
+          <button className={`btnPrimary`} onClick={() => window.location.reload()}>Try again</button>
+        </div>
       </Modal>
     )
   }

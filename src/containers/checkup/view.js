@@ -96,10 +96,10 @@ class CheckupViewerPage extends Component {
     return (
       (!isEmpty(data) && patients && !isEmpty(healthCareProvider)) &&
       <div className={`containerMain ${styles.checkupView}`}>
-        <div className={`card --view`}>
-          <div className={`head`}>
-            <div className={`label`}>Health Care Provider</div>
-            <div className={`value`}>
+        <div className={`card`}>
+          <div className={`cardHead`}>
+            <div className={`cardLabel`}>Health Care Provider</div>
+            <div className={`cardValue`}>
               {
                 data.healthCareProviderData ?
                   data.healthCareProviderData[0].healthCareProviderName : healthCareProvider.filter((Provider) => {

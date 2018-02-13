@@ -38,7 +38,7 @@ class CheckupPage extends Component {
         <div>
           <div className={`cardHead`}>
             <div>รายการประวัติ</div>
-            <div> {patients.prename}{patients.name} {patients.surname}</div>
+            {/* <div> {patients.prename}{patients.name} {patients.surname}</div> */}
           </div>
           <div className={`cardContent --noMargin`}>
             <List>

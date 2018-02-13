@@ -1,10 +1,10 @@
 import React from 'react'
 import { ListItem } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
-require('moment/locale/th')
 
 const ListComponent = (props) => {
   const data = props.data
+  const handleClick = props.handleClick
   const { healthCareProviderName } = { ...data }
 
   return (
@@ -12,6 +12,7 @@ const ListComponent = (props) => {
       <ListItem
         primaryText={healthCareProviderName}
         secondaryTextLines={1}
+        onClick={handleClick}
       />
       <Divider />
     </div>

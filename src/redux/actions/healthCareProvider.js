@@ -10,19 +10,19 @@ const receivegetHealthCareProvider = (data) => ({
 export const getHealthCareProvider = (patientId) => async (dispatch) => {
   try {
     // if (configs) {
-    // let response
-    // let count = 0
-    // while (response === undefined) {
-    //   try {
-    //     response = await Service.HealthProvider.getHealthProvider(configs, patientId)
-    //   } catch (err) {
-    //     response = undefined
-    //     if (++count === 3) {
-    //       throw err
-    //     }
-    //   }
-    // }
-    const response = await Service.HealthProvider.getHealthProvider(patientId)
+    let response
+    let count = 0
+    while (response === undefined) {
+      try {
+        response = await Service.HealthProvider.getHealthProvider(patientId)
+      } catch (err) {
+        response = undefined
+        if (++count === 3) {
+          throw err
+        }
+      }
+    }
+    // const response = await Service.HealthProvider.getHealthProvider(patientId)
     if (!response.data.length) {
       dispatch(receivegetHealthCareProvider({ nodata: true }))
     } else {

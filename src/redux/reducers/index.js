@@ -14,6 +14,7 @@ import permission from './permission'
 import healthCareProvider from './healthCareProvider'
 import xray from './xray'
 import revokeprovider from './revokeprovider'
+import dialog from './dialog'
 
 const barPersistConfig = {
   key: 'userLogin',
@@ -35,6 +36,7 @@ const rootReducer = combineReducers({
   xray,
   permission,
   revokeprovider,
+  dialog,
   auth: persistReducer(barPersistConfig, auth)
 })
 

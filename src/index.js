@@ -10,7 +10,6 @@ import './App.scss'
 import RouteRoot from './routes/RouteRoot'
 import configStore from './store'
 import ErrorModalControlled from './components/Modal'
-
 import LoadStarterPage from './Starter'
 
 const { store, persistor } = configStore()

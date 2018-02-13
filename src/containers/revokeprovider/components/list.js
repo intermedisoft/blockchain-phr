@@ -1,12 +1,11 @@
 import React from 'react'
 import { ListItem } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
-import moment from 'moment'
 require('moment/locale/th')
 
 const ListComponent = (props) => {
   const data = props.data
-  const { patientId, healthCareProviderName } = { ...data }
+  const { healthCareProviderName } = { ...data }
 
   return (
     <div>

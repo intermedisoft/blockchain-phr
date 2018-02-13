@@ -29,7 +29,7 @@ class XrayPage extends Component {
       renderHTML = (
         <DataNotFound />
       )
-    } else if (!isEmpty(xray)) {
+    } else if (!isEmpty(xray) && !isEmpty(healthCareProvider)) {
       renderHTML = (
         <div>
           {

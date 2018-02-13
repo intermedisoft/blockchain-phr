@@ -13,6 +13,7 @@ import notification from './notification'
 import permission from './permission'
 import healthCareProvider from './healthCareProvider'
 import xray from './xray'
+import revokeprovider from './revokeprovider'
 
 const barPersistConfig = {
   key: 'userLogin',
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   healthCareProvider,
   xray,
   permission,
+  revokeprovider,
   auth: persistReducer(barPersistConfig, auth)
 })
 

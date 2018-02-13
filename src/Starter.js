@@ -54,13 +54,13 @@ class LoadStarterPage extends Component {
 
   }
   componentWillUpdate(nextProps, nextState) {
-    const { patientId, configs, err, permission, checkupHistory, xrayHistory } = { ...nextProps }
+    const { patientId, err, permission, checkupHistory, xrayHistory } = { ...nextProps }
     if (nextState.isFetchDone && patientId && !err && isEmpty(permission.data) && isEmpty(checkupHistory) && isEmpty(xrayHistory)) {
       this.setState({
         isFetchDone: false
       })
+      this.props.getHealthCareProvider()
       this.props.getNotification(patientId)
-      this.props.getHealthCareProvider(configs)
       this.props.getCheckupResultProducedTransaction(patientId)
       this.props.getXrayResultProducedTransaction(patientId)
     }
@@ -79,8 +79,8 @@ const mapDispatchToProps = (dispatch, state) => {
     getNotification: (patientId) => {
       dispatch(permissionAction.getPermission(patientId))
     },
-    getHealthCareProvider: (configs) => {
-      dispatch(healthCareProviderAction.getHealthCareProvider(configs))
+    getHealthCareProvider: () => {
+      dispatch(healthCareProviderAction.getHealthCareProvider())
     },
     getAllCheckup: (configs, patientId) => {
       dispatch(checkupAction.getAllCheckup(patientId))
@@ -97,7 +97,6 @@ const mapDispatchToProps = (dispatch, state) => {
 const mapStateToProps = state => (
   {
     patientId: state.firebase.profile.patientId,
-    configs: state.firebase.data.configs,
     err: state.fetchError.modalOpen,
     permission: state.permission,
     checkupHistory: state.checkup.checkupHistory.data,

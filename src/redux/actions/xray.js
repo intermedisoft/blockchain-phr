@@ -73,7 +73,7 @@ const getXrayResultProducedTransaction = (patientId) => async (dispatch) => {
       data.forEach((key, i) => {
         key.healthCareProviderId = _function.popHash(key.healthCareProvider)
         key.patientAcknowledgeDateTime && countUnread--
-        delete key.xrayImage
+        // delete key.xrayImage
       })
       dispatch(receivegetXrayResultProducedTransaction({}, countUnread))
     }

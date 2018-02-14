@@ -62,6 +62,12 @@ class XrayViewerPage extends Component {
               <div className={`cardGroupHead`}>{data.xrayName}</div>
               <pre>{data.xrayResult}</pre>
             </div>
+            {
+              data.xrayImage ?
+                <div className={`cardGroup`}>
+                  <div className={`cardImage`}><img src={`data:image/png;base64, ${data.xrayImage}`} /></div>
+                </div> : ''
+            }
           </div>
         </div>
       </div >

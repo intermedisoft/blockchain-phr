@@ -2,6 +2,15 @@
 
 [https://app.phrblox.com](https://app.phrblox.com)
 
+## อ่านก่อน 
+
+App นี้จะใช้ User Authentication ด้วย Firebase นะครับ ซึ่งก่อนที่จะ Run App นี้ให้ทำการ Connect Firebase ก่อน
+1.	สร้างตาราง (New Child) ขึ้นมาครับ ในชื่อ configs เพื่อที่เก็บข้อมูล ดังนี้ 
+o	access_token: Access token ที่ได้จากการ auth ใน App Hyperledger Composer REST server
+o	rest_url: คือ URL ของ Hyperledger Composer REST Server 
+2.	เมื่อทำการ Setting ข้อมูลใน firebase แล้ว ให้เข้าไปแก้ไขโค้ด ในส่วนของ  Initialize Firebase ซึ่งเป็น Object ที่ได้มากจาก Firebase เอาไปแทนที่ในไฟล์ src > config > firebase.js  ครับ 
+
+
 ## Available Scripts
 
 In the project directory, you can run:

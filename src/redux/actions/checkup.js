@@ -39,7 +39,19 @@ const receivegetCheckupResultProducedTransactionSetUnReadOnly = (unread) => ({
 const getAllCheckup = (patientId) => async (dispatch) => {
   try {
     if (patientId) {
-      const response = await Service.Checkup.getAllCheckup(patientId)
+      let response
+      let count = 0
+      while (response === undefined) {
+        try {
+          response = await Service.Checkup.getAllCheckup(patientId)
+        } catch (err) {
+          response = undefined
+          if (++count === 3) {
+            throw err
+          }
+        }
+      }
+      // const response = await Service.Checkup.getAllCheckup(patientId)
       if (!response.data.length) {
         dispatch(receivegetAllCheckup({ nodata: true }))
       } else {

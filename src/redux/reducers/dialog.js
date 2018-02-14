@@ -23,8 +23,6 @@ export default function DialogReducer(state = dialog, action) {
     case types.DAILOG.HIDE:
       return {
         ...state,
-        title: '',
-        textBody: '',
         open: false
       }
     case types.DAILOG.UPDAETDELETED:

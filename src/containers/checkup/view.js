@@ -83,6 +83,7 @@ class CheckupViewerPage extends Component {
   render() {
     let pressureUp = 0
     let pressureDown = 0
+    let calcium_score_result = ''
     let data = this.state.data
     if (!data) {
       data = this.props.checkup
@@ -92,6 +93,9 @@ class CheckupViewerPage extends Component {
       const pressure = data.pressure.split('/')
       pressureUp = pressure[0]
       pressureDown = pressure[1]
+    }
+    if (data.calcium_score_result) {
+      calcium_score_result = `data:image/jpeg;base64, ${data.calcium_score_result}`
     }
     return (
       (!isEmpty(data) && patients && !isEmpty(healthCareProvider)) &&
@@ -419,7 +423,7 @@ class CheckupViewerPage extends Component {
             </div>
           </div>
         </div>
-        <div className={`card`}>
+        {/* <div className={`card`}>
           <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>
               <div className={`cardGroupHead`}>Calcium Score</div>
@@ -427,17 +431,21 @@ class CheckupViewerPage extends Component {
                 <tbody>
                   <tr>
                     <td>Result</td>
-                    <td>{data.calcium_score_result}</td>
+                    <td>
+                      <img src={calcium_score_result} />
+                    </td>
                   </tr>
                   <tr>
                     <td>Image</td>
-                    <td>{data.calcium_score_result}</td>
+                    <td>
+                      <img src={calcium_score_result} />
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className={`card`}>
           <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>

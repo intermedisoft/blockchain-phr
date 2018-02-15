@@ -76,8 +76,7 @@ class CheckupViewerPage extends Component {
     }
     // if (data.calcium_score_result) {
     //   calcium_score_result = `data:image/jpeg;base64, ${data.calcium_score_result}`
-    // }
-
+    // } 
     return (
       (!isEmpty(data) && patients && !isEmpty(healthCareProvider)) &&
       <div className={`containerMain ${styles.checkupView}`}>
@@ -431,9 +430,11 @@ class CheckupViewerPage extends Component {
           <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>
               <div className={`cardGroupHead`}>Conclusion</div>
-              <div>
-                {data.conclusion}
-              </div>
+              <ul className={`normal`}>
+                {data.conclusion &&
+                  data.conclusion.split('|').map((text, index) => text && <li key={index}>{text}</li>)
+                }
+              </ul>
             </div>
           </div>
         </div>
@@ -443,7 +444,7 @@ class CheckupViewerPage extends Component {
               <div className={`cardGroupHead`}>Recommendation</div>
               <ul className={`normal`}>
                 {data.recommendation &&
-                  data.recommendation.split('|').map((text, index) => <li key={index}>{text}</li>)
+                  data.recommendation.split('|').map((text, index) => text && <li key={index}>{text}</li>)
                 }
               </ul>
               {/* <ul className={`normal`}>

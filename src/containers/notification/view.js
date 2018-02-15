@@ -53,7 +53,7 @@ class NotificationViewerPage extends Component {
   }
 
   componentWillMount() {
-    this.props.setHeader('Request permission')
+    this.props.setHeader('Request Permission')
   }
 
   componentDidMount() {

@@ -21,10 +21,12 @@ class Dialog extends React.Component {
       <Modal open={open} onClose={this.onCloseModal} classNames={{ overlay: `customOverlay ${classErrorModal}`, modal: 'customModal', closeIcon: 'customCloseIcon' }} little>
         <div className='modalTitle'>{title}</div>
         <div className={`modalContent ${title ? '' : 'noTitle'}`}>{textBody}</div>
-        <div className={`btnAction --btn2`}>
-          <button className={`btnPrimary`} onClick={() => this.onCloseModal()}>No</button>
-          <button className={`btnPrimary`} onClick={() => this.handleAction(fn)}>Yes</button>
-        </div>
+        {fn &&
+          <div className={`btnAction --btn2`}>
+            <button className={`btnPrimary`} onClick={() => this.onCloseModal()}>No</button>
+            <button className={`btnPrimary`} onClick={() => this.handleAction(fn)}>Yes</button>
+          </div>
+        }
       </Modal>
     )
   }

@@ -4,7 +4,9 @@
       "$uid": {
         ".read": "$uid === auth.uid",
         ".write": "$uid === auth.uid"
-      }
+      },
+      ".read": true,
+      ".write": true
     },
     "configs": {
       ".read": "auth != null",

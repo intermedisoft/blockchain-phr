@@ -4,15 +4,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="theme-color" content="#000000">
+  <!-- <meta name="theme-color" content="#000000"> -->
   <!--
       manifest.json provides metadata used when your web app is added to the
       homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <meta name="apple-mobile-web-app-title" content="PHR Blox">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="PHR Blox">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon-precomposed" href="%PUBLIC_URL%/icons/apple-icon-152x152.png">
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/apple-icon-57x57.png" sizes="57x57">
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/icons/apple-icon-60x60.png" sizes="60x60">
   <link rel="apple-touch-icon" href="%PUBLIC_URL%icons/apple-icon-72x72.png" sizes="72x72">
@@ -29,11 +31,19 @@
   />
   <meta name="msapplication-TitleImage" content="%PUBLIC_URL%/icons/app-icon-144x144.png">
   <meta name="msapplication-TitleColor" content="#123962">
-  <meta name="theme-color" content="##123962">
-  <link href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,thai,vietnamese" rel="stylesheet">
+  <meta name="theme-color" content="#123962">
+  <link rel="apple-touch-icon-precomposed" href="http://lab.cubiq.org/addtohome/imgs/icon-180x180.png">
+  <link href="https://fonts.googleapis.com/css?family=Kanit:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext,thai,vietnamese"
+    rel="stylesheet">
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
   <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon-32x32.png" sizes="32x32" />
   <link rel="icon" type="image/png" href="%PUBLIC_URL%/favicon-16x16.png" sizes="16x16" />
+  <link rel="stylesheet" type="text/css" href="%PUBLIC_URL%/css/addtohomescreen.css">
+  <script src="%PUBLIC_URL%/js/addtohomescreen.js"></script>
+
+  <script> 
+    addToHomescreen();
+  </script>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

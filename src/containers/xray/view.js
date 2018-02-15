@@ -63,10 +63,12 @@ class XrayViewerPage extends Component {
               <pre>{data.xrayResult}</pre>
             </div>
             {
-              data.xrayImage ?
-                <div className={`cardGroup`}>
-                  <div className={`cardImage`}><img src={`data:image/png;base64, ${data.xrayImage}`} /></div>
-                </div> : ''
+              data.xrayImage &&
+              <div className={`cardGroup`}>
+                <div className={`cardImage`}>
+                  <img src={`data:image/png;base64, ${data.xrayImage}`} aria-hidden alt='Xray Image' />
+                </div>
+              </div>
             }
           </div>
         </div>

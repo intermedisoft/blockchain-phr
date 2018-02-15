@@ -8,8 +8,6 @@ import { checkupAction } from './../../redux/actions/checkup'
 import { permissionAction } from './../../redux/actions/permission'
 import styles from '../../assets/style/themes/pages/checkup.scss'
 
-// import { _function } from './../../function'
-
 require('moment/locale/th')
 
 class CheckupViewerPage extends Component {
@@ -44,19 +42,6 @@ class CheckupViewerPage extends Component {
       }
     } else {
       let data = this.props.location.state.data
-      /* CHECK patientAcknowledgeDateTime IS NOT HAVE TO UPDATE READ ITEM */
-      // const coreType = _function.popHash(data.$class, '.')
-      // if (coreType === 'CheckupResultProducedTransaction') {
-      //   /* OPEN FROM NOTIFICATION PAGE */
-      //   let _temp = data.healthCareProviderData
-      //   data = data.checkupHistory
-      //   data.healthCareProviderData = _temp
-      //   //UPDATE READ 
-      //   if (!data.patientAcknowledgeDateTime) {
-      //     this.updateToread(data)
-      //     this.props.receivesetDataOnReading()
-      //   }
-      // }
       this.setState({ data })
       this.setTitleBar(data.dateTimeServe)
     }
@@ -73,17 +58,12 @@ class CheckupViewerPage extends Component {
       this.updateToread(nextState.data)
       this.props.receivesetDataOnReading()
     }
-
-    // console.log(nextProps.updateReading, nextState.setRead)
-    // if (nextProps.updateReading && nextState.data.patientAcknowledgeDateTime) {
-    //   this.setState({ setRead: false })
-    // }
   }
 
   render() {
     let pressureUp = 0
     let pressureDown = 0
-    let calcium_score_result = ''
+    // let calcium_score_result = ''
     let data = this.state.data
     if (!data) {
       data = this.props.checkup
@@ -94,9 +74,10 @@ class CheckupViewerPage extends Component {
       pressureUp = pressure[0]
       pressureDown = pressure[1]
     }
-    if (data.calcium_score_result) {
-      calcium_score_result = `data:image/jpeg;base64, ${data.calcium_score_result}`
-    }
+    // if (data.calcium_score_result) {
+    //   calcium_score_result = `data:image/jpeg;base64, ${data.calcium_score_result}`
+    // }
+
     return (
       (!isEmpty(data) && patients && !isEmpty(healthCareProvider)) &&
       <div className={`containerMain ${styles.checkupView}`}>
@@ -460,14 +441,13 @@ class CheckupViewerPage extends Component {
           <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>
               <div className={`cardGroupHead`}>Recommendation</div>
-              <div>
-                {data.recommendation}
-              </div>
+              <ul className={`normal`}>
+                {data.recommendation &&
+                  data.recommendation.split('|').map((text, index) => <li key={index}>{text}</li>)
+                }
+              </ul>
               {/* <ul className={`normal`}>
-              <li>ออกกำลังกายอย่างต่อเนื่อง อย่างน้อยวันละ 30 นาที เป็นเวลา 3-5 วันต่อสัปดาห์</li>
-              <li>หลีกเลี่ยงอาหารที่มีน้ำตาลสูง เช่น น้ำอัดลม ขนมหวาน และผลไม้หวานจัด</li>
-              <li>พยายามควบคุมน้ำหนักให้อยู่ใยเกณฑ์มาตรฐาน</li>
-              <li>ควรตรวจ Caloum Score เพิ่มเติม</li>
+              <li>ออกกำลังกายอย่างต่อเนื่อง อย่างน้อยวันละ 30 นาที เป็นเวลา 3-5 วันต่อสัปดาห์</li> 
             </ul> */}
             </div>
           </div>

@@ -431,9 +431,11 @@ class CheckupViewerPage extends Component {
           <div className={`cardContent --noMargin `}>
             <div className={`cardGroup`}>
               <div className={`cardGroupHead`}>Conclusion</div>
-              <div>
-                {data.conclusion}
-              </div>
+              <ul className={`normal`}>
+                {data.conclusion &&
+                  data.conclusion.split('|').map((text, index) => <li key={index}>{text}</li>)
+                }
+              </ul>
             </div>
           </div>
         </div>

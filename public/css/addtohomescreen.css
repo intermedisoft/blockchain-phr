@@ -43,6 +43,7 @@
     font-size: 15px;
     line-height: 1.5em;
     text-align: center;
+    border-radius: 8px;
 }
 
 .ath-container small {
@@ -91,7 +92,7 @@
     float: right;
     margin: -0.7em -0.6em 0 0.5em;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAMAAABmmnOVAAAAdVBMVEUAAAA5OTkzMzM7Ozs3NzdBQUFAQEA/Pz8+Pj5BQUFAQEA/Pz8+Pj5BQUFAQEA/Pz9BQUE+Pj4/Pz8/Pz8+Pj4/Pz8/Pz8/Pz8+Pj4/Pz8+Pj4/Pz8/Pz8/Pz8/Pz8/Pz8+Pj4/Pz8/Pz8/Pz8/Pz9AQEA/Pz+fdCaPAAAAJnRSTlMACQoNDjM4OTo7PEFCQ0RFS6ytsbS1tru8vcTFxu7x8vX19vf4+C5yomAAAAJESURBVHgBvdzLTsJAGEfxr4C2KBcVkQsIDsK8/yPaqIsPzVlyzrKrX/5p0kkXEz81L23otc9NpIbbWia2YVLqdnhlqFlhGWpSDHe1aopsSIpRb8gK0dC3G30b9rVmhWZIimTICsvQtx/FsuYOrWHoDjX3Gu31gzJxdki934WrAIOsAIOsAIOiAMPhPsJTgKGN0BVsYIVsYIVpYIVpYIVpYIVpYIVpYIVpYIVpYIVlAIVgEBRs8BRs8BRs8BRs8BRs8BRs8BRs8BRTNmgKNngKNngKNngKNngKNhiKGxgiOlZoBlaYBlaYBlaYBlaYBlaYBlaYBlaYBlZIBlBMfQMrVAMr2KAqBENSHFHhGEABhi5CV6gGUKgGUKgGUKgGUFwuqgEUvoEVsoEVpoEUpgEUggF+gKTKY+h1fxSlC7/Z+RrxOQ3fcEoAPPHZBlaYBlaYBlaYBlZYBlYIhvLBCstw7PgM7hkiWOEZWGEaWGEaWGEaIsakEAysmHkGVpxmvoEVqoEVpoEVpoEVpoEVpoEVpoEVkoEVgkFQsEFSsEFQsGEcoSvY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnY4CnmbNAUT2c2WAo2eAo2eAo2eAo2eAo2eArNEPFACjZ4CjZ4CjZ4CjaIird/rBvFH6llNCvewdli1URWCIakSIZesUaDoFg36dKFWk9zCZDei3TtwmCj7pC22AwikiIZPEU29IpFNliKxa/hC9DFITjQPYhcAAAAAElFTkSuQmCC);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.0);
     background-size: 50%;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -170,12 +171,13 @@
 
 .ath-container p {
     font-family: 'Kanit', sans-serif !important;
+    font-size: 1.1em;
+    line-height: normal;
     margin: 0;
     padding: 0;
     position: relative;
-    z-index: 2147483642;
     text-shadow: 0 0.1em 0 #fff;
-    font-size: 1.1em;
+    z-index: 2147483642;
 }
 
 .ath-ios.ath-phone:after {
@@ -211,14 +213,14 @@
     padding: 0;
     border: 0;
     margin: 0 auto 0.2em auto;
-    height: 6em;
-    width: 6em;
+    height: 5em;
+    width: 5em;
     z-index: 2147483642;
 }
 
 .ath-container.ath-ios .ath-application-icon {
     border-radius: 1em;
-    box-shadow: 0 0.2em 0.4em rgba(0, 0, 0, 0.3), inset 0 0.07em 0 rgba(255, 255, 255, 0.5);
+    box-shadow: 0 2px 0.4em rgba(0, 0, 0, 0.3), inset 0 0.07em 0 rgba(255, 255, 255, 0.5);
     margin: 0 auto 0.4em auto;
 }
 

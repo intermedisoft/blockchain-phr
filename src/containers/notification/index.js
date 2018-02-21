@@ -44,7 +44,6 @@ class NotificationPage extends Component {
 
     const permission = this.props.permission.data
     const healthCareProvider = this.props.healthCareProvider.data
-
     return (
       <div className={`containerMain`}>
         <div className={`card`}>
@@ -52,7 +51,7 @@ class NotificationPage extends Component {
             <div>Request List</div>
           </div>
           {
-            !permission.nodata || !healthCareProvider.nodata
+            !permission.nodata && !healthCareProvider.nodata
               ? (permission.length && healthCareProvider.length)
                 // ? (permission.length && checkupHistory.length && healthCareProvider.length)
                 ? this.mergeData(permission, []).map((v, i) => {

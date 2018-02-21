@@ -9,7 +9,6 @@
 // }
 export const conf = {
   BASE_API_URL: 'http://localhost:3002',
-  WS_URL: 'ws://192.168.9.88:3000'
-  // XX: store.subscribe(af)
+  WS_URL: 'wss://ehrblox.com' // 'ws://192.168.9.88:3000'
 }
 // store.subscribe(af)

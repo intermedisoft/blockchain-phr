@@ -10,7 +10,8 @@ import { healthCareProviderAction } from './redux/actions/healthCareProvider'
 import { xrayAction } from './redux/actions/xray'
 
 import { _function } from './function'
-import { conf } from './config'
+// import { conf } from './config'
+import { wsURL } from './service/setting'
 
 class LoadStarterPage extends Component {
   state = {
@@ -18,39 +19,42 @@ class LoadStarterPage extends Component {
     error: null,
     isData: false,
     isFetchDone: true
-  }
-
+  } 
   componentDidMount() {
-    this.ws = new WebSocket(conf.WS_URL)
-    this.ws.onmessage = evt => {
-      let newNotification = JSON.parse(evt.data)
-      this.setState({ notification: newNotification, isData: true })
-      const patientId = _function.popHash(newNotification.patient)
-      const eventType = _function.popHash(newNotification.$class, '.')
+    wsURL().then(async (r) => {
+      this.ws = new WebSocket(r)
+      this.ws.onmessage = evt => {
+        let newNotification = JSON.parse(evt.data)
+        this.setState({ notification: newNotification, isData: true })
+        const patientId = _function.popHash(newNotification.patient)
+        const eventType = _function.popHash(newNotification.$class, '.')
 
 
-      if ((patientId === this.props.patientId) && (eventType === 'PermissionRequestEvent')) {
-        this.props.getNotification(this.props.patientId)
-        NotificationManager.info('You have a new Request Permission', '', 5000, () => {
-          window.location.href = '/requestpermission'
-        })
+        if ((patientId === this.props.patientId) && (eventType === 'PermissionRequestEvent')) {
+          this.props.getNotification(this.props.patientId)
+          NotificationManager.info('You have a new Request Permission', '', 5000, () => {
+            window.location.href = '/requestpermission'
+          })
+        }
+        if ((patientId === this.props.patientId) && (eventType === 'CheckupResultProducedEvent')) {
+          this.props.getCheckupResultProducedTransaction(this.props.patientId)
+          NotificationManager.info('You have a new Checkup Event', '', 5000, () => {
+            window.location.href = `/checkup/#${newNotification.checkupHistoryRef.assetId}`
+          })
+        }
+        if ((patientId === this.props.patientId) && (eventType === 'XrayResultProducedEvent')) {
+          // this.props.getAllCheckup(this.props.patientId)
+          // this.props.getNotification(this.props.patientId)
+          NotificationManager.info('You have a new Xray Event', '', 5000, () => {
+            window.location.href = `/xray/#${newNotification.xrayRef.assetId}`
+          })
+        }
       }
-      if ((patientId === this.props.patientId) && (eventType === 'CheckupResultProducedEvent')) {
-        this.props.getCheckupResultProducedTransaction(this.props.patientId)
-        NotificationManager.info('You have a new Checkup Event', '', 5000, () => {
-          window.location.href = `/checkup/#${newNotification.checkupHistoryRef.assetId}`
-        })
-      }
-      if ((patientId === this.props.patientId) && (eventType === 'XrayResultProducedEvent')) {
-        // this.props.getAllCheckup(this.props.patientId)
-        // this.props.getNotification(this.props.patientId)
-        NotificationManager.info('You have a new Xray Event', '', 5000, () => {
-          window.location.href = `/xray/#${newNotification.xrayRef.assetId}`
-        })
-      }
-    }
-    this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
-    this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })
+      this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
+      this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })
+    }).catch((e) => {
+      console.log('Plaese add `ws_ulr` to connect websocket', e)
+    })
 
   }
   componentWillUpdate(nextProps, nextState) {

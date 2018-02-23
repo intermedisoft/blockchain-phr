@@ -73,7 +73,7 @@ class NotificationViewerPage extends Component {
       htmlRender = <CircularProgress />
 
     } else {
-      console.log(permissionOnUpdate.data)
+      // console.log(permissionOnUpdate.data)
       // return (
       htmlRender = provider
         ? <div>

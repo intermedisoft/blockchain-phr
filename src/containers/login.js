@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { firebaseConnect, isLoaded, isEmpty } from 'react-redux-firebase'
 import Loadable from 'react-loading-overlay'
+
 import { authenAction } from './../redux/actions/auth'
 
 import logo from '../assets/images/logo.svg'
@@ -15,24 +16,6 @@ import iconFacebook from '../assets/images/facebook.svg'
 import styles from '../assets/style/themes/pages/login.scss'
 
 class LoginPage extends Component {
-
-  // componentDidUpdate() {
-  //   const { firebase, auth, history } = { ...this.props }
-  //   // console.log(auth.uid)
-  //   firebase.database().ref('users/' + auth.uid).once('value').then(function (users) {
-  //     const user = users.val()
-  //     user.patientId ? history.push('/main') : history.push('/profile/cid')
-  //   })
-  // }
-
-  // componentWillUnmount() {
-  //   const { auth } = { ...this.props }
-  //   this.props.authenAction(auth.uid)
-  // }
-  // componentWillMount () {
-  //   const { auth } = { ...this.props }
-  //   console.log()
-  // }
   render() {
     const { firebase, auth, history, authenAction } = { ...this.props }
     // console.log(firebase)
@@ -82,7 +65,7 @@ class LoginPage extends Component {
         user && user.patientId ? history.push('/main') : history.push('/profile/cid')
       })
       return (
-        <Loadable active spinner text='Loading...' className={`loading`}/>
+        <Loadable active spinner text='Loading...' className={`loading`} />
       )
     }
   }

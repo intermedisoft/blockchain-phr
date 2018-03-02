@@ -4,5 +4,6 @@
   },
   "emmet.triggerExpansionOnTab": true,
   "editor.tabSize": 2,
-  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true
+  "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": true,
+  "standard.enable": false
 }

@@ -19,7 +19,7 @@ class LoadStarterPage extends Component {
     error: null,
     isData: false,
     isFetchDone: true
-  } 
+  }
   componentDidMount() {
     wsURL().then(async (r) => {
       this.ws = new WebSocket(r)

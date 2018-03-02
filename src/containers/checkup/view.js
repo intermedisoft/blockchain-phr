@@ -101,7 +101,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.pulse === '' || data.pulse === undefined
                   ? '--fail' : data.pulse < 60 || data.pulse > 100
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>ชีพจร</div>
+                  <div className={`resultsLabel`}>ชีพจร <span className={`resultsUnit`}>[60-100]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.pulse}</span>
                     <span className={`resultsUnit`}>bpm</span>
@@ -110,7 +110,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.pressure === '' || data.pressure === undefined
                   ? '--fail' : (pressureUp < 90 || pressureUp > 139) && (pressureDown < 60 || pressureDown > 89)
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>ความดัน</div>
+                  <div className={`resultsLabel`}>ความดัน <span className={`resultsUnit`}>[90-139/60-89]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.pressure}</span>
                     <span className={`resultsUnit`}>mmHg</span>
@@ -130,7 +130,7 @@ class CheckupViewerPage extends Component {
                     ? data.rbc < 4.6 || data.rbc > 6.2
                       ? '--abNormal' : '--normal' : data.rbc < 4.2 && data.rbc > 5.4
                       ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>RBC</div>
+                  <div className={`resultsLabel`}>RBC <span className={`resultsUnit`}>[ช 4.6-6.2, ญ 4.2-5.4]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.rbc}</span>
                     <span className={`resultsUnit`}>Cell/mm^3</span>
@@ -141,7 +141,7 @@ class CheckupViewerPage extends Component {
                     ? data.hb < 14 || data.hb > 18
                       ? '--abNormal' : '--normal' : data.hb < 12 && data.hb > 16
                       ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>HB</div>
+                  <div className={`resultsLabel`}>HB <span className={`resultsUnit`}>[ช 14-18, ญ 12-16]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.hb}</span>
                     <span className={`resultsUnit`}>g/dL</span>
@@ -152,7 +152,7 @@ class CheckupViewerPage extends Component {
                     ? data.hct < 40 || data.hct > 54
                       ? '--abNormal' : '--normal' : data.hct < 37 && data.hct > 47
                       ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Hct</div>
+                  <div className={`resultsLabel`}>Hct <span className={`resultsUnit`}>[ช 40-54, ญ 37-47]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.hct}</span>
                     <span className={`resultsUnit`}>%</span>
@@ -161,7 +161,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.cbc_wbc === '' || data.cbc_wbc === undefined
                   ? '--fail' : data.cbc_wbc < 5.0 || data.cbc_wbc > 10.0
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>WBC</div>
+                  <div className={`resultsLabel`}>WBC <span className={`resultsUnit`}>[5.0-10.0]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.cbc_wbc}</span>
                     <span className={`resultsUnit`}>Cell/mm^3</span>
@@ -170,7 +170,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.pmn === '' || data.pmn === undefined
                   ? '--fail' : data.pmn < 40 || data.pmn > 75
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Neutrophil</div>
+                  <div className={`resultsLabel`}>Neutrophil <span className={`resultsUnit`}>[40-75]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.pmn}</span>
                     <span className={`resultsUnit`}>%</span>
@@ -179,7 +179,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.lym === '' || data.lym === undefined
                   ? '--fail' : data.lym < 20 || data.lym > 50
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Lymphocyte</div>
+                  <div className={`resultsLabel`}>Lymphocyte <span className={`resultsUnit`}>[20-50]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.lym}</span>
                     <span className={`resultsUnit`}>%</span>
@@ -188,7 +188,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.mono === '' || data.mono === undefined
                   ? '--fail' : data.mono < 2 || data.mono > 10
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Monocyte</div>
+                  <div className={`resultsLabel`}>Monocyte <span className={`resultsUnit`}>[2-10]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.mono}</span>
                     <span className={`resultsUnit`}>%</span>
@@ -197,7 +197,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.eos === '' || data.eos === undefined
                   ? '--fail' : data.eos < 1 || data.eos > 6
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Eosinophil</div>
+                  <div className={`resultsLabel`}>Eosinophil <span className={`resultsUnit`}>[1-6]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.eos}</span>
                     <span className={`resultsUnit`}>%</span>
@@ -215,7 +215,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.ph === '' || data.ph === undefined
                   ? '--fail' : data.ph < 4.6 || data.ph > 8.0
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>ความเป็นกรดด่าง (pH)</div>
+                  <div className={`resultsLabel`}>ความเป็นกรดด่าง (pH) <span className={`resultsUnit`}>[4.6-8.0]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.ph}</span>
                     <span className={`resultsUnit`}></span>
@@ -224,7 +224,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.spgr === '' || data.spgr === undefined
                   ? '--fail' : data.spgr < 1.001 || data.spgr > 1.035
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>ความถ่วงจำเพาะ (Sp.gr.)</div>
+                  <div className={`resultsLabel`}>ความถ่วงจำเพาะ (Sp.gr.) <span className={`resultsUnit`}>[1.001-1.035]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.spgr}</span>
                     <span className={`resultsUnit`}></span>
@@ -233,7 +233,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.alm === '' || data.alm === undefined
                   ? '--fail' : data.alm < 3.5 || data.alm > 5
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Albumin</div>
+                  <div className={`resultsLabel`}>Albumin <span className={`resultsUnit`}>[3.5-5]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.alm}</span>
                     <span className={`resultsUnit`}>gm/dL</span>
@@ -242,14 +242,16 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.sugar === '' || data.sugar === undefined
                   ? '--fail' : data.sugar === 'Negative'
                     ? '--normal' : '--abNormal'}`}>
-                  <div className={`resultsLabel`}>Sugar</div>
+                  <div className={`resultsLabel`}>Sugar <span className={`resultsUnit`}>[Negative]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.sugar}</span>
                     <span className={`resultsUnit`}></span>
                   </div>
                 </div>
-                <div className={`resultsGroup`}>
-                  <div className={`resultsLabel`}>เม็ดเลือดขาว (WBC)</div>
+                <div className={`resultsGroup ${data.ua_wbc === '' || data.ua_wbc === undefined
+                  ? '--fail' : data.ua_wbc < 0 || data.ua_wbc > 2
+                    ? '--abNormal' : '--normal'}`}>
+                  <div className={`resultsLabel`}>เม็ดเลือดขาว (WBC) <span className={`resultsUnit`}>[0-2]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.ua_wbc}</span>
                     <span className={`resultsUnit`}>cell/HPT</span>
@@ -267,7 +269,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.fbs === '' || data.fbs === undefined
                   ? '--fail' : data.fbs < 70 || data.fbs > 120
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>ระดับนาตาลในเลือด (FBS)</div>
+                  <div className={`resultsLabel`}>ระดับนาตาลในเลือด (FBS) <span className={`resultsUnit`}>[70-120]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.fbs}</span>
                     <span className={`resultsUnit`}>mg/dL</span>
@@ -290,36 +292,36 @@ class CheckupViewerPage extends Component {
               <div className={`cardGroupHead`}>ตรวจระดับไขมันในเลือด</div>
               <div className={`resultsCard`}>
                 <div className={`resultsGroup ${data.chlt === '' || data.chlt === undefined
-                  ? '--fail' : data.chlt > 240
+                  ? '--fail' : data.chlt >= 240
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Cholesterol</div>
+                  <div className={`resultsLabel`}>Cholesterol <span className={`resultsUnit`}>[{`<240`}] </span></div>
                   <div>
                     <span className={`resultsValue`}>{data.chlt}</span>
                     <span className={`resultsUnit`}>mg/dL</span>
                   </div>
                 </div>
                 <div className={`resultsGroup ${data.trig === '' || data.trig === undefined
-                  ? '--fail' : data.trig > 200
+                  ? '--fail' : data.trig >= 200
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Triglyceride</div>
+                  <div className={`resultsLabel`}>Triglyceride <span className={`resultsUnit`}>[{`<200`}]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.trig}</span>
                     <span className={`resultsUnit`}>mg/dL</span>
                   </div>
                 </div>
                 <div className={`resultsGroup ${data.hdl === '' || data.hdl === undefined
-                  ? '--fail' : data.hdl < 40
+                  ? '--fail' : data.hdl <= 40
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>HDL</div>
+                  <div className={`resultsLabel`}>HDL <span className={`resultsUnit`}>[>40]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.hdl}</span>
                     <span className={`resultsUnit`}>mg/dL</span>
                   </div>
                 </div>
                 <div className={`resultsGroup ${data.ldl === '' || data.ldl === undefined
-                  ? '--fail' : data.ldl > 160
+                  ? '--fail' : data.ldl >= 160
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>LDL</div>
+                  <div className={`resultsLabel`}>LDL <span className={`resultsUnit`}>[{`<160`}]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.ldl}</span>
                     <span className={`resultsUnit`}>mg/dL</span>
@@ -339,7 +341,7 @@ class CheckupViewerPage extends Component {
                     ? data.sgot < 8 || data.sgot > 46
                       ? '--abNormal' : '--normal' : data.sgot < 7 && data.sgot > 34
                       ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>SGOT</div>
+                  <div className={`resultsLabel`}>SGOT <span className={`resultsUnit`}>[ช 8-46, ญ 7-34]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.sgot}</span>
                     <span className={`resultsUnit`}>U/L</span>
@@ -348,7 +350,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.sgpt === '' || data.sgpt === undefined
                   ? '--fail' : data.sgpt < 4 || data.sgpt > 36
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>SGPT</div>
+                  <div className={`resultsLabel`}>SGPT <span className={`resultsUnit`}>[4-36]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.sgpt}</span>
                     <span className={`resultsUnit`}>U/L</span>
@@ -373,7 +375,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.creatinine === '' || data.creatinine === undefined
                   ? '--fail' : data.creatinine < 0.6 || data.creatinine > 1.3
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Creatinine</div>
+                  <div className={`resultsLabel`}>Creatinine <span className={`resultsUnit`}>[0.6-1.3]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.creatinine}</span>
                     <span className={`resultsUnit`}>mg/dL</span>
@@ -382,7 +384,7 @@ class CheckupViewerPage extends Component {
                 <div className={`resultsGroup ${data.bun === '' || data.bun === undefined
                   ? '--fail' : data.bun < 8 || data.bun > 10
                     ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>BUN</div>
+                  <div className={`resultsLabel`}>BUN <span className={`resultsUnit`}>[8-10]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.bun}</span>
                     <span className={`resultsUnit`}>mg/dL</span>
@@ -393,7 +395,7 @@ class CheckupViewerPage extends Component {
                     ? data.uric < 2.1 || data.uric > 7.8
                       ? '--abNormal' : '--normal' : data.uric < 2.0 && data.uric > 6.4
                       ? '--abNormal' : '--normal'}`}>
-                  <div className={`resultsLabel`}>Uric</div>
+                  <div className={`resultsLabel`}>Uric <span className={`resultsUnit`}>[2.1-7.8]</span></div>
                   <div>
                     <span className={`resultsValue`}>{data.uric}</span>
                     <span className={`resultsUnit`}>mg/dL</span>
